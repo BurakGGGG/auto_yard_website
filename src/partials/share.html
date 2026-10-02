@@ -1,0 +1,11 @@
+<div class="share" data-share data-share-title="{{name}}" data-share-text="{{tagline}}" data-share-url="{{siteUrl}}/">
+      <p class="share-title" id="share-title">Arkadaşlarınla paylaş</p>
+      <ul class="share-list" aria-labelledby="share-title">
+        <li><button type="button" class="btn btn-ghost" data-share-native hidden>Paylaş…</button></li>
+        <li><a class="btn btn-ghost" href="https://wa.me/?text={{shareTextEncoded}}" rel="noopener">WhatsApp<span class="visually-hidden"> ile paylaş</span></a></li>
+        <li><a class="btn btn-ghost" href="https://x.com/intent/post?text={{shareTitleEncoded}}&amp;url={{shareUrlEncoded}}" rel="noopener">X<span class="visually-hidden"> (Twitter) üzerinde paylaş</span></a></li>
+        <li><a class="btn btn-ghost" href="https://t.me/share/url?url={{shareUrlEncoded}}&amp;text={{shareTitleEncoded}}" rel="noopener">Telegram<span class="visually-hidden"> ile paylaş</span></a></li>
+        <li><button type="button" class="btn btn-ghost" data-share-copy>Linki kopyala</button></li>
+      </ul>
+      <p class="share-status" role="status" aria-live="polite" data-share-status></p>
+    </div>

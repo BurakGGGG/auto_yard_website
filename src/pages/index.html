@@ -1,4 +1,4 @@
-<!--meta {"title": "Auto Yard", "description": "Auto Yard: arabaları tamir et, garajını büyüt, drag yarışlarında kazan. Android için ücretsiz garaj ve tamir oyunu."} -->
+<!--meta {"updated": "2026-10-02", "title": "Auto Yard", "description": "Auto Yard: arabaları tamir et, garajını büyüt, drag yarışlarında kazan. Android için ücretsiz garaj ve tamir oyunu."} -->
 <section class="hero">
   <div class="wrap hero-inner">
     <div class="hero-copy">
@@ -67,23 +67,39 @@
   <div class="wrap narrow">
     <h2 id="sss-baslik">Sık sorulan sorular</h2>
     <div class="faq">
-      <details>
+      <details id="sss-ucretsiz">
         <summary>Oyun ücretsiz mi?</summary>
         <p>Evet. {{name}} ücretsizdir ve gerçek parayla satın alma içermez. Oyun içi para ve elmaslar yalnızca oynayarak kazanılır.</p>
       </details>
-      <details>
+      <details id="sss-reklam">
+        <summary>Oyunda reklam var mı?</summary>
+        <p>Hayır. {{name}} reklam göstermez ve reklam kimliğini kullanmaz.</p>
+      </details>
+      <details id="sss-cihaz">
         <summary>Hangi cihazlarda oynayabilirim?</summary>
         <p>{{name}} Android telefon ve tabletler için Google Play'de yayınlanır.</p>
       </details>
-      <details>
+      <details id="sss-dil">
+        <summary>Oyun hangi dilde?</summary>
+        <p>Oyun şu anda Türkçedir.</p>
+      </details>
+      <details id="sss-giris">
         <summary>Giriş yapmak zorunlu mu?</summary>
         <p>Hayır. Misafir olarak oynayabilirsin; ilerlemen telefonunda saklanır. Google hesabınla giriş yaparsan ilerlemen buluta yedeklenir.</p>
       </details>
-      <details>
+      <details id="sss-telefon">
+        <summary>Telefon değiştirirsem ilerlemem kaybolur mu?</summary>
+        <p>Google hesabınla giriş yaptıysan kaybolmaz: yeni telefonda aynı hesapla giriş yapınca bulut kaydın geri gelir. Misafir olarak oynadıysan ilerleme yalnızca eski telefonda kalır; taşımadan önce oyunda Google ile giriş yap.</p>
+      </details>
+      <details id="sss-veri">
+        <summary>Hangi kişisel verilerimi topluyorsunuz?</summary>
+        <p>Misafirken yalnızca anonim bir kullanıcı kimliği oluşturulur. Google ile giriş yaparsan adın, e-postan, profil fotoğrafının adresi ve oyun kaydın saklanır. Ayrıntılar <a href="/gizlilik">Gizlilik Politikası</a>'nda.</p>
+      </details>
+      <details id="sss-silme">
         <summary>Hesabımı ve verilerimi nasıl silerim?</summary>
         <p><a href="/hesap-silme">Hesap ve veri silme</a> sayfasındaki formu doldurman yeterli. Talebin en geç 30 gün içinde tamamlanır.</p>
       </details>
-      <details>
+      <details id="sss-hata">
         <summary>Hata buldum, nereye bildireyim?</summary>
         <p><a href="/iletisim?konu=hata">İletişim formundan</a> “Hata bildirimi” konusunu seçerek yazabilirsin. Telefon modelini ve hatayı nasıl tekrarlayabileceğimizi yazarsan çok yardımcı olur.</p>
       </details>
@@ -95,5 +111,6 @@
   <div class="wrap cta-band-inner">
     <h2 id="cta-baslik">İlk arabanı tamir etmeye hazır mısın?</h2>
     {{> cta}}
+    {{> share}}
   </div>
 </section>

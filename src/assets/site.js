@@ -194,4 +194,34 @@
       }
     });
   }
+  // ---------- Paylaşım ----------
+  for (const box of document.querySelectorAll("[data-share]")) {
+    const data = { title: box.dataset.shareTitle, text: box.dataset.shareText, url: box.dataset.shareUrl };
+    const status = box.querySelector("[data-share-status]");
+    const native = box.querySelector("[data-share-native]");
+    if (native && navigator.share) {
+      native.hidden = false;
+      native.addEventListener("click", () => navigator.share(data).catch(() => {}));
+    }
+    const copy = box.querySelector("[data-share-copy]");
+    if (copy) {
+      copy.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(data.url);
+          status.textContent = "Link kopyalandı.";
+        } catch {
+          status.textContent = `Kopyalanamadı. Link: ${data.url}`;
+        }
+      });
+    }
+  }
+
+  // ---------- SSS: #sss-... ile gelinirse ilgili soruyu aç ----------
+  function openFromHash() {
+    const id = decodeURIComponent(location.hash.slice(1));
+    const el = id && document.getElementById(id);
+    if (el && el.tagName === "DETAILS") el.open = true;
+  }
+  openFromHash();
+  window.addEventListener("hashchange", openFromHash);
 })();

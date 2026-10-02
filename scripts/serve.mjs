@@ -14,7 +14,7 @@ const vercel = JSON.parse(readFileSync(join(root, "vercel.json"), "utf8"));
 const TYPES = {
   ".html": "text/html; charset=utf-8", ".css": "text/css", ".js": "text/javascript", ".svg": "image/svg+xml",
   ".png": "image/png", ".jpg": "image/jpeg", ".webp": "image/webp", ".xml": "application/xml",
-  ".txt": "text/plain", ".webmanifest": "application/manifest+json",
+  ".txt": "text/plain; charset=utf-8", ".ico": "image/x-icon", ".webmanifest": "application/manifest+json",
 };
 
 function headersFor(pathname) {

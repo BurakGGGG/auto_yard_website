@@ -46,8 +46,24 @@ Node 20+ yeterli, `npm install` gerekmez.
 | 8 | Site hızı | Framework yok, sistem fontu, WebP + `srcset`, lazy loading, boyutlu görseller (CLS 0), özetli varlıklar 1 yıl önbellek, sayfa başına 350 KB bütçe | Lighthouse mobil: 100 |
 | 9 | Erişilebilirlik | `lang`, içeriğe geç linki, tek h1 + sıralı başlıklar, etiketli form alanları, `aria-invalid`/`aria-describedby`, `role=status` duyuruları, görünür odak, koyu mod, `prefers-reduced-motion` | Lighthouse a11y: 100; `check.mjs` |
 | 10 | Analytics | Vercel Web Analytics + Speed Insights (çerezsiz), onaya bağlı | Vercel panosu |
-| 11–20 | *Sıradaki 10 madde* | | |
+| 11 | Meta başlık ve açıklama | Her sayfada benzersiz `<title>` (≤60) ve açıklama (70–160 karakter); sayfa başındaki `<!--meta-->` yorumundan | `check.mjs`: uzunluk, benzersizlik |
+| 12 | sitemap.xml | Derlemede üretilir: yalnızca indekslenen sayfalar, canonical adresleriyle; `lastmod` sayfanın `updated` alanından | `check.mjs`: eksik/fazla sayfa, geçersiz tarih |
+| 13 | robots.txt | Derlemede üretilir: her şeye açık, yalnızca `/api/` kapalı, Sitemap satırı canonical alan adıyla | `check.mjs`: `Disallow: /` ve eksik Sitemap satırı hata |
+| 14 | Canonical URL'ler | İndekslenen her sayfada tek, mutlak https, sorgusuz canonical; 404 ve teşekkür sayfasında yok. Alan adı `SITE_URL` → Vercel üretim adresi → `site.config.json` sırasıyla | `check.mjs`: doğru sayfayı gösterme, `og:url` eşleşmesi |
+| 15 | Görsel alt metinler | Her içerik görselinde ne gösterdiğini anlatan alt; dekoratif görseller `alt=""` + `aria-hidden`; OG görselinin de alt'ı var | `check.mjs`: kısa, "görsel…" ile başlayan, dosya adına benzeyen alt hata |
+| 16 | Sık sorulan sorular | Ana sayfada 9 soru, her biri bağlantılanabilir (`/#sss-telefon` açık gelir); aynı sorular `FAQPage` yapısal verisine ve llms.txt'ye otomatik akar | `check.mjs`: sayfa ↔ yapısal veri sayısı |
+| 17 | Özel 404 | Markalı sayfa, gerçek 404 durum kodu, noindex, ana sayfa + 5 yardımcı link | `check.mjs` |
+| 18 | Sosyal paylaşım | Open Graph + X kartı (1200×630 görsel, alt metni ile); sayfa sonunda Paylaş (Web Share API), WhatsApp, X, Telegram, linki kopyala — takip betiği yok | `check.mjs`: etiketler + görselin gerçek boyutu |
+| 19 | Favicon | `favicon.ico` (16/32/48), SVG favicon, apple-touch-icon, manifest'te 192/512 + maskable ikon | `check.mjs`: ICO başlığı, manifest ikonları |
+| 20 | llms.txt | [llmstxt.org](https://llmstxt.org) biçiminde derlemede üretilir: oyun özeti, temel bilgiler, sayfalar, SSS | `check.mjs`: biçim, kırık link/çapa, eksik sayfa |
 
-Ek olarak: sıkı CSP ve güvenlik başlıkları (`vercel.json`), `robots.txt`, `sitemap.xml`, canonical, Open Graph görseli, `/privacy`, `/terms`, `/delete-account` yönlendirmeleri, özel 404.
+Ek olarak: sıkı CSP ve güvenlik başlıkları (`vercel.json`), `VideoGame` + `BreadcrumbList` yapısal verisi, `/privacy`, `/terms`, `/delete-account` yönlendirmeleri.
+
+Her denetim, bilerek bozulan bir kopyada hatayı yakaladığı doğrulanarak eklendi.
+
+## Sayfa güncellerken
+
+- İçerik anlamlı değiştiyse sayfanın `<!--meta {"updated": "..."}-->` tarihini güncelle → sitemap ve "Son güncelleme" ondan beslenir.
+- SSS'ye soru eklemek için `src/pages/index.html`'e `<details id="sss-...">` ekle; yapısal veri ve llms.txt kendiliğinden güncellenir.
 
 > Yasal metinler sağlam bir şablondur ama hukuki görüş değildir; ticari yayından önce bir avukata okutman önerilir.
