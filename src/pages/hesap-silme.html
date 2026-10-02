@@ -4,7 +4,16 @@
     <h1>Hesap ve Veri Silme</h1>
     <p class="lead">Bu sayfa <strong>{{name}}</strong> (Android, geliştirici: {{developerName}}) oyununun hesap ve veri silme talepleri içindir.</p>
 
-    <h2 id="adimlar">Nasıl talep edilir?</h2>
+    <h2 id="oyun-ici">Oyunun içinden (anında)</h2>
+    <ol>
+      <li>Oyunda sol üstteki <strong>PLAYER</strong> tabelasına dokun.</li>
+      <li><strong>HESABIMI SİL</strong> düğmesine, ardından <strong>EVET, KALICI OLARAK SİL</strong>'e dokun.</li>
+      <li>Kimliğini doğrulamak için Google hesabını bir kez daha seç.</li>
+    </ol>
+    <p>Google hesabının oyunla bağlantısı, bulut kaydın ve o telefondaki ilerlemen hemen silinir; oyun baştan başlar. Bu düğme yalnızca Google ile giriş yaptıysan görünür. Misafir olarak oynadıysan sunucuda sana ait bir kayıt yoktur.</p>
+
+    <h2 id="adimlar">Web formuyla</h2>
+    <p>Oyunu sildiysen veya oyunu açamıyorsan:</p>
     <ol>
       <li>Aşağıdaki formu, oyunda giriş yaptığın <strong>Google hesabının e-posta adresiyle</strong> doldur.</li>
       <li>Talebin o adresten geldiğini doğrulamak için sana bir e-posta göndeririz; ona yanıt ver.</li>
@@ -25,9 +34,10 @@
         </tbody>
       </table>
     </div>
-    <p><strong>Saklanan:</strong> talebi yerine getirdiğimizi ispatlamak için yalnızca e-posta adresin ve talep tarihi 3 yıl saklanır. Telefonundaki oyun kaydı yalnızca cihazındadır; silmek için oyunu kaldır veya <em>Ayarlar → Uygulamalar → {{name}} → Depolama → Verileri temizle</em> yolunu izle.</p>
+    <p><strong>Saklanan:</strong> web formuyla gelen taleplerde, talebi yerine getirdiğimizi ispatlamak için yalnızca e-posta adresin ve talep tarihi 3 yıl saklanır. Oyun içinden silmede telefonundaki ilerleme de silinir; form kullandıysan telefonundaki kayıt yalnızca cihazındadır, silmek için oyunu kaldır veya <em>Ayarlar → Uygulamalar → {{name}} → Depolama → Verileri temizle</em> yolunu izle.</p>
 
     <h2 id="form-baslik">Silme talebi formu</h2>
+    <p>Oyun içinden silemiyorsan bu formu kullan.</p>
     <form class="form" method="post" action="/api/contact" data-form data-fallback-email="{{contactEmail}}">
       <input type="hidden" name="type" value="hesap-silme">
       <div class="hp" aria-hidden="true">
