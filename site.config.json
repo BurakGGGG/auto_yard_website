@@ -1,12 +1,12 @@
 {
   "name": "Auto Yard",
   "tagline": "Garajını kur, arabaları tamir et, pistte kazan.",
-  "siteUrl": "https://auto-yard.vercel.app",
+  "siteUrl": "https://autoyardwebsite.vercel.app",
   "lang": "tr",
   "androidPackage": "com.cartownBurak.app",
   "playStoreLive": false,
-  "developerName": "DEGISTIR: Geliştiricinin adı soyadı",
-  "contactEmail": "DEGISTIR@ornek.com",
+  "developerName": "Burak Gürgil",
+  "contactEmail": "gurgilburak@gmail.com",
   "country": "Türkiye",
   "minAge": 13,
   "analytics": "web,speed"
