@@ -1,0 +1,21 @@
+<footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <a class="brand" href="/">{{> logo}}<span>{{name}}</span></a>
+        <p>{{tagline}}</p>
+      </div>
+      <nav aria-label="Yasal ve destek">
+        <ul class="footer-links">
+          <li><a href="/gizlilik" {{current:/gizlilik}}>Gizlilik Politikası</a></li>
+          <li><a href="/kullanim-sartlari" {{current:/kullanim-sartlari}}>Kullanım Şartları</a></li>
+          <li><a href="/cerez-politikasi" {{current:/cerez-politikasi}}>Çerez Politikası</a></li>
+          <li><a href="/hesap-silme" {{current:/hesap-silme}}>Hesap ve Veri Silme</a></li>
+          <li><a href="/iletisim" {{current:/iletisim}}>İletişim</a></li>
+          <li><button type="button" class="link-button" data-consent-open>Çerez tercihleri</button></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="wrap footer-bottom">
+      <p>© {{year}} {{developerName}}. Google Play, Google LLC'nin ticari markasıdır.</p>
+    </div>
+  </footer>

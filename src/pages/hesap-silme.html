@@ -1,0 +1,70 @@
+<!--meta {"title": "Hesap ve Veri Silme", "description": "Auto Yard hesabını ve bulut kaydını nasıl sileceğin, hangi verilerin silindiği ve ne kadar sürdüğü."} -->
+<section class="section">
+  <div class="wrap narrow prose">
+    <h1>Hesap ve Veri Silme</h1>
+    <p class="lead">Bu sayfa <strong>{{name}}</strong> (Android, geliştirici: {{developerName}}) oyununun hesap ve veri silme talepleri içindir.</p>
+
+    <h2 id="adimlar">Nasıl talep edilir?</h2>
+    <ol>
+      <li>Aşağıdaki formu, oyunda giriş yaptığın <strong>Google hesabının e-posta adresiyle</strong> doldur.</li>
+      <li>Talebin o adresten geldiğini doğrulamak için sana bir e-posta göndeririz; ona yanıt ver.</li>
+      <li>Doğrulamadan sonra en geç <strong>30 gün</strong> içinde silme işlemi tamamlanır ve sana bildirilir.</li>
+    </ol>
+    <p>Formu kullanamıyorsan aynı bilgilerle <a href="mailto:{{contactEmail}}?subject=Hesap%20silme%20talebi">{{contactEmail}}</a> adresine yazabilirsin.</p>
+
+    <h2 id="neler">Neler silinir?</h2>
+    <div class="table-wrap">
+      <table>
+        <caption class="visually-hidden">Silinen ve saklanan veriler</caption>
+        <thead><tr><th scope="col">Veri</th><th scope="col">Hesabı tamamen sil</th><th scope="col">Yalnızca bulut kaydını sil</th></tr></thead>
+        <tbody>
+          <tr><td>Google ile giriş hesabı (Firebase Authentication)</td><td>Silinir</td><td>Kalır</td></tr>
+          <tr><td>Profil bilgileri (ad, e-posta, foto URL)</td><td>Silinir</td><td>Silinir</td></tr>
+          <tr><td>Bulut oyun kaydı (ilerleme)</td><td>Silinir</td><td>Silinir</td></tr>
+          <tr><td>Destek yazışmaları</td><td>Silinir</td><td>Kalır</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Saklanan:</strong> talebi yerine getirdiğimizi ispatlamak için yalnızca e-posta adresin ve talep tarihi 3 yıl saklanır. Telefonundaki oyun kaydı yalnızca cihazındadır; silmek için oyunu kaldır veya <em>Ayarlar → Uygulamalar → {{name}} → Depolama → Verileri temizle</em> yolunu izle.</p>
+
+    <h2 id="form-baslik">Silme talebi formu</h2>
+    <form class="form" method="post" action="/api/contact" data-form data-fallback-email="{{contactEmail}}">
+      <input type="hidden" name="type" value="hesap-silme">
+      <div class="hp" aria-hidden="true">
+        <label for="d-website">Bu alanı boş bırak</label>
+        <input id="d-website" name="website" type="text" tabindex="-1" autocomplete="off">
+      </div>
+
+      <div class="field">
+        <label for="d-email">Oyunda kullandığın Google hesabının e-postası</label>
+        <input id="d-email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="200">
+      </div>
+      <div class="field">
+        <label for="d-name">Oyundaki görünen adın <span class="optional">(isteğe bağlı)</span></label>
+        <input id="d-name" name="name" type="text" autocomplete="name" maxlength="100">
+      </div>
+      <fieldset class="field">
+        <legend>Ne silinsin?</legend>
+        <div class="radio">
+          <input id="d-scope-all" name="scope" type="radio" value="hesap" required checked>
+          <label for="d-scope-all">Hesabım ve tüm verilerim</label>
+        </div>
+        <div class="radio">
+          <input id="d-scope-save" name="scope" type="radio" value="bulut-kaydi">
+          <label for="d-scope-save">Yalnızca bulut kaydım (hesabım kalsın)</label>
+        </div>
+      </fieldset>
+      <div class="field">
+        <label for="d-message">Eklemek istediğin not <span class="optional">(isteğe bağlı)</span></label>
+        <textarea id="d-message" name="message" rows="3" maxlength="2000"></textarea>
+      </div>
+      <div class="field field-check">
+        <input id="d-confirm" name="consent" type="checkbox" value="yes" required>
+        <label for="d-confirm">Silinen ilerlemenin geri getirilemeyeceğini anlıyorum.</label>
+      </div>
+
+      <button class="btn btn-primary" type="submit">Silme talebini gönder</button>
+      <p class="form-status" role="status" aria-live="polite" data-form-status></p>
+    </form>
+  </div>
+</section>

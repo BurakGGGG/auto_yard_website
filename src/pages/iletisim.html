@@ -1,0 +1,50 @@
+<!--meta {"title": "İletişim", "description": "Auto Yard ile ilgili soru, hata bildirimi ve önerilerin için bize yaz. Genellikle 3 iş günü içinde yanıt veririz."} -->
+<section class="section">
+  <div class="wrap narrow">
+    <h1>İletişim</h1>
+    <p class="lead">Soru, hata bildirimi veya öneri için formu doldur. Genellikle 3 iş günü içinde e-postayla yanıt veririz.</p>
+
+    <form class="form" method="post" action="/api/contact" data-form data-fallback-email="{{contactEmail}}">
+      <input type="hidden" name="type" value="iletisim">
+      <div class="hp" aria-hidden="true">
+        <label for="c-website">Bu alanı boş bırak</label>
+        <input id="c-website" name="website" type="text" tabindex="-1" autocomplete="off">
+      </div>
+
+      <div class="field">
+        <label for="c-name">Adın</label>
+        <input id="c-name" name="name" type="text" autocomplete="name" required maxlength="100">
+      </div>
+      <div class="field">
+        <label for="c-email">E-posta adresin</label>
+        <input id="c-email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="200" aria-describedby="c-email-hint">
+        <p class="hint" id="c-email-hint">Yanıtı bu adrese göndereceğiz.</p>
+      </div>
+      <div class="field">
+        <label for="c-topic">Konu</label>
+        <select id="c-topic" name="topic" required>
+          <option value="destek">Destek / soru</option>
+          <option value="hata">Hata bildirimi</option>
+          <option value="oneri">Öneri</option>
+          <option value="haber">Oyun çıkınca haber ver</option>
+          <option value="veri">Kişisel veri talebi (KVKK)</option>
+          <option value="diger">Diğer</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="c-message">Mesajın</label>
+        <textarea id="c-message" name="message" rows="6" required minlength="10" maxlength="5000" aria-describedby="c-message-hint"></textarea>
+        <p class="hint" id="c-message-hint">Hata bildiriyorsan telefon modelini ve hatanın nasıl oluştuğunu yaz.</p>
+      </div>
+      <div class="field field-check">
+        <input id="c-consent" name="consent" type="checkbox" value="yes" required>
+        <label for="c-consent"><a href="/gizlilik">Gizlilik Politikası</a>'nı okudum; mesajımın yanıtlanması için ad ve e-postamın işlenmesini kabul ediyorum.</label>
+      </div>
+
+      <button class="btn btn-primary" type="submit">Gönder</button>
+      <p class="form-status" role="status" aria-live="polite" data-form-status></p>
+    </form>
+
+    <p class="alt-contact">Form çalışmazsa doğrudan e-posta gönderebilirsin: <a href="mailto:{{contactEmail}}">{{contactEmail}}</a></p>
+  </div>
+</section>

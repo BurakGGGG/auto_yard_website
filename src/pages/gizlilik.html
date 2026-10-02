@@ -1,0 +1,99 @@
+<!--meta {"title": "Gizlilik Politikası", "description": "Auto Yard oyununun ve web sitesinin hangi kişisel verileri neden işlediği, ne kadar sakladığı ve haklarını nasıl kullanabileceğin."} -->
+<article class="section">
+  <div class="wrap narrow prose">
+    <h1>Gizlilik Politikası</h1>
+    <p class="meta">Son güncelleme: <time datetime="{{legalUpdated}}">{{legalUpdated}}</time></p>
+
+    <nav class="toc" aria-label="Bu sayfada">
+      <h2 class="toc-title">İçindekiler</h2>
+      <ol>
+        <li><a href="#sorumlu">Veri sorumlusu</a></li>
+        <li><a href="#oyun">Oyunda işlenen veriler</a></li>
+        <li><a href="#site">Web sitesinde işlenen veriler</a></li>
+        <li><a href="#amac">Amaçlar ve hukuki sebepler</a></li>
+        <li><a href="#paylasim">Paylaşılan hizmet sağlayıcılar ve yurt dışı aktarım</a></li>
+        <li><a href="#sure">Saklama süreleri</a></li>
+        <li><a href="#guvenlik">Güvenlik</a></li>
+        <li><a href="#cocuklar">Çocuklar</a></li>
+        <li><a href="#haklar">Hakların</a></li>
+        <li><a href="#degisiklik">Değişiklikler ve iletişim</a></li>
+      </ol>
+    </nav>
+
+    <p>Bu politika, Android oyunu <strong>{{name}}</strong> (“Oyun”, paket adı <code>{{androidPackage}}</code>) ile bu web sitesinin (“Site”) kişisel verilerini nasıl işlediğini açıklar. 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) ve uygulanabildiği ölçüde AB Genel Veri Koruma Tüzüğü (GDPR) esas alınmıştır.</p>
+
+    <h2 id="sorumlu">1. Veri sorumlusu</h2>
+    <p>Veri sorumlusu {{developerName}} ({{country}}). Gizlilikle ilgili tüm sorular için: <a href="mailto:{{contactEmail}}">{{contactEmail}}</a> veya <a href="/iletisim">iletişim formu</a>.</p>
+
+    <h2 id="oyun">2. Oyunda işlenen veriler</h2>
+    <h3>Misafir olarak oynarken</h3>
+    <ul>
+      <li><strong>Anonim kullanıcı kimliği:</strong> Oyun açıldığında Google Firebase Authentication rastgele bir kimlik (UID) oluşturur. Bu kimlik adını, e-postanı veya telefon numaranı içermez.</li>
+      <li><strong>Oyun ilerlemesi:</strong> Para, araçlar, garaj ve görev durumu yalnızca telefonunda saklanır; misafirken buluta gönderilmez.</li>
+    </ul>
+    <h3>Google hesabınla giriş yaptığında</h3>
+    <ul>
+      <li><strong>Google profil bilgileri:</strong> görünen adın, e-posta adresin ve profil fotoğrafının adresi (URL).</li>
+      <li><strong>Bulut kaydı:</strong> oyun ilerlemen, kayıt sürümü ve son güncelleme zamanı Google Cloud Firestore'da hesabına bağlı olarak saklanır.</li>
+    </ul>
+    <h3>Teknik veriler</h3>
+    <p>Firebase, oturum açma ve bulut kaydını çalıştırabilmek için IP adresi, cihaz ve uygulama sürümü gibi teknik verileri işler. Ayrıntılar için <a href="https://firebase.google.com/support/privacy" rel="noopener">Firebase gizlilik bilgileri</a>.</p>
+    <h3>Oyunda olmayanlar</h3>
+    <p>Oyun <strong>reklam göstermez</strong>, reklam kimliğini kullanmaz, gerçek parayla satın alma içermez, konum, kişiler, kamera veya mikrofon iznine erişmez ve oyun içi analiz (analytics) aracı kullanmaz. Verilerin satılmaz.</p>
+
+    <h2 id="site">3. Web sitesinde işlenen veriler</h2>
+    <ul>
+      <li><strong>Sunucu kayıtları:</strong> Site Vercel üzerinde barındırılır. Vercel, güvenlik ve işletim amacıyla IP adresi, tarayıcı bilgisi ve istenen sayfa gibi verileri kısa süreli kaydeder.</li>
+      <li><strong>Anonim ziyaret istatistikleri:</strong> Yalnızca <a href="/cerez-politikasi">çerez tercihinde</a> onay verirsen Vercel Web Analytics yüklenir. Çerez kullanmaz, seni siteler arasında takip etmez; ziyaretler günlük olarak değişen bir özetle sayılır.</li>
+      <li><strong>Form verileri:</strong> İletişim veya hesap silme formuna yazdığın ad, e-posta ve mesaj, bize e-posta olarak iletilir (e-posta gönderim hizmeti: Resend).</li>
+      <li><strong>Tercih kaydı:</strong> Çerez tercihin tarayıcının yerel depolamasında (localStorage) tutulur, sunucuya gönderilmez.</li>
+    </ul>
+
+    <h2 id="amac">4. Amaçlar ve hukuki sebepler</h2>
+    <div class="table-wrap">
+      <table>
+        <caption class="visually-hidden">İşleme amaçları ve hukuki sebepler</caption>
+        <thead><tr><th scope="col">Amaç</th><th scope="col">Veriler</th><th scope="col">Hukuki sebep</th></tr></thead>
+        <tbody>
+          <tr><td>Oyunun çalışması, misafir oturumu</td><td>Anonim UID, teknik veriler</td><td>Sözleşmenin ifası (KVKK m.5/2-c)</td></tr>
+          <tr><td>Google ile giriş ve bulut yedeği</td><td>Ad, e-posta, foto URL, oyun kaydı</td><td>Sözleşmenin ifası; bu özelliği kendin başlatırsın</td></tr>
+          <tr><td>Destek taleplerini yanıtlamak</td><td>Ad, e-posta, mesaj</td><td>Meşru menfaat (m.5/2-f)</td></tr>
+          <tr><td>Hesap silme taleplerini yerine getirmek</td><td>E-posta, talep içeriği</td><td>Hukuki yükümlülük (m.5/2-ç)</td></tr>
+          <tr><td>Site güvenliği</td><td>Sunucu kayıtları</td><td>Meşru menfaat (m.5/2-f)</td></tr>
+          <tr><td>Site istatistikleri</td><td>Anonim ziyaret verisi</td><td>Açık rıza (m.5/1); her an geri alınabilir</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="paylasim">5. Paylaşılan hizmet sağlayıcılar ve yurt dışı aktarım</h2>
+    <p>Verilerin yalnızca hizmeti sağlamak için aşağıdaki veri işleyenlerle paylaşılır:</p>
+    <ul>
+      <li><strong>Google LLC / Google Ireland (Firebase Authentication, Cloud Firestore)</strong> — giriş ve bulut kaydı</li>
+      <li><strong>Vercel Inc.</strong> — site barındırma ve anonim istatistik</li>
+      <li><strong>Resend</strong> — form mesajlarının e-postayla iletilmesi</li>
+    </ul>
+    <p>Bu sağlayıcıların sunucuları Türkiye dışında (AB ve ABD) bulunabilir. Aktarım, sağlayıcıların standart sözleşme hükümleri ve KVKK'nın 9. maddesindeki güvencelere dayanılarak yapılır. Kanunen zorunlu haller dışında verilerin başka kimseyle paylaşılmaz.</p>
+
+    <h2 id="sure">6. Saklama süreleri</h2>
+    <ul>
+      <li>Bulut kaydı ve Google profil bilgileri: hesabını silene kadar.</li>
+      <li>Telefondaki oyun kaydı: uygulamayı kaldırana veya verilerini temizleyene kadar (yalnızca cihazında).</li>
+      <li>Destek yazışmaları: talebin kapanmasından itibaren en fazla 1 yıl.</li>
+      <li>Hesap silme talebi kaydı: ispat amacıyla 3 yıl (yalnızca e-posta ve talep tarihi).</li>
+      <li>Sunucu kayıtları: Vercel'in saklama süreleri boyunca (genellikle birkaç gün).</li>
+    </ul>
+
+    <h2 id="guvenlik">7. Güvenlik</h2>
+    <p>Bulut kayıtları Firebase güvenlik kurallarıyla korunur: her oyuncu yalnızca kendi kaydını okuyup yazabilir. Site yalnızca HTTPS üzerinden çalışır. Hiçbir sistem kusursuz değildir; bir ihlal olursa KVKK'nın öngördüğü şekilde bildirim yaparız.</p>
+
+    <h2 id="cocuklar">8. Çocuklar</h2>
+    <p>Oyun {{minAge}} yaşın altındaki çocuklara yönelik değildir ve bilerek {{minAge}} yaş altından kişisel veri toplamayız. Böyle bir veri topladığımızı fark edersen <a href="/iletisim">bize yaz</a>, hemen sileriz.</p>
+
+    <h2 id="haklar">9. Hakların</h2>
+    <p>KVKK'nın 11. maddesi (ve uygulanıyorsa GDPR) kapsamında; verilerinin işlenip işlenmediğini öğrenme, bilgi ve kopya isteme, düzeltme, silme, işlemeye itiraz etme, verinin aktarıldığı üçüncü kişileri öğrenme, verilerini taşınabilir biçimde alma ve zararın giderilmesini talep etme hakların vardır.</p>
+    <p>Hesabını ve verilerini silmek için <a href="/hesap-silme">hesap silme sayfasını</a>, diğer talepler için <a href="/iletisim">iletişim formunu</a> kullanabilirsin. Taleplerini en geç 30 gün içinde ücretsiz yanıtlarız. Yanıtımızdan memnun kalmazsan Kişisel Verileri Koruma Kurumu'na şikâyette bulunabilirsin.</p>
+
+    <h2 id="degisiklik">10. Değişiklikler ve iletişim</h2>
+    <p>Bu politikayı güncelleyebiliriz; önemli değişiklikleri oyun içinde veya bu sayfada duyururuz. Sayfanın başındaki tarih son güncellemeyi gösterir. Sorular için: <a href="mailto:{{contactEmail}}">{{contactEmail}}</a>.</p>
+  </div>
+</article>

@@ -1,0 +1,12 @@
+{
+  "name": "auto-yard-website",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "build": "node scripts/build.mjs && node scripts/check.mjs",
+    "check": "node scripts/check.mjs",
+    "test": "node --test tests/",
+    "dev": "node scripts/build.mjs && node scripts/serve.mjs"
+  }
+}
