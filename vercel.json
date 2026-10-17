@@ -29,6 +29,28 @@
     },
     {
       "source": "/d/:token",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^de.*"
+        }
+      ],
+      "destination": "/de/einladung"
+    },
+    {
+      "source": "/d/:token",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^fr.*"
+        }
+      ],
+      "destination": "/fr/invitation"
+    },
+    {
+      "source": "/d/:token",
       "destination": "/davet"
     }
   ],
@@ -105,6 +127,16 @@
     {
       "source": "/privacidad",
       "destination": "/es/privacidad",
+      "permanent": true
+    },
+    {
+      "source": "/datenschutz",
+      "destination": "/de/datenschutz",
+      "permanent": true
+    },
+    {
+      "source": "/confidentialite",
+      "destination": "/fr/confidentialite",
       "permanent": true
     }
   ]

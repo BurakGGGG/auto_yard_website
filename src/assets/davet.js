@@ -1,4 +1,4 @@
-// ARKADAŞ DAVETİ: /d/<jeton> (vercel.json yönlendirmesi → tarayıcı diline göre /davet, /en/invite, /es/invitacion)
+// ARKADAŞ DAVETİ: /d/<jeton> (vercel.json yönlendirmesi → tarayıcı diline göre /davet, /en/invite, /es/invitacion, /de/einladung, /fr/invitation)
 // oyunu autoyard://davet/<jeton> ile açar. Android'de Chrome "intent:" adresiyle uygulamayı açar; uygulama yüklü
 // değilse bu sayfaya "?yok" ile geri döner ve indirme düğmesi öne çıkar. Jetonun geçerliliğini oyun denetler
 // (1 saat; firebase/firestore.rules invites). Mesajlar sayfanın dilinde, #davet-not'un data-* özniteliklerinde.

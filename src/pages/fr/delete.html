@@ -1,0 +1,87 @@
+<!--meta {"updated": "2026-10-17", "title": "Suppression du compte et des données", "description": "Comment supprimer votre compte Auto Yard, votre sauvegarde cloud et votre profil d’ami dans le jeu ou via le formulaire web, ce qui est supprimé et les délais."} -->
+<section class="page-hero rays">
+  <div class="wrap narrow">
+    <p class="kicker">Compte</p>
+    <h1>Suppression du compte et des données</h1>
+    <p class="lead">Cette page concerne les demandes de suppression de compte et de données pour le jeu <strong>{{name}}</strong> (Android, développeur : {{developerName}}).</p>
+  </div>
+</section>
+<div class="page-body">
+  <div class="wrap narrow">
+    <article class="card prose">
+      <h2 id="dans-le-jeu">Dans le jeu (immédiat)</h2>
+      <ol class="steps">
+        <li>Touchez votre avatar en haut à gauche, puis ouvrez la plaque <span class="ui">COMPTE</span> sur l’écran <span class="ui">PROFIL</span>. (<span class="ui">PARAMÈTRES → COMPTE ET CONFIDENTIALITÉ → COMPTE GOOGLE</span> mène au même endroit.)</li>
+        <li>Touchez <span class="ui">SUPPRIMER MON COMPTE</span>, puis <span class="ui">OUI, SUPPRIMER DÉFINITIVEMENT</span>.</li>
+        <li>Sélectionnez une nouvelle fois le même compte Google pour confirmer votre identité.</li>
+      </ol>
+      <p>Votre compte et toutes les données du tableau ci-dessous sont supprimés immédiatement, et le jeu repart de zéro sur ce téléphone. Ce bouton n’apparaît qu’en cas de connexion avec Google. Si vous avez joué en invité, aucune donnée vous concernant n’est enregistrée sur nos serveurs ; il suffit de désinstaller le jeu pour supprimer la sauvegarde de votre téléphone.</p>
+
+      <h2 id="etapes">Avec le formulaire web</h2>
+      <p>Si vous avez désinstallé le jeu ou ne pouvez pas l’ouvrir :</p>
+      <ol class="steps">
+        <li>Remplissez le formulaire ci-dessous avec l’<strong>adresse e-mail du compte Google</strong> utilisé pour vous connecter au jeu.</li>
+        <li>Nous vous enverrons un e-mail pour vérifier que la demande provient bien de cette adresse ; répondez-y.</li>
+        <li>Après vérification, la suppression est effectuée dans un délai de <strong>30 jours</strong> au plus et nous vous en informons.</li>
+      </ol>
+      <p>Si vous ne pouvez pas utiliser le formulaire, écrivez à <a href="mailto:{{contactEmail}}?subject=Demande%20de%20suppression%20de%20compte">{{contactEmail}}</a> en indiquant les mêmes informations.</p>
+
+      <h2 id="donnees-supprimees">Qu’est-ce qui est supprimé ?</h2>
+      <div class="table-wrap">
+        <table>
+          <caption class="visually-hidden">Données supprimées et données conservées</caption>
+          <thead><tr><th scope="col">Données</th><th scope="col">Suppression complète du compte</th><th scope="col">Suppression de la sauvegarde cloud uniquement (formulaire)</th></tr></thead>
+          <tbody>
+            <tr><td>Compte de connexion Google</td><td>Supprimé</td><td>Conservé</td></tr>
+            <tr><td>Sauvegarde cloud (progression, registre d’achats) et informations du profil Google</td><td>Supprimées</td><td>Supprimées</td></tr>
+            <tr><td>Profil de garage public, photo de profil, code ami</td><td>Supprimés</td><td>Conservés</td></tr>
+            <tr><td>Amitiés (des deux côtés), demandes, nouvelles de course, cadeaux, invitations</td><td>Supprimés</td><td>Conservés</td></tr>
+            <tr><td>Jeton des notifications de course</td><td>Supprimé</td><td>Conservé</td></tr>
+            <tr><td>Échanges avec l’assistance</td><td>Supprimés</td><td>Conservés</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Ce qui peut subsister :</strong> les signalements vous concernant ou effectués par vous, votre pseudo dans les cadeaux que vos amis n’ont pas encore récupérés, les journaux d’envoi des notifications et les enregistrements d’achats et de publicités conservés par Google. Pour les demandes faites via le formulaire web, seules votre adresse e-mail et la date de la demande sont conservées pendant 3 ans, afin de prouver que nous avons donné suite à la demande. Les fichiers de votre téléphone se trouvent uniquement sur votre appareil ; pour les supprimer, désinstallez le jeu ou allez dans <em>Paramètres → Applications → {{name}} → Stockage → Effacer les données</em>.</p>
+
+      <h2 id="formulaire-titre">Formulaire de demande de suppression</h2>
+      <p>Utilisez ce formulaire si vous ne pouvez pas supprimer votre compte dans le jeu.</p>
+      <form class="form" method="post" action="/api/contact" data-form data-fallback-email="{{contactEmail}}">
+        <input type="hidden" name="type" value="hesap-silme">
+        <input type="hidden" name="lang" value="{{lang}}">
+        <div class="hp" aria-hidden="true">
+          <label for="d-website">Laissez ce champ vide</label>
+          <input id="d-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="d-email">Adresse e-mail du compte Google utilisé dans le jeu</label>
+          <input id="d-email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="200">
+        </div>
+        <div class="field">
+          <label for="d-name">Votre pseudo dans le jeu <span class="optional">(facultatif)</span></label>
+          <input id="d-name" name="name" type="text" autocomplete="nickname" maxlength="100">
+        </div>
+        <fieldset class="field">
+          <legend>Que faut-il supprimer ?</legend>
+          <div class="radio">
+            <input id="d-scope-all" name="scope" type="radio" value="hesap" required checked>
+            <label for="d-scope-all">Mon compte et toutes mes données</label>
+          </div>
+          <div class="radio">
+            <input id="d-scope-save" name="scope" type="radio" value="bulut-kaydi">
+            <label for="d-scope-save">Uniquement ma sauvegarde cloud (conserver mon compte et mes amis)</label>
+          </div>
+        </fieldset>
+        <div class="field">
+          <label for="d-message">Une remarque à ajouter ? <span class="optional">(facultatif)</span></label>
+          <textarea id="d-message" name="message" rows="3" maxlength="2000"></textarea>
+        </div>
+        <div class="field field-check">
+          <input id="d-confirm" name="consent" type="checkbox" value="yes" required>
+          <label for="d-confirm">Je comprends que la progression supprimée ne pourra pas être restaurée.</label>
+        </div>
+        <button class="btn btn-primary" type="submit">Envoyer la demande de suppression</button>
+        <p class="form-status" role="status" aria-live="polite" data-form-status></p>
+      </form>
+    </article>
+  </div>
+</div>

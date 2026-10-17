@@ -1,0 +1,151 @@
+<!--meta {"updated": "2026-10-17", "title": "Datenschutzerklärung", "description": "Welche personenbezogenen Daten Spiel und Website von Auto Yard warum verarbeiten, wer sie sieht, wie lange sie gespeichert werden und wie du deine Rechte nutzt."} -->
+<section class="page-hero rays">
+  <div class="wrap narrow">
+    <p class="kicker">Rechtliches</p>
+    <h1>Datenschutzerklärung</h1>
+    <p class="meta">{{t.updated}}: <time datetime="{{updated}}">{{updatedText}}</time></p>
+  </div>
+</section>
+<div class="page-body">
+  <div class="wrap narrow">
+    <article class="card prose">
+      <nav class="toc" aria-labelledby="toc-titel">
+        <h2 class="toc-title" id="toc-titel">Inhalt</h2>
+        <ol>
+          <li><a href="#verantwortlicher">Verantwortlicher</a></li>
+          <li><a href="#spiel">Im Spiel verarbeitete Daten</a></li>
+          <li><a href="#sichtbarkeit">Was andere Spieler sehen können</a></li>
+          <li><a href="#werbung">Werbung</a></li>
+          <li><a href="#kaeufe">In-App-Käufe</a></li>
+          <li><a href="#berechtigungen">Berechtigungen, Kamera und Fotos</a></li>
+          <li><a href="#website">Auf der Website verarbeitete Daten</a></li>
+          <li><a href="#zwecke">Zwecke und Rechtsgrundlagen</a></li>
+          <li><a href="#dienstleister">Dienstleister und Übermittlung ins Ausland</a></li>
+          <li><a href="#speicherdauer">Speicherdauer</a></li>
+          <li><a href="#loeschung">Dein Konto löschen</a></li>
+          <li><a href="#sicherheit">Sicherheit</a></li>
+          <li><a href="#kinder">Kinder</a></li>
+          <li><a href="#rechte">Deine Rechte</a></li>
+          <li><a href="#aenderungen">Änderungen und Kontakt</a></li>
+        </ol>
+      </nav>
+
+      <p>Diese Erklärung beschreibt, wie das Android-Spiel <strong>{{name}}</strong> (das „Spiel“, Paketname <code>{{androidPackage}}</code>) und diese Website (die „Website“) personenbezogene Daten verarbeiten. Grundlage sind das türkische Gesetz Nr. 6698 zum Schutz personenbezogener Daten (KVKK) und, soweit anwendbar, die Datenschutz-Grundverordnung der EU (DSGVO).</p>
+      <div class="callout"><p><strong>Kurz gesagt:</strong> Spielst du als Gast, bleibt dein Fortschritt nur auf deinem Handy. Meldest du dich mit Google an, wird dein Spielstand in der Cloud gesichert. Nutzt du die Freunde-Funktionen, sind dein Nickname, deine Werkstatt und dein Profilfoto für andere Spieler sichtbar. Werbung startet nur, wenn du es willst. Deine Daten werden nicht verkauft.</p></div>
+
+      <h2 id="verantwortlicher">1. Verantwortlicher</h2>
+      <p>Verantwortlicher ist {{developerName}} ({{country}}). Bei allen Fragen zum Datenschutz: <a href="mailto:{{contactEmail}}">{{contactEmail}}</a> oder das <a href="{{link:contact}}">Kontaktformular</a>.</p>
+
+      <h2 id="spiel">2. Im Spiel verarbeitete Daten</h2>
+      <h3>Wenn du als Gast spielst</h3>
+      <p>Für das Spielen als Gast wird kein Konto angelegt und keine Firebase-Sitzung gestartet. Dein Spielstand (Geld, Autos, Werkstatt, Aufgaben, Einstellungen), dein Kaufprotokoll und deine täglichen Werbezähler werden nur auf deinem Handy gespeichert. Angaben zu Grafikchip, Arbeitsspeicher und Prozessor deines Handys werden nur auf dem Gerät verwendet, um die Grafikeinstellung zu wählen, und nirgendwohin gesendet. Auch als Gast kannst du Belohnungswerbung ansehen und Käufe tätigen; siehe dazu die Abschnitte <a href="#werbung">4</a> und <a href="#kaeufe">5</a>.</p>
+      <h3>Wenn du dich mit deinem Google-Konto anmeldest</h3>
+      <ul>
+        <li><strong>Konto:</strong> Google Firebase Authentication meldet dich mit deinem Google-Konto an und weist dir eine Nutzer-ID (UID) zu. Andere Anmeldemethoden werden nicht verwendet.</li>
+        <li><strong>Google-Profildaten:</strong> Dein Anzeigename, deine E-Mail-Adresse und die Adresse (URL) deines Profilfotos werden in einem Bereich deines Cloud-Spielstands gespeichert, den nur du lesen kannst. Dein Anzeigename wird nur auf deinem eigenen Bildschirm angezeigt; andere Spieler sehen den Nickname, den du wählst.</li>
+        <li><strong>Cloud-Spielstand:</strong> Dein gesamter Spielfortschritt (Wirtschaft, Autos, Werkstatt und Deko, Aufgaben, Kaufprotokoll, die Liste der von dir blockierten Spieler, die Zahl deiner Rennen gegen Freunde) wird mit deinem Konto verknüpft in Google Cloud Firestore gespeichert und kann nur von deinem Konto gelesen werden.</li>
+      </ul>
+      <h3>Wenn du die Freunde-Funktionen nutzt</h3>
+      <p>Die Freunde-Funktionen setzen eine Google-Anmeldung und einen Nickname voraus. Sobald du deinen Nickname festlegst:</p>
+      <ul>
+        <li><strong>Dein öffentliches Werkstattprofil</strong> wird angelegt: dein Nickname, dein Freundescode, dein Level, dein Werkstattwert, das Layout deiner Werkstatt (Deko, ausgestellte Autos und ihr Tuning), dein Avatar, dein Rahmen, die von dir gewählte Flagge, dein Werkstattname, dein Vitrinenauto, deine Rennstatistiken (Siege, Anzahl der Rennen, Sammlung, Bestzeit) und, falls vorhanden, das Schrottplatz-Teil, um das du gebeten hast. Geld, Juwelen und Kisten sind nicht Teil dieses Profils.</li>
+        <li><strong>Profilfoto:</strong> Ein Foto, das du aus deiner Galerie auswählst oder mit der Kamera aufnimmst, oder das Foto deines Google-Kontos wird auf 192×192 Pixel verkleinert und in Firestore hochgeladen. Hast du kein eigenes Foto gewählt, wird standardmäßig dein Google-Foto zu deinem Avatar; das kannst du unter <span class="ui">PROFIL BEARBEITEN → FOTO</span> mit der Option <span class="ui">GOOGLE: AUS</span> abschalten oder einen der vorgefertigten Avatare wählen.</li>
+        <li><strong>Freundschaftsdaten:</strong> deine Freundesliste, Freundschaftsanfragen (Nickname, Code und Zeitpunkt), die Schrottplatz-Teile, die du Freunden schenkst, Renn-Nachrichten (Nickname, gefahrene Autos und Ergebnis) und Einladungslinks (deine ID, dein Nickname und dein Code; ein Link ist 1 Stunde gültig).</li>
+        <li><strong>Melden und Blockieren:</strong> Wenn du einen Spieler meldest, werden der Grund, die ID und der Nickname des gemeldeten Spielers und bei einer Fotomeldung eine Kopie des Fotos gespeichert; Meldungen prüft nur der Entwickler. Die Liste der von dir blockierten Spieler wird in deinem eigenen Spielstand gespeichert; die blockierte Person wird nicht benachrichtigt.</li>
+      </ul>
+      <h3>Rennbenachrichtigungen (optional)</h3>
+      <p>Benachrichtigungen schaltest nur du selbst ein (du wirst nach deinem ersten Rennen gefragt, oder unter <span class="ui">EINSTELLUNGEN → TON UND MITTEILUNGEN</span>). Dann werden das Benachrichtigungstoken deines Handys (Firebase Cloud Messaging) und deine Sprache gespeichert. Eine Benachrichtigung wird gesendet, wenn ein Freund dein Auto schlägt, und enthält dessen Nickname; vom selben Freund kommt höchstens alle 6 Stunden eine. Um die Häufigkeit der Benachrichtigungen zu begrenzen, speichert der Server die IDs der beiden Spieler und den Sendezeitpunkt. Wenn du Benachrichtigungen ausschaltest, wird das Token gelöscht.</p>
+      <h3>Technische Daten</h3>
+      <p>Damit Firebase-Dienste funktionieren, verarbeiten sie technische Daten wie IP-Adresse, Geräte- und App-Version sowie eine App-Installations-ID. Details: <a href="https://firebase.google.com/support/privacy" rel="noopener">Datenschutzinformationen von Firebase</a>.</p>
+      <h3>Was das Spiel nicht tut</h3>
+      <p>Das Spiel nutzt keine Analyse- oder Absturzberichts-Tools und greift nicht auf deinen Standort, deine Kontakte oder dein Mikrofon zu. Deine Daten werden nicht verkauft.</p>
+
+      <h2 id="sichtbarkeit">3. Was andere Spieler sehen können</h2>
+      <p>Dein öffentliches Werkstattprofil und dein Profilfoto können Spieler sehen, die bei Auto Yard mit Google angemeldet sind (wenn sie deine Werkstatt besuchen, in ihrer Freundesliste, wenn sie gegen dich fahren und wenn sie deinen Einladungslink öffnen). Freundschaftsanfragen und Renn-Nachrichten sehen nur die beiden beteiligten Spieler. Dein Cloud-Spielstand, deine E-Mail-Adresse und dein Google-Anzeigename werden keinem anderen Spieler angezeigt.</p>
+
+      <h2 id="werbung">4. Werbung</h2>
+      <p>Das Spiel zeigt nur <strong>optionale Belohnungswerbung</strong>. Werbung startet nur, wenn du auf <span class="ui">WERBUNG ANSEHEN</span> tippst (um einen Rennpreis zu verdoppeln oder eine lange Reparatur abzukürzen); es gibt keine Zwischen-, Banner- oder App-Start-Werbung.</p>
+      <p>Die Werbung wird über <strong>Google AdMob</strong> ausgeliefert. Um Werbung anzuzeigen und zu messen, kann Google deine Werbe-ID (Advertising ID), deine IP-Adresse, Geräte- und App-Informationen sowie deine Interaktionen mit Werbung verarbeiten. Im Europäischen Wirtschaftsraum, im Vereinigten Königreich und in der Schweiz wird beim Start des Spiels das Einwilligungsfenster von Google angezeigt; deine Wahl kannst du später unter <span class="ui">EINSTELLUNGEN → KONTO UND DATENSCHUTZ → DATENSCHUTZ FÜR WERBUNG</span> ändern. Deine Werbe-ID kannst du auf deinem Handy unter Einstellungen → Google → Anzeigen zurücksetzen oder löschen. Das Spiel verwendet keine an Kinder gerichteten Werbeeinstellungen, und Werbeinhalte sind auf die Einstufung „T“ (Teen) begrenzt. Details: <a href="https://policies.google.com/technologies/ads" rel="noopener">Werbetechnologien von Google</a>.</p>
+
+      <h2 id="kaeufe">5. In-App-Käufe</h2>
+      <p>Juwelenpakete werden über <strong>Google Play</strong> verkauft. Deine Zahlungsdaten (Karte usw.) erreichen uns nie; die Zahlung wickelt Google ab. Damit ein Paket nie doppelt gutgeschrieben wird und bei Verlust wiederhergestellt werden kann, speichert ein Kaufprotokoll das Produkt, die Anzahl der Juwelen, den Zeitpunkt und die Google-Bestellnummer (das Kauftoken nur, bis die Transaktion abgeschlossen ist). Das Protokoll ist Teil deines Spielstands: Bist du angemeldet, ist es auch in deinem Cloud-Spielstand enthalten. Auf deinem Handy werden außerdem nicht umkehrbare Prüfsummen (Hashes) der Kauftoken gespeichert.</p>
+
+      <h2 id="berechtigungen">6. Berechtigungen, Kamera und Fotos</h2>
+      <ul>
+        <li><strong>Kamera:</strong> wird nur angefragt, wenn du auf <span class="ui">KAMERA</span> tippst, um ein Profilfoto aufzunehmen, und nur verwendet, solange dieses Fenster geöffnet ist.</li>
+        <li><strong>Galerie:</strong> Du wählst dein Profilfoto mit der Dateiauswahl von Android aus; das Spiel sieht nur die Datei, die du auswählst, und fragt nicht nach Zugriff auf deine Galerie.</li>
+        <li><strong>Benachrichtigungen:</strong> wird unter Android 13 und neuer nur angefragt, wenn du Rennbenachrichtigungen einschaltest.</li>
+        <li><strong>Fotomodus:</strong> Die Spielfotos, die du aufnimmst, werden auf deinem Handy im Ordner Bilder/Auto Yard gespeichert und nirgendwohin hochgeladen.</li>
+        <li><strong>Internet:</strong> für Cloud-Spielstand, Freunde-Funktionen, Werbung und Käufe.</li>
+      </ul>
+
+      <h2 id="website">7. Auf der Website verarbeitete Daten</h2>
+      <ul>
+        <li><strong>Serverprotokolle:</strong> Die Website wird bei Vercel gehostet. Aus Sicherheits- und Betriebsgründen protokolliert Vercel kurzzeitig Daten wie IP-Adresse, Browserangaben und die aufgerufene Seite.</li>
+        <li><strong>Anonyme Besuchsstatistiken:</strong> Vercel Web Analytics wird nur geladen, wenn du in den <a href="{{link:cookies}}">Cookie-Einstellungen</a> zustimmst. Es verwendet keine Cookies und verfolgt dich nicht über Websites hinweg.</li>
+        <li><strong>Formulardaten:</strong> Name, E-Mail-Adresse und Nachricht, die du in das Kontakt- oder das Kontolöschungsformular eingibst, werden uns per E-Mail weitergeleitet (E-Mail-Versanddienst: Resend). Um Missbrauch einzuschränken, wird deine IP-Adresse kurzzeitig im Arbeitsspeicher gehalten.</li>
+        <li><strong>Einladungslinks:</strong> Die Einladungsseite liest den Code im Link nur in deinem Browser und öffnet das Spiel; der Code wird nicht auf dem Server gespeichert.</li>
+        <li><strong>Gespeicherte Einstellung:</strong> Deine Cookie-Auswahl wird im lokalen Speicher deines Browsers (localStorage) abgelegt und nicht an den Server gesendet.</li>
+      </ul>
+
+      <h2 id="zwecke">8. Zwecke und Rechtsgrundlagen</h2>
+      <div class="table-wrap">
+        <table>
+          <caption class="visually-hidden">Verarbeitungszwecke und Rechtsgrundlagen</caption>
+          <thead><tr><th scope="col">Zweck</th><th scope="col">Daten</th><th scope="col">Rechtsgrundlage</th></tr></thead>
+          <tbody>
+            <tr><td>Google-Anmeldung und Cloud-Sicherung</td><td>UID, Google-Profildaten, Spielstand</td><td>Vertragserfüllung (Art. 5 Abs. 2 lit. c KVKK, Art. 6 Abs. 1 lit. b DSGVO); du startest diese Funktion selbst</td></tr>
+            <tr><td>Freunde-Funktionen und öffentliches Profil</td><td>Nickname, Code, Werkstattprofil, Profilfoto, Freundschaftsdaten</td><td>Vertragserfüllung; beim Foto deine eigene Wahl (jederzeit änderbar)</td></tr>
+            <tr><td>Rennbenachrichtigungen</td><td>Benachrichtigungstoken, Sprache, Sendeprotokoll</td><td>Ausdrückliche Einwilligung (Art. 5 Abs. 1 KVKK, Art. 6 Abs. 1 lit. a DSGVO); Widerruf durch Ausschalten der Benachrichtigungen</td></tr>
+            <tr><td>Belohnungswerbung</td><td>Werbe-ID, IP, Geräteangaben, Interaktionen</td><td>Ausdrückliche Einwilligung; im EWR, im Vereinigten Königreich und in der Schweiz über das Einwilligungsfenster, in anderen Ländern durch die Entscheidung, eine Werbung anzusehen</td></tr>
+            <tr><td>Auslieferung von Käufen</td><td>Produkt, Bestellnummer, Zeitpunkt</td><td>Vertragserfüllung; rechtliche Verpflichtung (Art. 5 Abs. 2 lit. ç KVKK, Art. 6 Abs. 1 lit. c DSGVO)</td></tr>
+            <tr><td>Sicherheit der Community (Melden, Blockieren)</td><td>Meldungen, Blockierliste</td><td>Berechtigtes Interesse (Art. 5 Abs. 2 lit. f KVKK, Art. 6 Abs. 1 lit. f DSGVO)</td></tr>
+            <tr><td>Beantwortung von Support- und Löschanfragen</td><td>Name, E-Mail-Adresse, Nachricht</td><td>Berechtigtes Interesse; rechtliche Verpflichtung</td></tr>
+            <tr><td>Sicherheit der Website</td><td>Serverprotokolle, IP</td><td>Berechtigtes Interesse</td></tr>
+            <tr><td>Website-Statistiken</td><td>Anonyme Besuchsdaten</td><td>Ausdrückliche Einwilligung; jederzeit widerrufbar</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="dienstleister">9. Dienstleister und Übermittlung ins Ausland</h2>
+      <p>Deine Daten werden nur mit den folgenden Auftragsverarbeitern geteilt, und nur, um den Dienst bereitzustellen:</p>
+      <ul>
+        <li><strong>Google LLC / Google Ireland Ltd. (Firebase Authentication, Cloud Firestore, Cloud Functions, Cloud Messaging)</strong>: Anmeldung, Cloud-Spielstand, Freunde-Funktionen, Benachrichtigungen</li>
+        <li><strong>Google (AdMob)</strong>: Auslieferung und Messung der Belohnungswerbung</li>
+        <li><strong>Google (Google Play)</strong>: In-App-Käufe</li>
+        <li><strong>Vercel Inc.</strong>: Hosting der Website und anonyme Statistiken</li>
+        <li><strong>Resend</strong>: Weiterleitung von Formularnachrichten per E-Mail</li>
+      </ul>
+      <p>Die Cloud-Daten des Spiels werden in Googles Rechenzentren in Europa gespeichert; die Dienstleister können Daten auch in anderen Ländern verarbeiten, einschließlich der USA. Die Übermittlung stützt sich auf die Standardvertragsklauseln der Dienstleister und auf die Garantien nach Art. 9 KVKK. Außer in gesetzlich vorgeschriebenen Fällen werden deine Daten an niemanden sonst weitergegeben.</p>
+
+      <h2 id="speicherdauer">10. Speicherdauer</h2>
+      <ul>
+        <li>Cloud-Spielstand, Google-Profildaten, öffentliches Werkstattprofil, Freundescode, Freundesliste und das zuletzt hochgeladene Profilfoto: bis du dein Konto löschst.</li>
+        <li>Freundschaftsanfragen: bis sie angenommen, abgelehnt oder zurückgezogen werden oder das Konto gelöscht wird.</li>
+        <li>Einladungslinks: 1 Stunde gültig; der Eintrag wird entfernt, wenn du eine neue Einladung erstellst oder dein Konto löschst.</li>
+        <li>Geschenkte Teile: bis der Empfänger sie abholt. Renn-Nachrichten: bis sie geschlossen werden oder das nächste Rennen desselben Freundes sie ersetzt.</li>
+        <li>Benachrichtigungstoken: bis du die Benachrichtigungen ausschaltest oder dein Konto löschst. Sendeprotokoll der Benachrichtigungen und Meldungen: so lange, wie es für die Häufigkeitsbegrenzung, die Prüfung und die Verhinderung von Missbrauch erforderlich ist.</li>
+        <li>Daten auf deinem Handy (Spielstand, Fotos, Cache): bis du die App deinstallierst oder ihre Daten löschst.</li>
+        <li>Support-Korrespondenz: höchstens 1 Jahr nach Abschluss der Anfrage. Aufzeichnung einer Löschanfrage: 3 Jahre als Nachweis (nur E-Mail-Adresse und Datum der Anfrage).</li>
+        <li>Werbe- und Kaufdaten: für die Dauer der eigenen Speicherfristen von Google. Serverprotokolle der Website: für die Dauer der Speicherfristen von Vercel (in der Regel einige Tage).</li>
+      </ul>
+
+      <h2 id="loeschung">11. Dein Konto löschen</h2>
+      <p>Du kannst dein Konto im Spiel über <span class="ui">PROFIL → KONTO → MEIN KONTO LÖSCHEN</span> dauerhaft löschen (<span class="ui">EINSTELLUNGEN → KONTO UND DATENSCHUTZ → GOOGLE-KONTO</span> führt an dieselbe Stelle). Dabei werden dein Cloud-Spielstand, dein öffentliches Werkstattprofil, dein Profilfoto, dein Freundescode, deine Freundschaften (auf beiden Seiten), Anfragen, Renn-Nachrichten, Geschenke, Einladungen, dein Benachrichtigungstoken und die Verknüpfung mit deinem Google-Konto gelöscht. Wenn du das Spiel nicht öffnen kannst, nutze das Formular auf der Seite <a href="{{link:delete}}">Konto- und Datenlöschung</a>.</p>
+      <p>Nach der Löschung können folgende Daten verbleiben: Meldungen, die du gemacht hast oder die über dich gemacht wurden, dein Nickname in Geschenken, die deine Freunde noch nicht abgeholt haben, Sendeprotokolle der Benachrichtigungen, von Google gespeicherte Kauf- und Werbedaten sowie Dateien auf deinem Handy (sie werden beim Deinstallieren der App entfernt).</p>
+
+      <h2 id="sicherheit">12. Sicherheit</h2>
+      <p>Die Cloud-Daten sind durch Firebase-Sicherheitsregeln geschützt: Jeder Spieler kann nur seinen eigenen Spielstand lesen und schreiben, und öffentliche Profile sind nur für angemeldete Spieler zugänglich. Die Website und die Serververbindungen des Spiels laufen ausschließlich über HTTPS. Kein System ist perfekt; kommt es zu einer Datenschutzverletzung, melden wir sie so, wie es KVKK und DSGVO vorschreiben.</p>
+
+      <h2 id="kinder">13. Kinder</h2>
+      <p>Das Spiel richtet sich nicht an Kinder unter {{minAge}} Jahren, und wir erheben wissentlich keine personenbezogenen Daten von Personen unter {{minAge}} Jahren. Wenn du bemerkst, dass wir solche Daten erhoben haben, <a href="{{link:contact}}">schreib uns</a>, und wir löschen sie sofort.</p>
+
+      <h2 id="rechte">14. Deine Rechte</h2>
+      <p>Nach Art. 11 KVKK (und, soweit anwendbar, nach der DSGVO) hast du das Recht, zu erfahren, ob deine Daten verarbeitet werden, Auskunft und eine Kopie zu verlangen, Berichtigung und Löschung zu verlangen, der Verarbeitung zu widersprechen, deine Einwilligung zu widerrufen, zu erfahren, an welche Dritten deine Daten übermittelt wurden, deine Daten in einem übertragbaren Format zu erhalten und den Ersatz eines Schadens zu verlangen.</p>
+      <p>Für eine Anfrage wähle im <a href="{{link:contact}}">Kontaktformular</a> das Thema „Anfrage zu personenbezogenen Daten“ oder schreib an <a href="mailto:{{contactEmail}}">{{contactEmail}}</a>. Wir beantworten deine Anfrage kostenlos innerhalb von höchstens 30 Tagen. Wenn du mit unserer Antwort nicht zufrieden bist, kannst du dich bei der türkischen Datenschutzbehörde (Kişisel Verileri Koruma Kurumu) beschweren (in der EU bei der Datenschutzaufsichtsbehörde deines Landes).</p>
+
+      <h2 id="aenderungen">15. Änderungen und Kontakt</h2>
+      <p>Wir können diese Erklärung aktualisieren; wichtige Änderungen kündigen wir im Spiel oder auf dieser Seite an. Das Datum oben zeigt die letzte Aktualisierung. Fragen: <a href="mailto:{{contactEmail}}">{{contactEmail}}</a>. Die türkische Fassung dieser Erklärung ist das Original; bei Abweichungen zwischen den Fassungen ist der türkische Text maßgeblich.</p>
+    </article>
+  </div>
+</div>

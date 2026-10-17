@@ -1,0 +1,87 @@
+<!--meta {"updated": "2026-10-17", "title": "Konto- und Datenlöschung", "description": "So löschst du dein Auto-Yard-Konto, deinen Cloud-Spielstand und dein Freundesprofil im Spiel oder per Webformular – was gelöscht wird und wie lange es dauert."} -->
+<section class="page-hero rays">
+  <div class="wrap narrow">
+    <p class="kicker">Konto</p>
+    <h1>Konto- und Datenlöschung</h1>
+    <p class="lead">Diese Seite ist für Anfragen zur Löschung von Konto und Daten im Spiel <strong>{{name}}</strong> (Android, Entwickler: {{developerName}}).</p>
+  </div>
+</section>
+<div class="page-body">
+  <div class="wrap narrow">
+    <article class="card prose">
+      <h2 id="im-spiel">Im Spiel (sofort)</h2>
+      <ol class="steps">
+        <li>Tippe oben links auf deinen Avatar und öffne auf dem Bildschirm <span class="ui">PROFIL</span> das Feld <span class="ui">KONTO</span>. (<span class="ui">EINSTELLUNGEN → KONTO UND DATENSCHUTZ → GOOGLE-KONTO</span> führt an dieselbe Stelle.)</li>
+        <li>Tippe auf <span class="ui">MEIN KONTO LÖSCHEN</span> und dann auf <span class="ui">JA, ENDGÜLTIG LÖSCHEN</span>.</li>
+        <li>Wähle zur Bestätigung deiner Identität noch einmal dasselbe Google-Konto.</li>
+      </ol>
+      <p>Dein Konto und alle Daten aus der Tabelle unten werden sofort gelöscht, und das Spiel auf diesem Handy beginnt von vorn. Diese Schaltfläche erscheint nur, wenn du dich mit Google angemeldet hast. Hast du als Gast gespielt, gibt es auf dem Server keinen Eintrag zu dir; um den Spielstand auf deinem Handy zu löschen, genügt es, das Spiel zu deinstallieren.</p>
+
+      <h2 id="schritte">Per Webformular</h2>
+      <p>Wenn du das Spiel deinstalliert hast oder es nicht öffnen kannst:</p>
+      <ol class="steps">
+        <li>Fülle das Formular unten mit der <strong>E-Mail-Adresse des Google-Kontos</strong> aus, mit dem du im Spiel angemeldet bist.</li>
+        <li>Wir schicken dir eine E-Mail, um zu bestätigen, dass die Anfrage von dieser Adresse kommt; antworte darauf.</li>
+        <li>Nach der Bestätigung wird die Löschung innerhalb von höchstens <strong>30 Tagen</strong> abgeschlossen, und wir informieren dich darüber.</li>
+      </ol>
+      <p>Wenn du das Formular nicht nutzen kannst, schreib mit denselben Angaben an <a href="mailto:{{contactEmail}}?subject=Anfrage%20zur%20Kontol%C3%B6schung">{{contactEmail}}</a>.</p>
+
+      <h2 id="was">Was wird gelöscht?</h2>
+      <div class="table-wrap">
+        <table>
+          <caption class="visually-hidden">Gelöschte und verbleibende Daten</caption>
+          <thead><tr><th scope="col">Daten</th><th scope="col">Konto komplett löschen</th><th scope="col">Nur Cloud-Spielstand löschen (Formular)</th></tr></thead>
+          <tbody>
+            <tr><td>Konto für die Anmeldung mit Google</td><td>Gelöscht</td><td>Bleibt</td></tr>
+            <tr><td>Cloud-Spielstand (Fortschritt, Kaufprotokoll) und Google-Profildaten</td><td>Gelöscht</td><td>Gelöscht</td></tr>
+            <tr><td>Öffentliches Werkstattprofil, Profilfoto, Freundescode</td><td>Gelöscht</td><td>Bleibt</td></tr>
+            <tr><td>Freundschaften (auf beiden Seiten), Anfragen, Renn-Nachrichten, Geschenke, Einladungen</td><td>Gelöscht</td><td>Bleibt</td></tr>
+            <tr><td>Token für Rennbenachrichtigungen</td><td>Gelöscht</td><td>Bleibt</td></tr>
+            <tr><td>Support-Korrespondenz</td><td>Gelöscht</td><td>Bleibt</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Was verbleiben kann:</strong> Meldungen, die du gemacht hast oder die über dich gemacht wurden, dein Nickname in Geschenken, die deine Freunde noch nicht abgeholt haben, Sendeprotokolle der Benachrichtigungen sowie von Google gespeicherte Kauf- und Werbedaten. Bei Anfragen über das Webformular werden nur deine E-Mail-Adresse und das Datum der Anfrage 3 Jahre lang gespeichert, damit wir nachweisen können, dass wir die Anfrage erfüllt haben. Dateien auf deinem Handy liegen nur auf deinem Gerät; um sie zu löschen, deinstalliere das Spiel oder geh zu <em>Einstellungen → Apps → {{name}} → Speicher → Daten löschen</em>.</p>
+
+      <h2 id="formular-titel">Formular für Löschanfragen</h2>
+      <p>Nutze dieses Formular, wenn du dein Konto nicht im Spiel löschen kannst.</p>
+      <form class="form" method="post" action="/api/contact" data-form data-fallback-email="{{contactEmail}}">
+        <input type="hidden" name="type" value="hesap-silme">
+        <input type="hidden" name="lang" value="{{lang}}">
+        <div class="hp" aria-hidden="true">
+          <label for="d-website">Lass dieses Feld leer</label>
+          <input id="d-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="d-email">E-Mail-Adresse des Google-Kontos, das du im Spiel verwendest</label>
+          <input id="d-email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="200">
+        </div>
+        <div class="field">
+          <label for="d-name">Dein Nickname im Spiel <span class="optional">(optional)</span></label>
+          <input id="d-name" name="name" type="text" autocomplete="nickname" maxlength="100">
+        </div>
+        <fieldset class="field">
+          <legend>Was soll gelöscht werden?</legend>
+          <div class="radio">
+            <input id="d-scope-all" name="scope" type="radio" value="hesap" required checked>
+            <label for="d-scope-all">Mein Konto und alle meine Daten</label>
+          </div>
+          <div class="radio">
+            <input id="d-scope-save" name="scope" type="radio" value="bulut-kaydi">
+            <label for="d-scope-save">Nur mein Cloud-Spielstand (Konto und Freunde bleiben erhalten)</label>
+          </div>
+        </fieldset>
+        <div class="field">
+          <label for="d-message">Möchtest du noch etwas ergänzen? <span class="optional">(optional)</span></label>
+          <textarea id="d-message" name="message" rows="3" maxlength="2000"></textarea>
+        </div>
+        <div class="field field-check">
+          <input id="d-confirm" name="consent" type="checkbox" value="yes" required>
+          <label for="d-confirm">Mir ist klar, dass gelöschter Fortschritt nicht wiederhergestellt werden kann.</label>
+        </div>
+        <button class="btn btn-primary" type="submit">Löschanfrage senden</button>
+        <p class="form-status" role="status" aria-live="polite" data-form-status></p>
+      </form>
+    </article>
+  </div>
+</div>

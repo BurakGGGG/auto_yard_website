@@ -1,6 +1,6 @@
-// Statik site derleyicisi (bağımlılık yok). Üç dil: Türkçe kökte, İngilizce /en, İspanyolca /es altında.
+// Statik site derleyicisi (bağımlılık yok). Beş dil: Türkçe kökte, İngilizce /en, İspanyolca /es, Almanca /de, Fransızca /fr altında.
 //   src/pages/<dil>/<anahtar>.html → src/i18n/<dil>.json "paths"[anahtar] adresi (ör. tr/privacy → /gizlilik,
-//   en/privacy → /en/privacy). src/pages/404.html dilsizdir (üç dilde kısa metin).
+//   en/privacy → /en/privacy). src/pages/404.html dilsizdir (beş dilde kısa metin).
 //   Çıktı: "/" → public/index.html, "/en" → public/en/index.html, "/en/privacy" → public/en/privacy.html.
 //
 // Sayfa başı meta yorumu:   <!--meta {"updated": "YYYY-AA-GG", "title": "...", "description": "..."} -->
@@ -26,7 +26,7 @@ config.siteUrl = resolveSiteUrl();
 config.year = String(new Date().getFullYear());
 config.playUrl = `https://play.google.com/store/apps/details?id=${config.androidPackage}`;
 
-const LANGS = config.languages; // ["tr", "en", "es"] — ilki varsayılan (kök, x-default)
+const LANGS = config.languages; // ["tr", "en", "es", "de", "fr"] — ilki varsayılan (kök, x-default)
 const i18n = Object.fromEntries(LANGS.map((l) => [l, JSON.parse(readFileSync(join(src, "i18n", `${l}.json`), "utf8"))]));
 
 function resolveSiteUrl() {
@@ -158,8 +158,8 @@ for (const s of sources) {
   const body = render(s.body, ctx);
   if (key === "home") faqs[lang] = extractFaq(body);
 
-  // Dil seçici: bu sayfanın diğer dillerdeki karşılığı (yoksa o dilin ana sayfası). Başlıkta kısa (TR/EN/ES),
-  // alt bilgide tam adla (Türkçe/English/Español).
+  // Dil seçici: bu sayfanın diğer dillerdeki karşılığı (yoksa o dilin ana sayfası). Başlıkta kısa (TR/EN/ES/DE/FR),
+  // alt bilgide tam adla (Türkçe/English/Español/Deutsch/Français).
   const langLinks = (full) => LANGS.map((l) => {
     const target = sourceOf.has(`${l}:${key}`) && i18n[l].paths[key] ? i18n[l].paths[key] : i18n[l].paths.home;
     const current = l === lang ? ' aria-current="true"' : "";

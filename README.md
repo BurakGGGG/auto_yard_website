@@ -1,7 +1,8 @@
 # Auto Yard — web sitesi
 
 Android oyunu **Auto Yard**'ın tanıtım, yasal metin ve destek sitesi. Bağımlılıksız statik site + tek Vercel Function.
-Üç dil: **Türkçe** kökte (`/`, `/gizlilik`…), **İngilizce** `/en/…`, **İspanyolca** `/es/…`. Tasarım oyunun logosu ve
+Beş dil: **Türkçe** kökte (`/`, `/gizlilik`…), **İngilizce** `/en/…`, **İspanyolca** `/es/…`, **Almanca** `/de/…`,
+**Fransızca** `/fr/…` (DE/FR 2026-10-17). Tasarım oyunun logosu ve
 arayüzüyle aynı dilde: ışınlı lacivert, altın plaka düğmeler, krem kartlar, sarı-siyah ikaz şeridi (2026-10-17 yenilendi).
 
 ```
@@ -9,7 +10,7 @@ site.config.json         ad, e-posta, geliştirici, Play paket adı, yayın duru
 src/layout.html          tüm sayfaların iskeleti (head, header, footer, çerez bandı)
 src/i18n/<dil>.json      sayfa adresleri ("paths"), arayüz metinleri ("t"), site.js metinleri ("script")
 src/pages/<dil>/<anahtar>.html  sayfalar; aynı anahtar = aynı sayfanın çevirisi (hreflang otomatik)
-src/pages/404.html       dilsiz 404 (üç dilde kısa metin)
+src/pages/404.html       dilsiz 404 (beş dilde kısa metin)
 src/partials/            ortak parçalar (header, footer, cta, araç kartları cars-<dil>, ikonlar)
 src/assets/              site.css, site.js, davet.js, fonts/ (Baloo 2 + Nunito, OFL), img/, video/
 tools/make_images.py     logo/ikon/oyun kareleri/araç kartları/video kapağı/paylaşım görselleri (oyun deposundan üretir)
@@ -18,14 +19,17 @@ scripts/build.mjs   derleyici      scripts/check.mjs  denetçi      scripts/serv
 tests/              form API testleri (node --test)
 ```
 
-Sayfa anahtarları ve adresleri: `home` (/ · /en · /es), `privacy` (/gizlilik · /en/privacy · /es/privacidad),
-`terms` (/kullanim-sartlari · /en/terms · /es/terminos), `cookies` (/cerez-politikasi · /en/cookies · /es/cookies),
-`delete` (/hesap-silme · /en/delete-account · /es/eliminar-cuenta), `contact` (/iletisim · /en/contact · /es/contacto),
-`thanks` ve `invite` (noindex). Oyun Türkçe adreslere bağlanır (`/gizlilik`, `/kullanim-sartlari`, `/iletisim`,
-`/hesap-silme`, `/d/<jeton>`): bunlar değişmemeli.
+Sayfa anahtarları ve adresleri (TR · EN · ES · DE · FR): `home` (/ · /en · /es · /de · /fr),
+`privacy` (/gizlilik · /en/privacy · /es/privacidad · /de/datenschutz · /fr/confidentialite),
+`terms` (/kullanim-sartlari · /en/terms · /es/terminos · /de/nutzungsbedingungen · /fr/conditions),
+`cookies` (/cerez-politikasi · /en/cookies · /es/cookies · /de/cookies · /fr/cookies),
+`delete` (/hesap-silme · /en/delete-account · /es/eliminar-cuenta · /de/konto-loeschen · /fr/supprimer-compte),
+`contact` (/iletisim · /en/contact · /es/contacto · /de/kontakt · /fr/contact), `thanks` ve `invite` (noindex).
+Oyun bu adreslere bağlanır: eski sürümler Türkçe adreslere, 2026-10-17'den sonraki sürümler oyuncunun dilindeki
+`privacy` / `terms` / `contact` / `delete` sayfasına (oyunda `Loc.SITE_PATHS`) ve `/d/<jeton>`'a — bunlar değişmemeli.
 
 **Davet linki** `/d/<jeton>`: `vercel.json` yeniden yazması tarayıcı diline (Accept-Language) göre `/es/invitacion`,
-`/en/invite` ya da `/davet`'i gösterir; adres çubuğu `/d/<jeton>` kalır, `davet.js` jetonu oradan okur.
+`/en/invite`, `/de/einladung`, `/fr/invitation` ya da `/davet`'i gösterir; adres çubuğu `/d/<jeton>` kalır, `davet.js` jetonu oradan okur.
 
 ## Komutlar
 
@@ -50,7 +54,7 @@ Node 20+ yeterli, `npm install` gerekmez.
 
 | # | Madde | Nasıl karşılanıyor | Nasıl doğrulanır |
 |---|---|---|---|
-| 1 | Gizlilik politikası | `/gizlilik` (+ EN/ES) — KVKK/GDPR; oyunun kodla doğrulanmış veri akışı (2026-10-17): Google girişi (anonim hesap yok), bulut kaydı, herkese açık garaj profili ve profil fotoğrafı, arkadaşlık verileri, şikâyet/engelleme, FCM bildirimleri, AdMob ödüllü reklamlar + UMP, Play Billing gem paketleri, kamera izni; site verileri, aktarım, süreler, silme, haklar | Oyuna veri toplayan yeni bir şey eklenince üç dildeki sayfa ve Play *Data safety* formu birlikte güncellenmeli |
+| 1 | Gizlilik politikası | `/gizlilik` (+ EN/ES/DE/FR) — KVKK/GDPR; oyunun kodla doğrulanmış veri akışı (2026-10-17): Google girişi (anonim hesap yok), bulut kaydı, herkese açık garaj profili ve profil fotoğrafı, arkadaşlık verileri, şikâyet/engelleme, FCM bildirimleri, AdMob ödüllü reklamlar + UMP, Play Billing gem paketleri, kamera izni; site verileri, aktarım, süreler, silme, haklar | Oyuna veri toplayan yeni bir şey eklenince beş dildeki sayfa ve Play *Data safety* formu birlikte güncellenmeli |
 | 2 | Kullanım şartları | `/kullanim-sartlari` — lisans, kurallar, sanal para, sorumluluk, Türk hukuku | — |
 | 3 | Çerez onayı | Alt bant: *Reddet* ve *Kabul et* eşit ağırlıkta; onaysız hiçbir analiz betiği yüklenmez; GPC sinyali ret sayılır; 12 ayda bir yeniden sorulur; alt bilgideki "Çerez tercihleri" ile değiştirilebilir; `/cerez-politikasi` | Tarayıcıda Ağ sekmesi: onay öncesi `/_vercel/` isteği yok |
 | 4 | Net CTA | Hero + sayfa sonu + header'da tek eylem: Play'den indir (yayın öncesi: "Çıkınca haber ver" → iletişim formu, konu seçili gelir; `playStoreLive: true` hepsini çevirir) | — |
@@ -77,9 +81,10 @@ Her denetim, bilerek bozulan bir kopyada hatayı yakaladığı doğrulanarak ekl
 
 ## Sayfa güncellerken
 
-- Bir sayfayı değiştirirken **üç dili birlikte** güncelle (`src/pages/tr|en|es/<anahtar>.html`); yasal metinlerde Türkçe asıldır.
+- Bir sayfayı değiştirirken **beş dili birlikte** güncelle (`src/pages/tr|en|es|de|fr/<anahtar>.html`); yasal metinlerde Türkçe asıldır.
+  Almanca sitede hitap **du**, Fransızca sitede **vous**; Fransızcada `! ? : ;` öncesinde bölünmez boşluk.
 - İçerik anlamlı değiştiyse sayfanın `<!--meta {"updated": "..."}-->` tarihini güncelle → sitemap ve "Son güncelleme" ondan beslenir.
-- SSS'ye soru eklemek için her dilin `home.html`'ine `<details id="sss-…">` (EN `faq-…`, ES `preguntas-…`) ekle; yapısal veri ve llms.txt kendiliğinden güncellenir.
+- SSS'ye soru eklemek için her dilin `home.html`'ine `<details id="sss-…">` (EN, DE, FR `faq-…`, ES `preguntas-…`) ekle; yapısal veri ve llms.txt kendiliğinden güncellenir.
 - Oyun güncellenince görselleri yenilemek için oyun deposunda kareleri çek (`qa/ekran_tarama.gd`, `qa/arkadaslar_qa.gd`), sonra `tools/make_images.py`'yi çalıştır.
 - Sayılar (57 araç, 28 klasik, 263 dekor, 99 seviye) ve özellik metinleri 2026-10-17'de oyunun kodundan doğrulandı; oyun değişirse güncelle. Araç boyama oyunda kapalı olduğu için sitede yok.
 

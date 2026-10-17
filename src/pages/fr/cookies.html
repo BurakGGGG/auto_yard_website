@@ -1,0 +1,36 @@
+<!--meta {"updated": "2026-10-17", "title": "Politique relative aux cookies", "description": "Le site Auto Yard n’utilise pas de cookies. Voici la seule préférence enregistrée dans votre navigateur et les statistiques anonymes facultatives."} -->
+<section class="page-hero rays">
+  <div class="wrap narrow">
+    <p class="kicker">Juridique</p>
+    <h1>Politique relative aux cookies</h1>
+    <p class="meta">{{t.updated}} : <time datetime="{{updated}}">{{updatedText}}</time></p>
+  </div>
+</section>
+<div class="page-body">
+  <div class="wrap narrow">
+    <article class="card prose">
+      <h2 id="resume">En bref</h2>
+      <p>Ce site <strong>n’utilise pas de cookies</strong> et ne contient aucun code de suivi publicitaire ni de réseaux sociaux. Seul le choix que vous faites est enregistré dans votre navigateur. Les statistiques de visite anonymes ne fonctionnent que si vous donnez votre accord. Pour les données du jeu lui-même, consultez la <a href="{{link:privacy}}">Politique de confidentialité</a>.</p>
+
+      <h2 id="liste">Ce qui est enregistré dans votre navigateur</h2>
+      <div class="table-wrap">
+        <table>
+          <caption class="visually-hidden">Données enregistrées dans le navigateur</caption>
+          <thead><tr><th scope="col">Nom</th><th scope="col">Type</th><th scope="col">Finalité</th><th scope="col">Durée</th><th scope="col">Consentement requis ?</th></tr></thead>
+          <tbody>
+            <tr><td><code>ay-consent</code></td><td>localStorage</td><td>Mémoriser votre choix concernant les statistiques</td><td>12 mois, puis la question vous est reposée</td><td>Non (nécessaire)</td></tr>
+            <tr><td>Vercel Web Analytics</td><td>Script sans cookie</td><td>Compter les pages vues de façon anonyme</td><td>Comptage au moyen d’une empreinte réinitialisée toutes les 24 heures</td><td>Oui</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="statistiques">Comment fonctionne Vercel Web Analytics ?</h2>
+      <p>Si vous donnez votre accord, des informations telles que les pages vues, la page visitée, le site référent, le pays et le type d’appareil sont comptabilisées de manière agrégée. Aucun cookie ni identifiant persistant permettant de vous identifier n’est créé, et aucun suivi n’est effectué d’un site à l’autre. Détails : <a href="https://vercel.com/docs/analytics/privacy-policy" rel="noopener">informations de Vercel Analytics sur la confidentialité</a>.</p>
+      <p>Si votre navigateur envoie un signal <em>Global Privacy Control</em>, nous le considérons comme un refus et ne chargeons pas le script de statistiques.</p>
+
+      <h2 id="modifier">Modifier votre choix</h2>
+      <p>Vous pouvez modifier votre choix à tout moment. Si vous retirez votre consentement, le script de statistiques n’est plus chargé à partir de la page suivante que vous ouvrez.</p>
+      <p><button type="button" class="btn btn-secondary" data-consent-open>Ouvrir les préférences de cookies</button></p>
+    </article>
+  </div>
+</div>

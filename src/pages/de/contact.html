@@ -1,0 +1,54 @@
+<!--meta {"updated": "2026-10-17", "title": "Kontakt", "description": "Schreib uns deine Fragen, Fehlermeldungen und Ideen zu Auto Yard. Wir antworten in der Regel innerhalb von 3 Werktagen per E-Mail."} -->
+<section class="page-hero rays">
+  <div class="wrap narrow">
+    <p class="kicker">Support</p>
+    <h1>Kontakt</h1>
+    <p class="lead">Fülle das Formular aus, wenn du eine Frage, einen Fehler oder eine Idee hast. Wir antworten in der Regel innerhalb von 3 Werktagen per E-Mail.</p>
+  </div>
+</section>
+<div class="page-body">
+  <div class="wrap narrow">
+    <div class="card">
+      <form class="form" method="post" action="/api/contact" data-form data-fallback-email="{{contactEmail}}">
+        <input type="hidden" name="type" value="iletisim">
+        <input type="hidden" name="lang" value="{{lang}}">
+        <div class="hp" aria-hidden="true">
+          <label for="c-website">Lass dieses Feld leer</label>
+          <input id="c-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="c-name">Dein Name</label>
+          <input id="c-name" name="name" type="text" autocomplete="name" required maxlength="100">
+        </div>
+        <div class="field">
+          <label for="c-email">Deine E-Mail-Adresse</label>
+          <input id="c-email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="200" aria-describedby="c-email-hint">
+          <p class="hint" id="c-email-hint">An diese Adresse schicken wir unsere Antwort.</p>
+        </div>
+        <div class="field">
+          <label for="c-topic">Thema</label>
+          <select id="c-topic" name="topic" required>
+            <option value="destek">Support / Frage</option>
+            <option value="hata">Fehlermeldung</option>
+            <option value="oneri">Idee</option>
+            <option value="haber">Benachrichtigung zum Spielstart</option>
+            <option value="veri">Anfrage zu personenbezogenen Daten</option>
+            <option value="diger">Sonstiges</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="c-message">Deine Nachricht</label>
+          <textarea id="c-message" name="message" rows="6" required minlength="10" maxlength="5000" aria-describedby="c-message-hint"></textarea>
+          <p class="hint" id="c-message-hint">Wenn du einen Fehler meldest, nenne dein Handymodell und beschreib, wie es dazu kam.</p>
+        </div>
+        <div class="field field-check">
+          <input id="c-consent" name="consent" type="checkbox" value="yes" required>
+          <label for="c-consent">Ich habe die <a href="{{link:privacy}}">Datenschutzerklärung</a> gelesen und bin einverstanden, dass mein Name und meine E-Mail-Adresse verarbeitet werden, um meine Nachricht zu beantworten.</label>
+        </div>
+        <button class="btn btn-primary" type="submit">Senden</button>
+        <p class="form-status" role="status" aria-live="polite" data-form-status></p>
+      </form>
+      <p class="alt-contact">Falls das Formular nicht funktioniert, kannst du uns auch direkt eine E-Mail schreiben: <a href="mailto:{{contactEmail}}">{{contactEmail}}</a></p>
+    </div>
+  </div>
+</div>

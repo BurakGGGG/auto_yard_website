@@ -13,9 +13,9 @@ const TOPICS = {
 const SCOPES = { hesap: "Hesap ve tüm veriler", "bulut-kaydi": "Yalnızca bulut kaydı" };
 
 // Ziyaretçiye dönen metinler formun dilinde (gizli "lang" alanı); geliştiriciye giden e-posta Türkçe kalır.
-const LANGS = ["tr", "en", "es"];
-const THANKS = { tr: "/tesekkurler", en: "/en/thanks", es: "/es/gracias" };
-const HOME = { tr: "/", en: "/en", es: "/es" };
+const LANGS = ["tr", "en", "es", "de", "fr"];
+const THANKS = { tr: "/tesekkurler", en: "/en/thanks", es: "/es/gracias", de: "/de/danke", fr: "/fr/merci" };
+const HOME = { tr: "/", en: "/en", es: "/es", de: "/de", fr: "/fr" };
 const M = {
   tr: {
     email: "Geçerli bir e-posta adresi yaz.", consent: "Onay kutusu işaretlenmeli.", name: "Adını yaz.", topic: "Bir konu seç.",
@@ -46,6 +46,26 @@ const M = {
     deletion: "Solicitud recibida. Te escribiremos al correo para confirmarla; se completará en un plazo máximo de 30 días.",
     contact: "Mensaje recibido. Normalmente respondemos en un plazo de 3 días laborables.",
     errorTitle: "No se pudo enviar", errorBack: "Usa el botón Atrás del navegador para volver al formulario e inténtalo de nuevo.", home: "Inicio",
+  },
+  de: {
+    email: "Gib eine gültige E-Mail-Adresse ein.", consent: "Bitte setze das Bestätigungshäkchen.", name: "Gib deinen Namen ein.", topic: "Wähle ein Thema.",
+    message: "Die Nachricht muss mindestens 10 Zeichen lang sein.", scope: "Wähle aus, was gelöscht werden soll.", unreadable: "Die Anfrage konnte nicht gelesen werden.",
+    received: "Nachricht erhalten. Danke!", rate: "Zu viele Versuche. Bitte versuch es in 10 Minuten erneut.",
+    invalid: "Einige Felder fehlen oder sind ungültig:", down: "Das Formular ist vorübergehend nicht verfügbar.",
+    failed: "Deine Nachricht konnte gerade nicht zugestellt werden. Bitte versuch es gleich noch einmal.",
+    deletion: "Anfrage erhalten. Wir schreiben dir zur Bestätigung an deine E-Mail-Adresse; die Löschung ist spätestens nach 30 Tagen abgeschlossen.",
+    contact: "Nachricht erhalten. Wir antworten in der Regel innerhalb von 3 Werktagen.",
+    errorTitle: "Senden fehlgeschlagen", errorBack: "Geh mit der Zurück-Taste deines Browsers zum Formular zurück und versuch es erneut.", home: "Startseite",
+  },
+  fr: {
+    email: "Saisissez une adresse e-mail valide.", consent: "Veuillez cocher la case de confirmation.", name: "Saisissez votre nom.", topic: "Choisissez un sujet.",
+    message: "Le message doit contenir au moins 10 caractères.", scope: "Choisissez ce qui doit être supprimé.", unreadable: "La demande n’a pas pu être lue.",
+    received: "Message reçu. Merci\u00a0!", rate: "Trop de tentatives. Veuillez réessayer dans 10 minutes.",
+    invalid: "Certains champs sont manquants ou invalides\u00a0:", down: "Le formulaire est temporairement indisponible.",
+    failed: "Votre message n’a pas pu être envoyé pour le moment. Veuillez réessayer dans un instant.",
+    deletion: "Demande reçue. Nous vous écrirons à votre adresse e-mail pour confirmer\u00a0; la suppression sera effectuée sous 30 jours au plus tard.",
+    contact: "Message reçu. Nous répondons généralement sous 3 jours ouvrés.",
+    errorTitle: "Envoi impossible", errorBack: "Utilisez le bouton Retour de votre navigateur pour revenir au formulaire et réessayer.", home: "Accueil",
   },
 };
 const langOf = (input) => (LANGS.includes(input?.lang) ? input.lang : "tr");

@@ -82,12 +82,12 @@
   "llms": {
     "heading": "English pages",
     "faq": "Frequently asked questions (English)",
-    "summary": "Auto Yard is a free garage, car repair and drag racing game for Android, in Turkish, English and Spanish.",
+    "summary": "Auto Yard is a free garage, car repair and drag racing game for Android, in Turkish, English, Spanish, German and French.",
     "facts": [
       "Gameplay: repair customers' cars that pull over from live city traffic (7 job types, 3 lifts), restore 28 classics from the junkyard, race 300 m drags with timing-based launches and gear shifts, tune cars (30 parts per car), decorate the garage (263 items) and collect 57 ownable cars from 32 brands via delivery crates with published odds.",
       "Social: add friends by code or a 1-hour invite link, visit their garages, race their tuned cars, get revenge after a loss; Google sign-in required for social features and cloud save.",
       "Price: free to play. Optional gem packs via Google Play Billing. Optional rewarded ads (Google AdMob) only when the player taps WATCH AD; ads never give gems.",
-      "Platform: Android 7.0 or newer (64-bit). Languages: Turkish, English, Spanish. Age rating target: 13+.",
+      "Platform: Android 7.0 or newer (64-bit). Languages: Turkish, English, Spanish, German, French. Age rating target: 13+.",
       "Account: playable as a guest without an account; Google sign-in backs up progress to the cloud (Firebase). Account deletion is available in the game and on the website."
     ],
     "status_live": "Google Play:",

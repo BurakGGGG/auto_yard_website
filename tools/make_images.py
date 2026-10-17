@@ -15,13 +15,14 @@ Elle yapılan (betik dışı) adımlar:
   Hero videosu: ~/Projects/social_media/film/ham/{g2,restore,hurda,lux}_yatay.mp4 ve video/drag_yatay_1920x1080.mp4'ten
     ffmpeg ile 16,9 sn'lik sessiz kurgu → src/assets/video/tanitim-720.mp4 (crf 30) ve tanitim-480.mp4 (crf 31).
   Yazı tipleri: Google Fonts'un Baloo2[wght].ttf ve Nunito[wght].ttf dosyalarından pyftsubset (fonttools + brotli) ile
-    yalnızca TR/EN/ES harfleri: --unicodes="U+0020-007E,U+00A0-00FF,U+0131,U+011E-011F,U+0130,U+015E-015F,
+    yalnızca TR/EN/ES/DE/FR harfleri (Latin-1 Almanca/Fransızcayı kapsar): --unicodes="U+0020-007E,U+00A0-00FF,U+0131,U+011E-011F,U+0130,U+015E-015F,
     U+0152-0153,U+2010-2015,U+2018-201E,U+2022,U+2026,U+2032-2033,U+2039-203A,U+20AC,U+20BA,U+2122,U+2190-2193,U+2212"
     --flavor=woff2 → src/assets/fonts/baloo2.woff2, nunito.woff2 (lisanslar OFL-*.txt).
 Yazı tipi: Baloo 2 TTF (OFL) — https://github.com/google/fonts/raw/main/ofl/baloo2/Baloo2%5Bwght%5D.ttf
            yolu BALOO_TTF ortam değişkeniyle verilir (paylaşım görsellerindeki slogan için).
 """
 import base64
+import glob
 import io
 import os
 import subprocess
@@ -35,7 +36,7 @@ BRAND = os.path.join(HOME, "Projects/car-town-remake/assets/branding")
 SHOTS = os.path.join(HOME, "Projects/ct_shots/ekran_tarama")
 FRIENDS = os.path.join(HOME, "Projects/ct_shots/arkadas")
 PORTRAITS = os.path.join(HOME, "Projects/social_media/foto/arac_portreleri")
-LANGS = ["tr", "en", "es"]
+LANGS = ["tr", "en", "es", "de", "fr"]
 
 # Özellik kareleri: ad → (klasör, dosya)
 SHOT_SOURCES = {
@@ -53,8 +54,11 @@ TAGLINES = {
     "tr": "Garajını kur, arabaları tamir et, pistte kazan!",
     "en": "Build your garage, fix cars, win on the strip!",
     "es": "¡Monta tu taller, repara coches y gana en la pista!",
+    "de": "Bau deine Werkstatt, repariere Autos, siege auf der Strecke!",
+    "fr": "Créez votre garage, réparez des voitures, gagnez sur la piste\u00a0!",
 }
-SOON = {"tr": "ÇOK YAKINDA GOOGLE PLAY'DE", "en": "COMING SOON TO GOOGLE PLAY", "es": "MUY PRONTO EN GOOGLE PLAY"}
+SOON = {"tr": "ÇOK YAKINDA GOOGLE PLAY'DE", "en": "COMING SOON TO GOOGLE PLAY", "es": "MUY PRONTO EN GOOGLE PLAY",
+        "de": "BALD BEI GOOGLE PLAY", "fr": "BIENTÔT SUR GOOGLE PLAY"}
 NAVY = (14, 33, 94)
 
 
@@ -96,6 +100,10 @@ def shots():
         sources["arkadaslar"] = (os.path.join(FRIENDS, f"site_{lang}"), "1920x1163_03_arkadaslar.png")
         for name, (folder, file) in sources.items():
             path = os.path.join(SHOTS if not os.path.isabs(folder) else "", folder.format(l=lang), file)
+            if not os.path.exists(path):
+                # Kare numarası taramadaki durum sayısına göre kayar (filtreyle çekilen DE/FR kareleri): adıyla bul
+                found = glob.glob(os.path.join(os.path.dirname(path), "[0-9][0-9]_" + file.split("_", 1)[1]))
+                path = found[0] if found else path
             im = Image.open(path).convert("RGB")
             for w in (640, 1280):
                 h = webp(im, os.path.join(out, f"{name}-{lang}-{w}.webp"), w)
@@ -129,7 +137,7 @@ def og(logo):
     if not font_path:
         print("BALOO_TTF yok: paylaşım görselleri atlandı")
         return
-    base = Image.open(os.path.join(SHOTS, "site2_tr", "10_dunya_hud_gizli.png")).convert("RGB")
+    base = Image.open(os.path.join(SHOTS, "site2_tr", "10_dunya_hud_gizli.png")).convert("RGB")   # HUD yok: her dilde aynı zemin
     base = base.resize((1200, round(base.height * 1200 / base.width)), Image.LANCZOS)
     top = base.height - 630  # alttan: sağ üstteki HUD GÖSTER düğmesi kadrajın dışında kalır
     base = base.crop((0, top, 1200, top + 630)).filter(ImageFilter.GaussianBlur(1.2))

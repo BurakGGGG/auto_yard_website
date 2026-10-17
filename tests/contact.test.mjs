@@ -137,6 +137,18 @@ test("İspanyolca hata metni; bilinmeyen dil Türkçeye düşer", async () => {
   const { send } = fakeSend();
   const res = await handle(req({ type: "iletisim", email: "x", lang: "es" }), { env: ENV, send });
   assert.match((await res.json()).message, /Faltan campos/);
-  const { errors } = validate({ ...contact, email: "x", lang: "de" });
+  const { errors } = validate({ ...contact, email: "x", lang: "it" });
   assert.equal(errors.email, "Geçerli bir e-posta adresi yaz.");
+});
+
+test("Almanca ve Fransızca form: kendi dilinde yanıt ve teşekkür sayfası", async () => {
+  const { send } = fakeSend();
+  const de = await handle(req({ ...contact, lang: "de" }), { env: ENV, send });
+  assert.match((await de.json()).message, /innerhalb von 3 Werktagen/);
+  const plainDe = await handle(req({ ...contact, lang: "de" }, { json: false, accept: "text/html" }), { env: ENV, send });
+  assert.equal(plainDe.headers.get("location"), "/de/danke");
+  const fr = await handle(req({ type: "iletisim", email: "x", lang: "fr" }), { env: ENV, send });
+  assert.match((await fr.json()).message, /manquants ou invalides/);
+  const plainFr = await handle(req({ ...contact, lang: "fr" }, { json: false, accept: "text/html" }), { env: ENV, send });
+  assert.equal(plainFr.headers.get("location"), "/fr/merci");
 });

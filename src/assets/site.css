@@ -1,7 +1,7 @@
 /* Auto Yard — oyunun dünyası: logodaki lacivert + altın, oyundaki krem plakalar, sarı-siyah ikaz şeridi.
    Yazı tipleri yerelde (OFL): Baloo 2 (başlık) ve Nunito (metin). */
 
-/* Tek dosya, yalnızca TR/EN/ES harfleri + ₺ (tools/make_images.py yanındaki notta: pyftsubset ile üretildi) */
+/* Tek dosya, yalnızca TR/EN/ES/DE/FR harfleri (Latin-1 + Œœ + ğış) + ₺ (tools/make_images.py yanındaki notta: pyftsubset ile üretildi) */
 @font-face { font-family: "Baloo 2"; font-style: normal; font-weight: 400 800; font-display: swap; src: url("/assets/fonts/baloo2.woff2") format("woff2"); }
 @font-face { font-family: "Nunito"; font-style: normal; font-weight: 200 1000; font-display: swap; src: url("/assets/fonts/nunito.woff2") format("woff2"); }
 
