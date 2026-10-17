@@ -49,12 +49,12 @@
       <p>Arkadaş özellikleri Google ile giriş ve bir takma ad seçmeni gerektirir. Takma adını oluşturduğunda:</p>
       <ul>
         <li><strong>Herkese açık garaj profilin</strong> oluşturulur: takma adın, arkadaş kodun, seviyen, garaj değerin, garajının düzeni (dekor, sergilediğin araçlar ve modifiyeleri), avatarın, çerçeven, seçtiğin bayrak, garaj adın, vitrin aracın, yarış istatistiklerin (galibiyet, yarış sayısı, koleksiyon, en iyi süre) ve varsa hurdalıktan istediğin parça. Para, gem ve kasa bilgilerin bu profile girmez.</li>
-        <li><strong>Profil fotoğrafı:</strong> galeriden seçtiğin, kamerayla çektiğin ya da Google hesabının fotoğrafı, 192×192 piksele küçültülüp Firestore'a yüklenir. Kendi fotoğrafını seçmediysen Google fotoğrafın varsayılan olarak avatarın olur; bunu <span class="ui">PROFİLİ DÜZENLE → FOTOĞRAF</span> bölümündeki <span class="ui">GOOGLE: KAPALI</span> seçeneğiyle kapatabilir ya da hazır avatarlardan birini seçebilirsin.</li>
-        <li><strong>Arkadaşlık verileri:</strong> arkadaş listen, arkadaşlık istekleri (takma ad, kod ve zaman), arkadaşlarına gönderdiğin hurdalık parçası hediyeleri, yarış haberleri (takma ad, yarışılan araçlar ve sonuç) ve davet linkleri (senin kimliğin, takma adın ve kodun; link 1 saat geçerlidir).</li>
-        <li><strong>Şikâyet ve engelleme:</strong> bir oyuncuyu şikâyet ettiğinde şikâyet nedeni, şikâyet edilen oyuncunun kimliği, takma adı ve fotoğraf şikâyetinde fotoğrafın bir kopyası kaydedilir; şikâyetleri yalnızca geliştirici inceler. Engellediğin oyuncuların listesi kendi kaydında tutulur, engellenen kişiye bir şey bildirilmez.</li>
+        <li><strong>Profil fotoğrafı:</strong> galeriden seçtiğin, kamerayla çektiğin ya da Google hesabının fotoğrafı, 192×192 piksele küçültülüp Firestore'a yüklenir. Google fotoğrafın yalnızca sen <span class="ui">PROFİLİ DÜZENLE → FOTOĞRAF</span> bölümünde <span class="ui">GOOGLE</span>'ı seçersen ya da <span class="ui">GOOGLE: AÇIK</span> yaparsan avatarın olur; varsayılan kapalıdır. Fotoğrafını kaldırdığında ya da hazır avatara geçtiğinde yüklenen resim sunucudan silinir.</li>
+        <li><strong>Arkadaşlık verileri:</strong> arkadaş listen, arkadaşlık istekleri (takma ad, kod ve zaman), arkadaşlarına gönderdiğin hurdalık parçası hediyeleri, yarış haberleri (takma ad, yarışılan araçlar ve sonuç) ve davet linkleri (senin kimliğin, takma adın ve kodun; link 1 saat geçerlidir, süresi dolan davet en geç bir saat içinde silinir).</li>
+        <li><strong>Şikâyet ve engelleme:</strong> bir oyuncuyu şikâyet ettiğinde şikâyet nedeni, şikâyet edilen oyuncunun kimliği, takma adı ve fotoğraf şikâyetinde fotoğrafın bir kopyası kaydedilir; şikâyetleri yalnızca geliştirici inceler ve 180 gün sonra otomatik silinir. Engellediğin oyuncuların listesi kendi kaydında tutulur, engellenen kişiye bir şey bildirilmez.</li>
       </ul>
       <h3>Yarış bildirimleri (isteğe bağlı)</h3>
-      <p>Bildirimleri yalnızca sen açarsın (ilk yarıştan sonra sorulur ya da <span class="ui">AYARLAR → SES VE BİLDİRİMLER</span>). Açtığında telefonunun bildirim anahtarı (Firebase Cloud Messaging) ve dilin saklanır. Bildirim, bir arkadaşın aracını yendiğinde gönderilir ve onun takma adını içerir; aynı arkadaştan en fazla 6 saatte bir gelir. Bildirim sıklığını sınırlamak için sunucu iki oyuncu kimliğini ve gönderim zamanını kaydeder. Bildirimleri kapattığında anahtar silinir.</p>
+      <p>Bildirimleri yalnızca sen açarsın (ilk yarıştan sonra sorulur ya da <span class="ui">AYARLAR → SES VE BİLDİRİMLER</span>). Açtığında telefonunun bildirim anahtarı (Firebase Cloud Messaging) ve dilin saklanır. Bildirim, bir arkadaşın aracını yendiğinde gönderilir ve onun takma adını içerir; aynı arkadaştan en fazla 6 saatte bir gelir. Bildirim sıklığını sınırlamak için sunucu iki oyuncu kimliğini ve gönderim zamanını kaydeder; bu kayıt 1 gün sonra otomatik silinir. Bildirimleri kapattığında anahtar silinir.</p>
       <h3>Teknik veriler</h3>
       <p>Firebase hizmetleri çalışabilmek için IP adresi, cihaz ve uygulama sürümü gibi teknik verileri ve uygulama kurulum kimliğini işler. Ayrıntılar: <a href="https://firebase.google.com/support/privacy" rel="noopener">Firebase gizlilik bilgileri</a>.</p>
       <h3>Oyunda olmayanlar</h3>
@@ -120,11 +120,11 @@
 
       <h2 id="sure">10. Saklama süreleri</h2>
       <ul>
-        <li>Bulut kaydı, Google profil bilgileri, herkese açık garaj profili, arkadaş kodu, arkadaş listesi ve yüklediğin son profil fotoğrafı: hesabını silene kadar.</li>
+        <li>Bulut kaydı, Google profil bilgileri, herkese açık garaj profili, arkadaş kodu ve arkadaş listesi: hesabını silene kadar. Profil fotoğrafı: kullandığın sürece; kaldırınca ya da hesabını silince silinir.</li>
         <li>Arkadaşlık istekleri: kabul edilene, reddedilene, geri alınana ya da hesap silinene kadar.</li>
-        <li>Davet linkleri: 1 saat geçerlidir; kayıt, yeni bir davet oluşturduğunda ya da hesabını sildiğinde kaldırılır.</li>
+        <li>Davet linkleri: 1 saat geçerlidir; süresi dolan davet en geç bir saat içinde otomatik silinir.</li>
         <li>Hediye parçalar: alıcı toplayana kadar. Yarış haberleri: kapatılana ya da aynı arkadaşın sonraki yarışı gelene kadar.</li>
-        <li>Bildirim anahtarı: bildirimleri kapatana ya da hesabını silene kadar. Bildirim gönderim kaydı ve şikâyet kayıtları: sıklık sınırı, inceleme ve kötüye kullanımın önlenmesi için gerektiği sürece.</li>
+        <li>Bildirim anahtarı: bildirimleri kapatana ya da hesabını silene kadar. Bildirim gönderim kaydı: 1 gün. Şikâyet kayıtları: 180 gün (inceleme ve kötüye kullanımın önlenmesi için).</li>
         <li>Telefondaki veriler (oyun kaydı, fotoğraflar, önbellek): uygulamayı kaldırana veya verilerini temizleyene kadar.</li>
         <li>Destek yazışmaları: talebin kapanmasından itibaren en fazla 1 yıl. Hesap silme talebi kaydı: ispat amacıyla 3 yıl (yalnızca e-posta ve talep tarihi).</li>
         <li>Reklam ve satın alma verileri: Google'ın kendi saklama süreleri boyunca. Site sunucu kayıtları: Vercel'in saklama süreleri boyunca (genellikle birkaç gün).</li>
@@ -132,7 +132,7 @@
 
       <h2 id="silme">11. Hesabını silmek</h2>
       <p>Hesabını oyunda <span class="ui">PROFİL → HESAP → HESABIMI SİL</span> ile kalıcı olarak silebilirsin (<span class="ui">AYARLAR → HESAP VE GİZLİLİK → GOOGLE HESABI</span> da aynı yere çıkar). Bu işlem bulut kaydını, herkese açık garaj profilini, profil fotoğrafını, arkadaş kodunu, arkadaşlıkları (iki taraftan), istekleri, yarış haberlerini, hediyeleri, davetleri, bildirim anahtarını ve Google hesabı bağlantını siler. Oyuna erişemiyorsan <a href="{{link:delete}}">Hesap ve Veri Silme</a> sayfasındaki formu kullan.</p>
-      <p>Silme işleminden sonra şunlar kalabilir: hakkında yapılmış ya da senin yaptığın şikâyet kayıtları, arkadaşlarının henüz toplamadığı hediyelerdeki takma adın, bildirim gönderim kayıtları, Google'ın tuttuğu satın alma ve reklam kayıtları ve telefonundaki dosyalar (uygulamayı kaldırınca silinir).</p>
+      <p>Silme işleminden sonra şunlar bir süre kalabilir: hakkında yapılmış ya da senin yaptığın şikâyet kayıtları (en fazla 180 gün), bildirim gönderim kayıtları (en fazla 1 gün), arkadaşlarının henüz toplamadığı hediyelerdeki takma adın, Google'ın tuttuğu satın alma ve reklam kayıtları ve telefonundaki dosyalar (uygulamayı kaldırınca silinir).</p>
 
       <h2 id="guvenlik">12. Güvenlik</h2>
       <p>Bulut verileri Firebase güvenlik kurallarıyla korunur: her oyuncu yalnızca kendi kaydını okuyup yazabilir; herkese açık profiller yalnızca giriş yapmış oyunculara açıktır. Site ve oyunun sunucu bağlantıları yalnızca HTTPS üzerinden çalışır. Hiçbir sistem kusursuz değildir; bir ihlal olursa KVKK'nın ve GDPR'ın öngördüğü şekilde bildirim yaparız.</p>

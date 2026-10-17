@@ -49,12 +49,12 @@
       <p>The friend features require Google sign-in and a nickname. When you create your nickname:</p>
       <ul>
         <li><strong>Your public garage profile</strong> is created: your nickname, friend code, level, garage value, garage layout (decor, displayed cars and their tuning), avatar, frame, the flag you choose, garage name, showcase car, race stats (wins, races, collection, best time) and the junkyard part you asked for, if any. Your money, gems and crates are not part of it.</li>
-        <li><strong>Profile photo:</strong> a photo you choose from your gallery, take with the camera or your Google account photo is resized to 192×192 pixels and uploaded to Firestore. If you haven't picked your own photo, your Google photo becomes your avatar by default; you can switch this off with <span class="ui">GOOGLE: OFF</span> under <span class="ui">EDIT PROFILE → PHOTO</span> or pick one of the preset avatars.</li>
-        <li><strong>Friendship data:</strong> your friends list, friend requests (nickname, code and time), the junkyard parts you send to friends as gifts, race news (nickname, the cars raced and the result) and invite links (your ID, nickname and code; a link is valid for 1 hour).</li>
-        <li><strong>Reports and blocking:</strong> when you report a player, the reason, the reported player's ID and nickname and, for photo reports, a copy of the photo are stored; only the developer reviews reports. The list of players you block is kept in your own save, and the blocked player is not notified.</li>
+        <li><strong>Profile photo:</strong> a photo you choose from your gallery, take with the camera or your Google account photo is resized to 192×192 pixels and uploaded to Firestore. Your Google photo only becomes your avatar if you choose <span class="ui">GOOGLE</span> or turn on <span class="ui">GOOGLE: ON</span> under <span class="ui">EDIT PROFILE → PHOTO</span>; it is off by default. When you remove your photo or switch to a preset avatar, the uploaded image is deleted from the server.</li>
+        <li><strong>Friendship data:</strong> your friends list, friend requests (nickname, code and time), the junkyard parts you send to friends as gifts, race news (nickname, the cars raced and the result) and invite links (your ID, nickname and code; a link is valid for 1 hour and an expired invite is deleted within an hour).</li>
+        <li><strong>Reports and blocking:</strong> when you report a player, the reason, the reported player's ID and nickname and, for photo reports, a copy of the photo are stored; only the developer reviews reports, and they are deleted automatically after 180 days. The list of players you block is kept in your own save, and the blocked player is not notified.</li>
       </ul>
       <h3>Race notifications (optional)</h3>
-      <p>Only you can turn notifications on (you're asked after your first race, or in <span class="ui">SETTINGS → SOUND AND NOTIFICATIONS</span>). When you do, your phone's notification token (Firebase Cloud Messaging) and your language are stored. A notification is sent when a friend beats your car and contains their nickname, at most once every 6 hours per friend. To limit how often notifications are sent, the server records the two player IDs and the time of sending. Turning notifications off deletes the token.</p>
+      <p>Only you can turn notifications on (you're asked after your first race, or in <span class="ui">SETTINGS → SOUND AND NOTIFICATIONS</span>). When you do, your phone's notification token (Firebase Cloud Messaging) and your language are stored. A notification is sent when a friend beats your car and contains their nickname, at most once every 6 hours per friend. To limit how often notifications are sent, the server records the two player IDs and the time of sending; this record is deleted automatically after 1 day. Turning notifications off deletes the token.</p>
       <h3>Technical data</h3>
       <p>To work, Firebase services process technical data such as IP address, device and app version, and an app installation ID. Details: <a href="https://firebase.google.com/support/privacy" rel="noopener">Firebase privacy information</a>.</p>
       <h3>What the game does not do</h3>
@@ -120,11 +120,11 @@
 
       <h2 id="retention">10. Retention</h2>
       <ul>
-        <li>Cloud save, Google profile details, public garage profile, friend code, friends list and the last profile photo you uploaded: until you delete your account.</li>
+        <li>Cloud save, Google profile details, public garage profile, friend code and friends list: until you delete your account. Profile photo: as long as you use it; deleted when you remove it or delete your account.</li>
         <li>Friend requests: until accepted, declined, withdrawn or the account is deleted.</li>
-        <li>Invite links: valid for 1 hour; the record is removed when you create a new invite or delete your account.</li>
+        <li>Invite links: valid for 1 hour; an expired invite is deleted automatically within an hour.</li>
         <li>Gifted parts: until the recipient collects them. Race news: until dismissed or replaced by the same friend's next race.</li>
-        <li>Notification token: until you turn notifications off or delete your account. Notification sending log and report records: as long as needed for rate limiting, review and preventing abuse.</li>
+        <li>Notification token: until you turn notifications off or delete your account. Notification sending log: 1 day. Report records: 180 days (for review and preventing abuse).</li>
         <li>Data on your phone (save, photos, cache): until you uninstall the app or clear its data.</li>
         <li>Support emails: up to 1 year after the request is closed. Deletion request records: 3 years as proof (email and request date only).</li>
         <li>Ad and purchase data: for Google's own retention periods. Site server logs: for Vercel's retention periods (usually a few days).</li>
@@ -132,7 +132,7 @@
 
       <h2 id="deletion">11. Deleting your account</h2>
       <p>You can permanently delete your account in the game via <span class="ui">PROFILE → ACCOUNT → DELETE MY ACCOUNT</span> (<span class="ui">SETTINGS → ACCOUNT AND PRIVACY → GOOGLE ACCOUNT</span> leads to the same place). This deletes your cloud save, public garage profile, profile photo, friend code, friendships (on both sides), requests, race news, gifts, invites, notification token and your Google sign-in account. If you can't open the game, use the form on the <a href="{{link:delete}}">Account &amp; Data Deletion</a> page.</p>
-      <p>After deletion, the following may remain: reports made by you or about you, your nickname in gifts your friends haven't collected yet, notification sending logs, purchase and ad records held by Google, and files on your phone (removed when you uninstall the app).</p>
+      <p>After deletion, the following may remain for a while: reports made by you or about you (up to 180 days), notification sending logs (up to 1 day), your nickname in gifts your friends haven't collected yet, purchase and ad records held by Google, and files on your phone (removed when you uninstall the app).</p>
 
       <h2 id="security">12. Security</h2>
       <p>Cloud data is protected by Firebase security rules: each player can only read and write their own save, and public profiles are only open to signed-in players. The Site and the game's server connections use HTTPS only. No system is perfect; if a breach occurs, we will notify as required by the KVKK and the GDPR.</p>
