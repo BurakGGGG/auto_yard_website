@@ -1,0 +1,151 @@
+<!--meta {"updated": "2026-10-17", "title": "Privacy Policy", "description": "Which personal data the Auto Yard game and website process and why, who can see it, how long it is kept and how to use your rights."} -->
+<section class="page-hero rays">
+  <div class="wrap narrow">
+    <p class="kicker">Legal</p>
+    <h1>Privacy Policy</h1>
+    <p class="meta">{{t.updated}}: <time datetime="{{updated}}">{{updatedText}}</time></p>
+  </div>
+</section>
+<div class="page-body">
+  <div class="wrap narrow">
+    <article class="card prose">
+      <nav class="toc" aria-labelledby="toc-title">
+        <h2 class="toc-title" id="toc-title">Contents</h2>
+        <ol>
+          <li><a href="#controller">Data controller</a></li>
+          <li><a href="#game">Data processed in the game</a></li>
+          <li><a href="#visibility">What other players can see</a></li>
+          <li><a href="#ads">Ads</a></li>
+          <li><a href="#purchases">In-app purchases</a></li>
+          <li><a href="#permissions">Permissions, camera and photos</a></li>
+          <li><a href="#website">Data processed on the website</a></li>
+          <li><a href="#purposes">Purposes and legal bases</a></li>
+          <li><a href="#processors">Service providers and international transfers</a></li>
+          <li><a href="#retention">Retention</a></li>
+          <li><a href="#deletion">Deleting your account</a></li>
+          <li><a href="#security">Security</a></li>
+          <li><a href="#children">Children</a></li>
+          <li><a href="#rights">Your rights</a></li>
+          <li><a href="#changes">Changes and contact</a></li>
+        </ol>
+      </nav>
+
+      <p>This policy explains how the Android game <strong>{{name}}</strong> (the “Game”, package name <code>{{androidPackage}}</code>) and this website (the “Site”) process personal data. It is based on the Turkish Personal Data Protection Law No. 6698 (KVKK) and, where applicable, the EU General Data Protection Regulation (GDPR).</p>
+      <div class="callout"><p><strong>In short:</strong> if you play as a guest, your progress stays on your phone. If you sign in with Google, your save is backed up to the cloud. If you turn on the friend features, your nickname, garage and profile photo are visible to other players. Ads only open when you choose to watch one. Your data is never sold.</p></div>
+
+      <h2 id="controller">1. Data controller</h2>
+      <p>The data controller is {{developerName}} ({{country}}). For any privacy question: <a href="mailto:{{contactEmail}}">{{contactEmail}}</a> or the <a href="{{link:contact}}">contact form</a>.</p>
+
+      <h2 id="game">2. Data processed in the game</h2>
+      <h3>When you play as a guest</h3>
+      <p>No account is created and no Firebase session is started for guest play. Your save (money, cars, garage, tasks, settings), your purchase ledger and your daily ad counters are stored only on your phone. Your phone's graphics chip, memory and processor details are used only on the device to choose the graphics quality and are never sent anywhere. Guests can still watch rewarded ads and make purchases; see sections <a href="#ads">4</a> and <a href="#purchases">5</a>.</p>
+      <h3>When you sign in with Google</h3>
+      <ul>
+        <li><strong>Account:</strong> Google Firebase Authentication signs you in with your Google account and gives you a user ID (UID). No other sign-in method is used.</li>
+        <li><strong>Google profile details:</strong> your display name, email address and profile photo address (URL) are kept in a part of your cloud save that only you can read. Your display name is only shown on your own screen; other players see the nickname you choose.</li>
+        <li><strong>Cloud save:</strong> your whole game progress (economy, cars, garage and decor, tasks, purchase ledger, the list of players you blocked, race counts with your friends) is stored in Google Cloud Firestore, linked to your account and readable only by your account.</li>
+      </ul>
+      <h3>When you use the friend features</h3>
+      <p>The friend features require Google sign-in and a nickname. When you create your nickname:</p>
+      <ul>
+        <li><strong>Your public garage profile</strong> is created: your nickname, friend code, level, garage value, garage layout (decor, displayed cars and their tuning), avatar, frame, the flag you choose, garage name, showcase car, race stats (wins, races, collection, best time) and the junkyard part you asked for, if any. Your money, gems and crates are not part of it.</li>
+        <li><strong>Profile photo:</strong> a photo you choose from your gallery, take with the camera or your Google account photo is resized to 192×192 pixels and uploaded to Firestore. If you haven't picked your own photo, your Google photo becomes your avatar by default; you can switch this off with <span class="ui">GOOGLE: OFF</span> under <span class="ui">EDIT PROFILE → PHOTO</span> or pick one of the preset avatars.</li>
+        <li><strong>Friendship data:</strong> your friends list, friend requests (nickname, code and time), the junkyard parts you send to friends as gifts, race news (nickname, the cars raced and the result) and invite links (your ID, nickname and code; a link is valid for 1 hour).</li>
+        <li><strong>Reports and blocking:</strong> when you report a player, the reason, the reported player's ID and nickname and, for photo reports, a copy of the photo are stored; only the developer reviews reports. The list of players you block is kept in your own save, and the blocked player is not notified.</li>
+      </ul>
+      <h3>Race notifications (optional)</h3>
+      <p>Only you can turn notifications on (you're asked after your first race, or in <span class="ui">SETTINGS → SOUND AND NOTIFICATIONS</span>). When you do, your phone's notification token (Firebase Cloud Messaging) and your language are stored. A notification is sent when a friend beats your car and contains their nickname, at most once every 6 hours per friend. To limit how often notifications are sent, the server records the two player IDs and the time of sending. Turning notifications off deletes the token.</p>
+      <h3>Technical data</h3>
+      <p>To work, Firebase services process technical data such as IP address, device and app version, and an app installation ID. Details: <a href="https://firebase.google.com/support/privacy" rel="noopener">Firebase privacy information</a>.</p>
+      <h3>What the game does not do</h3>
+      <p>The game does not use analytics or crash-reporting tools and does not access your location, contacts or microphone. Your data is never sold.</p>
+
+      <h2 id="visibility">3. What other players can see</h2>
+      <p>Your public garage profile and profile photo can be seen by players signed in to Auto Yard with Google (when they visit your garage, in their friends list, when they race against you and when they open your invite link). Friend requests and race news are seen only by the two players involved. Your cloud save, email address and Google display name are never shown to other players.</p>
+
+      <h2 id="ads">4. Ads</h2>
+      <p>The game only shows <strong>optional rewarded ads</strong>. An ad opens only when you tap <span class="ui">WATCH AD</span> (to double a race prize or shorten a long repair); there are no interstitial, banner or app-open ads.</p>
+      <p>Ads are served by <strong>Google AdMob</strong>. To show and measure ads, Google may process your advertising ID, IP address, device and app information and your interactions with ads. In the European Economic Area, the UK and Switzerland, Google's consent form is shown when the game starts; you can change your choice later in <span class="ui">SETTINGS → ACCOUNT AND PRIVACY → AD PRIVACY OPTIONS</span>. You can reset or delete your advertising ID in your phone's Settings → Google → Ads. The game does not use child-directed ad settings, and ad content is limited to the “T” (teen) rating. Details: <a href="https://policies.google.com/technologies/ads" rel="noopener">How Google uses information from ads</a>.</p>
+
+      <h2 id="purchases">5. In-app purchases</h2>
+      <p>Gem packs are sold through <strong>Google Play</strong>. Your payment details (card etc.) never reach us; Google processes the payment. So that a pack is never granted twice and can be restored if lost, a purchase ledger keeps the product, the number of gems, the time and the Google order number (the purchase token only until the transaction is complete). The ledger is part of your save, so if you're signed in it's also in your cloud save. Your phone also keeps one-way hashes of purchase tokens.</p>
+
+      <h2 id="permissions">6. Permissions, camera and photos</h2>
+      <ul>
+        <li><strong>Camera:</strong> requested only when you tap <span class="ui">CAMERA</span> to take a profile photo, and used only while that window is open.</li>
+        <li><strong>Gallery:</strong> you pick a profile photo with Android's own file picker; the game only sees the file you choose and does not ask for gallery access.</li>
+        <li><strong>Notifications:</strong> on Android 13 and newer, requested only when you turn race notifications on.</li>
+        <li><strong>Photo mode:</strong> the game photos you take are saved to your phone's Pictures/Auto Yard folder and are not uploaded anywhere.</li>
+        <li><strong>Internet:</strong> for cloud save, friend features, ads and purchases.</li>
+      </ul>
+
+      <h2 id="website">7. Data processed on the website</h2>
+      <ul>
+        <li><strong>Server logs:</strong> the Site is hosted on Vercel. For security and operations, Vercel briefly logs data such as IP address, browser details and the requested page.</li>
+        <li><strong>Anonymous visit statistics:</strong> Vercel Web Analytics is loaded only if you agree in the <a href="{{link:cookies}}">cookie settings</a>. It uses no cookies and does not track you across sites.</li>
+        <li><strong>Form data:</strong> the name, email and message you enter in the contact or account deletion form are forwarded to us by email (email service: Resend). Your IP address is briefly held in memory to limit abuse.</li>
+        <li><strong>Invite links:</strong> the invite page reads the code in the link only in your browser and opens the game; the code is not stored on the server.</li>
+        <li><strong>Preference storage:</strong> your cookie choice is stored in your browser's local storage (localStorage) and is not sent to the server.</li>
+      </ul>
+
+      <h2 id="purposes">8. Purposes and legal bases</h2>
+      <div class="table-wrap">
+        <table>
+          <caption class="visually-hidden">Processing purposes and legal bases</caption>
+          <thead><tr><th scope="col">Purpose</th><th scope="col">Data</th><th scope="col">Legal basis</th></tr></thead>
+          <tbody>
+            <tr><td>Google sign-in and cloud backup</td><td>UID, Google profile details, game save</td><td>Performance of a contract (KVKK art. 5/2-c, GDPR art. 6(1)(b)); you start this feature</td></tr>
+            <tr><td>Friend features and public profile</td><td>Nickname, code, garage profile, profile photo, friendship data</td><td>Performance of a contract; for the photo, your choice (you can change it at any time)</td></tr>
+            <tr><td>Race notifications</td><td>Notification token, language, sending log</td><td>Consent (KVKK art. 5/1, GDPR art. 6(1)(a)); withdraw by turning notifications off</td></tr>
+            <tr><td>Rewarded ads</td><td>Advertising ID, IP, device details, interactions</td><td>Consent; via the consent form in the EEA/UK/Switzerland, elsewhere by choosing to watch an ad</td></tr>
+            <tr><td>Delivering purchases</td><td>Product, order number, time</td><td>Performance of a contract; legal obligation</td></tr>
+            <tr><td>Community safety (reports, blocking)</td><td>Report records, block list</td><td>Legitimate interest (KVKK art. 5/2-f, GDPR art. 6(1)(f))</td></tr>
+            <tr><td>Answering support and deletion requests</td><td>Name, email, message</td><td>Legitimate interest; legal obligation</td></tr>
+            <tr><td>Site security</td><td>Server logs, IP</td><td>Legitimate interest</td></tr>
+            <tr><td>Site statistics</td><td>Anonymous visit data</td><td>Consent; can be withdrawn at any time</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="processors">9. Service providers and international transfers</h2>
+      <p>Your data is shared only with the following processors, and only to provide the service:</p>
+      <ul>
+        <li><strong>Google LLC / Google Ireland Ltd. (Firebase Authentication, Cloud Firestore, Cloud Functions, Cloud Messaging)</strong>: sign-in, cloud save, friend features, notifications</li>
+        <li><strong>Google (AdMob)</strong>: serving and measuring rewarded ads</li>
+        <li><strong>Google (Google Play)</strong>: in-app purchases</li>
+        <li><strong>Vercel Inc.</strong>: website hosting and anonymous statistics</li>
+        <li><strong>Resend</strong>: forwarding form messages by email</li>
+      </ul>
+      <p>The game's cloud data is stored in Google's European data centres; providers may also process data in other countries, including the US. Transfers rely on the providers' standard contractual clauses and the safeguards in Article 9 of the KVKK. Apart from cases required by law, your data is not shared with anyone else.</p>
+
+      <h2 id="retention">10. Retention</h2>
+      <ul>
+        <li>Cloud save, Google profile details, public garage profile, friend code, friends list and the last profile photo you uploaded: until you delete your account.</li>
+        <li>Friend requests: until accepted, declined, withdrawn or the account is deleted.</li>
+        <li>Invite links: valid for 1 hour; the record is removed when you create a new invite or delete your account.</li>
+        <li>Gifted parts: until the recipient collects them. Race news: until dismissed or replaced by the same friend's next race.</li>
+        <li>Notification token: until you turn notifications off or delete your account. Notification sending log and report records: as long as needed for rate limiting, review and preventing abuse.</li>
+        <li>Data on your phone (save, photos, cache): until you uninstall the app or clear its data.</li>
+        <li>Support emails: up to 1 year after the request is closed. Deletion request records: 3 years as proof (email and request date only).</li>
+        <li>Ad and purchase data: for Google's own retention periods. Site server logs: for Vercel's retention periods (usually a few days).</li>
+      </ul>
+
+      <h2 id="deletion">11. Deleting your account</h2>
+      <p>You can permanently delete your account in the game via <span class="ui">PROFILE → ACCOUNT → DELETE MY ACCOUNT</span> (<span class="ui">SETTINGS → ACCOUNT AND PRIVACY → GOOGLE ACCOUNT</span> leads to the same place). This deletes your cloud save, public garage profile, profile photo, friend code, friendships (on both sides), requests, race news, gifts, invites, notification token and your Google sign-in account. If you can't open the game, use the form on the <a href="{{link:delete}}">Account &amp; Data Deletion</a> page.</p>
+      <p>After deletion, the following may remain: reports made by you or about you, your nickname in gifts your friends haven't collected yet, notification sending logs, purchase and ad records held by Google, and files on your phone (removed when you uninstall the app).</p>
+
+      <h2 id="security">12. Security</h2>
+      <p>Cloud data is protected by Firebase security rules: each player can only read and write their own save, and public profiles are only open to signed-in players. The Site and the game's server connections use HTTPS only. No system is perfect; if a breach occurs, we will notify as required by the KVKK and the GDPR.</p>
+
+      <h2 id="children">13. Children</h2>
+      <p>The game is not directed at children under {{minAge}}, and we do not knowingly collect personal data from anyone under {{minAge}}. If you notice that we have, <a href="{{link:contact}}">write to us</a> and we will delete it right away.</p>
+
+      <h2 id="rights">14. Your rights</h2>
+      <p>Under Article 11 of the KVKK (and the GDPR where it applies) you have the right to know whether your data is processed, to request information and a copy, to rectification, to erasure, to object to processing, to withdraw consent, to learn which third parties received your data, to data portability and to claim compensation for damage.</p>
+      <p>To make a request, choose "Personal data request" in the <a href="{{link:contact}}">contact form</a> or write to <a href="mailto:{{contactEmail}}">{{contactEmail}}</a>. We answer free of charge within 30 days at the latest. If you are not satisfied with our answer, you can complain to the Turkish Personal Data Protection Authority (or, in the EU, your country's data protection authority).</p>
+
+      <h2 id="changes">15. Changes and contact</h2>
+      <p>We may update this policy; we will announce important changes in the game or on this page. The date at the top shows the latest update. Questions: <a href="mailto:{{contactEmail}}">{{contactEmail}}</a>. The Turkish version of this policy is the original; if the versions differ, the Turkish text prevails.</p>
+    </article>
+  </div>
+</div>

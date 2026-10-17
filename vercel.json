@@ -7,6 +7,28 @@
   "rewrites": [
     {
       "source": "/d/:token",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^es.*"
+        }
+      ],
+      "destination": "/es/invitacion"
+    },
+    {
+      "source": "/d/:token",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^en.*"
+        }
+      ],
+      "destination": "/en/invite"
+    },
+    {
+      "source": "/d/:token",
       "destination": "/davet"
     }
   ],
@@ -62,22 +84,27 @@
   "redirects": [
     {
       "source": "/privacy",
-      "destination": "/gizlilik",
+      "destination": "/en/privacy",
       "permanent": true
     },
     {
       "source": "/privacy-policy",
-      "destination": "/gizlilik",
+      "destination": "/en/privacy",
       "permanent": true
     },
     {
       "source": "/terms",
-      "destination": "/kullanim-sartlari",
+      "destination": "/en/terms",
       "permanent": true
     },
     {
       "source": "/delete-account",
-      "destination": "/hesap-silme",
+      "destination": "/en/delete-account",
+      "permanent": true
+    },
+    {
+      "source": "/privacidad",
+      "destination": "/es/privacidad",
       "permanent": true
     }
   ]

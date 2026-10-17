@@ -15,6 +15,7 @@ const TYPES = {
   ".html": "text/html; charset=utf-8", ".css": "text/css", ".js": "text/javascript", ".svg": "image/svg+xml",
   ".png": "image/png", ".jpg": "image/jpeg", ".webp": "image/webp", ".xml": "application/xml",
   ".txt": "text/plain; charset=utf-8", ".ico": "image/x-icon", ".webmanifest": "application/manifest+json",
+  ".woff2": "font/woff2", ".mp4": "video/mp4", ".json": "application/json",
 };
 
 function headersFor(pathname) {
@@ -50,10 +51,20 @@ createServer(async (req, res) => {
   const redirect = vercel.redirects.find((r) => r.source === url.pathname);
   if (redirect) return res.writeHead(308, { location: redirect.destination }).end();
 
-  let file = normalize(join(out, decodeURIComponent(url.pathname)));
+  // Yeniden yazmalar (vercel.json "rewrites"): /d/:jeton → tarayıcı diline göre davet sayfası ("has" başlık koşulu)
+  let pathname = url.pathname;
+  for (const r of vercel.rewrites || []) {
+    const re = new RegExp("^" + r.source.replace(/:\w+/g, "[^/]+") + "$");
+    if (!re.test(pathname)) continue;
+    const ok = (r.has || []).every((h) => h.type !== "header" || new RegExp("^(?:" + h.value + ")$", "i").test(req.headers[h.key] || ""));
+    if (ok) { pathname = r.destination; break; }
+  }
+
+  let file = normalize(join(out, decodeURIComponent(pathname)));
   if (!file.startsWith(out)) return res.writeHead(403).end();
-  if (url.pathname === "/") file = join(out, "index.html");
+  if (pathname === "/") file = join(out, "index.html");
   else if (!extname(file) && existsSync(file + ".html")) file += ".html";
+  else if (!extname(file) && existsSync(join(file, "index.html"))) file = join(file, "index.html");
 
   let status = 200;
   if (!existsSync(file) || statSync(file).isDirectory()) {

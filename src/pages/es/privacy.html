@@ -1,0 +1,151 @@
+<!--meta {"updated": "2026-10-17", "title": "Política de privacidad", "description": "Qué datos personales tratan el juego y la web de Auto Yard y por qué, quién puede verlos, cuánto tiempo se guardan y cómo ejercer tus derechos."} -->
+<section class="page-hero rays">
+  <div class="wrap narrow">
+    <p class="kicker">Legal</p>
+    <h1>Política de privacidad</h1>
+    <p class="meta">{{t.updated}}: <time datetime="{{updated}}">{{updatedText}}</time></p>
+  </div>
+</section>
+<div class="page-body">
+  <div class="wrap narrow">
+    <article class="card prose">
+      <nav class="toc" aria-labelledby="toc-titulo">
+        <h2 class="toc-title" id="toc-titulo">Índice</h2>
+        <ol>
+          <li><a href="#responsable">Responsable del tratamiento</a></li>
+          <li><a href="#juego">Datos tratados en el juego</a></li>
+          <li><a href="#visibilidad">Qué pueden ver otros jugadores</a></li>
+          <li><a href="#anuncios">Anuncios</a></li>
+          <li><a href="#compras">Compras dentro de la aplicación</a></li>
+          <li><a href="#permisos">Permisos, cámara y fotos</a></li>
+          <li><a href="#web">Datos tratados en la web</a></li>
+          <li><a href="#finalidades">Finalidades y bases jurídicas</a></li>
+          <li><a href="#proveedores">Proveedores y transferencias internacionales</a></li>
+          <li><a href="#conservacion">Conservación</a></li>
+          <li><a href="#borrado">Borrar tu cuenta</a></li>
+          <li><a href="#seguridad">Seguridad</a></li>
+          <li><a href="#menores">Menores</a></li>
+          <li><a href="#derechos">Tus derechos</a></li>
+          <li><a href="#cambios">Cambios y contacto</a></li>
+        </ol>
+      </nav>
+
+      <p>Esta política explica cómo el juego para Android <strong>{{name}}</strong> (el “Juego”, nombre de paquete <code>{{androidPackage}}</code>) y esta web (el “Sitio”) tratan los datos personales. Se basa en la Ley turca de Protección de Datos Personales n.º 6698 (KVKK) y, cuando corresponde, en el Reglamento General de Protección de Datos de la UE (RGPD).</p>
+      <div class="callout"><p><strong>En resumen:</strong> si juegas como invitado, tu progreso se queda en tu teléfono. Si inicias sesión con Google, tu partida se guarda en la nube. Si activas las funciones con amigos, tu apodo, tu taller y tu foto de perfil son visibles para otros jugadores. Los anuncios solo se abren si tú quieres. Nunca vendemos tus datos.</p></div>
+
+      <h2 id="responsable">1. Responsable del tratamiento</h2>
+      <p>El responsable es {{developerName}} ({{country}}). Para cualquier pregunta sobre privacidad: <a href="mailto:{{contactEmail}}">{{contactEmail}}</a> o el <a href="{{link:contact}}">formulario de contacto</a>.</p>
+
+      <h2 id="juego">2. Datos tratados en el juego</h2>
+      <h3>Si juegas como invitado</h3>
+      <p>Para jugar como invitado no se crea ninguna cuenta ni se inicia una sesión de Firebase. Tu partida (dinero, coches, taller, misiones, ajustes), tu registro de compras y tus contadores diarios de anuncios se guardan solo en tu teléfono. Los datos del chip gráfico, la memoria y el procesador de tu teléfono solo se usan en el dispositivo para elegir la calidad gráfica y no se envían a ninguna parte. Como invitado también puedes ver anuncios con recompensa y hacer compras; consulta los apartados <a href="#anuncios">4</a> y <a href="#compras">5</a>.</p>
+      <h3>Si inicias sesión con Google</h3>
+      <ul>
+        <li><strong>Cuenta:</strong> Google Firebase Authentication inicia tu sesión con tu cuenta de Google y te asigna un identificador de usuario (UID). No se usa ningún otro método de acceso.</li>
+        <li><strong>Datos del perfil de Google:</strong> tu nombre visible, tu correo y la dirección (URL) de tu foto de perfil se guardan en una parte de tu partida en la nube que solo tú puedes leer. Tu nombre visible solo aparece en tu propia pantalla; los demás jugadores ven el apodo que elijas.</li>
+        <li><strong>Partida en la nube:</strong> todo tu progreso (economía, coches, taller y decoración, misiones, registro de compras, la lista de jugadores que bloqueaste y el número de carreras con tus amigos) se guarda en Google Cloud Firestore, vinculado a tu cuenta y legible solo por tu cuenta.</li>
+      </ul>
+      <h3>Si usas las funciones con amigos</h3>
+      <p>Las funciones con amigos requieren iniciar sesión con Google y elegir un apodo. Al crear tu apodo:</p>
+      <ul>
+        <li><strong>Se crea tu perfil público de taller:</strong> tu apodo, tu código de amigo, tu nivel, el valor del taller, la distribución del taller (decoración, coches expuestos y su tuning), tu avatar, tu marco, la bandera que elijas, el nombre del taller, tu coche de exposición, tus estadísticas de carreras (victorias, carreras, colección, mejor tiempo) y, si la hay, la pieza del desguace que pediste. Tu dinero, tus gemas y tus cajas no forman parte de él.</li>
+        <li><strong>Foto de perfil:</strong> la foto que elijas de tu galería, la que hagas con la cámara o la foto de tu cuenta de Google se reduce a 192×192 píxeles y se sube a Firestore. Si no eliges una foto propia, tu foto de Google es tu avatar por defecto; puedes desactivarlo con <span class="ui">GOOGLE: NO</span> en <span class="ui">EDITAR PERFIL → FOTO</span> o elegir uno de los avatares predefinidos.</li>
+        <li><strong>Datos de amistad:</strong> tu lista de amigos, las solicitudes de amistad (apodo, código y hora), las piezas del desguace que regalas a tus amigos, las noticias de carreras (apodo, coches y resultado) y los enlaces de invitación (tu identificador, apodo y código; el enlace vale 1 hora).</li>
+        <li><strong>Denuncias y bloqueos:</strong> cuando denuncias a un jugador se guardan el motivo, el identificador y el apodo del jugador denunciado y, si denuncias una foto, una copia de la foto; solo el desarrollador revisa las denuncias. La lista de jugadores que bloqueas se guarda en tu propia partida y al jugador bloqueado no se le avisa.</li>
+      </ul>
+      <h3>Notificaciones de carreras (opcionales)</h3>
+      <p>Solo tú puedes activar las notificaciones (se te pregunta tras tu primera carrera o en <span class="ui">AJUSTES → SONIDO Y NOTIFICACIONES</span>). Al activarlas se guardan el token de notificaciones de tu teléfono (Firebase Cloud Messaging) y tu idioma. La notificación se envía cuando un amigo gana a tu coche e incluye su apodo, como máximo una vez cada 6 horas por amigo. Para limitar la frecuencia, el servidor registra los dos identificadores de jugador y la hora de envío. Al desactivar las notificaciones, el token se borra.</p>
+      <h3>Datos técnicos</h3>
+      <p>Para funcionar, los servicios de Firebase tratan datos técnicos como la dirección IP, el dispositivo y la versión de la aplicación, y un identificador de instalación. Más información: <a href="https://firebase.google.com/support/privacy" rel="noopener">privacidad de Firebase</a>.</p>
+      <h3>Lo que el juego no hace</h3>
+      <p>El juego no usa herramientas de análisis (analytics) ni de informes de fallos y no accede a tu ubicación, tus contactos ni tu micrófono. Nunca vendemos tus datos.</p>
+
+      <h2 id="visibilidad">3. Qué pueden ver otros jugadores</h2>
+      <p>Tu perfil público de taller y tu foto de perfil pueden verlos los jugadores que han iniciado sesión en Auto Yard con Google (cuando visitan tu taller, en su lista de amigos, cuando compiten contra ti y cuando abren tu enlace de invitación). Las solicitudes de amistad y las noticias de carreras solo las ven los dos jugadores implicados. Tu partida en la nube, tu correo y tu nombre visible de Google nunca se muestran a otros jugadores.</p>
+
+      <h2 id="anuncios">4. Anuncios</h2>
+      <p>El juego solo muestra <strong>anuncios con recompensa opcionales</strong>. Un anuncio solo se abre si tocas <span class="ui">VER ANUNCIO</span> (para duplicar el premio de una carrera o acortar una reparación larga); no hay anuncios intersticiales, banners ni anuncios de apertura.</p>
+      <p>Los anuncios los sirve <strong>Google AdMob</strong>. Para mostrarlos y medirlos, Google puede tratar tu identificador de publicidad, tu dirección IP, información del dispositivo y de la aplicación y tus interacciones con los anuncios. En el Espacio Económico Europeo, el Reino Unido y Suiza, al abrir el juego se muestra el formulario de consentimiento de Google; puedes cambiar tu elección más tarde en <span class="ui">AJUSTES → CUENTA Y PRIVACIDAD → OPCIONES DE PRIVACIDAD DE ANUNCIOS</span>. Puedes restablecer o eliminar tu identificador de publicidad en Ajustes → Google → Anuncios de tu teléfono. El juego no usa la configuración de anuncios dirigidos a niños y el contenido publicitario se limita a la clasificación “T” (adolescentes). Más información: <a href="https://policies.google.com/technologies/ads" rel="noopener">cómo usa Google la información de los anuncios</a>.</p>
+
+      <h2 id="compras">5. Compras dentro de la aplicación</h2>
+      <p>Los paquetes de gemas se venden a través de <strong>Google Play</strong>. Tus datos de pago (tarjeta, etc.) nunca nos llegan; el pago lo procesa Google. Para no entregar un paquete dos veces y poder restaurarlo si se pierde, un registro de compras guarda el producto, el número de gemas, la hora y el número de pedido de Google (el token de compra solo hasta que la operación termina). El registro forma parte de tu partida, así que, si has iniciado sesión, también está en la nube. Tu teléfono guarda además resúmenes (hash) unidireccionales de los tokens de compra.</p>
+
+      <h2 id="permisos">6. Permisos, cámara y fotos</h2>
+      <ul>
+        <li><strong>Cámara:</strong> solo se pide cuando tocas <span class="ui">CÁMARA</span> para hacerte una foto de perfil, y solo se usa mientras esa ventana está abierta.</li>
+        <li><strong>Galería:</strong> eliges la foto de perfil con el selector de archivos de Android; el juego solo ve el archivo que eliges y no pide acceso a la galería.</li>
+        <li><strong>Notificaciones:</strong> en Android 13 o superior, solo se piden cuando activas las notificaciones de carreras.</li>
+        <li><strong>Modo foto:</strong> las fotos del juego que haces se guardan en la carpeta Imágenes/Auto Yard de tu teléfono y no se suben a ningún sitio.</li>
+        <li><strong>Internet:</strong> para la partida en la nube, las funciones con amigos, los anuncios y las compras.</li>
+      </ul>
+
+      <h2 id="web">7. Datos tratados en la web</h2>
+      <ul>
+        <li><strong>Registros del servidor:</strong> el Sitio se aloja en Vercel. Por seguridad y funcionamiento, Vercel registra durante poco tiempo datos como la dirección IP, el navegador y la página solicitada.</li>
+        <li><strong>Estadísticas anónimas de visitas:</strong> Vercel Web Analytics solo se carga si lo aceptas en las <a href="{{link:cookies}}">preferencias de cookies</a>. No usa cookies ni te sigue entre sitios.</li>
+        <li><strong>Datos de formularios:</strong> el nombre, el correo y el mensaje que escribes en el formulario de contacto o de borrado de cuenta nos llegan por correo electrónico (servicio de envío: Resend). Tu IP se guarda brevemente en memoria para limitar abusos.</li>
+        <li><strong>Enlaces de invitación:</strong> la página de invitación lee el código del enlace solo en tu navegador y abre el juego; el código no se guarda en el servidor.</li>
+        <li><strong>Preferencias:</strong> tu elección sobre cookies se guarda en el almacenamiento local de tu navegador (localStorage) y no se envía al servidor.</li>
+      </ul>
+
+      <h2 id="finalidades">8. Finalidades y bases jurídicas</h2>
+      <div class="table-wrap">
+        <table>
+          <caption class="visually-hidden">Finalidades del tratamiento y bases jurídicas</caption>
+          <thead><tr><th scope="col">Finalidad</th><th scope="col">Datos</th><th scope="col">Base jurídica</th></tr></thead>
+          <tbody>
+            <tr><td>Inicio de sesión con Google y copia en la nube</td><td>UID, datos del perfil de Google, partida</td><td>Ejecución de un contrato (KVKK art. 5/2-c, RGPD art. 6.1.b); tú activas la función</td></tr>
+            <tr><td>Funciones con amigos y perfil público</td><td>Apodo, código, perfil de taller, foto de perfil, datos de amistad</td><td>Ejecución de un contrato; para la foto, tu elección (puedes cambiarla cuando quieras)</td></tr>
+            <tr><td>Notificaciones de carreras</td><td>Token de notificaciones, idioma, registro de envíos</td><td>Consentimiento (KVKK art. 5/1, RGPD art. 6.1.a); lo retiras desactivando las notificaciones</td></tr>
+            <tr><td>Anuncios con recompensa</td><td>Identificador de publicidad, IP, datos del dispositivo, interacciones</td><td>Consentimiento; mediante el formulario en el EEE, Reino Unido y Suiza, y en otros países al elegir ver un anuncio</td></tr>
+            <tr><td>Entrega de compras</td><td>Producto, número de pedido, hora</td><td>Ejecución de un contrato; obligación legal</td></tr>
+            <tr><td>Seguridad de la comunidad (denuncias, bloqueos)</td><td>Registros de denuncias, lista de bloqueos</td><td>Interés legítimo (KVKK art. 5/2-f, RGPD art. 6.1.f)</td></tr>
+            <tr><td>Responder a solicitudes de soporte y de borrado</td><td>Nombre, correo, mensaje</td><td>Interés legítimo; obligación legal</td></tr>
+            <tr><td>Seguridad del Sitio</td><td>Registros del servidor, IP</td><td>Interés legítimo</td></tr>
+            <tr><td>Estadísticas del Sitio</td><td>Datos anónimos de visitas</td><td>Consentimiento; puedes retirarlo en cualquier momento</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="proveedores">9. Proveedores y transferencias internacionales</h2>
+      <p>Tus datos solo se comparten con los siguientes encargados del tratamiento, y solo para prestar el servicio:</p>
+      <ul>
+        <li><strong>Google LLC / Google Ireland Ltd. (Firebase Authentication, Cloud Firestore, Cloud Functions, Cloud Messaging)</strong>: inicio de sesión, partida en la nube, funciones con amigos, notificaciones</li>
+        <li><strong>Google (AdMob)</strong>: mostrar y medir los anuncios con recompensa</li>
+        <li><strong>Google (Google Play)</strong>: compras dentro de la aplicación</li>
+        <li><strong>Vercel Inc.</strong>: alojamiento de la web y estadísticas anónimas</li>
+        <li><strong>Resend</strong>: envío por correo de los mensajes de los formularios</li>
+      </ul>
+      <p>Los datos del juego en la nube se guardan en centros de datos de Google en Europa; los proveedores también pueden tratar datos en otros países, incluido EE. UU. Las transferencias se basan en las cláusulas contractuales tipo de los proveedores y en las garantías del artículo 9 de la KVKK. Salvo obligación legal, tus datos no se comparten con nadie más.</p>
+
+      <h2 id="conservacion">10. Conservación</h2>
+      <ul>
+        <li>Partida en la nube, datos del perfil de Google, perfil público de taller, código de amigo, lista de amigos y la última foto de perfil que subiste: hasta que borres tu cuenta.</li>
+        <li>Solicitudes de amistad: hasta que se aceptan, se rechazan, se retiran o se borra la cuenta.</li>
+        <li>Enlaces de invitación: valen 1 hora; el registro se elimina cuando creas una invitación nueva o borras tu cuenta.</li>
+        <li>Piezas regaladas: hasta que el destinatario las recoge. Noticias de carreras: hasta que se cierran o las sustituye la siguiente carrera del mismo amigo.</li>
+        <li>Token de notificaciones: hasta que desactivas las notificaciones o borras tu cuenta. Registro de envíos de notificaciones y denuncias: el tiempo necesario para limitar la frecuencia, revisarlas y prevenir abusos.</li>
+        <li>Datos en tu teléfono (partida, fotos, caché): hasta que desinstales la aplicación o borres sus datos.</li>
+        <li>Correos de soporte: hasta 1 año después de cerrar la solicitud. Registros de solicitudes de borrado: 3 años como prueba (solo correo y fecha).</li>
+        <li>Datos de anuncios y compras: según los plazos de Google. Registros del servidor web: según los plazos de Vercel (normalmente unos días).</li>
+      </ul>
+
+      <h2 id="borrado">11. Borrar tu cuenta</h2>
+      <p>Puedes borrar tu cuenta de forma definitiva en el juego desde <span class="ui">PERFIL → CUENTA → BORRAR MI CUENTA</span> (<span class="ui">AJUSTES → CUENTA Y PRIVACIDAD → CUENTA DE GOOGLE</span> lleva al mismo sitio). Se borran tu partida en la nube, tu perfil público de taller, tu foto de perfil, tu código de amigo, tus amistades (en ambos lados), las solicitudes, las noticias de carreras, los regalos, las invitaciones, el token de notificaciones y tu cuenta de acceso con Google. Si no puedes abrir el juego, usa el formulario de la página <a href="{{link:delete}}">Eliminar cuenta y datos</a>.</p>
+      <p>Tras el borrado pueden quedar: las denuncias hechas por ti o sobre ti, tu apodo en regalos que tus amigos aún no han recogido, los registros de envío de notificaciones, los registros de compras y anuncios que conserva Google y los archivos de tu teléfono (se eliminan al desinstalar la aplicación).</p>
+
+      <h2 id="seguridad">12. Seguridad</h2>
+      <p>Los datos en la nube están protegidos por las reglas de seguridad de Firebase: cada jugador solo puede leer y escribir su propia partida, y los perfiles públicos solo están abiertos a jugadores que han iniciado sesión. El Sitio y las conexiones del juego con el servidor usan solo HTTPS. Ningún sistema es perfecto; si hubiera una brecha, avisaríamos según exigen la KVKK y el RGPD.</p>
+
+      <h2 id="menores">13. Menores</h2>
+      <p>El juego no está dirigido a menores de {{minAge}} años y no recogemos a sabiendas datos personales de menores de {{minAge}} años. Si detectas que lo hemos hecho, <a href="{{link:contact}}">escríbenos</a> y los borraremos de inmediato.</p>
+
+      <h2 id="derechos">14. Tus derechos</h2>
+      <p>Según el artículo 11 de la KVKK (y el RGPD cuando se aplica) tienes derecho a saber si tratamos tus datos, a pedir información y una copia, a la rectificación, a la supresión, a oponerte al tratamiento, a retirar tu consentimiento, a saber a qué terceros se han comunicado tus datos, a la portabilidad y a reclamar una indemnización por daños.</p>
+      <p>Para cualquier solicitud, elige "Solicitud de datos personales" en el <a href="{{link:contact}}">formulario de contacto</a> o escribe a <a href="mailto:{{contactEmail}}">{{contactEmail}}</a>. Respondemos gratis en un plazo máximo de 30 días. Si no estás conforme con nuestra respuesta, puedes reclamar ante la Autoridad turca de Protección de Datos Personales (o, en la UE, ante la autoridad de protección de datos de tu país).</p>
+
+      <h2 id="cambios">15. Cambios y contacto</h2>
+      <p>Podemos actualizar esta política; anunciaremos los cambios importantes en el juego o en esta página. La fecha de arriba indica la última actualización. Preguntas: <a href="mailto:{{contactEmail}}">{{contactEmail}}</a>. La versión turca de esta política es la original; si hay diferencias entre versiones, prevalece el texto turco.</p>
+    </article>
+  </div>
+</div>

@@ -1,0 +1,151 @@
+<!--meta {"updated": "2026-10-17", "title": "Gizlilik Politikası", "description": "Auto Yard oyununun ve web sitesinin hangi kişisel verileri neden işlediği, kimlerin görebildiği, ne kadar saklandığı ve haklarını nasıl kullanacağın."} -->
+<section class="page-hero rays">
+  <div class="wrap narrow">
+    <p class="kicker">Yasal</p>
+    <h1>Gizlilik Politikası</h1>
+    <p class="meta">{{t.updated}}: <time datetime="{{updated}}">{{updatedText}}</time></p>
+  </div>
+</section>
+<div class="page-body">
+  <div class="wrap narrow">
+    <article class="card prose">
+      <nav class="toc" aria-labelledby="toc-baslik">
+        <h2 class="toc-title" id="toc-baslik">İçindekiler</h2>
+        <ol>
+          <li><a href="#sorumlu">Veri sorumlusu</a></li>
+          <li><a href="#oyun">Oyunda işlenen veriler</a></li>
+          <li><a href="#gorunurluk">Diğer oyuncuların görebildikleri</a></li>
+          <li><a href="#reklam">Reklamlar</a></li>
+          <li><a href="#satin-alma">Uygulama içi satın almalar</a></li>
+          <li><a href="#izinler">İzinler, kamera ve fotoğraflar</a></li>
+          <li><a href="#site">Web sitesinde işlenen veriler</a></li>
+          <li><a href="#amac">Amaçlar ve hukuki sebepler</a></li>
+          <li><a href="#paylasim">Hizmet sağlayıcılar ve yurt dışı aktarım</a></li>
+          <li><a href="#sure">Saklama süreleri</a></li>
+          <li><a href="#silme">Hesabını silmek</a></li>
+          <li><a href="#guvenlik">Güvenlik</a></li>
+          <li><a href="#cocuklar">Çocuklar</a></li>
+          <li><a href="#haklar">Hakların</a></li>
+          <li><a href="#degisiklik">Değişiklikler ve iletişim</a></li>
+        </ol>
+      </nav>
+
+      <p>Bu politika, Android oyunu <strong>{{name}}</strong> (“Oyun”, paket adı <code>{{androidPackage}}</code>) ile bu web sitesinin (“Site”) kişisel verilerini nasıl işlediğini açıklar. 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) ve uygulanabildiği ölçüde AB Genel Veri Koruma Tüzüğü (GDPR) esas alınmıştır.</p>
+      <div class="callout"><p><strong>Kısaca:</strong> Misafir olarak oynarsan ilerlemen yalnızca telefonunda kalır. Google ile giriş yaparsan kaydın buluta yedeklenir. Arkadaş özelliklerini açarsan takma adın, garajın ve profil fotoğrafın diğer oyunculara görünür. Reklamlar yalnızca sen istersen açılır. Verilerin satılmaz.</p></div>
+
+      <h2 id="sorumlu">1. Veri sorumlusu</h2>
+      <p>Veri sorumlusu {{developerName}} ({{country}}). Gizlilikle ilgili tüm sorular için: <a href="mailto:{{contactEmail}}">{{contactEmail}}</a> veya <a href="{{link:contact}}">iletişim formu</a>.</p>
+
+      <h2 id="oyun">2. Oyunda işlenen veriler</h2>
+      <h3>Misafir olarak oynarken</h3>
+      <p>Misafir oyun için hesap açılmaz ve Firebase oturumu başlatılmaz. Oyun kaydın (para, araçlar, garaj, görevler, ayarlar), satın alma defterin ve günlük reklam sayaçların yalnızca telefonunda saklanır. Telefonunun ekran kartı, bellek ve işlemci bilgisi yalnızca cihazında grafik ayarını seçmek için kullanılır, hiçbir yere gönderilmez. Misafirken de ödüllü reklam izleyebilir ve satın alma yapabilirsin; bunlar için <a href="#reklam">4.</a> ve <a href="#satin-alma">5.</a> bölümlere bak.</p>
+      <h3>Google hesabınla giriş yaptığında</h3>
+      <ul>
+        <li><strong>Hesap:</strong> Google Firebase Authentication, Google hesabınla oturum açar ve sana bir kullanıcı kimliği (UID) verir. Başka giriş yöntemi kullanılmaz.</li>
+        <li><strong>Google profil bilgileri:</strong> görünen adın, e-posta adresin ve profil fotoğrafının adresi (URL), bulut kaydında yalnızca senin okuyabildiğin bir alanda tutulur. Görünen adın yalnızca kendi ekranında gösterilir; diğer oyuncular seçtiğin takma adı görür.</li>
+        <li><strong>Bulut kaydı:</strong> oyun ilerlemenin tamamı (ekonomi, araçlar, garaj ve dekor, görevler, satın alma defteri, engellediğin oyuncuların listesi, arkadaşlarınla yarış sayıların) Google Cloud Firestore'da hesabına bağlı olarak saklanır ve yalnızca senin hesabın tarafından okunabilir.</li>
+      </ul>
+      <h3>Arkadaş özelliklerini kullandığında</h3>
+      <p>Arkadaş özellikleri Google ile giriş ve bir takma ad seçmeni gerektirir. Takma adını oluşturduğunda:</p>
+      <ul>
+        <li><strong>Herkese açık garaj profilin</strong> oluşturulur: takma adın, arkadaş kodun, seviyen, garaj değerin, garajının düzeni (dekor, sergilediğin araçlar ve modifiyeleri), avatarın, çerçeven, seçtiğin bayrak, garaj adın, vitrin aracın, yarış istatistiklerin (galibiyet, yarış sayısı, koleksiyon, en iyi süre) ve varsa hurdalıktan istediğin parça. Para, gem ve kasa bilgilerin bu profile girmez.</li>
+        <li><strong>Profil fotoğrafı:</strong> galeriden seçtiğin, kamerayla çektiğin ya da Google hesabının fotoğrafı, 192×192 piksele küçültülüp Firestore'a yüklenir. Kendi fotoğrafını seçmediysen Google fotoğrafın varsayılan olarak avatarın olur; bunu <span class="ui">PROFİLİ DÜZENLE → FOTOĞRAF</span> bölümündeki <span class="ui">GOOGLE: KAPALI</span> seçeneğiyle kapatabilir ya da hazır avatarlardan birini seçebilirsin.</li>
+        <li><strong>Arkadaşlık verileri:</strong> arkadaş listen, arkadaşlık istekleri (takma ad, kod ve zaman), arkadaşlarına gönderdiğin hurdalık parçası hediyeleri, yarış haberleri (takma ad, yarışılan araçlar ve sonuç) ve davet linkleri (senin kimliğin, takma adın ve kodun; link 1 saat geçerlidir).</li>
+        <li><strong>Şikâyet ve engelleme:</strong> bir oyuncuyu şikâyet ettiğinde şikâyet nedeni, şikâyet edilen oyuncunun kimliği, takma adı ve fotoğraf şikâyetinde fotoğrafın bir kopyası kaydedilir; şikâyetleri yalnızca geliştirici inceler. Engellediğin oyuncuların listesi kendi kaydında tutulur, engellenen kişiye bir şey bildirilmez.</li>
+      </ul>
+      <h3>Yarış bildirimleri (isteğe bağlı)</h3>
+      <p>Bildirimleri yalnızca sen açarsın (ilk yarıştan sonra sorulur ya da <span class="ui">AYARLAR → SES VE BİLDİRİMLER</span>). Açtığında telefonunun bildirim anahtarı (Firebase Cloud Messaging) ve dilin saklanır. Bildirim, bir arkadaşın aracını yendiğinde gönderilir ve onun takma adını içerir; aynı arkadaştan en fazla 6 saatte bir gelir. Bildirim sıklığını sınırlamak için sunucu iki oyuncu kimliğini ve gönderim zamanını kaydeder. Bildirimleri kapattığında anahtar silinir.</p>
+      <h3>Teknik veriler</h3>
+      <p>Firebase hizmetleri çalışabilmek için IP adresi, cihaz ve uygulama sürümü gibi teknik verileri ve uygulama kurulum kimliğini işler. Ayrıntılar: <a href="https://firebase.google.com/support/privacy" rel="noopener">Firebase gizlilik bilgileri</a>.</p>
+      <h3>Oyunda olmayanlar</h3>
+      <p>Oyun analiz (analytics) ya da hata raporlama aracı kullanmaz; konumuna, kişilerine veya mikrofonuna erişmez. Verilerin satılmaz.</p>
+
+      <h2 id="gorunurluk">3. Diğer oyuncuların görebildikleri</h2>
+      <p>Herkese açık garaj profilin ve profil fotoğrafın, Auto Yard'a Google ile giriş yapmış oyuncular tarafından görülebilir (garajını ziyaret ettiklerinde, arkadaş listelerinde, sana karşı yarışırken ve davet linkini açtıklarında). Arkadaşlık isteklerini ve yarış haberlerini yalnızca ilgili iki oyuncu görür. Bulut kaydın, e-posta adresin ve Google'daki görünen adın hiçbir oyuncuya gösterilmez.</p>
+
+      <h2 id="reklam">4. Reklamlar</h2>
+      <p>Oyun yalnızca <strong>isteğe bağlı ödüllü reklamlar</strong> gösterir. Reklam, sadece sen <span class="ui">REKLAM İZLE</span>'ye dokunursan açılır (yarış ödülünü ikiye katlamak ya da uzun bir tamiri kısaltmak için); araya giren, banner veya açılış reklamı yoktur.</p>
+      <p>Reklamlar <strong>Google AdMob</strong> ile gösterilir. Google, reklam gösterebilmek ve ölçebilmek için reklam kimliğini (Advertising ID), IP adresini, cihaz ve uygulama bilgilerini ve reklamla etkileşimlerini işleyebilir. Avrupa Ekonomik Alanı, Birleşik Krallık ve İsviçre'de oyun açılırken Google'ın onay penceresi gösterilir; tercihini sonradan <span class="ui">AYARLAR → HESAP VE GİZLİLİK → REKLAM GİZLİLİK SEÇENEKLERİ</span>'nden değiştirebilirsin. Reklam kimliğini telefonunun Ayarlar → Google → Reklamlar bölümünden sıfırlayabilir veya silebilirsin. Oyun çocuklara yönelik reklam ayarıyla çalışmaz ve reklam içeriği en fazla "T" (genç) düzeyiyle sınırlıdır. Ayrıntılar: <a href="https://policies.google.com/technologies/ads" rel="noopener">Google reklam teknolojileri</a>.</p>
+
+      <h2 id="satin-alma">5. Uygulama içi satın almalar</h2>
+      <p>Gem paketleri <strong>Google Play</strong> üzerinden satılır. Ödeme bilgilerin (kart vb.) bize hiç ulaşmaz; ödemeyi Google işler. Bir paketi iki kez vermemek ve kaybolursa geri yükleyebilmek için satın alma defterinde ürün, gem miktarı, zaman ve Google sipariş numarası tutulur (satın alma anahtarı ise yalnızca işlem tamamlanana kadar). Defter oyun kaydının parçasıdır: giriş yaptıysan bulut kaydında da bulunur. Telefonunda ayrıca satın alma anahtarlarının tek yönlü özetleri (hash) saklanır.</p>
+
+      <h2 id="izinler">6. İzinler, kamera ve fotoğraflar</h2>
+      <ul>
+        <li><strong>Kamera:</strong> yalnızca profil fotoğrafı çekmek için <span class="ui">KAMERA</span>'ya dokunduğunda istenir ve yalnızca o pencere açıkken kullanılır.</li>
+        <li><strong>Galeri:</strong> profil fotoğrafını Android'in kendi dosya seçicisiyle seçersin; oyun yalnızca seçtiğin dosyayı görür, galeri izni istenmez.</li>
+        <li><strong>Bildirimler:</strong> Android 13 ve üzerinde, yalnızca yarış bildirimlerini açtığında istenir.</li>
+        <li><strong>Fotoğraf modu:</strong> çektiğin oyun fotoğrafları telefonunun Resimler/Auto Yard klasörüne kaydedilir, hiçbir yere yüklenmez.</li>
+        <li><strong>İnternet:</strong> bulut kaydı, arkadaş özellikleri, reklamlar ve satın almalar için.</li>
+      </ul>
+
+      <h2 id="site">7. Web sitesinde işlenen veriler</h2>
+      <ul>
+        <li><strong>Sunucu kayıtları:</strong> Site Vercel üzerinde barındırılır. Vercel, güvenlik ve işletim amacıyla IP adresi, tarayıcı bilgisi ve istenen sayfa gibi verileri kısa süreli kaydeder.</li>
+        <li><strong>Anonim ziyaret istatistikleri:</strong> yalnızca <a href="{{link:cookies}}">çerez tercihinde</a> onay verirsen Vercel Web Analytics yüklenir. Çerez kullanmaz, seni siteler arasında takip etmez.</li>
+        <li><strong>Form verileri:</strong> iletişim veya hesap silme formuna yazdığın ad, e-posta ve mesaj bize e-posta olarak iletilir (e-posta gönderim hizmeti: Resend). Kötüye kullanımı sınırlamak için IP adresin kısa süre bellekte tutulur.</li>
+        <li><strong>Davet linkleri:</strong> davet sayfası linkteki kodu yalnızca tarayıcında okuyup oyunu açar; kod sunucuya kaydedilmez.</li>
+        <li><strong>Tercih kaydı:</strong> çerez tercihin tarayıcının yerel depolamasında (localStorage) tutulur, sunucuya gönderilmez.</li>
+      </ul>
+
+      <h2 id="amac">8. Amaçlar ve hukuki sebepler</h2>
+      <div class="table-wrap">
+        <table>
+          <caption class="visually-hidden">İşleme amaçları ve hukuki sebepler</caption>
+          <thead><tr><th scope="col">Amaç</th><th scope="col">Veriler</th><th scope="col">Hukuki sebep</th></tr></thead>
+          <tbody>
+            <tr><td>Google ile giriş ve bulut yedeği</td><td>UID, Google profil bilgileri, oyun kaydı</td><td>Sözleşmenin ifası (KVKK m.5/2-c); özelliği sen başlatırsın</td></tr>
+            <tr><td>Arkadaş özellikleri ve herkese açık profil</td><td>Takma ad, kod, garaj profili, profil fotoğrafı, arkadaşlık verileri</td><td>Sözleşmenin ifası; fotoğraf için senin seçimin (istediğin an değiştirebilirsin)</td></tr>
+            <tr><td>Yarış bildirimleri</td><td>Bildirim anahtarı, dil, gönderim kaydı</td><td>Açık rıza (m.5/1); bildirimleri kapatarak geri alırsın</td></tr>
+            <tr><td>Ödüllü reklamlar</td><td>Reklam kimliği, IP, cihaz bilgisi, etkileşimler</td><td>Açık rıza; AEA/BK/İsviçre'de onay penceresiyle, diğer ülkelerde reklamı izlemeyi seçerek</td></tr>
+            <tr><td>Satın almaların teslimi</td><td>Ürün, sipariş numarası, zaman</td><td>Sözleşmenin ifası; hukuki yükümlülük (m.5/2-ç)</td></tr>
+            <tr><td>Topluluğun güvenliği (şikâyet, engelleme)</td><td>Şikâyet kayıtları, engelleme listesi</td><td>Meşru menfaat (m.5/2-f)</td></tr>
+            <tr><td>Destek ve hesap silme taleplerini yanıtlamak</td><td>Ad, e-posta, mesaj</td><td>Meşru menfaat; hukuki yükümlülük</td></tr>
+            <tr><td>Site güvenliği</td><td>Sunucu kayıtları, IP</td><td>Meşru menfaat</td></tr>
+            <tr><td>Site istatistikleri</td><td>Anonim ziyaret verisi</td><td>Açık rıza; her an geri alınabilir</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="paylasim">9. Hizmet sağlayıcılar ve yurt dışı aktarım</h2>
+      <p>Verilerin yalnızca hizmeti sağlamak için aşağıdaki veri işleyenlerle paylaşılır:</p>
+      <ul>
+        <li><strong>Google LLC / Google Ireland Ltd. (Firebase Authentication, Cloud Firestore, Cloud Functions, Cloud Messaging)</strong>: giriş, bulut kaydı, arkadaş özellikleri, bildirimler</li>
+        <li><strong>Google (AdMob)</strong>: ödüllü reklamların gösterimi ve ölçümü</li>
+        <li><strong>Google (Google Play)</strong>: uygulama içi satın almalar</li>
+        <li><strong>Vercel Inc.</strong>: site barındırma ve anonim istatistik</li>
+        <li><strong>Resend</strong>: form mesajlarının e-postayla iletilmesi</li>
+      </ul>
+      <p>Oyunun bulut verileri Google'ın Avrupa'daki veri merkezlerinde tutulur; hizmet sağlayıcılar verileri ABD dahil başka ülkelerde de işleyebilir. Aktarım, sağlayıcıların standart sözleşme hükümlerine ve KVKK'nın 9. maddesindeki güvencelere dayanılarak yapılır. Kanunen zorunlu haller dışında verilerin başka kimseyle paylaşılmaz.</p>
+
+      <h2 id="sure">10. Saklama süreleri</h2>
+      <ul>
+        <li>Bulut kaydı, Google profil bilgileri, herkese açık garaj profili, arkadaş kodu, arkadaş listesi ve yüklediğin son profil fotoğrafı: hesabını silene kadar.</li>
+        <li>Arkadaşlık istekleri: kabul edilene, reddedilene, geri alınana ya da hesap silinene kadar.</li>
+        <li>Davet linkleri: 1 saat geçerlidir; kayıt, yeni bir davet oluşturduğunda ya da hesabını sildiğinde kaldırılır.</li>
+        <li>Hediye parçalar: alıcı toplayana kadar. Yarış haberleri: kapatılana ya da aynı arkadaşın sonraki yarışı gelene kadar.</li>
+        <li>Bildirim anahtarı: bildirimleri kapatana ya da hesabını silene kadar. Bildirim gönderim kaydı ve şikâyet kayıtları: sıklık sınırı, inceleme ve kötüye kullanımın önlenmesi için gerektiği sürece.</li>
+        <li>Telefondaki veriler (oyun kaydı, fotoğraflar, önbellek): uygulamayı kaldırana veya verilerini temizleyene kadar.</li>
+        <li>Destek yazışmaları: talebin kapanmasından itibaren en fazla 1 yıl. Hesap silme talebi kaydı: ispat amacıyla 3 yıl (yalnızca e-posta ve talep tarihi).</li>
+        <li>Reklam ve satın alma verileri: Google'ın kendi saklama süreleri boyunca. Site sunucu kayıtları: Vercel'in saklama süreleri boyunca (genellikle birkaç gün).</li>
+      </ul>
+
+      <h2 id="silme">11. Hesabını silmek</h2>
+      <p>Hesabını oyunda <span class="ui">PROFİL → HESAP → HESABIMI SİL</span> ile kalıcı olarak silebilirsin (<span class="ui">AYARLAR → HESAP VE GİZLİLİK → GOOGLE HESABI</span> da aynı yere çıkar). Bu işlem bulut kaydını, herkese açık garaj profilini, profil fotoğrafını, arkadaş kodunu, arkadaşlıkları (iki taraftan), istekleri, yarış haberlerini, hediyeleri, davetleri, bildirim anahtarını ve Google hesabı bağlantını siler. Oyuna erişemiyorsan <a href="{{link:delete}}">Hesap ve Veri Silme</a> sayfasındaki formu kullan.</p>
+      <p>Silme işleminden sonra şunlar kalabilir: hakkında yapılmış ya da senin yaptığın şikâyet kayıtları, arkadaşlarının henüz toplamadığı hediyelerdeki takma adın, bildirim gönderim kayıtları, Google'ın tuttuğu satın alma ve reklam kayıtları ve telefonundaki dosyalar (uygulamayı kaldırınca silinir).</p>
+
+      <h2 id="guvenlik">12. Güvenlik</h2>
+      <p>Bulut verileri Firebase güvenlik kurallarıyla korunur: her oyuncu yalnızca kendi kaydını okuyup yazabilir; herkese açık profiller yalnızca giriş yapmış oyunculara açıktır. Site ve oyunun sunucu bağlantıları yalnızca HTTPS üzerinden çalışır. Hiçbir sistem kusursuz değildir; bir ihlal olursa KVKK'nın ve GDPR'ın öngördüğü şekilde bildirim yaparız.</p>
+
+      <h2 id="cocuklar">13. Çocuklar</h2>
+      <p>Oyun {{minAge}} yaşın altındaki çocuklara yönelik değildir ve bilerek {{minAge}} yaş altından kişisel veri toplamayız. Böyle bir veri topladığımızı fark edersen <a href="{{link:contact}}">bize yaz</a>, hemen sileriz.</p>
+
+      <h2 id="haklar">14. Hakların</h2>
+      <p>KVKK'nın 11. maddesi (ve uygulanıyorsa GDPR) kapsamında; verilerinin işlenip işlenmediğini öğrenme, bilgi ve kopya isteme, düzeltme, silme, işlemeye itiraz etme, rızanı geri alma, verinin aktarıldığı üçüncü kişileri öğrenme, verilerini taşınabilir biçimde alma ve zararın giderilmesini talep etme hakların vardır.</p>
+      <p>Taleplerin için <a href="{{link:contact}}">iletişim formunda</a> "Kişisel veri talebi" konusunu seç ya da <a href="mailto:{{contactEmail}}">{{contactEmail}}</a> adresine yaz. Taleplerini en geç 30 gün içinde ücretsiz yanıtlarız. Yanıtımızdan memnun kalmazsan Kişisel Verileri Koruma Kurumu'na (AB'deysen kendi ülkenin veri koruma otoritesine) şikâyette bulunabilirsin.</p>
+
+      <h2 id="degisiklik">15. Değişiklikler ve iletişim</h2>
+      <p>Bu politikayı güncelleyebiliriz; önemli değişiklikleri oyun içinde veya bu sayfada duyururuz. Sayfanın başındaki tarih son güncellemeyi gösterir. Sorular için: <a href="mailto:{{contactEmail}}">{{contactEmail}}</a>.</p>
+    </article>
+  </div>
+</div>

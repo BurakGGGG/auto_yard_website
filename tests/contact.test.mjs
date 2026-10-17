@@ -124,3 +124,19 @@ test("bozuk JSON 400 döner", async () => {
   const res = await handle(r, { env: ENV, send: fakeSend().send });
   assert.equal(res.status, 400);
 });
+
+test("İngilizce form: İngilizce yanıt ve /en/thanks yönlendirmesi", async () => {
+  const { send } = fakeSend();
+  const res = await handle(req({ ...contact, lang: "en" }), { env: ENV, send });
+  assert.match((await res.json()).message, /within 3 working days/);
+  const plain = await handle(req({ ...contact, lang: "en" }, { json: false, accept: "text/html" }), { env: ENV, send });
+  assert.equal(plain.headers.get("location"), "/en/thanks");
+});
+
+test("İspanyolca hata metni; bilinmeyen dil Türkçeye düşer", async () => {
+  const { send } = fakeSend();
+  const res = await handle(req({ type: "iletisim", email: "x", lang: "es" }), { env: ENV, send });
+  assert.match((await res.json()).message, /Faltan campos/);
+  const { errors } = validate({ ...contact, email: "x", lang: "de" });
+  assert.equal(errors.email, "Geçerli bir e-posta adresi yaz.");
+});

@@ -1,21 +1,25 @@
 <footer class="site-footer">
+    <div class="hazard" aria-hidden="true"></div>
     <div class="wrap footer-inner">
       <div class="footer-brand">
-        <a class="brand" href="/">{{> logo}}<span>{{name}}</span></a>
-        <p>{{tagline}}</p>
+        <a class="brand" href="{{link:home}}" aria-label="{{t.brand_home}}">{{> logo}}</a>
+        <p>{{t.tagline}}</p>
+        <nav class="footer-langs" aria-label="{{t.footer_langs}}">
+          <ul><!--LANGS_FULL--></ul>
+        </nav>
       </div>
-      <nav aria-label="Yasal ve destek">
+      <nav aria-label="{{t.footer_nav}}">
         <ul class="footer-links">
-          <li><a href="/gizlilik" {{current:/gizlilik}}>Gizlilik Politikası</a></li>
-          <li><a href="/kullanim-sartlari" {{current:/kullanim-sartlari}}>Kullanım Şartları</a></li>
-          <li><a href="/cerez-politikasi" {{current:/cerez-politikasi}}>Çerez Politikası</a></li>
-          <li><a href="/hesap-silme" {{current:/hesap-silme}}>Hesap ve Veri Silme</a></li>
-          <li><a href="/iletisim" {{current:/iletisim}}>İletişim</a></li>
-          <li><button type="button" class="link-button" data-consent-open>Çerez tercihleri</button></li>
+          <li><a href="{{link:privacy}}" {{current:privacy}}>{{t.privacy}}</a></li>
+          <li><a href="{{link:terms}}" {{current:terms}}>{{t.terms}}</a></li>
+          <li><a href="{{link:cookies}}" {{current:cookies}}>{{t.cookies}}</a></li>
+          <li><a href="{{link:delete}}" {{current:delete}}>{{t.delete}}</a></li>
+          <li><a href="{{link:contact}}" {{current:contact}}>{{t.contact}}</a></li>
+          <li><button type="button" class="link-button" data-consent-open>{{t.cookie_prefs}}</button></li>
         </ul>
       </nav>
     </div>
     <div class="wrap footer-bottom">
-      <p>© {{year}} {{developerName}}. Google Play, Google LLC'nin ticari markasıdır.</p>
+      <p>© {{year}} {{developerName}}. {{t.trademark}}</p>
     </div>
   </footer>

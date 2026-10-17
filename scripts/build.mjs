@@ -1,14 +1,17 @@
-// Statik site derleyicisi (bağımlılık yok).
-// src/pages/*.html → public/<ad>.html, src/layout.html ile sarılır.
+// Statik site derleyicisi (bağımlılık yok). Üç dil: Türkçe kökte, İngilizce /en, İspanyolca /es altında.
+//   src/pages/<dil>/<anahtar>.html → src/i18n/<dil>.json "paths"[anahtar] adresi (ör. tr/privacy → /gizlilik,
+//   en/privacy → /en/privacy). src/pages/404.html dilsizdir (üç dilde kısa metin).
+//   Çıktı: "/" → public/index.html, "/en" → public/en/index.html, "/en/privacy" → public/en/privacy.html.
 //
 // Sayfa başı meta yorumu:   <!--meta {"updated": "YYYY-AA-GG", "title": "...", "description": "..."} -->
 //   updated: sayfa içeriği anlamlı değiştiğinde elle güncelle → sitemap lastmod ve "Son güncelleme" buradan.
-//   noindex: true → sitemap/llms.txt dışında kalır, canonical ve yapısal veri basılmaz.
+//   noindex: true → sitemap/llms.txt dışında kalır, canonical, hreflang ve yapısal veri basılmaz.
 // Şablon etiketleri:
-//   {{anahtar}}              site.config.json değeri (ör. {{contactEmail}})
+//   {{anahtar}} / {{t.anahtar}}  site.config.json değeri / o dilin metni (src/i18n/<dil>.json "t")
 //   {{> parca}}              src/partials/parca.html
 //   {{asset:/assets/x.css}}  içerik özetli adres (/assets/x.css?v=ab12cd34) → uzun önbellek güvenli
-//   {{current:/yol}}         bu sayfa /yol ise aria-current="page"
+//   {{link:anahtar}}         bu dilde o sayfanın adresi (ör. {{link:privacy}} → /en/privacy)
+//   {{current:anahtar}}      bu sayfa o anahtarsa aria-current="page"
 import { createHash } from "node:crypto";
 import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join, dirname } from "node:path";
@@ -22,9 +25,9 @@ const config = JSON.parse(readFileSync(join(root, "site.config.json"), "utf8"));
 config.siteUrl = resolveSiteUrl();
 config.year = String(new Date().getFullYear());
 config.playUrl = `https://play.google.com/store/apps/details?id=${config.androidPackage}`;
-config.shareUrlEncoded = encodeURIComponent(`${config.siteUrl}/`);
-config.shareTitleEncoded = encodeURIComponent(`${config.name} — ${config.tagline}`);
-config.shareTextEncoded = encodeURIComponent(`${config.name} — ${config.tagline} ${config.siteUrl}/`);
+
+const LANGS = config.languages; // ["tr", "en", "es"] — ilki varsayılan (kök, x-default)
+const i18n = Object.fromEntries(LANGS.map((l) => [l, JSON.parse(readFileSync(join(src, "i18n", `${l}.json`), "utf8"))]));
 
 function resolveSiteUrl() {
   if (process.env.SITE_URL) return process.env.SITE_URL.replace(/\/$/, "");
@@ -46,12 +49,26 @@ function assetUrl(path) {
   return `${path}?v=${hashCache.get(path)}`;
 }
 
+// site.css içindeki /assets/ adresleri de özetli olsun (yazı tipleri sayfada aynı adresle önceden yüklenir)
+{
+  const cssPath = join(out, "assets", "site.css");
+  const css = readFileSync(cssPath, "utf8").replace(/url\("(\/assets\/[^"?]+)"\)/g, (_, p) => `url("${assetUrl(p)}")`);
+  writeFileSync(cssPath, css);
+}
+
 const partials = Object.fromEntries(
   readdirSync(join(src, "partials")).map((f) => [f.replace(/\.html$/, ""), readFileSync(join(src, "partials", f), "utf8")]),
 );
 partials.cta = config.playStoreLive ? partials["cta-live"] : partials["cta-soon"];
-if (!config.playStoreLive) {
-  partials["cta-small"] = `<a class="btn btn-primary btn-small" href="/iletisim?konu=haber" data-cta="header">Çıkınca haber al</a>\n`;
+partials["cta-small"] = config.playStoreLive ? partials["cta-small-live"] : partials["cta-small-soon"];
+
+function lookup(ctx, key) {
+  let v = ctx;
+  for (const part of key.split(".")) {
+    if (v === null || typeof v !== "object" || !(part in v)) throw new Error(`Bilinmeyen anahtar {{${key}}} (${ctx.lang}:${ctx.key})`);
+    v = v[part];
+  }
+  return v;
 }
 
 function render(text, ctx, depth = 0) {
@@ -62,61 +79,119 @@ function render(text, ctx, depth = 0) {
       return render(partials[name], ctx, depth + 1);
     })
     .replace(/\{\{asset:([^}]+)\}\}/g, (_, p) => assetUrl(p.trim()))
-    .replace(/\{\{current:([^}]+)\}\}/g, (_, p) => (p.trim() === ctx.path ? 'aria-current="page"' : ""))
-    .replace(/\{\{(\w+)\}\}/g, (_, key) => {
-      if (!(key in ctx)) throw new Error(`Bilinmeyen anahtar {{${key}}} (${ctx.path})`);
-      return escapeHtml(String(ctx[key]));
-    });
+    .replace(/\{\{link:([\w-]+)\}\}/g, (_, key) => {
+      const p = i18n[ctx.lang].paths[key];
+      if (!p) throw new Error(`Bilinmeyen sayfa {{link:${key}}} (${ctx.lang})`);
+      return p;
+    })
+    .replace(/\{\{current:([\w-]+)\}\}/g, (_, key) => (key === ctx.key ? 'aria-current="page"' : ""))
+    .replace(/\{\{([\w.]+)\}\}/g, (_, key) => escapeHtml(String(lookup(ctx, key))));
 }
 
 function escapeHtml(s) {
   return s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 }
 
-const layout = readFileSync(join(src, "layout.html"), "utf8");
-const pages = []; // {path, file, title, description, lastmod} — yalnızca indekslenebilir sayfalar
-let built = 0;
-let faq = [];
-for (const file of readdirSync(join(src, "pages")).sort()) {
-  const raw = readFileSync(join(src, "pages", file), "utf8");
+// "/" → index.html, "/en" → en/index.html, "/en/privacy" → en/privacy.html, "/gizlilik" → gizlilik.html
+function outFileFor(path) {
+  if (path === "/") return "index.html";
+  const clean = path.replace(/^\//, "");
+  return LANGS.includes(clean) ? `${clean}/index.html` : `${clean}.html`;
+}
+
+const urlOf = (path) => config.siteUrl + (path === "/" ? "/" : path);
+
+// --- Sayfaları topla (önce hepsini oku: hreflang için hangi dilde hangi sayfa var bilinmeli)
+const sources = [];
+for (const lang of LANGS) {
+  for (const file of readdirSync(join(src, "pages", lang)).sort()) {
+    const key = file.replace(/\.html$/, "");
+    const path = i18n[lang].paths[key];
+    if (!path) throw new Error(`${lang}/${file}: i18n/${lang}.json "paths" içinde "${key}" yok`);
+    sources.push({ lang, key, path, file: join(src, "pages", lang, file), name: `${lang}/${file}` });
+  }
+}
+sources.push({ lang: LANGS[0], key: "404", path: "/404", file: join(src, "pages", "404.html"), name: "404.html", outFile: "404.html" });
+
+const sourceOf = new Map();
+for (const s of sources) {
+  const raw = readFileSync(s.file, "utf8");
   const m = raw.match(/^<!--meta\s+(\{[\s\S]*?\})\s*-->\s*/);
-  if (!m) throw new Error(`${file}: meta yorumu eksik`);
-  const meta = JSON.parse(m[1]);
-  const slug = file.replace(/\.html$/, "");
-  const path = slug === "index" ? "/" : `/${slug}`;
+  if (!m) throw new Error(`${s.name}: meta yorumu eksik`);
+  s.meta = JSON.parse(m[1]);
+  s.body = raw.slice(m[0].length);
+  if (!s.meta.noindex && !/^\d{4}-\d{2}-\d{2}$/.test(s.meta.updated || "")) throw new Error(`${s.name}: meta "updated" (YYYY-AA-GG) eksik`);
+  sourceOf.set(`${s.lang}:${s.key}`, s);
+}
+
+const layout = readFileSync(join(src, "layout.html"), "utf8");
+const pages = []; // indekslenen sayfalar: {lang, key, path, url, title, description, lastmod}
+const faqs = {}; // dil → [{id, q, a}]
+let built = 0;
+
+for (const s of sources) {
+  const { lang, key, path, meta } = s;
+  const L = i18n[lang];
+  const indexed = (l) => sourceOf.has(`${l}:${key}`) && !sourceOf.get(`${l}:${key}`).meta.noindex;
+  const alternates = meta.noindex ? [] : LANGS.filter(indexed).map((l) => ({ lang: l, path: i18n[l].paths[key] }));
+  const home = urlOf(L.paths.home);
   const ctx = {
     ...config,
+    t: L.t,
+    lang,
+    locale: L.locale,
+    key,
     path,
     title: meta.title,
-    fullTitle: meta.title === config.name ? `${config.name} — ${config.tagline}` : `${meta.title} | ${config.name}`,
+    fullTitle: meta.title === config.name ? `${config.name} — ${L.t.tagline}` : `${meta.title} | ${config.name}`,
     description: meta.description,
-    canonical: config.siteUrl + (path === "/" ? "/" : path),
+    canonical: urlOf(path),
     robots: meta.noindex ? "noindex, follow" : "index, follow",
     updated: meta.updated || "",
-    updatedText: meta.updated ? new Date(`${meta.updated}T12:00:00Z`).toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }) : "",
+    updatedText: meta.updated ? new Date(`${meta.updated}T12:00:00Z`).toLocaleDateString(L.dateLocale, { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }) : "",
+    homeUrl: home,
+    ogImage: `${config.siteUrl}${assetUrl(`/assets/img/og-${lang}.jpg`)}`,
+    shareUrlEncoded: encodeURIComponent(home),
+    shareTitleEncoded: encodeURIComponent(`${config.name} — ${L.t.tagline}`),
+    shareTextEncoded: encodeURIComponent(`${config.name} — ${L.t.tagline} ${home}`),
   };
-  if (!meta.noindex && !/^\d{4}-\d{2}-\d{2}$/.test(meta.updated || "")) throw new Error(`${file}: meta "updated" (YYYY-AA-GG) eksik`);
-  const body = render(raw.slice(m[0].length), ctx);
-  if (path === "/") faq = extractFaq(body);
+  const body = render(s.body, ctx);
+  if (key === "home") faqs[lang] = extractFaq(body);
 
-  // Canonical ve yapısal veri yalnızca indekslenen sayfalarda (404/teşekkür sayfası kendini canonical göstermesin).
+  // Dil seçici: bu sayfanın diğer dillerdeki karşılığı (yoksa o dilin ana sayfası). Başlıkta kısa (TR/EN/ES),
+  // alt bilgide tam adla (Türkçe/English/Español).
+  const langLinks = (full) => LANGS.map((l) => {
+    const target = sourceOf.has(`${l}:${key}`) && i18n[l].paths[key] ? i18n[l].paths[key] : i18n[l].paths.home;
+    const current = l === lang ? ' aria-current="true"' : "";
+    const text = full ? escapeHtml(i18n[l].label) : `<span aria-hidden="true">${i18n[l].short}</span><span class="visually-hidden">${escapeHtml(i18n[l].label)}</span>`;
+    return `<li><a href="${target}" hreflang="${l}" lang="${l}"${current}>${text}</a></li>`;
+  }).join("");
+
+  // Canonical, hreflang ve yapısal veri yalnızca indekslenen sayfalarda (404/teşekkür sayfası kendini canonical göstermesin).
   const head = meta.noindex
     ? ""
     : `  <link rel="canonical" href="${ctx.canonical}">\n` +
-      `  <script type="application/ld+json">${jsonLd(structuredData(ctx, path === "/" ? faq : null))}</script>\n`;
+      alternates.map((a) => `  <link rel="alternate" hreflang="${a.lang}" href="${urlOf(a.path)}">\n`).join("") +
+      (alternates.length > 1 ? `  <link rel="alternate" hreflang="x-default" href="${urlOf(i18n[LANGS[0]].paths[key])}">\n` : "") +
+      alternates.filter((a) => a.lang !== lang).map((a) => `  <meta property="og:locale:alternate" content="${i18n[a.lang].locale}">\n`).join("") +
+      `  <script type="application/ld+json">${jsonLd(structuredData(ctx, key === "home" ? faqs[lang] : null))}</script>\n`;
+  // site.js metinleri (çalıştırılmayan veri bloğu; CSP script-src 'self' ile uyumlu)
+  const strings = `  <script type="application/json" id="site-i18n">${jsonLd(L.script)}</script>\n`;
   const html = render(layout, ctx)
-    .replace("<!--HEAD-->\n", () => head)
+    .replace("<!--HEAD-->\n", () => head + strings)
+    .replaceAll("<!--LANGS-->", () => langLinks(false))
+    .replaceAll("<!--LANGS_FULL-->", () => langLinks(true))
     .replace("<!--CONTENT-->", () => body);
-  writeFileSync(join(out, `${slug}.html`), html);
+  const file = s.outFile || outFileFor(path);
+  mkdirSync(dirname(join(out, file)), { recursive: true });
+  writeFileSync(join(out, file), html);
   built++;
-  if (!meta.noindex) {
-    pages.push({ path, url: ctx.canonical, title: meta.title, description: meta.description, lastmod: meta.updated });
-  }
+  if (!meta.noindex) pages.push({ lang, key, path, url: ctx.canonical, title: meta.title, description: meta.description, lastmod: meta.updated });
 }
 
 function extractFaq(body) {
   const items = [];
-  for (const d of body.matchAll(/<details id="([^"]+)">\s*<summary>([\s\S]*?)<\/summary>([\s\S]*?)<\/details>/g)) {
+  for (const d of body.matchAll(/<details id="([^"]+)"[^>]*>\s*<summary>([\s\S]*?)<\/summary>([\s\S]*?)<\/details>/g)) {
     items.push({ id: d[1], q: textOf(d[2]), a: textOf(d[3]) });
   }
   return items;
@@ -131,23 +206,23 @@ function textOf(fragment) {
 }
 
 function jsonLd(obj) {
-  // </script> kaçışı: < karakteri JSON içinde \u003c olarak yazılır.
+  // </script> kaçışı: < karakteri JSON içinde < olarak yazılır.
   return JSON.stringify(obj).replace(/</g, "\\u003c");
 }
 
 function structuredData(ctx, faqItems) {
   const site = `${config.siteUrl}/`;
-  const website = { "@type": "WebSite", "@id": `${site}#website`, url: site, name: config.name, inLanguage: config.lang };
+  const website = { "@type": "WebSite", "@id": `${site}#website`, url: site, name: config.name, inLanguage: LANGS };
   if (!faqItems) {
     return {
       "@context": "https://schema.org",
       "@graph": [
         website,
-        { "@type": "WebPage", "@id": ctx.canonical, url: ctx.canonical, name: ctx.title, description: ctx.description, inLanguage: config.lang, isPartOf: { "@id": `${site}#website` } },
+        { "@type": "WebPage", "@id": ctx.canonical, url: ctx.canonical, name: ctx.title, description: ctx.description, inLanguage: ctx.lang, isPartOf: { "@id": `${site}#website` } },
         {
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: config.name, item: site },
+            { "@type": "ListItem", position: 1, name: config.name, item: ctx.homeUrl },
             { "@type": "ListItem", position: 2, name: ctx.title, item: ctx.canonical },
           ],
         },
@@ -159,12 +234,12 @@ function structuredData(ctx, faqItems) {
     "@id": `${site}#game`,
     name: config.name,
     description: ctx.description,
-    url: site,
-    image: `${config.siteUrl}${assetUrl("/assets/img/og.jpg")}`,
-    inLanguage: config.lang,
+    url: ctx.homeUrl,
+    image: ctx.ogImage,
+    inLanguage: LANGS,
     operatingSystem: "Android",
     applicationCategory: "GameApplication",
-    genre: ["Simülasyon", "Yarış"],
+    genre: ctx.t.ld_genres.split(", "),
     gamePlatform: "Android",
     author: { "@type": "Person", name: config.developerName },
     offers: { "@type": "Offer", price: "0", priceCurrency: "TRY" },
@@ -180,17 +255,19 @@ function structuredData(ctx, faqItems) {
       game,
       {
         "@type": "FAQPage",
-        "@id": `${site}#sss`,
+        "@id": `${ctx.homeUrl}#${ctx.t.faq_id}`,
+        inLanguage: ctx.lang,
         mainEntity: faqItems.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
       },
     ],
   };
 }
 
+const order = (p) => LANGS.indexOf(p.lang) * 100 + (p.key === "home" ? 0 : 1);
 writeFileSync(
   join(out, "sitemap.xml"),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
-    [...pages].sort((a, b) => (a.path === "/" ? -1 : b.path === "/" ? 1 : 0)).map((p) => `  <url><loc>${p.url}</loc>${p.lastmod ? `<lastmod>${p.lastmod}</lastmod>` : ""}</url>`).join("\n") +
+    [...pages].sort((a, b) => order(a) - order(b)).map((p) => `  <url><loc>${p.url}</loc>${p.lastmod ? `<lastmod>${p.lastmod}</lastmod>` : ""}</url>`).join("\n") +
     `\n</urlset>\n`,
 );
 writeFileSync(
@@ -200,54 +277,37 @@ writeFileSync(
 );
 writeFileSync(join(out, "llms.txt"), llmsTxt());
 
-// https://llmstxt.org — yapay zekâ asistanlarının site hakkında doğru bilgi vermesi için özet.
+// https://llmstxt.org — yapay zekâ asistanlarının site hakkında doğru bilgi vermesi için özet (İngilizce + her dilin sayfaları).
 function llmsTxt() {
-  const byPath = Object.fromEntries(pages.map((p) => [p.path, p]));
-  const link = (path) => `- [${byPath[path].title}](${byPath[path].url}): ${byPath[path].description}`;
-  const legal = ["/gizlilik", "/kullanim-sartlari", "/cerez-politikasi", "/hesap-silme"];
-  const status = config.playStoreLive
-    ? `Google Play: ${config.playUrl}`
-    : `Durum: henüz yayınlanmadı, yakında Google Play'de (paket adı ${config.androidPackage}).`;
-  return [
-    `# ${config.name}`,
-    "",
-    `> ${config.name}, Android için ücretsiz bir garaj, araba tamiri ve drag yarışı oyunudur. ${config.tagline}`,
-    "",
-    `- Platform: Android. Dil: Türkçe. ${status}`,
-    "- Fiyat: ücretsiz. Reklam yok, gerçek parayla satın alma yok.",
-    "- Hesap: misafir olarak oynanabilir; Google ile giriş yapılırsa ilerleme buluta (Firebase) yedeklenir.",
-    `- Geliştirici: ${config.developerName}. İletişim: ${config.contactEmail}`,
-    "",
-    "## Sayfalar",
-    "",
-    link("/"),
-    link("/iletisim"),
-    "",
-    "## Yasal",
-    "",
-    ...legal.map(link),
-    "",
-    "## Sık sorulan sorular",
-    "",
-    ...faq.map((f) => `- [${f.q}](${config.siteUrl}/#${f.id}): ${f.a}`),
-    "",
-    "## Optional",
-    "",
-    `- [Site haritası](${config.siteUrl}/sitemap.xml): tüm herkese açık sayfaların listesi`,
-    "",
-  ].join("\n");
+  const en = i18n.en.llms;
+  const status = config.playStoreLive ? `${en.status_live} ${config.playUrl}` : `${en.status_soon} (${config.androidPackage}).`;
+  const lines = [`# ${config.name}`, "", `> ${en.summary}`, "", ...en.facts.map((f) => `- ${f}`), `- ${status}`, `- Developer: ${config.developerName}. Contact: ${config.contactEmail}`, ""];
+  for (const lang of LANGS) {
+    const L = i18n[lang];
+    lines.push(`## ${L.llms.heading}`, "");
+    for (const p of pages.filter((x) => x.lang === lang)) lines.push(`- [${p.title}](${p.url}): ${p.description}`);
+    lines.push("");
+    if (faqs[lang]?.length) {
+      lines.push(`### ${L.llms.faq}`, "");
+      for (const f of faqs[lang]) lines.push(`- [${f.q}](${urlOf(L.paths.home)}#${f.id}): ${f.a}`);
+      lines.push("");
+    }
+  }
+  lines.push("## Optional", "", `- [Sitemap](${config.siteUrl}/sitemap.xml): all public pages`, "");
+  return lines.join("\n");
 }
+
 writeFileSync(
   join(out, "site.webmanifest"),
   JSON.stringify(
     {
       name: config.name,
       short_name: config.name,
-      lang: config.lang,
+      lang: LANGS[0],
       start_url: "/",
       display: "browser",
-      background_color: "#f6efe2",
-      theme_color: "#f0a92b",
+      background_color: "#0e215e",
+      theme_color: "#142e7a",
       icons: [
         { src: assetUrl("/assets/icon-192.png"), sizes: "192x192", type: "image/png" },
         { src: assetUrl("/assets/icon-512.png"), sizes: "512x512", type: "image/png" },
@@ -261,4 +321,4 @@ writeFileSync(
 
 const placeholders = Object.entries(config).filter(([, v]) => typeof v === "string" && v.includes("DEGISTIR"));
 for (const [k] of placeholders) console.warn(`⚠ site.config.json → "${k}" hâlâ DEGISTIR yer tutucusu içeriyor`);
-console.log(`✓ ${built} sayfa derlendi → public/ (siteUrl: ${config.siteUrl})`);
+console.log(`✓ ${built} sayfa derlendi (${LANGS.join(", ")}) → public/ (siteUrl: ${config.siteUrl})`);

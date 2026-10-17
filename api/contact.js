@@ -11,6 +11,44 @@ const TOPICS = {
   diger: "Diğer",
 };
 const SCOPES = { hesap: "Hesap ve tüm veriler", "bulut-kaydi": "Yalnızca bulut kaydı" };
+
+// Ziyaretçiye dönen metinler formun dilinde (gizli "lang" alanı); geliştiriciye giden e-posta Türkçe kalır.
+const LANGS = ["tr", "en", "es"];
+const THANKS = { tr: "/tesekkurler", en: "/en/thanks", es: "/es/gracias" };
+const HOME = { tr: "/", en: "/en", es: "/es" };
+const M = {
+  tr: {
+    email: "Geçerli bir e-posta adresi yaz.", consent: "Onay kutusu işaretlenmeli.", name: "Adını yaz.", topic: "Bir konu seç.",
+    message: "Mesaj en az 10 karakter olmalı.", scope: "Ne silineceğini seç.", unreadable: "İstek okunamadı.",
+    received: "Mesajın alındı. Teşekkürler!", rate: "Çok fazla deneme yaptın. Lütfen 10 dakika sonra tekrar dene.",
+    invalid: "Formda eksik veya hatalı alanlar var:", down: "Form şu anda geçici olarak çalışmıyor.",
+    failed: "Mesaj şu anda iletilemedi. Lütfen biraz sonra tekrar dene.",
+    deletion: "Talebin alındı. Doğrulama için e-posta adresine yazacağız; işlem en geç 30 gün içinde tamamlanır.",
+    contact: "Mesajın alındı. Genellikle 3 iş günü içinde yanıt veririz.",
+    errorTitle: "Gönderilemedi", errorBack: "Tarayıcının geri tuşuyla forma dönüp tekrar deneyebilirsin.", home: "Ana sayfa",
+  },
+  en: {
+    email: "Enter a valid email address.", consent: "Please tick the confirmation box.", name: "Enter your name.", topic: "Choose a topic.",
+    message: "The message must be at least 10 characters.", scope: "Choose what should be deleted.", unreadable: "The request couldn't be read.",
+    received: "Message received. Thank you!", rate: "Too many attempts. Please try again in 10 minutes.",
+    invalid: "Some fields are missing or invalid:", down: "The form is temporarily unavailable.",
+    failed: "Your message couldn't be delivered right now. Please try again in a moment.",
+    deletion: "Request received. We'll write to your email address to confirm; it will be completed within 30 days at the latest.",
+    contact: "Message received. We usually reply within 3 working days.",
+    errorTitle: "Couldn't send", errorBack: "Use your browser's back button to return to the form and try again.", home: "Home page",
+  },
+  es: {
+    email: "Escribe un correo válido.", consent: "Marca la casilla de confirmación.", name: "Escribe tu nombre.", topic: "Elige un asunto.",
+    message: "El mensaje debe tener al menos 10 caracteres.", scope: "Elige qué quieres borrar.", unreadable: "No se pudo leer la solicitud.",
+    received: "Mensaje recibido. ¡Gracias!", rate: "Demasiados intentos. Vuelve a intentarlo dentro de 10 minutos.",
+    invalid: "Faltan campos o no son válidos:", down: "El formulario no está disponible en este momento.",
+    failed: "No se pudo enviar el mensaje ahora. Inténtalo de nuevo en un momento.",
+    deletion: "Solicitud recibida. Te escribiremos al correo para confirmarla; se completará en un plazo máximo de 30 días.",
+    contact: "Mensaje recibido. Normalmente respondemos en un plazo de 3 días laborables.",
+    errorTitle: "No se pudo enviar", errorBack: "Usa el botón Atrás del navegador para volver al formulario e inténtalo de nuevo.", home: "Inicio",
+  },
+};
+const langOf = (input) => (LANGS.includes(input?.lang) ? input.lang : "tr");
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const MAX_BODY_BYTES = 20_000;
 
@@ -31,25 +69,27 @@ const str = (v, max) => (typeof v === "string" ? v.trim().slice(0, max) : "");
 
 export function validate(input) {
   const errors = {};
+  const t = M[langOf(input)];
   const type = input.type === "hesap-silme" ? "hesap-silme" : "iletisim";
   const data = {
     type,
     name: str(input.name, 100),
     email: str(input.email, 200),
     message: str(input.message, 5000),
+    lang: langOf(input),
     topic: str(input.topic, 20),
     scope: str(input.scope, 20),
     consent: input.consent === "yes" || input.consent === true,
   };
 
-  if (!EMAIL_RE.test(data.email)) errors.email = "Geçerli bir e-posta adresi yaz.";
-  if (!data.consent) errors.consent = "Onay kutusu işaretlenmeli.";
+  if (!EMAIL_RE.test(data.email)) errors.email = t.email;
+  if (!data.consent) errors.consent = t.consent;
   if (type === "iletisim") {
-    if (!data.name) errors.name = "Adını yaz.";
-    if (!(data.topic in TOPICS)) errors.topic = "Bir konu seç.";
-    if (data.message.length < 10) errors.message = "Mesaj en az 10 karakter olmalı.";
+    if (!data.name) errors.name = t.name;
+    if (!(data.topic in TOPICS)) errors.topic = t.topic;
+    if (data.message.length < 10) errors.message = t.message;
   } else if (!(data.scope in SCOPES)) {
-    errors.scope = "Ne silineceğini seç.";
+    errors.scope = t.scope;
   }
   return { data, errors };
 }
@@ -63,16 +103,20 @@ export function buildEmail(d) {
         `Google e-postası: ${d.email}`,
         `Oyundaki ad: ${d.name || "-"}`,
         `Not: ${d.message || "-"}`,
+        `Site dili: ${d.lang}`,
         "",
-        "Yapılacaklar: 1) Bu adrese doğrulama e-postası gönder. 2) Yanıt gelince Firebase Auth kullanıcısını",
-        "ve Firestore players/{uid} dokümanını sil. 3) Tamamlandığını bildir (30 gün sınırı).",
+        "Yapılacaklar: 1) Bu adrese doğrulama e-postası gönder. 2) Yanıt gelince Firebase konsolunda e-postadan uid'i bul.",
+        "3) Yalnızca bulut kaydı: players/{uid} sil. Hesap ve tüm veriler: ayrıca garages/g_{uid}, avatars/a_{uid},",
+        "   codes/{kodu}, push/p_{uid}, users/{uid}/(friends|inbox|outbox|races|gifts)/* ve karşı taraftaki eşleri",
+        "   (users/{x}/friends/f_{uid}, users/{x}/inbox/r_{uid}, users/{x}/outbox/o_{uid}, users/{x}/races/e_{uid}),",
+        "   uid'li invites/* ve Firebase Auth kullanıcısı. 4) Tamamlandığını bildir (30 gün sınırı).",
         `Talep zamanı: ${new Date().toISOString()}`,
       ].join("\n"),
     };
   }
   return {
     subject: `[Auto Yard] ${TOPICS[d.topic]} — ${d.name}`,
-    text: [`Ad: ${d.name}`, `E-posta: ${d.email}`, `Konu: ${TOPICS[d.topic]}`, "", d.message].join("\n"),
+    text: [`Ad: ${d.name}`, `E-posta: ${d.email}`, `Konu: ${TOPICS[d.topic]}`, `Site dili: ${d.lang}`, "", d.message].join("\n"),
   };
 }
 
@@ -84,7 +128,7 @@ async function readBody(request) {
   return Object.fromEntries(new URLSearchParams(raw));
 }
 
-function reply(request, status, payload) {
+function reply(request, status, payload, lang = "tr") {
   const wantsJson = (request.headers.get("accept") || "").includes("application/json");
   if (wantsJson) {
     return new Response(JSON.stringify(payload), {
@@ -93,8 +137,9 @@ function reply(request, status, payload) {
     });
   }
   // JS kapalı tarayıcı: başarıda teşekkür sayfasına, hatada basit bir sayfaya.
-  if (payload.ok) return new Response(null, { status: 303, headers: { location: "/tesekkurler" } });
-  const html = `<!doctype html><html lang="tr"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Gönderilemedi</title><body style="font-family:system-ui;max-width:640px;margin:3rem auto;padding:0 16px"><h1>Gönderilemedi</h1><p>${escapeHtml(payload.message)}</p><p>Tarayıcının geri tuşuyla forma dönüp tekrar deneyebilirsin. <a href="/">Ana sayfa</a></p></body></html>`;
+  if (payload.ok) return new Response(null, { status: 303, headers: { location: THANKS[lang] } });
+  const t = M[lang];
+  const html = `<!doctype html><html lang="${lang}"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${t.errorTitle}</title><body style="font-family:system-ui;max-width:640px;margin:3rem auto;padding:0 16px"><h1>${t.errorTitle}</h1><p>${escapeHtml(payload.message)}</p><p>${t.errorBack} <a href="${HOME[lang]}">${t.home}</a></p></body></html>`;
   return new Response(html, { status, headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store" } });
 }
 
@@ -114,24 +159,26 @@ export async function handle(request, { env, send }) {
   try {
     input = await readBody(request);
   } catch {
-    return reply(request, 400, { ok: false, message: "İstek okunamadı." });
+    return reply(request, 400, { ok: false, message: M.tr.unreadable });
   }
+  const lang = langOf(input);
+  const t = M[lang];
 
   // Bal tuzağı dolu → bot. Başarılı gibi yanıt ver, hiçbir şey gönderme.
-  if (str(input.website, 200)) return reply(request, 200, { ok: true, message: "Mesajın alındı. Teşekkürler!" });
+  if (str(input.website, 200)) return reply(request, 200, { ok: true, message: t.received }, lang);
 
   if (rateLimited(ip)) {
-    return reply(request, 429, { ok: false, message: "Çok fazla deneme yaptın. Lütfen 10 dakika sonra tekrar dene." });
+    return reply(request, 429, { ok: false, message: t.rate }, lang);
   }
 
   const { data, errors } = validate(input);
   if (Object.keys(errors).length) {
-    return reply(request, 422, { ok: false, message: "Formda eksik veya hatalı alanlar var: " + Object.values(errors).join(" "), errors });
+    return reply(request, 422, { ok: false, message: `${t.invalid} ` + Object.values(errors).join(" "), errors }, lang);
   }
 
   if (!env.RESEND_API_KEY || !env.CONTACT_TO_EMAIL) {
     console.error("contact: RESEND_API_KEY / CONTACT_TO_EMAIL tanımlı değil");
-    return reply(request, 503, { ok: false, message: "Form şu anda geçici olarak çalışmıyor." });
+    return reply(request, 503, { ok: false, message: t.down }, lang);
   }
 
   const { subject, text } = buildEmail(data);
@@ -149,16 +196,13 @@ export async function handle(request, { env, send }) {
     });
     if (!res.ok) {
       console.error("contact: Resend hata", res.status, await res.text().catch(() => ""));
-      return reply(request, 502, { ok: false, message: "Mesaj şu anda iletilemedi. Lütfen biraz sonra tekrar dene." });
+      return reply(request, 502, { ok: false, message: t.failed }, lang);
     }
   } catch (err) {
     console.error("contact: Resend erişilemedi", err);
-    return reply(request, 502, { ok: false, message: "Mesaj şu anda iletilemedi. Lütfen biraz sonra tekrar dene." });
+    return reply(request, 502, { ok: false, message: t.failed }, lang);
   }
 
-  const message =
-    data.type === "hesap-silme"
-      ? "Talebin alındı. Doğrulama için e-posta adresine yazacağız; işlem en geç 30 gün içinde tamamlanır."
-      : "Mesajın alındı. Genellikle 3 iş günü içinde yanıt veririz.";
-  return reply(request, 200, { ok: true, message });
+  const message = data.type === "hesap-silme" ? t.deletion : t.contact;
+  return reply(request, 200, { ok: true, message }, lang);
 }

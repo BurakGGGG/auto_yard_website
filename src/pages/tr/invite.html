@@ -1,0 +1,20 @@
+<!--meta {"title": "Arkadaş daveti", "description": "Bir arkadaşın seni Auto Yard'da arkadaşı olmaya çağırıyor.", "noindex": true} -->
+<section class="page-hero rays center">
+  <div class="wrap narrow">
+    <img class="hero-logo" src="{{asset:/assets/img/brand/logo-960.webp}}" width="960" height="198" alt="" aria-hidden="true">
+    <h1>Arkadaşın seni çağırıyor!</h1>
+    <p class="lead">Bir arkadaşın seni Auto Yard'da arkadaşı olmaya davet etti. Oyunda açınca profilini görür, tek dokunuşla eklersin.</p>
+    <div class="cta-group">
+      <a class="btn btn-primary btn-large" id="davet-ac" href="{{link:home}}" data-package="{{androidPackage}}" data-cta="davet">Oyunda aç</a>
+      <p class="cta-note" id="davet-not" data-invalid="Bu davet linki geçersiz görünüyor. Arkadaşından yeni bir link iste." data-desktop="Bu linki Auto Yard'ın yüklü olduğu Android telefonunda aç. Davet linki 1 saat geçerlidir." data-missing="Auto Yard bu telefonda yüklü değil gibi görünüyor. Önce oyunu indir, sonra linke yeniden dokun.">Davet linki 1 saat geçerlidir.</p>
+    </div>
+  </div>
+</section>
+<section class="page-body center">
+  <div class="wrap narrow">
+    <h2>Oyun yüklü değil mi?</h2>
+    <p>Önce Auto Yard'ı indir, sonra davet linkine yeniden dokun.</p>
+    {{> cta}}
+  </div>
+</section>
+<script src="{{asset:/assets/davet.js}}" defer></script>

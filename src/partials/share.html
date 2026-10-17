@@ -1,11 +1,11 @@
-<div class="share" data-share data-share-title="{{name}}" data-share-text="{{tagline}}" data-share-url="{{siteUrl}}/">
-      <p class="share-title" id="share-title">Arkadaşlarınla paylaş</p>
+<div class="share" data-share data-share-title="{{name}}" data-share-text="{{t.tagline}}" data-share-url="{{homeUrl}}">
+      <p class="share-title" id="share-title">{{t.share_title}}</p>
       <ul class="share-list" aria-labelledby="share-title">
-        <li><button type="button" class="btn btn-ghost" data-share-native hidden>Paylaş…</button></li>
-        <li><a class="btn btn-ghost" href="https://wa.me/?text={{shareTextEncoded}}" rel="noopener">WhatsApp<span class="visually-hidden"> ile paylaş</span></a></li>
-        <li><a class="btn btn-ghost" href="https://x.com/intent/post?text={{shareTitleEncoded}}&amp;url={{shareUrlEncoded}}" rel="noopener">X<span class="visually-hidden"> (Twitter) üzerinde paylaş</span></a></li>
-        <li><a class="btn btn-ghost" href="https://t.me/share/url?url={{shareUrlEncoded}}&amp;text={{shareTitleEncoded}}" rel="noopener">Telegram<span class="visually-hidden"> ile paylaş</span></a></li>
-        <li><button type="button" class="btn btn-ghost" data-share-copy>Linki kopyala</button></li>
+        <li><button type="button" class="btn btn-ghost" data-share-native hidden>{{t.share_native}}</button></li>
+        <li><a class="btn btn-ghost" href="https://wa.me/?text={{shareTextEncoded}}" rel="noopener" aria-label="{{t.share_whatsapp}}">WhatsApp</a></li>
+        <li><a class="btn btn-ghost" href="https://x.com/intent/post?text={{shareTitleEncoded}}&amp;url={{shareUrlEncoded}}" rel="noopener" aria-label="{{t.share_x}}">X</a></li>
+        <li><a class="btn btn-ghost" href="https://t.me/share/url?url={{shareUrlEncoded}}&amp;text={{shareTitleEncoded}}" rel="noopener" aria-label="{{t.share_telegram}}">Telegram</a></li>
+        <li><button type="button" class="btn btn-ghost" data-share-copy>{{t.share_copy}}</button></li>
       </ul>
       <p class="share-status" role="status" aria-live="polite" data-share-status></p>
     </div>

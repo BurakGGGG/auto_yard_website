@@ -2,19 +2,28 @@
 //   node scripts/check.mjs             iç linkler, erişilebilirlik, SEO, boyut bütçesi
 //   node scripts/check.mjs --external  ayrıca dış linkleri HEAD/GET ile dener
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
-import { join, dirname } from "node:path";
+import { join, dirname, relative, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const out = join(root, "public");
-const PAGE_BUDGET_KB = 350; // sayfa başına HTML + CSS + JS + görseller (sıkıştırmasız)
+const PAGE_BUDGET_KB = 350; // sayfa başına HTML + CSS + JS + hemen yüklenen görseller (sıkıştırmasız)
+const LAZY_BUDGET_KB = 1600; // ayrıca loading="lazy" görseller (kaydırınca iner) dahil toplam
+const config = JSON.parse(readFileSync(join(root, "site.config.json"), "utf8"));
+const LANGS = config.languages;
 
 const errors = [];
 const warnings = [];
 const err = (page, msg) => errors.push(`${page}: ${msg}`);
 const warn = (page, msg) => warnings.push(`${page}: ${msg}`);
 
-const pages = readdirSync(out).filter((f) => f.endsWith(".html"));
+// Sayfalar alt klasörlerde de olabilir (en/privacy.html); anahtar public/'e göre yol, "/" ayraçlı.
+function walk(dir) {
+  return readdirSync(dir, { withFileTypes: true }).flatMap((d) =>
+    d.isDirectory() ? (d.name === "assets" ? [] : walk(join(dir, d.name))) : d.name.endsWith(".html") ? [relative(out, join(dir, d.name)).split(sep).join("/")] : [],
+  );
+}
+const pages = walk(out);
 const html = Object.fromEntries(pages.map((f) => [f, readFileSync(join(out, f), "utf8")]));
 
 const attr = (tag, name) => {
@@ -29,8 +38,14 @@ function pageFileFor(pathname) {
   if (pathname === "/") return "index.html";
   const clean = pathname.replace(/^\//, "").replace(/\/$/, "");
   if (html[`${clean}.html`] !== undefined) return `${clean}.html`;
+  if (html[`${clean}/index.html`] !== undefined) return `${clean}/index.html`;
   return null;
 }
+// index.html → "/", en/index.html → "/en", en/privacy.html → "/en/privacy"
+const pathOf = (page) => (page === "index.html" ? "/" : `/${page.replace(/(\/index)?\.html$/, "")}`);
+// Sayfanın dili klasöründen: en/… → en, es/… → es, kökteki sayfalar → varsayılan dil
+const langOf = (page) => (LANGS.includes(page.split("/")[0]) && page.includes("/") ? page.split("/")[0] : LANGS[0]);
+const hreflangs = new Map(); // sayfa → {dil: url}
 
 const external = new Set();
 const noindexPages = new Set();
@@ -43,7 +58,9 @@ const titles = new Map();
 
 for (const [page, src] of Object.entries(html)) {
   // --- Temel SEO / yapı
-  if (!/<html[^>]*\slang="[a-z]{2}/i.test(src)) err(page, "<html lang> eksik");
+  const htmlLang = (src.match(/<html[^>]*\slang="([a-z]{2})/i) || [])[1];
+  if (!htmlLang) err(page, "<html lang> eksik");
+  else if (page !== "404.html" && htmlLang !== langOf(page)) err(page, `<html lang="${htmlLang}"> klasörün diliyle (${langOf(page)}) aynı değil`);
   if (!/<meta name="viewport"[^>]*width=device-width/i.test(src)) err(page, "viewport meta eksik");
   const metaTag = (key, val) => attr(tags(src, "meta").find((t) => attr(t, key) === val) || "", "content");
   const noindex = /<meta name="robots" content="noindex/.test(src);
@@ -75,11 +92,15 @@ for (const [page, src] of Object.entries(html)) {
     const c = canonicals[0];
     if (!/^https:\/\/[^/]+\//.test(c)) err(page, `canonical mutlak https olmalı: ${c}`);
     if (/[?#]/.test(c)) err(page, `canonical sorgu/çapa içermemeli: ${c}`);
-    const expectedPath = page === "index.html" ? "/" : `/${page.replace(/\.html$/, "")}`;
-    if (new URL(c).pathname !== expectedPath) err(page, `canonical yanlış sayfayı gösteriyor: ${c}`);
+    if (new URL(c).pathname !== pathOf(page)) err(page, `canonical yanlış sayfayı gösteriyor: ${c}`);
     canonicalOf.set(page, c);
     if (metaTag("property", "og:url") !== c) err(page, "og:url canonical ile aynı değil");
   }
+
+  // Çok dil: hreflang bağlantıları (karşılıklılık aşağıda site genelinde denetlenir)
+  const alts = Object.fromEntries([...src.matchAll(/<link rel="alternate" hreflang="([\w-]+)" href="([^"]+)"/g)].map((m) => [m[1], m[2]]));
+  if (noindex && Object.keys(alts).length) err(page, "noindex sayfada hreflang olmamalı");
+  if (!noindex) hreflangs.set(page, alts);
 
   // 18 — sosyal paylaşım (Open Graph + X/Twitter kartı)
   for (const [key, val] of [["property", "og:title"], ["property", "og:description"], ["property", "og:image"], ["property", "og:image:alt"], ["property", "og:url"], ["property", "og:type"], ["property", "og:site_name"], ["name", "twitter:card"], ["name", "twitter:image"]]) {
@@ -102,10 +123,10 @@ for (const [page, src] of Object.entries(html)) {
   for (const m of src.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
     try {
       const data = JSON.parse(m[1]);
-      if (page === "index.html") {
+      if ((data["@graph"] || []).some((n) => n["@type"] === "FAQPage") || /<details id="(sss|faq|preguntas)-/.test(src)) {
         // 16 — SSS: sayfadaki her soru yapısal veride de olmalı
         const faqLd = (data["@graph"] || []).find((n) => n["@type"] === "FAQPage");
-        const onPage = (src.match(/<details id="sss-/g) || []).length;
+        const onPage = (src.match(/<details id="(sss|faq|preguntas)-/g) || []).length;
         if (!faqLd) err(page, "FAQPage yapısal verisi yok");
         else if (faqLd.mainEntity.length !== onPage) err(page, `SSS: sayfada ${onPage} soru, yapısal veride ${faqLd.mainEntity.length}`);
         if (onPage < 5) err(page, `SSS'de yalnızca ${onPage} soru var (en az 5)`);
@@ -164,11 +185,30 @@ for (const [page, src] of Object.entries(html)) {
 
   // --- Linkler ve kaynaklar
   const pageIds = ids(src);
+  // Yalnızca loading="lazy" görsellerde geçen kaynaklar (aynı dosya bir yerde hemen yükleniyorsa hemen sayılır)
+  const lazyRefs = new Set();
+  const eagerRefs = new Set();
+  for (const img of tags(src, "img")) {
+    const bucket = attr(img, "loading") === "lazy" ? lazyRefs : eagerRefs;
+    if (attr(img, "src")) bucket.add(attr(img, "src"));
+    for (const part of (attr(img, "srcset") || "").split(",")) if (part.trim()) bucket.add(part.trim().split(/\s+/)[0]);
+  }
+  for (const r of eagerRefs) lazyRefs.delete(r);
+  // srcset'li görselde tarayıcı tek aday indirir: ağırlığa yalnızca en büyüğü (en kötü durum) sayılır
+  const notWeighed = new Set();
+  for (const img of tags(src, "img")) {
+    const set = (attr(img, "srcset") || "").split(",").map((x) => x.trim().split(/\s+/)).filter((x) => x[0]);
+    if (set.length < 2) continue;
+    const largest = set.reduce((a, b) => (parseInt(b[1]) > parseInt(a[1]) ? b : a))[0];
+    for (const [u] of set) if (u !== largest) notWeighed.add(u);
+    if (attr(img, "src") && attr(img, "src") !== largest) notWeighed.add(attr(img, "src"));
+  }
   const refs = [];
   for (const m of src.matchAll(/\s(href|src)="([^"]+)"/g)) refs.push(m[2]);
   for (const m of src.matchAll(/\ssrcset="([^"]+)"/g)) for (const part of m[1].split(",")) refs.push(part.trim().split(/\s+/)[0]);
 
   let weight = Buffer.byteLength(src);
+  let lazyWeight = 0;
   const counted = new Set();
   for (const ref of refs) {
     if (/^(mailto:|tel:)/.test(ref)) {
@@ -189,9 +229,10 @@ for (const [page, src] of Object.entries(html)) {
       if (!url.searchParams.has("v")) err(page, `önbellek özeti yok (/assets/ uzun önbellekli): ${ref}`);
       const file = join(out, url.pathname);
       if (!existsSync(file)) err(page, `kırık kaynak: ${ref}`);
-      else if (!counted.has(url.pathname) && !/apple-touch|icon-|favicon|og\.jpg/.test(url.pathname)) {
+      else if (!counted.has(url.pathname) && !notWeighed.has(ref) && !/apple-touch|icon-|favicon|og-\w+\.jpg/.test(url.pathname)) {
         counted.add(url.pathname);
-        weight += statSync(file).size;
+        if (lazyRefs.has(ref)) lazyWeight += statSync(file).size;
+        else weight += statSync(file).size;
       }
       continue;
     }
@@ -213,8 +254,25 @@ for (const [page, src] of Object.entries(html)) {
   // Srcset'teki tüm boyutlar sayılmasın diye kabaca: en büyük görsel çifti zaten eklendi; bütçe uyarısı yeterli.
   const kb = Math.round(weight / 1024);
   if (kb > PAGE_BUDGET_KB) err(page, `sayfa ağırlığı ${kb} KB > bütçe ${PAGE_BUDGET_KB} KB`);
+  const totalKb = Math.round((weight + lazyWeight) / 1024);
+  if (totalKb > LAZY_BUDGET_KB) err(page, `tembel görsellerle toplam ${totalKb} KB > ${LAZY_BUDGET_KB} KB`);
 
   if (src.includes("DEGISTIR")) placeholderPages.push(page);
+}
+
+// --- hreflang: her hedef gerçek, indekslenen bir sayfa; hedef de bu sayfayı göstermeli; x-default var
+for (const [page, alts] of hreflangs) {
+  const langs = Object.keys(alts).filter((l) => l !== "x-default");
+  if (!langs.length) continue;
+  if (alts[langOf(page)] !== canonicalOf.get(page)) err(page, "hreflang kendi dilini (canonical) göstermiyor");
+  if (langs.length > 1 && !alts["x-default"]) err(page, "hreflang x-default eksik");
+  for (const l of langs) {
+    const target = pageFileFor(new URL(alts[l]).pathname);
+    if (!target || noindexPages.has(target)) { err(page, `hreflang ${l} kırık/noindex: ${alts[l]}`); continue; }
+    if (langOf(target) !== l) err(page, `hreflang ${l} başka dilde bir sayfayı gösteriyor: ${alts[l]}`);
+    const back = hreflangs.get(target) || {};
+    if (back[langOf(page)] !== canonicalOf.get(page)) err(page, `hreflang karşılıklı değil: ${target} bu sayfayı göstermiyor`);
+  }
 }
 
 // --- Site geneli dosyalar
@@ -307,7 +365,7 @@ function imageSize(buf) {
 
 // --- vercel.json yönlendirmeleri gerçek sayfalara gitmeli
 const vercel = JSON.parse(readFileSync(join(root, "vercel.json"), "utf8"));
-for (const r of vercel.redirects || []) {
+for (const r of [...(vercel.redirects || []), ...(vercel.rewrites || [])]) {
   if (!pageFileFor(r.destination)) err("vercel.json", `yönlendirme hedefi yok: ${r.source} → ${r.destination}`);
 }
 for (const f of ["robots.txt", "sitemap.xml", "site.webmanifest", "404.html", "llms.txt", "favicon.ico"]) {

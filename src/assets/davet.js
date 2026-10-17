@@ -1,6 +1,7 @@
-// ARKADAŞ DAVETİ: /d/<jeton> (vercel.json yönlendirmesi → davet.html) oyunu autoyard://davet/<jeton> ile açar.
-// Android'de Chrome "intent:" adresiyle uygulamayı açar; uygulama yüklü değilse bu sayfaya "?yok" ile geri döner ve
-// indirme düğmesi öne çıkar. Jetonun geçerliliğini oyun denetler (1 saat; firebase/firestore.rules invites).
+// ARKADAŞ DAVETİ: /d/<jeton> (vercel.json yönlendirmesi → tarayıcı diline göre /davet, /en/invite, /es/invitacion)
+// oyunu autoyard://davet/<jeton> ile açar. Android'de Chrome "intent:" adresiyle uygulamayı açar; uygulama yüklü
+// değilse bu sayfaya "?yok" ile geri döner ve indirme düğmesi öne çıkar. Jetonun geçerliliğini oyun denetler
+// (1 saat; firebase/firestore.rules invites). Mesajlar sayfanın dilinde, #davet-not'un data-* özniteliklerinde.
 (() => {
   const button = document.getElementById("davet-ac");
   const note = document.getElementById("davet-not");
@@ -8,12 +9,12 @@
   const match = location.pathname.match(/^\/d\/([A-HJ-NP-Z2-9]{12})\/?$/i);
   if (!match) {
     button.hidden = true;
-    note.textContent = "Bu davet linki geçersiz görünüyor. Arkadaşından yeni bir link iste.";
+    note.textContent = note.dataset.invalid;
     return;
   }
   if (!/Android/i.test(navigator.userAgent)) {
     button.hidden = true;
-    note.textContent = "Bu linki Auto Yard'ın yüklü olduğu Android telefonunda aç. Davet linki 1 saat geçerlidir.";
+    note.textContent = note.dataset.desktop;
     return;
   }
   const token = match[1].toUpperCase();
@@ -22,7 +23,7 @@
     `S.browser_fallback_url=${encodeURIComponent(back)};end`;
   button.setAttribute("href", intent);
   if (new URLSearchParams(location.search).has("yok")) {
-    note.textContent = "Auto Yard bu telefonda yüklü değil gibi görünüyor. Önce oyunu indir, sonra linke yeniden dokun.";
+    note.textContent = note.dataset.missing;
     return;
   }
   // Bir kez kendiliğinden dene; tarayıcı dokunuşsuz açmayı engellerse düğme duruyor.

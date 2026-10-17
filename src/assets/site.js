@@ -1,6 +1,15 @@
-// Auto Yard — çerez onayı, onaya bağlı analytics, form gönderimi.
+// Auto Yard — çerez onayı, onaya bağlı analytics, form gönderimi, paylaşım, tanıtım videosu.
+// Metinler sayfadaki <script type="application/json" id="site-i18n"> bloğundan gelir (her dil kendi metniyle).
 (() => {
   "use strict";
+
+  let T = {};
+  try {
+    T = JSON.parse(document.getElementById("site-i18n")?.textContent || "{}");
+  } catch {
+    T = {};
+  }
+  const t = (key, vars = {}) => (T[key] || key).replace(/\{(\w+)\}/g, (_, k) => (k in vars ? vars[k] : `{${k}}`));
 
   // ---------- Çerez / analiz onayı ----------
   const CONSENT_KEY = "ay-consent";
@@ -95,18 +104,19 @@
   // ---------- Formlar ----------
   const params = new URLSearchParams(location.search);
   const topic = document.getElementById("c-topic");
-  if (topic && params.has("konu")) {
-    const opt = Array.from(topic.options).find((o) => o.value === params.get("konu"));
+  const wanted = params.get("konu") || params.get("topic");
+  if (topic && wanted) {
+    const opt = Array.from(topic.options).find((o) => o.value === wanted);
     if (opt) topic.value = opt.value;
   }
 
   function messageFor(el) {
     const v = el.validity;
-    if (v.valueMissing) return el.type === "checkbox" ? "Devam etmek için bu kutuyu işaretlemelisin." : "Bu alan zorunlu.";
-    if (v.typeMismatch && el.type === "email") return "Geçerli bir e-posta adresi yaz (ör. ad@ornek.com).";
-    if (v.tooShort) return `En az ${el.minLength} karakter yaz.`;
-    if (v.tooLong) return `En fazla ${el.maxLength} karakter yazabilirsin.`;
-    return "Bu alanı kontrol et.";
+    if (v.valueMissing) return el.type === "checkbox" ? t("required_check") : t("required");
+    if (v.typeMismatch && el.type === "email") return t("email");
+    if (v.tooShort) return t("too_short", { n: el.minLength });
+    if (v.tooLong) return t("too_long", { n: el.maxLength });
+    return t("invalid");
   }
 
   function setFieldError(el, msg) {
@@ -152,7 +162,7 @@
     form.noValidate = true;
     const status = form.querySelector("[data-form-status]");
     const button = form.querySelector('button[type="submit"]');
-    const mailHint = form.dataset.fallbackEmail ? ` ${form.dataset.fallbackEmail} adresine e-posta da gönderebilirsin.` : "";
+    const mailHint = form.dataset.fallbackEmail ? t("mail_hint", { email: form.dataset.fallbackEmail }) : "";
     const setStatus = (state, text) => {
       status.dataset.state = state;
       status.textContent = text;
@@ -166,14 +176,14 @@
       e.preventDefault();
       const { firstInvalid, count } = validate(form);
       if (firstInvalid) {
-        setStatus("error", count === 1 ? "Formda 1 alan eksik veya hatalı." : `Formda ${count} alan eksik veya hatalı.`);
+        setStatus("error", count === 1 ? t("errors_one") : t("errors_many", { n: count }));
         firstInvalid.focus();
         return;
       }
 
       const data = Object.fromEntries(new FormData(form).entries());
       button.disabled = true;
-      setStatus("pending", "Gönderiliyor…");
+      setStatus("pending", t("sending"));
       try {
         const res = await fetch(form.action, {
           method: "POST",
@@ -183,12 +193,12 @@
         const body = await res.json().catch(() => ({}));
         if (res.ok && body.ok) {
           form.reset();
-          setStatus("ok", body.message || "Mesajın alındı. Teşekkürler!");
+          setStatus("ok", body.message || t("sent"));
         } else {
-          setStatus("error", (body.message || "Gönderilemedi. Lütfen biraz sonra tekrar dene.") + mailHint);
+          setStatus("error", (body.message || t("failed")) + mailHint);
         }
       } catch {
-        setStatus("error", "Bağlantı kurulamadı. İnternetini kontrol edip tekrar dene." + mailHint);
+        setStatus("error", t("offline") + mailHint);
       } finally {
         button.disabled = false;
       }
@@ -208,12 +218,59 @@
       copy.addEventListener("click", async () => {
         try {
           await navigator.clipboard.writeText(data.url);
-          status.textContent = "Link kopyalandı.";
+          status.textContent = t("copied");
         } catch {
-          status.textContent = `Kopyalanamadı. Link: ${data.url}`;
+          status.textContent = t("copy_failed", { url: data.url });
         }
       });
     }
+  }
+
+  // ---------- Tanıtım videosu: sayfa yüklendikten sonra, görünür olunca iner ve oynar; durdur/oynat düğmesi ----------
+  // Hareket azaltma tercihi ya da veri tasarrufu açıksa video hiç inmez, kapak görseli kalır. Dar ekranda 480p sürüm.
+  for (const box of document.querySelectorAll("[data-video]")) {
+    const video = box.querySelector("video");
+    const toggle = box.querySelector(".video-toggle");
+    const still = matchMedia("(prefers-reduced-motion: reduce)").matches || navigator.connection?.saveData;
+    if (!video || still) continue;
+    let started = false;
+    let userPaused = false;
+    const setPlaying = (playing) => {
+      toggle.setAttribute("aria-pressed", String(playing));
+      toggle.setAttribute("aria-label", playing ? t("video_pause") : t("video_play"));
+    };
+    const start = () => {
+      if (started) return;
+      started = true;
+      video.src = innerWidth < 900 && video.dataset.srcSmall ? video.dataset.srcSmall : video.dataset.src;
+      video.hidden = false;
+      toggle.hidden = false;
+      video.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+    };
+    toggle.addEventListener("click", () => {
+      if (video.paused) {
+        userPaused = false;
+        video.play().then(() => setPlaying(true)).catch(() => {});
+      } else {
+        userPaused = true;
+        video.pause();
+        setPlaying(false);
+      }
+    });
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          start();
+          if (!userPaused && video.paused && started) video.play().then(() => setPlaying(true)).catch(() => {});
+        } else if (started && !video.paused) {
+          video.pause();
+        }
+      }
+    }, { threshold: 0.25 });
+    // Sayfanın kendi görselleri ve yazı tipleri önce insin: video yüklemesi "load" olayından sonra başlar
+    const watch = () => setTimeout(() => io.observe(box), 300);
+    if (document.readyState === "complete") watch();
+    else addEventListener("load", watch, { once: true });
   }
 
   // ---------- SSS: #sss-... ile gelinirse ilgili soruyu aç ----------

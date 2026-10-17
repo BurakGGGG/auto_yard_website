@@ -1,0 +1,20 @@
+<!--meta {"title": "Friend invite", "description": "A friend is inviting you to be friends in Auto Yard.", "noindex": true} -->
+<section class="page-hero rays center">
+  <div class="wrap narrow">
+    <img class="hero-logo" src="{{asset:/assets/img/brand/logo-960.webp}}" width="960" height="198" alt="" aria-hidden="true">
+    <h1>A friend is calling you!</h1>
+    <p class="lead">A friend invited you to be friends in Auto Yard. Open it in the game to see their profile and add them with one tap.</p>
+    <div class="cta-group">
+      <a class="btn btn-primary btn-large" id="davet-ac" href="{{link:home}}" data-package="{{androidPackage}}" data-cta="davet">Open in the game</a>
+      <p class="cta-note" id="davet-not" data-invalid="This invite link doesn't look valid. Ask your friend for a new one." data-desktop="Open this link on an Android phone that has Auto Yard installed. Invite links are valid for 1 hour." data-missing="Auto Yard doesn't seem to be installed on this phone. Get the game first, then tap the link again.">Invite links are valid for 1 hour.</p>
+    </div>
+  </div>
+</section>
+<section class="page-body center">
+  <div class="wrap narrow">
+    <h2>Don't have the game yet?</h2>
+    <p>Get Auto Yard first, then tap the invite link again.</p>
+    {{> cta}}
+  </div>
+</section>
+<script src="{{asset:/assets/davet.js}}" defer></script>

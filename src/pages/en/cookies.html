@@ -1,0 +1,36 @@
+<!--meta {"updated": "2026-10-17", "title": "Cookie Policy", "description": "The Auto Yard website uses no cookies. Here we explain the single preference stored in your browser and the optional anonymous statistics."} -->
+<section class="page-hero rays">
+  <div class="wrap narrow">
+    <p class="kicker">Legal</p>
+    <h1>Cookie Policy</h1>
+    <p class="meta">{{t.updated}}: <time datetime="{{updated}}">{{updatedText}}</time></p>
+  </div>
+</section>
+<div class="page-body">
+  <div class="wrap narrow">
+    <article class="card prose">
+      <h2 id="summary">In short</h2>
+      <p>This site <strong>uses no cookies</strong> and contains no advertising or social media tracking code. Only the choice you make is stored in your browser. Anonymous visit statistics run only if you agree. For the game's own data, see the <a href="{{link:privacy}}">Privacy Policy</a>.</p>
+
+      <h2 id="list">What is stored in your browser</h2>
+      <div class="table-wrap">
+        <table>
+          <caption class="visually-hidden">Data stored in the browser</caption>
+          <thead><tr><th scope="col">Name</th><th scope="col">Type</th><th scope="col">Purpose</th><th scope="col">Duration</th><th scope="col">Consent needed?</th></tr></thead>
+          <tbody>
+            <tr><td><code>ay-consent</code></td><td>localStorage</td><td>Remembering your analytics choice</td><td>12 months, then you're asked again</td><td>No (necessary)</td></tr>
+            <tr><td>Vercel Web Analytics</td><td>Cookie-free script</td><td>Counting anonymous page views</td><td>Counted with a summary reset every 24 hours</td><td>Yes</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="analytics">How does Vercel Web Analytics work?</h2>
+      <p>If you agree, information such as page views, the page visited, the referring site, country and device type is counted in aggregate. No cookie or persistent ID that identifies you is created, and you are not tracked across sites. Details: <a href="https://vercel.com/docs/analytics/privacy-policy" rel="noopener">Vercel Analytics privacy information</a>.</p>
+      <p>If your browser sends a <em>Global Privacy Control</em> signal, we treat it as a rejection and don't load the statistics script.</p>
+
+      <h2 id="change">Changing your choice</h2>
+      <p>You can change your choice at any time. If you withdraw consent, the statistics script is no longer loaded from the next page view.</p>
+      <p><button type="button" class="btn btn-secondary" data-consent-open>Open cookie preferences</button></p>
+    </article>
+  </div>
+</div>

@@ -1,0 +1,226 @@
+<!--meta {"updated": "2026-10-17", "title": "Auto Yard", "description": "Auto Yard: fix cars in your city garage, restore classics from the junkyard and win drag races. A free garage game for Android."} -->
+<section class="hero rays">
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <img class="hero-logo" src="{{asset:/assets/img/brand/logo-960.webp}}" width="960" height="198" alt="Auto Yard logo: blue AUTO and yellow YARD letters next to a smoking tire" fetchpriority="high">
+      <h1>Build your garage, <span class="hl">fix cars</span>, win on the strip!</h1>
+      <p class="lead">Repair the cars that pull over from the city traffic, bring junkyard classics back to life and nail your gear shifts on the drag strip. Grow your garage with every win and design the garage of your dreams.</p>
+      {{> cta}}
+      <ul class="chips">
+        <li>{{> chip-check}}Free to play</li>
+        <li>{{> chip-check}}Android 7.0+</li>
+        <li>{{> chip-check}}English · Español · Türkçe</li>
+        <li>{{> chip-check}}Play as a guest</li>
+      </ul>
+    </div>
+    <div class="device" data-video>
+      <div class="screen">
+        <img src="{{asset:/assets/img/poster/poster-1280.webp}}" srcset="{{asset:/assets/img/poster/poster-640.webp}} 640w, {{asset:/assets/img/poster/poster-960.webp}} 960w, {{asset:/assets/img/poster/poster-1280.webp}} 1280w" sizes="(min-width: 960px) 560px, 92vw" width="1280" height="720" alt="A frame from the game: cars being repaired on lifts in a brick-walled garage">
+        <video muted loop playsinline preload="none" data-src="{{asset:/assets/video/tanitim-720.mp4}}" data-src-small="{{asset:/assets/video/tanitim-480.mp4}}" aria-label="{{t.video_label}}" hidden></video>
+      </div>
+      {{> video-toggle}}
+    </div>
+  </div>
+</section>
+
+<div class="hazard" aria-hidden="true"></div>
+<section class="stats" aria-label="Auto Yard in numbers">
+  <div class="wrap">
+    <ul>
+      <li><strong>57</strong><span>cars you can own</span></li>
+      <li><strong>28</strong><span>classics to restore</span></li>
+      <li><strong>263</strong><span>decor items</span></li>
+      <li><strong>99</strong><span>levels</span></li>
+    </ul>
+  </div>
+</section>
+<div class="hazard" aria-hidden="true"></div>
+
+<section class="section" id="features" aria-labelledby="features-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">What can you do?</p>
+      <h2 id="features-title">Way more than a garage</h2>
+      <p>A repair shop, a junkyard, a tuning workshop, a drag strip and your friends: all in one city.</p>
+    </div>
+    <ul class="feature-list">
+      <li class="feature">
+        <figure class="shot"><img src="{{asset:/assets/img/shots/tamir-en-1280.webp}}" srcset="{{asset:/assets/img/shots/tamir-en-640.webp}} 640w, {{asset:/assets/img/shots/tamir-en-1280.webp}} 1280w" sizes="(min-width: 900px) 600px, 92vw" width="1280" height="775" loading="lazy" decoding="async" alt="City view: a Volkswagen Passat being repaired in front of a decorated garage, with the repair panel open"></figure>
+        <div>
+          <p class="kicker">Repair shop</p>
+          <h3>Customers come straight from traffic</h3>
+          <p>A broken-down car pulls over; you tap it and put it on a lift. Engine, brakes, tires, bodywork, upholstery… When the job is done, tap the ₺ bubble to collect. Waiting customers get impatient: leave them too long and they honk and drive off!</p>
+          <ul class="ticks">
+            <li>7 job types, from quick tire swaps to brake overhauls</li>
+            <li>3 movable lifts, 4 garage sizes and repair-speed upgrades</li>
+            <li>10 garage ranks and 99 levels</li>
+          </ul>
+        </div>
+      </li>
+      <li class="feature">
+        <figure class="shot"><img src="{{asset:/assets/img/shots/hurdalik-en-1280.webp}}" srcset="{{asset:/assets/img/shots/hurdalik-en-640.webp}} 640w, {{asset:/assets/img/shots/hurdalik-en-1280.webp}} 1280w" sizes="(min-width: 900px) 600px, 92vw" width="1280" height="775" loading="lazy" decoding="async" alt="The junkyard: scrap piles, a crane, a water tower and rusty classic cars"></figure>
+        <div>
+          <p class="kicker">Junkyard</p>
+          <h3>From rust to legend</h3>
+          <p>Rusty classics are waiting at the junkyard on the map. Dig through the piles, collect parts from bolts to pistons and ask a friend for the one you're missing. The wreck on your lift turns into a shiny classic, stage by stage.</p>
+          <ul class="ticks">
+            <li>28 classics, from the Anadol A1 to the Lamborghini Miura</li>
+            <li>3 new cars every day, piles that refill every 8 hours</li>
+            <li>A separate map with Necati, his apprentice Cemo and its own music</li>
+          </ul>
+        </div>
+      </li>
+      <li class="feature">
+        <figure class="shot"><img src="{{asset:/assets/img/shots/drag-en-1280.webp}}" srcset="{{asset:/assets/img/shots/drag-en-640.webp}} 640w, {{asset:/assets/img/shots/drag-en-1280.webp}} 1280w" sizes="(min-width: 900px) 600px, 92vw" width="1280" height="775" loading="lazy" decoding="async" alt="Drag strip: two sports cars at the start lights with the rev counter in the corner"></figure>
+        <div>
+          <p class="kicker">Drag strip</p>
+          <h3>Nail the launch, shift on time</h3>
+          <p>No steering on the 300 m strip, just skill: launch the moment the lights turn green and shift when the needle hits the green zone. Rivals are matched to your car, and if you lose you get one rematch.</p>
+          <ul class="ticks">
+            <li>A real gearbox model with perfect launches and shifts</li>
+            <li>A personal record for every car and a ghost of your record pace</li>
+            <li>Most races are against your friends' tuned cars</li>
+          </ul>
+        </div>
+      </li>
+      <li class="feature">
+        <figure class="shot"><img src="{{asset:/assets/img/shots/modifiye-en-1280.webp}}" srcset="{{asset:/assets/img/shots/modifiye-en-640.webp}} 640w, {{asset:/assets/img/shots/modifiye-en-1280.webp}} 1280w" sizes="(min-width: 900px) 600px, 92vw" width="1280" height="775" loading="lazy" decoding="async" alt="Tuning workshop: engine parts, a dyno chart and before/after performance bars"></figure>
+        <div>
+          <p class="kicker">Tuning</p>
+          <h3>Take your car up a class</h3>
+          <p>Engine, turbo, airflow, gearbox, tires and body: 30 parts for every car. The dyno shows the before/after difference right away, and the right parts move your car up to the next class.</p>
+          <ul class="ticks">
+            <li>6 categories, 5 tiers from Street to Legend</li>
+            <li>Carburettors for classics, battery parts for EVs</li>
+            <li>Live dyno with a power curve</li>
+          </ul>
+        </div>
+      </li>
+      <li class="feature">
+        <figure class="shot"><img src="{{asset:/assets/img/shots/dekor-en-1280.webp}}" srcset="{{asset:/assets/img/shots/dekor-en-640.webp}} 640w, {{asset:/assets/img/shots/dekor-en-1280.webp}} 1280w" sizes="(min-width: 900px) 600px, 92vw" width="1280" height="775" loading="lazy" decoding="async" alt="Edit garage screen: a grid floor, item categories and workshop items"></figure>
+        <div>
+          <p class="kicker">Decoration</p>
+          <h3>Design the garage of your dreams</h3>
+          <p>Paint the floor tile by tile, build interior walls, hang signs and posters. A jacuzzi, a giant aquarium, even a private helicopter… Show off your cars in the garage for visiting friends to see.</p>
+          <ul class="ticks">
+            <li>263 items: workshop, lounge, yard, plants, luxury</li>
+            <li>Tile-by-tile floor painting, interior walls and wall coverings</li>
+            <li>Decor also raises your Garage Value</li>
+          </ul>
+        </div>
+      </li>
+      <li class="feature">
+        <figure class="shot"><img src="{{asset:/assets/img/shots/arkadaslar-en-1280.webp}}" srcset="{{asset:/assets/img/shots/arkadaslar-en-640.webp}} 640w, {{asset:/assets/img/shots/arkadaslar-en-1280.webp}} 1280w" sizes="(min-width: 900px) 600px, 92vw" width="1280" height="775" loading="lazy" decoding="async" alt="Friends screen: friend cards with avatars, showcase cars and stats"></figure>
+        <div>
+          <p class="kicker">Friends</p>
+          <h3>Race your friends, visit their garages</h3>
+          <p>Add friends with a code or a one-tap invite link. Visit their garages and send them the junkyard part they need. Most rivals show up in your friends' tuned cars, and if one beats you, you'll hear about it: GET REVENGE!</p>
+          <ul class="ticks">
+            <li>Invite link: whoever opens it adds you right away</li>
+            <li>Head-to-head score, win rate and collection on every card</li>
+            <li>Master Emre's and Master Elif's garages are open to everyone</li>
+          </ul>
+        </div>
+      </li>
+      <li class="feature">
+        <figure class="shot"><img src="{{asset:/assets/img/shots/kasa-en-1280.webp}}" srcset="{{asset:/assets/img/shots/kasa-en-640.webp}} 640w, {{asset:/assets/img/shots/kasa-en-1280.webp}} 1280w" sizes="(min-width: 900px) 600px, 92vw" width="1280" height="775" loading="lazy" decoding="async" alt="Showroom shop: the crate list, a super crate on the turntable and the odds for each car"></figure>
+        <div>
+          <p class="kicker">Collection</p>
+          <h3>Open crates, complete your collection</h3>
+          <p>City, family, sport, prestige and super crates are delivered to the showroom. The odds for every car are shown in the shop, and finding a car again adds a star. Your first car is a gift: the Tofaş Şahin in the welcome box.</p>
+          <ul class="ticks">
+            <li>5 crates, 4 rarities: common, rare, epic, legendary</li>
+            <li>Odds are shown up front, no surprises</li>
+            <li>Every car you discover for the first time earns gems</li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="cars-section rays" id="cars" aria-labelledby="cars-title">
+  <div class="wrap section-head">
+    <p class="kicker">Cars</p>
+    <h2 id="cars-title">57 cars from 32 brands</h2>
+    <p>From the Tofaş Şahin to the Togg T10X, from the Anadol A1 to the Ferrari 488 Pista, all with real factory specs. Scroll to see them.</p>
+  </div>
+  <ul class="car-strip" tabindex="0" aria-labelledby="cars-title">
+    {{> cars-en}}
+  </ul>
+  <p class="wrap cars-note">There are police cars in the city too: you can watch the chases, but you can't own them.</p>
+</section>
+
+<section class="section section-alt" aria-labelledby="more-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">And more</p>
+      <h2 id="more-title">A living city, a fair game</h2>
+    </div>
+    <ul class="more-grid">
+      <li class="more-card"><span class="more-icon" aria-hidden="true">{{> icon-city}}</span><h3>A city that feels alive</h3><p>Traffic lights, police chases with wailing sirens, a showroom billboard that changes every day, birdsong and distant horns.</p></li>
+      <li class="more-card"><span class="more-icon" aria-hidden="true">{{> icon-target}}</span><h3>Tasks and achievements</h3><p>5 daily and 5 weekly tasks that adapt to the way you play, plus 85 stars to earn across 22 achievements.</p></li>
+      <li class="more-card"><span class="more-icon" aria-hidden="true">{{> icon-camera}}</span><h3>Photo and cinema mode</h3><p>Hide the HUD, free the camera and take a logo-stamped photo of your garage, or sit back and watch the city in cinema mode.</p></li>
+      <li class="more-card"><span class="more-icon" aria-hidden="true">{{> icon-cloud}}</span><h3>Cloud save</h3><p>Sign in with Google and your progress is backed up to the cloud, so it's safe even if you change phones. You can also just play as a guest.</p></li>
+      <li class="more-card"><span class="more-icon" aria-hidden="true">{{> icon-shield}}</span><h3>Fair play</h3><p>Ads only open when you tap WATCH AD, and they never give gems. Crate odds are clearly shown in the shop.</p></li>
+      <li class="more-card"><span class="more-icon" aria-hidden="true">{{> icon-music}}</span><h3>Original music</h3><p>Three themes composed for the garage, the drag strip and the junkyard; the city sounds and police sirens are generated in the game too.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="faq" aria-labelledby="faq-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">FAQ</p>
+      <h2 id="faq-title">Frequently asked questions</h2>
+    </div>
+    <div class="faq">
+      <details id="faq-free">
+        <summary>Is Auto Yard free?</summary>
+        <p>Yes, it's free to download and play. You can buy optional gem packs on Google Play, but gems are also earned in the game (when you level up, on daily login and from tasks), so you never have to buy anything.</p>
+      </details>
+      <details id="faq-ads">
+        <summary>Are there ads in the game?</summary>
+        <p>Only optional rewarded ads. An ad opens only when you tap WATCH AD; in return your race prize is doubled or the remaining time of a long repair is cut in half. There are no interstitial or banner ads, ads never give gems, and you can watch at most 12 ads a day.</p>
+      </details>
+      <details id="faq-devices">
+        <summary>Which phones can run it?</summary>
+        <p>Android 7.0 or newer, on 64-bit (arm64) phones. The game picks the graphics quality for your phone automatically; you can change it in SETTINGS and turn on battery saver.</p>
+      </details>
+      <details id="faq-account">
+        <summary>Do I need an account?</summary>
+        <p>No, you can play as a guest. If you sign in with Google, your progress is backed up to the cloud and the friend features (invites, garage visits, friend races) unlock.</p>
+      </details>
+      <details id="faq-friends">
+        <summary>How do I play with friends?</summary>
+        <p>Sign in with Google and pick a nickname. On the FRIENDS screen, tap SEND INVITE LINK or enter your friend's code. A friend who opens your invite link adds you straight away; the link is valid for 1 hour. Then you can visit each other's garages and race each other's cars.</p>
+      </details>
+      <details id="faq-crates">
+        <summary>Do I know what's inside a crate?</summary>
+        <p>Yes. The cars in each crate and their odds are listed next to the crate in the shop. Finding a car again adds a star, and every car you discover for the first time earns gems.</p>
+      </details>
+      <details id="faq-languages">
+        <summary>Which languages does the game support?</summary>
+        <p>English, Spanish and Turkish. The game starts in your phone's language, and you can change it in SETTINGS at any time.</p>
+      </details>
+      <details id="faq-delete">
+        <summary>How do I delete my account and data?</summary>
+        <p>In the game, go to PROFILE → ACCOUNT → DELETE MY ACCOUNT (SETTINGS → ACCOUNT AND PRIVACY → GOOGLE ACCOUNT leads to the same place). If you can't open the game, use the form on the <a href="{{link:delete}}">Account &amp; Data Deletion</a> page.</p>
+      </details>
+      <details id="faq-release">
+        <summary>When is it coming out?</summary>
+        <p>Very soon on Google Play. To hear about it on launch day, choose "Notify me when the game launches" in the <a href="{{link:contact}}?konu=haber">contact form</a>.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band rays" aria-labelledby="final-title">
+  <div class="wrap narrow">
+    <img class="hero-logo" src="{{asset:/assets/img/brand/logo-960.webp}}" width="960" height="198" loading="lazy" decoding="async" alt="" aria-hidden="true">
+    <h2 id="final-title">Your garage is waiting</h2>
+    <p>The keys are yours: your first customer is already at the door.</p>
+    {{> cta}}
+    {{> share}}
+  </div>
+</section>

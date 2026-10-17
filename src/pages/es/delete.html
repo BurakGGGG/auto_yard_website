@@ -1,0 +1,87 @@
+<!--meta {"updated": "2026-10-17", "title": "Eliminar cuenta y datos", "description": "Cómo borrar tu cuenta de Auto Yard, tu partida en la nube y tu perfil de amigos desde el juego o con el formulario web, qué se borra y cuánto tarda."} -->
+<section class="page-hero rays">
+  <div class="wrap narrow">
+    <p class="kicker">Cuenta</p>
+    <h1>Eliminar cuenta y datos</h1>
+    <p class="lead">Esta página es para las solicitudes de borrado de cuenta y datos de <strong>{{name}}</strong> (Android, desarrollador: {{developerName}}).</p>
+  </div>
+</section>
+<div class="page-body">
+  <div class="wrap narrow">
+    <article class="card prose">
+      <h2 id="en-el-juego">Desde el juego (al instante)</h2>
+      <ol class="steps">
+        <li>Toca tu avatar arriba a la izquierda y abre la placa <span class="ui">CUENTA</span> en la pantalla <span class="ui">PERFIL</span>. (<span class="ui">AJUSTES → CUENTA Y PRIVACIDAD → CUENTA DE GOOGLE</span> lleva al mismo sitio.)</li>
+        <li>Toca <span class="ui">BORRAR MI CUENTA</span> y después <span class="ui">SÍ, BORRAR PARA SIEMPRE</span>.</li>
+        <li>Elige otra vez la misma cuenta de Google para confirmar que eres tú.</li>
+      </ol>
+      <p>Tu cuenta y todos los datos de la tabla de abajo se borran al momento, y el juego de ese teléfono empieza de cero. Este botón solo aparece si iniciaste sesión con Google. Si jugaste como invitado, no guardamos datos tuyos en nuestros servidores; al desinstalar el juego se borra la partida de tu teléfono.</p>
+
+      <h2 id="pasos">Con el formulario web</h2>
+      <p>Si desinstalaste el juego o no puedes abrirlo:</p>
+      <ol class="steps">
+        <li>Rellena el formulario de abajo con el <strong>correo de la cuenta de Google</strong> con la que iniciaste sesión.</li>
+        <li>Te enviaremos un correo para confirmar que la solicitud viene de esa dirección; respóndelo.</li>
+        <li>Tras la confirmación, el borrado se completa en un plazo máximo de <strong>30 días</strong> y te avisamos.</li>
+      </ol>
+      <p>Si no puedes usar el formulario, escribe a <a href="mailto:{{contactEmail}}?subject=Solicitud%20de%20borrado%20de%20cuenta">{{contactEmail}}</a> con los mismos datos.</p>
+
+      <h2 id="que">¿Qué se borra?</h2>
+      <div class="table-wrap">
+        <table>
+          <caption class="visually-hidden">Datos borrados y datos que se conservan</caption>
+          <thead><tr><th scope="col">Datos</th><th scope="col">Borrar todo</th><th scope="col">Borrar solo la partida en la nube (formulario)</th></tr></thead>
+          <tbody>
+            <tr><td>Cuenta de acceso con Google</td><td>Se borra</td><td>Se conserva</td></tr>
+            <tr><td>Partida en la nube (progreso, registro de compras) y datos del perfil de Google</td><td>Se borra</td><td>Se borra</td></tr>
+            <tr><td>Perfil público de taller, foto de perfil, código de amigo</td><td>Se borra</td><td>Se conserva</td></tr>
+            <tr><td>Amistades (en ambos lados), solicitudes, noticias de carreras, regalos, invitaciones</td><td>Se borra</td><td>Se conserva</td></tr>
+            <tr><td>Token de notificaciones de carreras</td><td>Se borra</td><td>Se conserva</td></tr>
+            <tr><td>Correos de soporte</td><td>Se borra</td><td>Se conserva</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Lo que puede quedar:</strong> las denuncias hechas por ti o sobre ti, tu apodo en regalos que tus amigos aún no han recogido, los registros de envío de notificaciones y los registros de compras y anuncios que conserva Google. En las solicitudes hechas con el formulario web, solo guardamos tu correo y la fecha de la solicitud durante 3 años como prueba de que la atendimos. Los archivos de tu teléfono solo están en tu dispositivo; para eliminarlos, desinstala el juego o ve a <em>Ajustes → Aplicaciones → {{name}} → Almacenamiento → Borrar datos</em>.</p>
+
+      <h2 id="formulario-titulo">Formulario de solicitud de borrado</h2>
+      <p>Usa este formulario si no puedes borrar tu cuenta desde el juego.</p>
+      <form class="form" method="post" action="/api/contact" data-form data-fallback-email="{{contactEmail}}">
+        <input type="hidden" name="type" value="hesap-silme">
+        <input type="hidden" name="lang" value="{{lang}}">
+        <div class="hp" aria-hidden="true">
+          <label for="d-website">Deja este campo vacío</label>
+          <input id="d-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="d-email">Correo de la cuenta de Google que usas en el juego</label>
+          <input id="d-email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="200">
+        </div>
+        <div class="field">
+          <label for="d-name">Tu apodo en el juego <span class="optional">(opcional)</span></label>
+          <input id="d-name" name="name" type="text" autocomplete="nickname" maxlength="100">
+        </div>
+        <fieldset class="field">
+          <legend>¿Qué quieres borrar?</legend>
+          <div class="radio">
+            <input id="d-scope-all" name="scope" type="radio" value="hesap" required checked>
+            <label for="d-scope-all">Mi cuenta y todos mis datos</label>
+          </div>
+          <div class="radio">
+            <input id="d-scope-save" name="scope" type="radio" value="bulut-kaydi">
+            <label for="d-scope-save">Solo mi partida en la nube (conservar mi cuenta y mis amigos)</label>
+          </div>
+        </fieldset>
+        <div class="field">
+          <label for="d-message">¿Quieres añadir algo? <span class="optional">(opcional)</span></label>
+          <textarea id="d-message" name="message" rows="3" maxlength="2000"></textarea>
+        </div>
+        <div class="field field-check">
+          <input id="d-confirm" name="consent" type="checkbox" value="yes" required>
+          <label for="d-confirm">Entiendo que el progreso borrado no se puede recuperar.</label>
+        </div>
+        <button class="btn btn-primary" type="submit">Enviar solicitud de borrado</button>
+        <p class="form-status" role="status" aria-live="polite" data-form-status></p>
+      </form>
+    </article>
+  </div>
+</div>

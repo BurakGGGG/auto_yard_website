@@ -1,0 +1,226 @@
+<!--meta {"updated": "2026-10-17", "title": "Auto Yard", "description": "Auto Yard: şehirdeki garajında arabaları tamir et, hurdalıktan klasikleri kurtar, drag yarışlarında kazan. Android için ücretsiz garaj oyunu."} -->
+<section class="hero rays">
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <img class="hero-logo" src="{{asset:/assets/img/brand/logo-960.webp}}" width="960" height="198" alt="Auto Yard logosu: mavi AUTO ve sarı YARD harfleri, yanında dumanlı bir lastik" fetchpriority="high">
+      <h1>Garajını kur, <span class="hl">arabaları tamir et</span>, pistte kazan!</h1>
+      <p class="lead">Şehrin trafiğinden kenara çeken müşterilerin arabalarını onar, hurdalıktan çıkardığın klasikleri ayağa kaldır, drag pistinde vitesi zamanında atıp rakiplerini geç. Kazandıkça garajını büyüt ve hayalindeki garajı tasarla.</p>
+      {{> cta}}
+      <ul class="chips">
+        <li>{{> chip-check}}Ücretsiz</li>
+        <li>{{> chip-check}}Android 7.0+</li>
+        <li>{{> chip-check}}Türkçe · English · Español</li>
+        <li>{{> chip-check}}Misafir olarak oyna</li>
+      </ul>
+    </div>
+    <div class="device" data-video>
+      <div class="screen">
+        <img src="{{asset:/assets/img/poster/poster-1280.webp}}" srcset="{{asset:/assets/img/poster/poster-640.webp}} 640w, {{asset:/assets/img/poster/poster-960.webp}} 960w, {{asset:/assets/img/poster/poster-1280.webp}} 1280w" sizes="(min-width: 960px) 560px, 92vw" width="1280" height="720" alt="Oyundan bir kare: tuğla duvarlı garajda liftlerde tamir edilen arabalar">
+        <video muted loop playsinline preload="none" data-src="{{asset:/assets/video/tanitim-720.mp4}}" data-src-small="{{asset:/assets/video/tanitim-480.mp4}}" aria-label="{{t.video_label}}" hidden></video>
+      </div>
+      {{> video-toggle}}
+    </div>
+  </div>
+</section>
+
+<div class="hazard" aria-hidden="true"></div>
+<section class="stats" aria-label="Sayılarla Auto Yard">
+  <div class="wrap">
+    <ul>
+      <li><strong>57</strong><span>sahip olabileceğin araç</span></li>
+      <li><strong>28</strong><span>restore edilecek klasik</span></li>
+      <li><strong>263</strong><span>dekor eşyası</span></li>
+      <li><strong>99</strong><span>seviye</span></li>
+    </ul>
+  </div>
+</section>
+<div class="hazard" aria-hidden="true"></div>
+
+<section class="section" id="ozellikler" aria-labelledby="ozellikler-baslik">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">Neler yapabilirsin?</p>
+      <h2 id="ozellikler-baslik">Bir garajdan çok daha fazlası</h2>
+      <p>Tamirhane, hurdalık, modifiye atölyesi, drag pisti ve arkadaşların: hepsi aynı şehirde.</p>
+    </div>
+    <ul class="feature-list">
+      <li class="feature">
+        <figure class="shot"><img src="{{asset:/assets/img/shots/tamir-tr-1280.webp}}" srcset="{{asset:/assets/img/shots/tamir-tr-640.webp}} 640w, {{asset:/assets/img/shots/tamir-tr-1280.webp}} 1280w" sizes="(min-width: 900px) 600px, 92vw" width="1280" height="775" loading="lazy" decoding="async" alt="Şehir görünümü: dekorlu garajın önünde tamir edilen bir Volkswagen Passat ve tamir paneli"></figure>
+        <div>
+          <p class="kicker">Tamirhane</p>
+          <h3>Müşteriler trafikten gelir</h3>
+          <p>Arızalanan araç kenara çeker; sen ona dokunup lifte alırsın. Motor, fren, lastik, kaporta, döşeme… İş bitince ₺ balonuna dokun, parayı topla. Bekleyen müşteri sabırsızlanır, geç kalırsan kornaya basıp gider!</p>
+          <ul class="ticks">
+            <li>7 iş türü: hızlı lastik değişiminden fren revizyonuna</li>
+            <li>Taşınabilir 3 lift, 4 garaj boyutu, tamir hızı yükseltmeleri</li>
+            <li>10 garaj rütbesi ve 99 seviye</li>
+          </ul>
+        </div>
+      </li>
+      <li class="feature">
+        <figure class="shot"><img src="{{asset:/assets/img/shots/hurdalik-tr-1280.webp}}" srcset="{{asset:/assets/img/shots/hurdalik-tr-640.webp}} 640w, {{asset:/assets/img/shots/hurdalik-tr-1280.webp}} 1280w" sizes="(min-width: 900px) 600px, 92vw" width="1280" height="775" loading="lazy" decoding="async" alt="Hurdalık: hurda yığınları, vinç, su kulesi ve paslı klasik arabalar"></figure>
+        <div>
+          <p class="kicker">Hurdalık</p>
+          <h3>Hurdadan efsaneye</h3>
+          <p>Haritadaki hurdalıkta paslı klasikler seni bekliyor. Yığınları karıştır, cıvatadan pistona parçaları topla, eksik parçayı arkadaşından iste. Lifte koyduğun hurda, aşama aşama pırıl pırıl bir klasiğe dönüşür.</p>
+          <ul class="ticks">
+            <li>28 klasik: Anadol A1'den Lamborghini Miura'ya</li>
+            <li>Her gün yenilenen 3 araç, 8 saatte dolan yığınlar</li>
+            <li>Necati Usta, çırağı Cemo ve kendi müziğiyle ayrı bir harita</li>
+          </ul>
+        </div>
+      </li>
+      <li class="feature">
+        <figure class="shot"><img src="{{asset:/assets/img/shots/drag-tr-1280.webp}}" srcset="{{asset:/assets/img/shots/drag-tr-640.webp}} 640w, {{asset:/assets/img/shots/drag-tr-1280.webp}} 1280w" sizes="(min-width: 900px) 600px, 92vw" width="1280" height="775" loading="lazy" decoding="async" alt="Drag pisti: başlangıç ışıklarında iki spor araba, köşede devir saati"></figure>
+        <div>
+          <p class="kicker">Drag pisti</p>
+          <h3>Çıkışı yakala, vitesi zamanında at</h3>
+          <p>300 metrelik pistte direksiyon yok, beceri var: ışıklar yanınca tam zamanında çık, ibre yeşile gelince vitesi at. Rakipler aracına göre eşleşir; kaybedersen bir rövanş hakkın var.</p>
+          <ul class="ticks">
+            <li>Gerçek vites kutusu modeli, kusursuz çıkış ve vites</li>
+            <li>Her araca özel rekor ve rekor temposunu gösteren hayalet</li>
+            <li>Yarışların çoğu arkadaşlarının modifiyeli araçlarına karşı</li>
+          </ul>
+        </div>
+      </li>
+      <li class="feature">
+        <figure class="shot"><img src="{{asset:/assets/img/shots/modifiye-tr-1280.webp}}" srcset="{{asset:/assets/img/shots/modifiye-tr-640.webp}} 640w, {{asset:/assets/img/shots/modifiye-tr-1280.webp}} 1280w" sizes="(min-width: 900px) 600px, 92vw" width="1280" height="775" loading="lazy" decoding="async" alt="Modifiye atölyesi: motor parçaları, dinamometre grafiği ve önce/sonra performans çubukları"></figure>
+        <div>
+          <p class="kicker">Modifiye</p>
+          <h3>Aracını bir üst sınıfa taşı</h3>
+          <p>Motor, turbo, hava akışı, şanzıman, lastik ve gövde: her araç için 30 parça. Dinamometre önce/sonra farkını anında gösterir; doğru parçalarla aracın bir üst sınıfa çıkar.</p>
+          <ul class="ticks">
+            <li>6 kategori, Sokak'tan Efsane'ye 5 kademe</li>
+            <li>Klasiklere karbüratör, elektriklilere batarya parçaları</li>
+            <li>Canlı dinamometre ve güç eğrisi</li>
+          </ul>
+        </div>
+      </li>
+      <li class="feature">
+        <figure class="shot"><img src="{{asset:/assets/img/shots/dekor-tr-1280.webp}}" srcset="{{asset:/assets/img/shots/dekor-tr-640.webp}} 640w, {{asset:/assets/img/shots/dekor-tr-1280.webp}} 1280w" sizes="(min-width: 900px) 600px, 92vw" width="1280" height="775" loading="lazy" decoding="async" alt="Garajı düzenle ekranı: ızgaralı zemin, eşya kategorileri ve atölye eşyaları"></figure>
+        <div>
+          <p class="kicker">Dekorasyon</p>
+          <h3>Hayalindeki garajı tasarla</h3>
+          <p>Zemini karo karo boya, iç duvarlar ör, duvarlara tabela ve poster as. Jakuzi, dev akvaryum, hatta özel helikopter… Araçlarını garajında sergile, ziyarete gelen arkadaşların görsün.</p>
+          <ul class="ticks">
+            <li>263 eşya: atölye, yaşam alanı, avlu, bitki, lüks</li>
+            <li>Karo karo zemin boyama, iç duvarlar ve duvar kaplamaları</li>
+            <li>Dekor garajının değerini de artırır</li>
+          </ul>
+        </div>
+      </li>
+      <li class="feature">
+        <figure class="shot"><img src="{{asset:/assets/img/shots/arkadaslar-tr-1280.webp}}" srcset="{{asset:/assets/img/shots/arkadaslar-tr-640.webp}} 640w, {{asset:/assets/img/shots/arkadaslar-tr-1280.webp}} 1280w" sizes="(min-width: 900px) 600px, 92vw" width="1280" height="775" loading="lazy" decoding="async" alt="Arkadaşlar ekranı: avatarlı arkadaş kartları, vitrin araçları ve istatistikler"></figure>
+        <div>
+          <p class="kicker">Arkadaşlar</p>
+          <h3>Arkadaşlarınla yarış, garajlarını gez</h3>
+          <p>Arkadaşını kodla ya da tek dokunuşla davet linkiyle ekle. Garajlarını gez, istedikleri hurdalık parçasını gönder. Rakiplerin çoğu arkadaşlarının modifiyeli araçlarıyla gelir; seni yenen olursa haberin olur: İNTİKAM AL!</p>
+          <ul class="ticks">
+            <li>Davet linki: açan arkadaşın seni hemen ekler</li>
+            <li>Aranızdaki skor, kazanma yüzdesi ve koleksiyon</li>
+            <li>Emre Usta'nın ve Elif Usta'nın garajları herkese açık</li>
+          </ul>
+        </div>
+      </li>
+      <li class="feature">
+        <figure class="shot"><img src="{{asset:/assets/img/shots/kasa-tr-1280.webp}}" srcset="{{asset:/assets/img/shots/kasa-tr-640.webp}} 640w, {{asset:/assets/img/shots/kasa-tr-1280.webp}} 1280w" sizes="(min-width: 900px) 600px, 92vw" width="1280" height="775" loading="lazy" decoding="async" alt="Showroom mağazası: kasa listesi, tabladaki süper kasa ve araçların çıkma oranları"></figure>
+        <div>
+          <p class="kicker">Koleksiyon</p>
+          <h3>Kasaları aç, koleksiyonu tamamla</h3>
+          <p>Şehir, aile, spor, prestij ve süper kasalar showroom'a teslim edilir. Her aracın çıkma oranı mağazada yazar; aynı aracı yeniden bulursan yıldızı artar. İlk aracın hediye: hoş geldin kutusundaki Tofaş Şahin.</p>
+          <ul class="ticks">
+            <li>5 kasa, 4 nadirlik: yaygın, nadir, epik, efsanevi</li>
+            <li>Oranlar açık, sürpriz yok</li>
+            <li>İlk kez bulduğun araç gem kazandırır</li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="cars-section rays" id="araclar" aria-labelledby="araclar-baslik">
+  <div class="wrap section-head">
+    <p class="kicker">Araçlar</p>
+    <h2 id="araclar-baslik">32 markadan 57 araç</h2>
+    <p>Tofaş Şahin'den Togg T10X'e, Anadol A1'den Ferrari 488 Pista'ya; hepsi gerçek fabrika değerleriyle. Kaydır, hepsine bak.</p>
+  </div>
+  <ul class="car-strip" tabindex="0" aria-labelledby="araclar-baslik">
+    {{> cars-tr}}
+  </ul>
+  <p class="wrap cars-note">Şehirde polis araçları da var: kovalamacayı izleyebilirsin ama onlara sahip olamazsın.</p>
+</section>
+
+<section class="section section-alt" aria-labelledby="dahasi-baslik">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">Ve dahası</p>
+      <h2 id="dahasi-baslik">Canlı bir şehir, adil bir oyun</h2>
+    </div>
+    <ul class="more-grid">
+      <li class="more-card"><span class="more-icon" aria-hidden="true">{{> icon-city}}</span><h3>Yaşayan şehir</h3><p>Trafik ışıkları, sirenleriyle polis kovalamacaları, her gün değişen showroom afişi, kuş sesleri ve uzaktan gelen kornalar.</p></li>
+      <li class="more-card"><span class="more-icon" aria-hidden="true">{{> icon-target}}</span><h3>Görevler ve başarımlar</h3><p>Her gün 5, her hafta 5 görev; zorluk senin oyununa göre ayarlanır. 22 başarımda 85 yıldız seni bekliyor.</p></li>
+      <li class="more-card"><span class="more-icon" aria-hidden="true">{{> icon-camera}}</span><h3>Fotoğraf ve sinema modu</h3><p>Arayüzü gizle, kamerayı serbest bırak; garajının logolu fotoğrafını çek ya da sinema modunda şehri izle.</p></li>
+      <li class="more-card"><span class="more-icon" aria-hidden="true">{{> icon-cloud}}</span><h3>Bulut kaydı</h3><p>Google ile giriş yaparsan ilerlemen buluta yedeklenir; telefon değiştirsen de kaybolmaz. İstersen misafir olarak da oynarsın.</p></li>
+      <li class="more-card"><span class="more-icon" aria-hidden="true">{{> icon-shield}}</span><h3>Adil oyun</h3><p>Reklamlar yalnızca sen REKLAM İZLE'ye dokunursan açılır ve asla gem vermez. Kasa oranları mağazada açıkça yazar.</p></li>
+      <li class="more-card"><span class="more-icon" aria-hidden="true">{{> icon-music}}</span><h3>Özgün müzik</h3><p>Garaj, drag pisti ve hurdalık için oyuna özel bestelenmiş üç müzik teması; şehrin sesleri ve polis sirenleri de oyunda üretiliyor.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="sss" aria-labelledby="sss-baslik">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">SSS</p>
+      <h2 id="sss-baslik">Sık sorulan sorular</h2>
+    </div>
+    <div class="faq">
+      <details id="sss-ucretsiz">
+        <summary>Auto Yard ücretsiz mi?</summary>
+        <p>Evet, oyunu indirmek ve oynamak ücretsiz. İstersen Google Play üzerinden isteğe bağlı gem paketleri alabilirsin; ama gemler oyunda da kazanılır (seviye atlayınca, günlük girişte, görevlerde), satın almak zorunlu değil.</p>
+      </details>
+      <details id="sss-reklam">
+        <summary>Oyunda reklam var mı?</summary>
+        <p>Yalnızca isteğe bağlı ödüllü reklamlar var. Reklam sadece sen REKLAM İZLE'ye dokunursan açılır; karşılığında yarış ödülün ikiye katlanır ya da uzun bir tamirin kalan süresi yarıya iner. Araya giren ya da banner reklam yok, reklamlar asla gem vermez ve günde en fazla 12 reklam izlenebilir.</p>
+      </details>
+      <details id="sss-telefon">
+        <summary>Hangi telefonlarda oynanır?</summary>
+        <p>Android 7.0 ve üzeri, 64 bit (arm64) telefonlarda. Oyun telefonuna göre grafik ayarını kendisi seçer; AYARLAR'dan değiştirebilir, pil tasarrufunu açabilirsin.</p>
+      </details>
+      <details id="sss-hesap">
+        <summary>Hesap açmam gerekiyor mu?</summary>
+        <p>Hayır, misafir olarak oynayabilirsin. Google ile giriş yaparsan ilerlemen buluta yedeklenir ve arkadaş özellikleri (davet, garaj ziyareti, arkadaş yarışları) açılır.</p>
+      </details>
+      <details id="sss-arkadas">
+        <summary>Arkadaşlarımla nasıl oynarım?</summary>
+        <p>Google ile giriş yapıp takma adını seç. ARKADAŞLAR ekranında DAVET LİNKİ GÖNDER'e dokun ya da arkadaşının kodunu gir. Davet linkini açan arkadaşın seni hemen ekler; link 1 saat geçerlidir. Sonra garajlarını gezebilir, araçlarına karşı yarışabilirsin.</p>
+      </details>
+      <details id="sss-kasa">
+        <summary>Kasalardan ne çıkacağı belli mi?</summary>
+        <p>Evet. Her kasadaki araçlar ve çıkma oranları mağazada, kasanın yanında yazar. Aynı aracı yeniden bulursan yıldızı artar; ilk kez bulduğun araç gem kazandırır.</p>
+      </details>
+      <details id="sss-dil">
+        <summary>Oyun hangi dillerde?</summary>
+        <p>Türkçe, İngilizce ve İspanyolca. Oyun telefonunun dilinde açılır; dilediğin zaman AYARLAR'dan değiştirebilirsin.</p>
+      </details>
+      <details id="sss-silme">
+        <summary>Hesabımı ve verilerimi nasıl silerim?</summary>
+        <p>Oyunda PROFİL → HESAP → HESABIMI SİL yolunu izle (AYARLAR → HESAP VE GİZLİLİK → GOOGLE HESABI da aynı yere çıkar). Oyuna erişemiyorsan <a href="{{link:delete}}">Hesap ve Veri Silme</a> sayfasındaki formu kullan.</p>
+      </details>
+      <details id="sss-cikis">
+        <summary>Oyun ne zaman çıkıyor?</summary>
+        <p>Çok yakında Google Play'de. Çıktığı gün haber almak için <a href="{{link:contact}}?konu=haber">iletişim formunda</a> "Oyun çıkınca haber ver" konusunu seç.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band rays" aria-labelledby="son-baslik">
+  <div class="wrap narrow">
+    <img class="hero-logo" src="{{asset:/assets/img/brand/logo-960.webp}}" width="960" height="198" loading="lazy" decoding="async" alt="" aria-hidden="true">
+    <h2 id="son-baslik">Garajın seni bekliyor</h2>
+    <p>Anahtarlar sende: ilk müşterin şimdiden kapıda.</p>
+    {{> cta}}
+    {{> share}}
+  </div>
+</section>
