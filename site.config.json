@@ -3,7 +3,7 @@
   "tagline": "Garajını kur, arabaları tamir et, pistte kazan.",
   "siteUrl": "https://autoyardwebsite.vercel.app",
   "lang": "tr",
-  "androidPackage": "com.cartownBurak.app",
+  "androidPackage": "com.autoyard.app",
   "playStoreLive": false,
   "developerName": "Burak Gürgil",
   "contactEmail": "gurgilburak@gmail.com",
