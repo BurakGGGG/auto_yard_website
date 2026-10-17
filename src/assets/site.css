@@ -352,7 +352,8 @@ tr:last-child td { border-bottom: 0; }
   content: counter(step); position: absolute; left: 0.75rem; top: 0.65rem; width: 1.8rem; height: 1.8rem; border-radius: 50%;
   display: grid; place-items: center; background: var(--navy-700); color: var(--gold-400); font: 800 1rem/1 var(--font-display);
 }
-.ui { font: 800 0.9em/1 var(--font-display); letter-spacing: 0.02em; padding: 0.12em 0.45em; border-radius: 6px; background: var(--plate); color: var(--navy-900); box-shadow: 0 2px 0 var(--plate-edge); white-space: nowrap; }
+.ui { font: 800 0.9em/1 var(--font-display); letter-spacing: 0.02em; padding: 0.12em 0.45em; border-radius: 6px; background: var(--plate); color: var(--navy-900); box-shadow: 0 2px 0 var(--plate-edge); -webkit-box-decoration-break: clone; box-decoration-break: clone; line-height: 1.9; }
+.steps li, .prose li, .prose p { overflow-wrap: break-word; }
 
 /* Formlar */
 .form { margin: 1.5rem 0 0; }
