@@ -31,7 +31,7 @@
       </nav>
 
       <p>La présente politique explique comment le jeu Android <strong>{{name}}</strong> (le « Jeu », nom de package <code>{{androidPackage}}</code>) et ce site web (le « Site ») traitent les données personnelles. Elle s’appuie sur la loi turque n° 6698 relative à la protection des données personnelles (KVKK) et, dans la mesure où il s’applique, sur le Règlement général sur la protection des données de l’UE (RGPD).</p>
-      <div class="callout"><p><strong>En bref :</strong> si vous jouez en invité, votre progression reste uniquement sur votre téléphone. Si vous vous connectez avec Google, votre sauvegarde est copiée dans le cloud. Si vous activez les fonctions entre amis, votre pseudo, votre garage et votre photo de profil sont visibles par les autres joueurs. Les publicités ne s’ouvrent que si vous le décidez. Vos données ne sont jamais vendues.</p></div>
+      <div class="callout"><p><strong>En bref :</strong> si vous jouez en invité, votre progression reste uniquement sur votre téléphone. Si vous vous connectez avec Google ou Facebook, votre sauvegarde est copiée dans le cloud. Si vous activez les fonctions entre amis, votre pseudo, votre garage et votre photo de profil sont visibles par les autres joueurs. Les publicités ne s’ouvrent que si vous le décidez. Vos données ne sont jamais vendues.</p></div>
 
       <h2 id="responsable">1. Responsable du traitement</h2>
       <p>Le responsable du traitement est {{developerName}} ({{country}}). Pour toute question relative à la confidentialité : <a href="mailto:{{contactEmail}}">{{contactEmail}}</a> ou le <a href="{{link:contact}}">formulaire de contact</a>.</p>
@@ -39,14 +39,15 @@
       <h2 id="jeu">2. Données traitées dans le jeu</h2>
       <h3>Lorsque vous jouez en invité</h3>
       <p>Aucun compte n’est créé et aucune session Firebase n’est ouverte pour le jeu en invité. Votre sauvegarde (argent, voitures, garage, missions, paramètres), votre registre d’achats et vos compteurs quotidiens de publicités sont stockés uniquement sur votre téléphone. Les informations sur la puce graphique, la mémoire et le processeur de votre téléphone servent uniquement, sur l’appareil, à choisir les réglages graphiques et ne sont envoyées nulle part. En invité, vous pouvez aussi regarder des publicités avec récompense et effectuer des achats ; voir les sections <a href="#publicites">4</a> et <a href="#achats">5</a>.</p>
-      <h3>Lorsque vous vous connectez avec votre compte Google</h3>
+      <h3>Lorsque vous vous connectez avec Google ou Facebook</h3>
       <ul>
-        <li><strong>Compte :</strong> Google Firebase Authentication vous connecte avec votre compte Google et vous attribue un identifiant utilisateur (UID). Aucune autre méthode de connexion n’est utilisée.</li>
-        <li><strong>Informations du profil Google :</strong> votre nom d’affichage, votre adresse e-mail et l’adresse (URL) de votre photo de profil sont conservés dans une partie de votre sauvegarde cloud lisible uniquement par vous. Votre nom d’affichage n’apparaît que sur votre propre écran ; les autres joueurs voient le pseudo que vous avez choisi.</li>
+        <li><strong>Compte :</strong> Google Firebase Authentication vous connecte avec le compte Google ou Facebook de votre choix et vous attribue un identifiant utilisateur (UID). Les comptes Google et Facebook qui ont la même adresse e-mail sont réunis en un seul compte de jeu ; si vous associez les deux, chacun vous connecte au même compte. Aucune autre méthode de connexion n’est utilisée.</li>
+        <li><strong>Informations du profil :</strong> votre nom d’affichage Google ou Facebook, votre adresse e-mail et l’adresse (URL) de votre photo de profil sont conservés dans une partie de votre sauvegarde cloud lisible uniquement par vous. Votre nom d’affichage n’apparaît que sur votre propre écran ; les autres joueurs voient le pseudo que vous avez choisi.</li>
+        <li><strong>Connexion avec Facebook :</strong> si vous choisissez Facebook, l’application ou le site Facebook s’ouvre et vous acceptez de ne partager avec le jeu que votre profil public (nom, photo de profil) et votre adresse e-mail ; votre mot de passe Facebook ne parvient jamais au jeu. Firebase Authentication vous connecte en vérifiant le jeton de connexion émis par Facebook et associe à votre compte de jeu un identifiant Facebook propre à l’application ; le jeton n’est pas enregistré dans votre sauvegarde cloud. Votre liste d’amis et vos publications ne sont pas consultées, et rien n’est publié en votre nom. Votre photo de profil Facebook n’est pas utilisée dans le jeu. Le composant Facebook du jeu (Facebook SDK) sert uniquement à la connexion ; les événements automatiques de l’application et la collecte de l’identifiant publicitaire sont désactivés. Facebook traite les données de connexion selon sa propre <a href="https://www.facebook.com/privacy/policy" rel="noopener">politique de confidentialité</a>.</li>
         <li><strong>Sauvegarde cloud :</strong> l’ensemble de votre progression (économie, voitures, garage et déco, missions, registre d’achats, liste des joueurs que vous avez bloqués, nombre de courses disputées avec vos amis) est stocké dans Google Cloud Firestore, associé à votre compte, et n’est lisible que par votre compte.</li>
       </ul>
       <h3>Lorsque vous utilisez les fonctions entre amis</h3>
-      <p>Les fonctions entre amis nécessitent une connexion avec Google et le choix d’un pseudo. Lorsque vous créez votre pseudo :</p>
+      <p>Les fonctions entre amis nécessitent une connexion (avec Google ou Facebook) et le choix d’un pseudo. Lorsque vous créez votre pseudo :</p>
       <ul>
         <li><strong>Votre profil de garage public</strong> est créé : votre pseudo, votre code ami, votre niveau, la valeur de votre garage, l’agencement de votre garage (déco, voitures exposées et leur tuning), votre avatar, votre cadre, le drapeau que vous avez choisi, le nom de votre garage, votre voiture vitrine, vos statistiques de course (victoires, nombre de courses, collection, meilleur temps) et, le cas échéant, la pièce de casse que vous avez demandée. Votre argent, vos gemmes et vos caisses n’en font pas partie.</li>
         <li><strong>Photo de profil :</strong> la photo que vous choisissez dans votre galerie, celle que vous prenez avec l’appareil photo ou la photo de votre compte Google est réduite à 192×192 pixels et téléversée dans Firestore. Votre photo Google ne devient votre avatar que si vous choisissez <span class="ui">GOOGLE</span> ou activez <span class="ui">GOOGLE : ACTIVÉ</span> dans la section <span class="ui">MODIFIER LE PROFIL → PHOTO</span> ; elle est désactivée par défaut. Lorsque vous retirez votre photo ou passez à un avatar prédéfini, l’image téléversée est supprimée du serveur.</li>
@@ -61,7 +62,7 @@
       <p>Le jeu n’utilise aucun outil d’analyse (analytics) ni de rapport de plantage, et n’accède ni à votre position, ni à vos contacts, ni à votre micro. Vos données ne sont jamais vendues.</p>
 
       <h2 id="visibilite">3. Ce que les autres joueurs peuvent voir</h2>
-      <p>Votre profil de garage public et votre photo de profil peuvent être vus par les joueurs connectés à Auto Yard avec Google (lorsqu’ils visitent votre garage, dans leur liste d’amis, lorsqu’ils font la course contre vous et lorsqu’ils ouvrent votre lien d’invitation). Les demandes d’ami et les nouvelles de course ne sont visibles que par les deux joueurs concernés. Votre sauvegarde cloud, votre adresse e-mail et votre nom d’affichage Google ne sont jamais montrés aux autres joueurs.</p>
+      <p>Votre profil de garage public et votre photo de profil peuvent être vus par les joueurs connectés à Auto Yard (lorsqu’ils visitent votre garage, dans leur liste d’amis, lorsqu’ils font la course contre vous et lorsqu’ils ouvrent votre lien d’invitation). Les demandes d’ami et les nouvelles de course ne sont visibles que par les deux joueurs concernés. Votre sauvegarde cloud, votre adresse e-mail et votre nom d’affichage Google ou Facebook ne sont jamais montrés aux autres joueurs.</p>
 
       <h2 id="publicites">4. Publicités</h2>
       <p>Le jeu n’affiche que des <strong>publicités avec récompense facultatives</strong>. Une publicité ne s’ouvre que si vous touchez <span class="ui">REGARDER UNE PUB</span> (pour doubler le gain d’une course ou raccourcir une longue réparation) ; il n’y a ni publicité interstitielle, ni bannière, ni publicité à l’ouverture de l’application.</p>
@@ -94,7 +95,7 @@
           <caption class="visually-hidden">Finalités du traitement et bases légales</caption>
           <thead><tr><th scope="col">Finalité</th><th scope="col">Données</th><th scope="col">Base légale</th></tr></thead>
           <tbody>
-            <tr><td>Connexion avec Google et sauvegarde cloud</td><td>UID, informations du profil Google, sauvegarde du jeu</td><td>Exécution d’un contrat (KVKK art. 5/2-c, RGPD art. 6.1.b) ; c’est vous qui activez cette fonction</td></tr>
+            <tr><td>Connexion avec Google / Facebook et sauvegarde cloud</td><td>UID, informations du profil Google / Facebook, sauvegarde du jeu</td><td>Exécution d’un contrat (KVKK art. 5/2-c, RGPD art. 6.1.b) ; c’est vous qui activez cette fonction</td></tr>
             <tr><td>Fonctions entre amis et profil public</td><td>Pseudo, code, profil de garage, photo de profil, données d’amitié</td><td>Exécution d’un contrat ; pour la photo, votre choix (modifiable à tout moment)</td></tr>
             <tr><td>Notifications de course</td><td>Jeton de notification, langue, journal d’envoi</td><td>Consentement explicite (KVKK art. 5/1, RGPD art. 6.1.a) ; vous le retirez en désactivant les notifications</td></tr>
             <tr><td>Publicités avec récompense</td><td>Identifiant publicitaire, IP, informations sur l’appareil, interactions</td><td>Consentement explicite ; via le formulaire de consentement dans l’EEE, au Royaume-Uni et en Suisse, ailleurs en choisissant de regarder une publicité</td></tr>
@@ -111,6 +112,7 @@
       <p>Vos données ne sont partagées qu’avec les sous-traitants suivants, et uniquement pour fournir le service :</p>
       <ul>
         <li><strong>Google LLC / Google Ireland Ltd. (Firebase Authentication, Cloud Firestore, Cloud Functions, Cloud Messaging)</strong> : connexion, sauvegarde cloud, fonctions entre amis, notifications</li>
+        <li><strong>Meta Platforms Ireland Ltd. / Meta Platforms, Inc. (Facebook Login)</strong> : connexion, si vous choisissez Facebook</li>
         <li><strong>Google (AdMob)</strong> : diffusion et mesure des publicités avec récompense</li>
         <li><strong>Google (Google Play)</strong> : achats intégrés</li>
         <li><strong>Vercel Inc.</strong> : hébergement du site et statistiques anonymes</li>
@@ -120,7 +122,7 @@
 
       <h2 id="conservation">10. Durées de conservation</h2>
       <ul>
-        <li>Sauvegarde cloud, informations du profil Google, profil de garage public, code ami et liste d’amis : jusqu’à la suppression de votre compte. Photo de profil : tant que vous l’utilisez ; supprimée lorsque vous la retirez ou supprimez votre compte.</li>
+        <li>Sauvegarde cloud, informations du profil Google / Facebook, profil de garage public, code ami et liste d’amis : jusqu’à la suppression de votre compte. Photo de profil : tant que vous l’utilisez ; supprimée lorsque vous la retirez ou supprimez votre compte.</li>
         <li>Demandes d’ami : jusqu’à leur acceptation, leur refus, leur retrait ou la suppression du compte.</li>
         <li>Liens d’invitation : valables 1 heure ; une invitation expirée est supprimée automatiquement dans l’heure.</li>
         <li>Pièces offertes : jusqu’à ce que le destinataire les récupère. Nouvelles de course : jusqu’à leur fermeture ou jusqu’à l’arrivée de la course suivante du même ami.</li>
@@ -131,7 +133,7 @@
       </ul>
 
       <h2 id="suppression">11. Supprimer votre compte</h2>
-      <p>Vous pouvez supprimer définitivement votre compte dans le jeu via <span class="ui">PROFIL → COMPTE → SUPPRIMER MON COMPTE</span> (<span class="ui">PARAMÈTRES → COMPTE ET CONFIDENTIALITÉ → COMPTE GOOGLE</span> mène au même endroit). Cette opération supprime votre sauvegarde cloud, votre profil de garage public, votre photo de profil, votre code ami, vos amitiés (des deux côtés), les demandes, les nouvelles de course, les cadeaux, les invitations, le jeton de notification et la liaison avec votre compte Google. Si vous ne pouvez pas accéder au jeu, utilisez le formulaire de la page <a href="{{link:delete}}">Suppression du compte et des données</a>.</p>
+      <p>Vous pouvez supprimer définitivement votre compte dans le jeu via <span class="ui">PROFIL → COMPTE → SUPPRIMER MON COMPTE</span> (<span class="ui">PARAMÈTRES → COMPTE ET CONFIDENTIALITÉ → COMPTE DE JEU</span> mène au même endroit). Cette opération supprime votre sauvegarde cloud, votre profil de garage public, votre photo de profil, votre code ami, vos amitiés (des deux côtés), les demandes, les nouvelles de course, les cadeaux, les invitations, le jeton de notification et les liaisons avec Google / Facebook. Si vous vous êtes connecté avec Facebook, vous pouvez aussi retirer l’accès d’Auto Yard dans Facebook (<a href="{{link:delete}}#facebook">comment ?</a>). Si vous ne pouvez pas accéder au jeu, utilisez le formulaire de la page <a href="{{link:delete}}">Suppression du compte et des données</a>.</p>
       <p>Après la suppression, peuvent subsister pendant un certain temps : les signalements vous concernant ou effectués par vous (180 jours au maximum), les journaux d’envoi des notifications (1 jour au maximum), votre pseudo dans les cadeaux que vos amis n’ont pas encore récupérés, les enregistrements d’achats et de publicités conservés par Google, ainsi que les fichiers présents sur votre téléphone (supprimés lorsque vous désinstallez l’application).</p>
 
       <h2 id="securite">12. Sécurité</h2>

@@ -120,7 +120,7 @@ export function buildEmail(d) {
       subject: `[Auto Yard] Hesap silme talebi — ${SCOPES[d.scope]}`,
       text: [
         `Talep: ${SCOPES[d.scope]}`,
-        `Google e-postası: ${d.email}`,
+        `Hesap e-postası (Google / Facebook): ${d.email}`,
         `Oyundaki ad: ${d.name || "-"}`,
         `Not: ${d.message || "-"}`,
         `Site dili: ${d.lang}`,

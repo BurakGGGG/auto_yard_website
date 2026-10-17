@@ -85,10 +85,10 @@
     "summary": "Auto Yard ist ein kostenloses Werkstatt-, Autoreparatur- und Drag-Racing-Spiel für Android, auf Türkisch, Englisch, Spanisch, Deutsch und Französisch.",
     "facts": [
       "Spielablauf: Autos von Kunden reparieren, die aus dem lebendigen Stadtverkehr rechts ranfahren (7 Auftragsarten, 3 Hebebühnen), 28 Klassiker vom Schrottplatz restaurieren, 300-m-Drag-Rennen mit getimten Starts und Gangwechseln fahren, Autos tunen (30 Teile pro Auto), die Werkstatt einrichten (263 Objekte) und 57 besitzbare Autos von 32 Marken über Lieferkisten mit veröffentlichten Chancen sammeln.",
-      "Soziales: Freunde per Code oder über einen 1 Stunde gültigen Einladungslink hinzufügen, ihre Werkstätten besuchen, gegen ihre getunten Autos fahren und nach einer Niederlage Rache nehmen; für Freunde-Funktionen und Cloud-Spielstand ist eine Google-Anmeldung nötig.",
+      "Soziales: Freunde per Code oder über einen 1 Stunde gültigen Einladungslink hinzufügen, ihre Werkstätten besuchen, gegen ihre getunten Autos fahren und nach einer Niederlage Rache nehmen; für Freunde-Funktionen und Cloud-Spielstand ist eine Anmeldung mit Google oder Facebook nötig.",
       "Preis: kostenlos spielbar. Optionale Juwelenpakete über Google Play Billing. Optionale Belohnungswerbung (Google AdMob) nur, wenn der Spieler auf WERBUNG ANSEHEN tippt; Werbung gibt nie Juwelen.",
       "Plattform: Android 7.0 oder neuer (64 Bit). Sprachen: Türkisch, Englisch, Spanisch, Deutsch, Französisch. Angestrebte Altersfreigabe: ab 13 Jahren.",
-      "Konto: ohne Konto als Gast spielbar; die Google-Anmeldung sichert den Fortschritt in der Cloud (Firebase). Die Kontolöschung ist im Spiel und auf der Website möglich."
+      "Konto: ohne Konto als Gast spielbar; die Anmeldung mit Google oder Facebook sichert den Fortschritt in der Cloud (Firebase); Google- und Facebook-Konten mit derselben E-Mail-Adresse sind ein Spielkonto. Die Kontolöschung ist im Spiel und auf der Website möglich."
     ],
     "status_live": "Google Play:",
     "status_soon": "Status: noch nicht veröffentlicht, bald bei Google Play"

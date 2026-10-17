@@ -11,16 +11,19 @@
     <article class="card prose">
       <h2 id="in-game">In the game (instant)</h2>
       <ol class="steps">
-        <li>Tap your avatar in the top-left corner and open the <span class="ui">ACCOUNT</span> plate on the <span class="ui">PROFILE</span> screen. (<span class="ui">SETTINGS → ACCOUNT AND PRIVACY → GOOGLE ACCOUNT</span> leads to the same place.)</li>
+        <li>Tap your avatar in the top-left corner and open the <span class="ui">ACCOUNT</span> plate on the <span class="ui">PROFILE</span> screen. (<span class="ui">SETTINGS → ACCOUNT AND PRIVACY → GAME ACCOUNT</span> leads to the same place.)</li>
         <li>Tap <span class="ui">DELETE MY ACCOUNT</span>, then <span class="ui">YES, DELETE PERMANENTLY</span>.</li>
-        <li>Choose the same Google account once more to confirm it's you.</li>
+        <li>Choose the account you signed in with (Google or Facebook) once more to confirm it's you.</li>
       </ol>
-      <p>Your account and all the data in the table below are deleted immediately, and the game on that phone starts over. This button only appears if you signed in with Google. If you played as a guest, we hold no data about you on our servers; uninstalling the game removes the save on your phone.</p>
+      <p>Your account and all the data in the table below are deleted immediately, and the game on that phone starts over. This button only appears if you signed in (with Google or Facebook). If you played as a guest, we hold no data about you on our servers; uninstalling the game removes the save on your phone.</p>
+
+      <h2 id="facebook">If you signed in with Facebook</h2>
+      <p>Deleting your account in the game or with the web form below also deletes all data that came into the game through Facebook sign-in: your name, email address, profile photo address and the Facebook user ID linked to your game account. To also remove Auto Yard's access to your Facebook account, go to <em>Settings &amp; privacy → Settings → Apps and websites</em> in Facebook, find Auto Yard and tap <em>Remove</em> (menu names may differ slightly between Facebook versions). Removing access on its own doesn't delete your game progress; use the steps above for that.</p>
 
       <h2 id="steps">With the web form</h2>
       <p>If you've uninstalled the game or can't open it:</p>
       <ol class="steps">
-        <li>Fill in the form below with the <strong>email address of the Google account</strong> you signed in with.</li>
+        <li>Fill in the form below with the <strong>email address of the Google or Facebook account</strong> you signed in with. If your Facebook account has no email address, write your Facebook name in the note field.</li>
         <li>We'll send you an email to confirm the request came from that address; reply to it.</li>
         <li>After confirmation, the deletion is completed within <strong>30 days</strong> at the latest and we'll let you know.</li>
       </ol>
@@ -32,8 +35,8 @@
           <caption class="visually-hidden">Deleted and remaining data</caption>
           <thead><tr><th scope="col">Data</th><th scope="col">Delete everything</th><th scope="col">Delete cloud save only (form)</th></tr></thead>
           <tbody>
-            <tr><td>Google sign-in account</td><td>Deleted</td><td>Kept</td></tr>
-            <tr><td>Cloud save (progress, purchase ledger) and Google profile details</td><td>Deleted</td><td>Deleted</td></tr>
+            <tr><td>Google / Facebook sign-in account</td><td>Deleted</td><td>Kept</td></tr>
+            <tr><td>Cloud save (progress, purchase ledger) and Google / Facebook profile details</td><td>Deleted</td><td>Deleted</td></tr>
             <tr><td>Public garage profile, profile photo, friend code</td><td>Deleted</td><td>Kept</td></tr>
             <tr><td>Friendships (on both sides), requests, race news, gifts, invites</td><td>Deleted</td><td>Kept</td></tr>
             <tr><td>Race notification token</td><td>Deleted</td><td>Kept</td></tr>
@@ -53,7 +56,7 @@
           <input id="d-website" name="website" type="text" tabindex="-1" autocomplete="off">
         </div>
         <div class="field">
-          <label for="d-email">Email of the Google account you use in the game</label>
+          <label for="d-email">Email of the Google or Facebook account you use in the game</label>
           <input id="d-email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="200">
         </div>
         <div class="field">

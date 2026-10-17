@@ -31,7 +31,7 @@
       </nav>
 
       <p>Diese Erklärung beschreibt, wie das Android-Spiel <strong>{{name}}</strong> (das „Spiel“, Paketname <code>{{androidPackage}}</code>) und diese Website (die „Website“) personenbezogene Daten verarbeiten. Grundlage sind das türkische Gesetz Nr. 6698 zum Schutz personenbezogener Daten (KVKK) und, soweit anwendbar, die Datenschutz-Grundverordnung der EU (DSGVO).</p>
-      <div class="callout"><p><strong>Kurz gesagt:</strong> Spielst du als Gast, bleibt dein Fortschritt nur auf deinem Handy. Meldest du dich mit Google an, wird dein Spielstand in der Cloud gesichert. Nutzt du die Freunde-Funktionen, sind dein Nickname, deine Werkstatt und dein Profilfoto für andere Spieler sichtbar. Werbung startet nur, wenn du es willst. Deine Daten werden nicht verkauft.</p></div>
+      <div class="callout"><p><strong>Kurz gesagt:</strong> Spielst du als Gast, bleibt dein Fortschritt nur auf deinem Handy. Meldest du dich mit Google oder Facebook an, wird dein Spielstand in der Cloud gesichert. Nutzt du die Freunde-Funktionen, sind dein Nickname, deine Werkstatt und dein Profilfoto für andere Spieler sichtbar. Werbung startet nur, wenn du es willst. Deine Daten werden nicht verkauft.</p></div>
 
       <h2 id="verantwortlicher">1. Verantwortlicher</h2>
       <p>Verantwortlicher ist {{developerName}} ({{country}}). Bei allen Fragen zum Datenschutz: <a href="mailto:{{contactEmail}}">{{contactEmail}}</a> oder das <a href="{{link:contact}}">Kontaktformular</a>.</p>
@@ -39,14 +39,15 @@
       <h2 id="spiel">2. Im Spiel verarbeitete Daten</h2>
       <h3>Wenn du als Gast spielst</h3>
       <p>Für das Spielen als Gast wird kein Konto angelegt und keine Firebase-Sitzung gestartet. Dein Spielstand (Geld, Autos, Werkstatt, Aufgaben, Einstellungen), dein Kaufprotokoll und deine täglichen Werbezähler werden nur auf deinem Handy gespeichert. Angaben zu Grafikchip, Arbeitsspeicher und Prozessor deines Handys werden nur auf dem Gerät verwendet, um die Grafikeinstellung zu wählen, und nirgendwohin gesendet. Auch als Gast kannst du Belohnungswerbung ansehen und Käufe tätigen; siehe dazu die Abschnitte <a href="#werbung">4</a> und <a href="#kaeufe">5</a>.</p>
-      <h3>Wenn du dich mit deinem Google-Konto anmeldest</h3>
+      <h3>Wenn du dich mit Google oder Facebook anmeldest</h3>
       <ul>
-        <li><strong>Konto:</strong> Google Firebase Authentication meldet dich mit deinem Google-Konto an und weist dir eine Nutzer-ID (UID) zu. Andere Anmeldemethoden werden nicht verwendet.</li>
-        <li><strong>Google-Profildaten:</strong> Dein Anzeigename, deine E-Mail-Adresse und die Adresse (URL) deines Profilfotos werden in einem Bereich deines Cloud-Spielstands gespeichert, den nur du lesen kannst. Dein Anzeigename wird nur auf deinem eigenen Bildschirm angezeigt; andere Spieler sehen den Nickname, den du wählst.</li>
+        <li><strong>Konto:</strong> Google Firebase Authentication meldet dich mit dem gewählten Google- oder Facebook-Konto an und weist dir eine Nutzer-ID (UID) zu. Google- und Facebook-Konten mit derselben E-Mail-Adresse werden zu einem Spielkonto zusammengeführt; verknüpfst du beide, gelangst du mit jedem von ihnen in dasselbe Konto. Andere Anmeldemethoden werden nicht verwendet.</li>
+        <li><strong>Profildaten:</strong> Dein Anzeigename bei Google oder Facebook, deine E-Mail-Adresse und die Adresse (URL) deines Profilfotos werden in einem Bereich deines Cloud-Spielstands gespeichert, den nur du lesen kannst. Dein Anzeigename wird nur auf deinem eigenen Bildschirm angezeigt; andere Spieler sehen den Nickname, den du wählst.</li>
+        <li><strong>Anmeldung mit Facebook:</strong> Wählst du Facebook, öffnet sich die Facebook-App oder -Website, und du stimmst zu, dem Spiel nur dein öffentliches Profil (Name, Profilfoto) und deine E-Mail-Adresse zu geben; dein Facebook-Passwort erreicht das Spiel nie. Firebase Authentication meldet dich an, indem es das von Facebook ausgestellte Anmeldetoken prüft, und verknüpft eine app-spezifische Facebook-Nutzer-ID mit deinem Spielkonto; das Token wird nicht in deinem Cloud-Spielstand gespeichert. Auf deine Freundesliste und deine Beiträge wird nicht zugegriffen, und es wird nichts in deinem Namen gepostet. Dein Facebook-Profilfoto wird im Spiel nicht verwendet. Die Facebook-Komponente im Spiel (Facebook SDK) dient nur der Anmeldung; automatische App-Events und die Erfassung der Werbe-ID sind ausgeschaltet. Facebook verarbeitet die Daten der Anmeldung nach seiner eigenen <a href="https://www.facebook.com/privacy/policy" rel="noopener">Datenschutzrichtlinie</a>.</li>
         <li><strong>Cloud-Spielstand:</strong> Dein gesamter Spielfortschritt (Wirtschaft, Autos, Werkstatt und Deko, Aufgaben, Kaufprotokoll, die Liste der von dir blockierten Spieler, die Zahl deiner Rennen gegen Freunde) wird mit deinem Konto verknüpft in Google Cloud Firestore gespeichert und kann nur von deinem Konto gelesen werden.</li>
       </ul>
       <h3>Wenn du die Freunde-Funktionen nutzt</h3>
-      <p>Die Freunde-Funktionen setzen eine Google-Anmeldung und einen Nickname voraus. Sobald du deinen Nickname festlegst:</p>
+      <p>Die Freunde-Funktionen setzen eine Anmeldung (mit Google oder Facebook) und einen Nickname voraus. Sobald du deinen Nickname festlegst:</p>
       <ul>
         <li><strong>Dein öffentliches Werkstattprofil</strong> wird angelegt: dein Nickname, dein Freundescode, dein Level, dein Werkstattwert, das Layout deiner Werkstatt (Deko, ausgestellte Autos und ihr Tuning), dein Avatar, dein Rahmen, die von dir gewählte Flagge, dein Werkstattname, dein Vitrinenauto, deine Rennstatistiken (Siege, Anzahl der Rennen, Sammlung, Bestzeit) und, falls vorhanden, das Schrottplatz-Teil, um das du gebeten hast. Geld, Juwelen und Kisten sind nicht Teil dieses Profils.</li>
         <li><strong>Profilfoto:</strong> Ein Foto, das du aus deiner Galerie auswählst oder mit der Kamera aufnimmst, oder das Foto deines Google-Kontos wird auf 192×192 Pixel verkleinert und in Firestore hochgeladen. Dein Google-Foto wird nur dann zu deinem Avatar, wenn du unter <span class="ui">PROFIL BEARBEITEN → FOTO</span> <span class="ui">GOOGLE</span> wählst oder <span class="ui">GOOGLE: AN</span> einschaltest; standardmäßig ist es aus. Wenn du dein Foto entfernst oder zu einem vorgefertigten Avatar wechselst, wird das hochgeladene Bild vom Server gelöscht.</li>
@@ -61,7 +62,7 @@
       <p>Das Spiel nutzt keine Analyse- oder Absturzberichts-Tools und greift nicht auf deinen Standort, deine Kontakte oder dein Mikrofon zu. Deine Daten werden nicht verkauft.</p>
 
       <h2 id="sichtbarkeit">3. Was andere Spieler sehen können</h2>
-      <p>Dein öffentliches Werkstattprofil und dein Profilfoto können Spieler sehen, die bei Auto Yard mit Google angemeldet sind (wenn sie deine Werkstatt besuchen, in ihrer Freundesliste, wenn sie gegen dich fahren und wenn sie deinen Einladungslink öffnen). Freundschaftsanfragen und Renn-Nachrichten sehen nur die beiden beteiligten Spieler. Dein Cloud-Spielstand, deine E-Mail-Adresse und dein Google-Anzeigename werden keinem anderen Spieler angezeigt.</p>
+      <p>Dein öffentliches Werkstattprofil und dein Profilfoto können Spieler sehen, die bei Auto Yard angemeldet sind (wenn sie deine Werkstatt besuchen, in ihrer Freundesliste, wenn sie gegen dich fahren und wenn sie deinen Einladungslink öffnen). Freundschaftsanfragen und Renn-Nachrichten sehen nur die beiden beteiligten Spieler. Dein Cloud-Spielstand, deine E-Mail-Adresse und dein Anzeigename bei Google oder Facebook werden keinem anderen Spieler angezeigt.</p>
 
       <h2 id="werbung">4. Werbung</h2>
       <p>Das Spiel zeigt nur <strong>optionale Belohnungswerbung</strong>. Werbung startet nur, wenn du auf <span class="ui">WERBUNG ANSEHEN</span> tippst (um einen Rennpreis zu verdoppeln oder eine lange Reparatur abzukürzen); es gibt keine Zwischen-, Banner- oder App-Start-Werbung.</p>
@@ -94,7 +95,7 @@
           <caption class="visually-hidden">Verarbeitungszwecke und Rechtsgrundlagen</caption>
           <thead><tr><th scope="col">Zweck</th><th scope="col">Daten</th><th scope="col">Rechtsgrundlage</th></tr></thead>
           <tbody>
-            <tr><td>Google-Anmeldung und Cloud-Sicherung</td><td>UID, Google-Profildaten, Spielstand</td><td>Vertragserfüllung (Art. 5 Abs. 2 lit. c KVKK, Art. 6 Abs. 1 lit. b DSGVO); du startest diese Funktion selbst</td></tr>
+            <tr><td>Anmeldung mit Google / Facebook und Cloud-Sicherung</td><td>UID, Profildaten von Google / Facebook, Spielstand</td><td>Vertragserfüllung (Art. 5 Abs. 2 lit. c KVKK, Art. 6 Abs. 1 lit. b DSGVO); du startest diese Funktion selbst</td></tr>
             <tr><td>Freunde-Funktionen und öffentliches Profil</td><td>Nickname, Code, Werkstattprofil, Profilfoto, Freundschaftsdaten</td><td>Vertragserfüllung; beim Foto deine eigene Wahl (jederzeit änderbar)</td></tr>
             <tr><td>Rennbenachrichtigungen</td><td>Benachrichtigungstoken, Sprache, Sendeprotokoll</td><td>Ausdrückliche Einwilligung (Art. 5 Abs. 1 KVKK, Art. 6 Abs. 1 lit. a DSGVO); Widerruf durch Ausschalten der Benachrichtigungen</td></tr>
             <tr><td>Belohnungswerbung</td><td>Werbe-ID, IP, Geräteangaben, Interaktionen</td><td>Ausdrückliche Einwilligung; im EWR, im Vereinigten Königreich und in der Schweiz über das Einwilligungsfenster, in anderen Ländern durch die Entscheidung, eine Werbung anzusehen</td></tr>
@@ -111,6 +112,7 @@
       <p>Deine Daten werden nur mit den folgenden Auftragsverarbeitern geteilt, und nur, um den Dienst bereitzustellen:</p>
       <ul>
         <li><strong>Google LLC / Google Ireland Ltd. (Firebase Authentication, Cloud Firestore, Cloud Functions, Cloud Messaging)</strong>: Anmeldung, Cloud-Spielstand, Freunde-Funktionen, Benachrichtigungen</li>
+        <li><strong>Meta Platforms Ireland Ltd. / Meta Platforms, Inc. (Facebook Login)</strong>: Anmeldung, wenn du Facebook wählst</li>
         <li><strong>Google (AdMob)</strong>: Auslieferung und Messung der Belohnungswerbung</li>
         <li><strong>Google (Google Play)</strong>: In-App-Käufe</li>
         <li><strong>Vercel Inc.</strong>: Hosting der Website und anonyme Statistiken</li>
@@ -120,7 +122,7 @@
 
       <h2 id="speicherdauer">10. Speicherdauer</h2>
       <ul>
-        <li>Cloud-Spielstand, Google-Profildaten, öffentliches Werkstattprofil, Freundescode und Freundesliste: bis du dein Konto löschst. Profilfoto: solange du es verwendest; es wird gelöscht, wenn du es entfernst oder dein Konto löschst.</li>
+        <li>Cloud-Spielstand, Profildaten von Google / Facebook, öffentliches Werkstattprofil, Freundescode und Freundesliste: bis du dein Konto löschst. Profilfoto: solange du es verwendest; es wird gelöscht, wenn du es entfernst oder dein Konto löschst.</li>
         <li>Freundschaftsanfragen: bis sie angenommen, abgelehnt oder zurückgezogen werden oder das Konto gelöscht wird.</li>
         <li>Einladungslinks: 1 Stunde gültig; eine abgelaufene Einladung wird innerhalb einer Stunde automatisch gelöscht.</li>
         <li>Geschenkte Teile: bis der Empfänger sie abholt. Renn-Nachrichten: bis sie geschlossen werden oder das nächste Rennen desselben Freundes sie ersetzt.</li>
@@ -131,7 +133,7 @@
       </ul>
 
       <h2 id="loeschung">11. Dein Konto löschen</h2>
-      <p>Du kannst dein Konto im Spiel über <span class="ui">PROFIL → KONTO → MEIN KONTO LÖSCHEN</span> dauerhaft löschen (<span class="ui">EINSTELLUNGEN → KONTO UND DATENSCHUTZ → GOOGLE-KONTO</span> führt an dieselbe Stelle). Dabei werden dein Cloud-Spielstand, dein öffentliches Werkstattprofil, dein Profilfoto, dein Freundescode, deine Freundschaften (auf beiden Seiten), Anfragen, Renn-Nachrichten, Geschenke, Einladungen, dein Benachrichtigungstoken und die Verknüpfung mit deinem Google-Konto gelöscht. Wenn du das Spiel nicht öffnen kannst, nutze das Formular auf der Seite <a href="{{link:delete}}">Konto- und Datenlöschung</a>.</p>
+      <p>Du kannst dein Konto im Spiel über <span class="ui">PROFIL → KONTO → MEIN KONTO LÖSCHEN</span> dauerhaft löschen (<span class="ui">EINSTELLUNGEN → KONTO UND DATENSCHUTZ → SPIELKONTO</span> führt an dieselbe Stelle). Dabei werden dein Cloud-Spielstand, dein öffentliches Werkstattprofil, dein Profilfoto, dein Freundescode, deine Freundschaften (auf beiden Seiten), Anfragen, Renn-Nachrichten, Geschenke, Einladungen, dein Benachrichtigungstoken und die Verknüpfungen mit Google / Facebook gelöscht. Hast du dich mit Facebook angemeldet, kannst du Auto Yard den Zugriff auch bei Facebook entziehen (<a href="{{link:delete}}#facebook">wie?</a>). Wenn du das Spiel nicht öffnen kannst, nutze das Formular auf der Seite <a href="{{link:delete}}">Konto- und Datenlöschung</a>.</p>
       <p>Nach der Löschung können folgende Daten noch eine Zeit lang verbleiben: Meldungen, die du gemacht hast oder die über dich gemacht wurden (höchstens 180 Tage), Sendeprotokolle der Benachrichtigungen (höchstens 1 Tag), dein Nickname in Geschenken, die deine Freunde noch nicht abgeholt haben, von Google gespeicherte Kauf- und Werbedaten sowie Dateien auf deinem Handy (sie werden beim Deinstallieren der App entfernt).</p>
 
       <h2 id="sicherheit">12. Sicherheit</h2>

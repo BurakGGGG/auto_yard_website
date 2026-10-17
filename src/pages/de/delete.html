@@ -11,16 +11,19 @@
     <article class="card prose">
       <h2 id="im-spiel">Im Spiel (sofort)</h2>
       <ol class="steps">
-        <li>Tippe oben links auf deinen Avatar und öffne auf dem Bildschirm <span class="ui">PROFIL</span> das Feld <span class="ui">KONTO</span>. (<span class="ui">EINSTELLUNGEN → KONTO UND DATENSCHUTZ → GOOGLE-KONTO</span> führt an dieselbe Stelle.)</li>
+        <li>Tippe oben links auf deinen Avatar und öffne auf dem Bildschirm <span class="ui">PROFIL</span> das Feld <span class="ui">KONTO</span>. (<span class="ui">EINSTELLUNGEN → KONTO UND DATENSCHUTZ → SPIELKONTO</span> führt an dieselbe Stelle.)</li>
         <li>Tippe auf <span class="ui">MEIN KONTO LÖSCHEN</span> und dann auf <span class="ui">JA, ENDGÜLTIG LÖSCHEN</span>.</li>
-        <li>Wähle zur Bestätigung deiner Identität noch einmal dasselbe Google-Konto.</li>
+        <li>Wähle zur Bestätigung deiner Identität noch einmal das Konto, mit dem du angemeldet bist (Google oder Facebook).</li>
       </ol>
-      <p>Dein Konto und alle Daten aus der Tabelle unten werden sofort gelöscht, und das Spiel auf diesem Handy beginnt von vorn. Diese Schaltfläche erscheint nur, wenn du dich mit Google angemeldet hast. Hast du als Gast gespielt, gibt es auf dem Server keinen Eintrag zu dir; um den Spielstand auf deinem Handy zu löschen, genügt es, das Spiel zu deinstallieren.</p>
+      <p>Dein Konto und alle Daten aus der Tabelle unten werden sofort gelöscht, und das Spiel auf diesem Handy beginnt von vorn. Diese Schaltfläche erscheint nur, wenn du angemeldet bist (mit Google oder Facebook). Hast du als Gast gespielt, gibt es auf dem Server keinen Eintrag zu dir; um den Spielstand auf deinem Handy zu löschen, genügt es, das Spiel zu deinstallieren.</p>
+
+      <h2 id="facebook">Wenn du dich mit Facebook angemeldet hast</h2>
+      <p>Wenn du dein Konto im Spiel oder über das Webformular unten löschst, werden auch alle Daten gelöscht, die über die Facebook-Anmeldung ins Spiel gekommen sind: dein Name, deine E-Mail-Adresse, die Adresse deines Profilfotos und die mit deinem Spielkonto verknüpfte Facebook-Nutzer-ID. Wenn du Auto Yard außerdem den Zugriff auf dein Facebook-Konto entziehen möchtest, öffne in Facebook <em>Einstellungen und Privatsphäre → Einstellungen → Apps und Websites</em>, suche Auto Yard und tippe auf <em>Entfernen</em> (die Menünamen können je nach Facebook-Version leicht abweichen). Das Entfernen des Zugriffs allein löscht deinen Spielfortschritt nicht; nutze dafür die Schritte oben.</p>
 
       <h2 id="schritte">Per Webformular</h2>
       <p>Wenn du das Spiel deinstalliert hast oder es nicht öffnen kannst:</p>
       <ol class="steps">
-        <li>Fülle das Formular unten mit der <strong>E-Mail-Adresse des Google-Kontos</strong> aus, mit dem du im Spiel angemeldet bist.</li>
+        <li>Fülle das Formular unten mit der <strong>E-Mail-Adresse des Google- oder Facebook-Kontos</strong> aus, mit dem du im Spiel angemeldet bist. Hat dein Facebook-Konto keine E-Mail-Adresse, schreib deinen Facebook-Namen in das Notizfeld.</li>
         <li>Wir schicken dir eine E-Mail, um zu bestätigen, dass die Anfrage von dieser Adresse kommt; antworte darauf.</li>
         <li>Nach der Bestätigung wird die Löschung innerhalb von höchstens <strong>30 Tagen</strong> abgeschlossen, und wir informieren dich darüber.</li>
       </ol>
@@ -32,8 +35,8 @@
           <caption class="visually-hidden">Gelöschte und verbleibende Daten</caption>
           <thead><tr><th scope="col">Daten</th><th scope="col">Konto komplett löschen</th><th scope="col">Nur Cloud-Spielstand löschen (Formular)</th></tr></thead>
           <tbody>
-            <tr><td>Konto für die Anmeldung mit Google</td><td>Gelöscht</td><td>Bleibt</td></tr>
-            <tr><td>Cloud-Spielstand (Fortschritt, Kaufprotokoll) und Google-Profildaten</td><td>Gelöscht</td><td>Gelöscht</td></tr>
+            <tr><td>Konto für die Anmeldung mit Google / Facebook</td><td>Gelöscht</td><td>Bleibt</td></tr>
+            <tr><td>Cloud-Spielstand (Fortschritt, Kaufprotokoll) und Profildaten von Google / Facebook</td><td>Gelöscht</td><td>Gelöscht</td></tr>
             <tr><td>Öffentliches Werkstattprofil, Profilfoto, Freundescode</td><td>Gelöscht</td><td>Bleibt</td></tr>
             <tr><td>Freundschaften (auf beiden Seiten), Anfragen, Renn-Nachrichten, Geschenke, Einladungen</td><td>Gelöscht</td><td>Bleibt</td></tr>
             <tr><td>Token für Rennbenachrichtigungen</td><td>Gelöscht</td><td>Bleibt</td></tr>
@@ -53,7 +56,7 @@
           <input id="d-website" name="website" type="text" tabindex="-1" autocomplete="off">
         </div>
         <div class="field">
-          <label for="d-email">E-Mail-Adresse des Google-Kontos, das du im Spiel verwendest</label>
+          <label for="d-email">E-Mail-Adresse des Google- oder Facebook-Kontos, das du im Spiel verwendest</label>
           <input id="d-email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="200">
         </div>
         <div class="field">

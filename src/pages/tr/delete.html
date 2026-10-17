@@ -11,16 +11,19 @@
     <article class="card prose">
       <h2 id="oyun-ici">Oyunun içinden (anında)</h2>
       <ol class="steps">
-        <li>Sol üstteki avatarına dokun ve <span class="ui">PROFİL</span> ekranında <span class="ui">HESAP</span> plakasını aç. (<span class="ui">AYARLAR → HESAP VE GİZLİLİK → GOOGLE HESABI</span> da aynı yere çıkar.)</li>
+        <li>Sol üstteki avatarına dokun ve <span class="ui">PROFİL</span> ekranında <span class="ui">HESAP</span> plakasını aç. (<span class="ui">AYARLAR → HESAP VE GİZLİLİK → OYUN HESABI</span> da aynı yere çıkar.)</li>
         <li><span class="ui">HESABIMI SİL</span>'e, ardından <span class="ui">EVET, KALICI OLARAK SİL</span>'e dokun.</li>
-        <li>Kimliğini doğrulamak için aynı Google hesabını bir kez daha seç.</li>
+        <li>Kimliğini doğrulamak için oyuna girdiğin hesabı (Google ya da Facebook) bir kez daha seç.</li>
       </ol>
-      <p>Hesabın ve aşağıdaki tablodaki bütün veriler hemen silinir, o telefondaki oyun baştan başlar. Bu düğme yalnızca Google ile giriş yaptıysan görünür. Misafir olarak oynadıysan sunucuda sana ait bir kayıt yoktur; telefonundaki kaydı silmek için oyunu kaldırman yeterli.</p>
+      <p>Hesabın ve aşağıdaki tablodaki bütün veriler hemen silinir, o telefondaki oyun baştan başlar. Bu düğme yalnızca giriş yaptıysan (Google ya da Facebook) görünür. Misafir olarak oynadıysan sunucuda sana ait bir kayıt yoktur; telefonundaki kaydı silmek için oyunu kaldırman yeterli.</p>
+
+      <h2 id="facebook">Facebook ile girdiysen</h2>
+      <p>Oyunun içinden ya da aşağıdaki web formuyla silme, Facebook girişiyle oyuna gelen bütün verileri de siler: adın, e-posta adresin, profil fotoğrafının adresi ve oyun hesabına bağlı Facebook kullanıcı kimliğin. Auto Yard'ın Facebook hesabına erişimini de kaldırmak istersen Facebook'ta <em>Ayarlar ve Gizlilik → Ayarlar → Uygulamalar ve İnternet Siteleri</em> bölümünde Auto Yard'ı bulup <em>Kaldır</em>'a dokun (menü adları Facebook sürümüne göre biraz değişebilir). Erişimi kaldırmak tek başına oyundaki ilerlemeni silmez; onun için yukarıdaki adımları kullan.</p>
 
       <h2 id="adimlar">Web formuyla</h2>
       <p>Oyunu sildiysen veya açamıyorsan:</p>
       <ol class="steps">
-        <li>Aşağıdaki formu, oyunda giriş yaptığın <strong>Google hesabının e-posta adresiyle</strong> doldur.</li>
+        <li>Aşağıdaki formu, oyunda giriş yaptığın <strong>Google ya da Facebook hesabının e-posta adresiyle</strong> doldur. Facebook hesabında e-posta yoksa not alanına Facebook'taki adını yaz.</li>
         <li>Talebin o adresten geldiğini doğrulamak için sana bir e-posta göndeririz; ona yanıt ver.</li>
         <li>Doğrulamadan sonra en geç <strong>30 gün</strong> içinde silme tamamlanır ve sana bildirilir.</li>
       </ol>
@@ -32,8 +35,8 @@
           <caption class="visually-hidden">Silinen ve kalan veriler</caption>
           <thead><tr><th scope="col">Veri</th><th scope="col">Hesabı tamamen sil</th><th scope="col">Yalnızca bulut kaydını sil (form)</th></tr></thead>
           <tbody>
-            <tr><td>Google ile giriş hesabı</td><td>Silinir</td><td>Kalır</td></tr>
-            <tr><td>Bulut kaydı (ilerleme, satın alma defteri) ve Google profil bilgileri</td><td>Silinir</td><td>Silinir</td></tr>
+            <tr><td>Google / Facebook giriş hesabı</td><td>Silinir</td><td>Kalır</td></tr>
+            <tr><td>Bulut kaydı (ilerleme, satın alma defteri) ve Google / Facebook profil bilgileri</td><td>Silinir</td><td>Silinir</td></tr>
             <tr><td>Herkese açık garaj profili, profil fotoğrafı, arkadaş kodu</td><td>Silinir</td><td>Kalır</td></tr>
             <tr><td>Arkadaşlıklar (iki taraftan), istekler, yarış haberleri, hediyeler, davetler</td><td>Silinir</td><td>Kalır</td></tr>
             <tr><td>Yarış bildirimi anahtarı</td><td>Silinir</td><td>Kalır</td></tr>
@@ -53,7 +56,7 @@
           <input id="d-website" name="website" type="text" tabindex="-1" autocomplete="off">
         </div>
         <div class="field">
-          <label for="d-email">Oyunda kullandığın Google hesabının e-postası</label>
+          <label for="d-email">Oyunda kullandığın Google / Facebook hesabının e-postası</label>
           <input id="d-email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="200">
         </div>
         <div class="field">

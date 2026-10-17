@@ -85,10 +85,10 @@
     "summary": "Auto Yard est un jeu gratuit de garage, de réparation automobile et de course de drag pour Android, en français, allemand, anglais, espagnol et turc.",
     "facts": [
       "Gameplay : réparez les voitures des clients qui quittent la circulation de la ville (7 types de travaux, 3 ponts), restaurez 28 classiques de la casse, disputez des courses de drag sur 300 m avec départ et passages de vitesse au bon moment, faites du tuning (30 pièces par voiture), décorez le garage (263 objets) et collectionnez 57 voitures de 32 marques grâce à des caisses de livraison aux probabilités publiées.",
-      "Social : ajoutez des amis par code ou avec un lien d’invitation valable 1 heure, visitez leurs garages, affrontez leurs voitures tunées, vengez-vous après une défaite ; la connexion Google est requise pour les fonctions sociales et la sauvegarde cloud.",
+      "Social : ajoutez des amis par code ou avec un lien d’invitation valable 1 heure, visitez leurs garages, affrontez leurs voitures tunées, vengez-vous après une défaite ; la connexion avec Google ou Facebook est requise pour les fonctions sociales et la sauvegarde cloud.",
       "Prix : gratuit. Packs de gemmes facultatifs via Google Play Billing. Publicités avec récompense facultatives (Google AdMob), uniquement quand le joueur touche REGARDER UNE PUB ; les publicités ne donnent jamais de gemmes.",
       "Plateforme : Android 7.0 ou version ultérieure (64 bits). Langues : français, allemand, anglais, espagnol, turc. Classification d’âge visée : 13 ans et plus.",
-      "Compte : jouable en invité, sans compte ; la connexion Google sauvegarde la progression dans le cloud (Firebase). La suppression du compte est possible dans le jeu et sur le site web."
+      "Compte : jouable en invité, sans compte ; la connexion avec Google ou Facebook sauvegarde la progression dans le cloud (Firebase) ; les comptes Google et Facebook ayant la même adresse e-mail forment un seul compte de jeu. La suppression du compte est possible dans le jeu et sur le site web."
     ],
     "status_live": "Google Play :",
     "status_soon": "Statut : pas encore sorti, bientôt disponible sur Google Play"
