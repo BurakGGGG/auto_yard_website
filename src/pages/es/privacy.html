@@ -1,4 +1,4 @@
-<!--meta {"updated": "2026-10-17", "title": "Política de privacidad", "description": "Qué datos personales tratan el juego y la web de Auto Yard y por qué, quién puede verlos, cuánto tiempo se guardan y cómo ejercer tus derechos."} -->
+<!--meta {"updated": "2026-10-18", "title": "Política de privacidad", "description": "Qué datos personales tratan el juego y la web de Auto Yard y por qué, quién puede verlos, cuánto tiempo se guardan y cómo ejercer tus derechos."} -->
 <section class="page-hero rays">
   <div class="wrap narrow">
     <p class="kicker">Legal</p>
@@ -31,7 +31,7 @@
       </nav>
 
       <p>Esta política explica cómo el juego para Android <strong>{{name}}</strong> (el “Juego”, nombre de paquete <code>{{androidPackage}}</code>) y esta web (el “Sitio”) tratan los datos personales. Se basa en la Ley turca de Protección de Datos Personales n.º 6698 (KVKK) y, cuando corresponde, en el Reglamento General de Protección de Datos de la UE (RGPD).</p>
-      <div class="callout"><p><strong>En resumen:</strong> si juegas como invitado, tu progreso se queda en tu teléfono. Si inicias sesión con Google o Facebook, tu partida se guarda en la nube. Si activas las funciones con amigos, tu apodo, tu taller y tu foto de perfil son visibles para otros jugadores. Los anuncios solo se abren si tú quieres. Nunca vendemos tus datos.</p></div>
+      <div class="callout"><p><strong>En resumen:</strong> si juegas como invitado, tu progreso se queda en tu teléfono. Si inicias sesión con Google, Facebook o un código por correo, tu partida se guarda en la nube. Si activas las funciones con amigos, tu apodo, tu taller y tu foto de perfil son visibles para otros jugadores. Los anuncios solo se abren si tú quieres. Nunca vendemos tus datos.</p></div>
 
       <h2 id="responsable">1. Responsable del tratamiento</h2>
       <p>El responsable es {{developerName}} ({{country}}). Para cualquier pregunta sobre privacidad: <a href="mailto:{{contactEmail}}">{{contactEmail}}</a> o el <a href="{{link:contact}}">formulario de contacto</a>.</p>
@@ -39,15 +39,16 @@
       <h2 id="juego">2. Datos tratados en el juego</h2>
       <h3>Si juegas como invitado</h3>
       <p>Para jugar como invitado no se crea ninguna cuenta ni se inicia una sesión de Firebase. Tu partida (dinero, coches, taller, misiones, ajustes), tu registro de compras y tus contadores diarios de anuncios se guardan solo en tu teléfono. Los datos del chip gráfico, la memoria y el procesador de tu teléfono solo se usan en el dispositivo para elegir la calidad gráfica y no se envían a ninguna parte. Como invitado también puedes ver anuncios con recompensa y hacer compras; consulta los apartados <a href="#anuncios">4</a> y <a href="#compras">5</a>.</p>
-      <h3>Si inicias sesión con Google o Facebook</h3>
+      <h3>Si inicias sesión (Google, Facebook o correo)</h3>
       <ul>
-        <li><strong>Cuenta:</strong> Google Firebase Authentication inicia tu sesión con la cuenta de Google o de Facebook que elijas y te asigna un identificador de usuario (UID). Las cuentas de Google y de Facebook con el mismo correo se unen en una sola cuenta del juego; si vinculas las dos, cualquiera de ellas te lleva a la misma cuenta. No se usa ningún otro método de acceso.</li>
+        <li><strong>Cuenta:</strong> Google Firebase Authentication inicia tu sesión con la cuenta de Google o de Facebook que elijas y te asigna un identificador de usuario (UID). También puedes entrar con un código de un solo uso enviado a tu correo (ver abajo). Tu cuenta de Google, tu cuenta de Facebook y el acceso por correo con la misma dirección se unen en una sola cuenta del juego; entres como entres, llegas a la misma cuenta. No se usa ningún otro método de acceso.</li>
         <li><strong>Datos del perfil:</strong> tu nombre visible de Google o Facebook, tu correo y la dirección (URL) de tu foto de perfil se guardan en una parte de tu partida en la nube que solo tú puedes leer. Tu nombre visible solo aparece en tu propia pantalla; los demás jugadores ven el apodo que elijas.</li>
         <li><strong>Inicio de sesión con Facebook:</strong> si eliges Facebook, se abre la app o la web de Facebook y aceptas compartir con el juego solo tu perfil público (nombre, foto de perfil) y tu correo; tu contraseña de Facebook nunca llega al juego. Firebase Authentication inicia tu sesión verificando el token de acceso que emite Facebook y vincula a tu cuenta del juego un identificador de Facebook propio de esta app; el token no se guarda en tu partida en la nube. No se accede a tu lista de amigos ni a tus publicaciones, y no se publica nada en tu nombre. Tu foto de perfil de Facebook no se usa en el juego. El componente de Facebook del juego (Facebook SDK) solo se usa para iniciar sesión; los eventos automáticos de la app y la recogida del ID de publicidad están desactivados. Facebook trata los datos del inicio de sesión según su propia <a href="https://www.facebook.com/privacy/policy" rel="noopener">política de privacidad</a>.</li>
+        <li><strong>Acceso con código por correo:</strong> si eliges el correo, enviamos un código de acceso de 6 dígitos y de un solo uso a la dirección que escribas (servicio de envío de correo: Resend); no se usa contraseña. Nuestro servidor (Google Cloud Functions) guarda el código solo como resumen (hash); vale 10 minutos y deja de funcionar al usarlo. Al verificar el código, Firebase Authentication te crea una cuenta con esa dirección de correo; si ya tienes una cuenta de Google o de Facebook con esa dirección, entras en esa cuenta. Para limitar abusos (por ejemplo, que se envíen muchos códigos a la dirección de otra persona), guardamos un resumen de tu correo y de la dirección IP de la solicitud, junto con las horas de envío, durante 1 hora como máximo; después se borran automáticamente.</li>
         <li><strong>Partida en la nube:</strong> todo tu progreso (economía, coches, taller y decoración, misiones, registro de compras, la lista de jugadores que bloqueaste y el número de carreras con tus amigos) se guarda en Google Cloud Firestore, vinculado a tu cuenta y legible solo por tu cuenta.</li>
       </ul>
       <h3>Si usas las funciones con amigos</h3>
-      <p>Las funciones con amigos requieren iniciar sesión (con Google o Facebook) y elegir un apodo. Al crear tu apodo:</p>
+      <p>Las funciones con amigos requieren iniciar sesión (con Google, Facebook o correo) y elegir un apodo. Al crear tu apodo:</p>
       <ul>
         <li><strong>Se crea tu perfil público de taller:</strong> tu apodo, tu código de amigo, tu nivel, el valor del taller, la distribución del taller (decoración, coches expuestos y su tuning), tu avatar, tu marco, la bandera que elijas, el nombre del taller, tu coche de exposición, tus estadísticas de carreras (victorias, carreras, colección, mejor tiempo) y, si la hay, la pieza del desguace que pediste. Tu dinero, tus gemas y tus cajas no forman parte de él.</li>
         <li><strong>Foto de perfil:</strong> la foto que elijas de tu galería, la que hagas con la cámara o la foto de tu cuenta de Google se reduce a 192×192 píxeles y se sube a Firestore. Tu foto de Google solo es tu avatar si eliges <span class="ui">GOOGLE</span> o activas <span class="ui">GOOGLE: SÍ</span> en <span class="ui">EDITAR PERFIL → FOTO</span>; está desactivada por defecto. Cuando quitas tu foto o pasas a un avatar predefinido, la imagen subida se borra del servidor.</li>
@@ -95,7 +96,8 @@
           <caption class="visually-hidden">Finalidades del tratamiento y bases jurídicas</caption>
           <thead><tr><th scope="col">Finalidad</th><th scope="col">Datos</th><th scope="col">Base jurídica</th></tr></thead>
           <tbody>
-            <tr><td>Inicio de sesión con Google / Facebook y copia en la nube</td><td>UID, datos del perfil de Google / Facebook, partida</td><td>Ejecución de un contrato (KVKK art. 5/2-c, RGPD art. 6.1.b); tú activas la función</td></tr>
+            <tr><td>Inicio de sesión con Google / Facebook / correo y copia en la nube</td><td>UID, datos del perfil de Google / Facebook o dirección de correo, partida</td><td>Ejecución de un contrato (KVKK art. 5/2-c, RGPD art. 6.1.b); tú activas la función</td></tr>
+            <tr><td>Envío del código de acceso por correo y prevención de abusos</td><td>Dirección de correo, resumen del código, resúmenes del correo y de la dirección IP, horas de envío</td><td>Ejecución de un contrato; interés legítimo en prevenir abusos (KVKK art. 5/2-f, RGPD art. 6.1.f)</td></tr>
             <tr><td>Funciones con amigos y perfil público</td><td>Apodo, código, perfil de taller, foto de perfil, datos de amistad</td><td>Ejecución de un contrato; para la foto, tu elección (puedes cambiarla cuando quieras)</td></tr>
             <tr><td>Notificaciones de carreras</td><td>Token de notificaciones, idioma, registro de envíos</td><td>Consentimiento (KVKK art. 5/1, RGPD art. 6.1.a); lo retiras desactivando las notificaciones</td></tr>
             <tr><td>Anuncios con recompensa</td><td>Identificador de publicidad, IP, datos del dispositivo, interacciones</td><td>Consentimiento; mediante el formulario en el EEE, Reino Unido y Suiza, y en otros países al elegir ver un anuncio</td></tr>
@@ -116,7 +118,7 @@
         <li><strong>Google (AdMob)</strong>: mostrar y medir los anuncios con recompensa</li>
         <li><strong>Google (Google Play)</strong>: compras dentro de la aplicación</li>
         <li><strong>Vercel Inc.</strong>: alojamiento de la web y estadísticas anónimas</li>
-        <li><strong>Resend</strong>: envío por correo de los mensajes de los formularios</li>
+        <li><strong>Resend</strong>: envío por correo de los mensajes de los formularios y de los códigos de acceso del juego</li>
       </ul>
       <p>Los datos del juego en la nube se guardan en centros de datos de Google en Europa; los proveedores también pueden tratar datos en otros países, incluido EE. UU. Las transferencias se basan en las cláusulas contractuales tipo de los proveedores y en las garantías del artículo 9 de la KVKK. Salvo obligación legal, tus datos no se comparten con nadie más.</p>
 
@@ -125,6 +127,7 @@
         <li>Partida en la nube, datos del perfil de Google / Facebook, perfil público de taller, código de amigo y lista de amigos: hasta que borres tu cuenta. Foto de perfil: mientras la uses; se borra al quitarla o al borrar tu cuenta.</li>
         <li>Solicitudes de amistad: hasta que se aceptan, se rechazan, se retiran o se borra la cuenta.</li>
         <li>Enlaces de invitación: valen 1 hora; una invitación caducada se borra automáticamente en menos de una hora.</li>
+        <li>Código de acceso por correo: vale 10 minutos y es de un solo uso; el resumen del código y los registros del límite de envíos (resúmenes del correo y de la IP) se borran automáticamente en menos de 1 hora.</li>
         <li>Piezas regaladas: hasta que el destinatario las recoge. Noticias de carreras: hasta que se cierran o las sustituye la siguiente carrera del mismo amigo.</li>
         <li>Token de notificaciones: hasta que desactivas las notificaciones o borras tu cuenta. Registro de envíos de notificaciones: 1 día. Denuncias: 180 días (para revisarlas y prevenir abusos).</li>
         <li>Datos en tu teléfono (partida, fotos, caché): hasta que desinstales la aplicación o borres sus datos.</li>
@@ -133,7 +136,7 @@
       </ul>
 
       <h2 id="borrado">11. Borrar tu cuenta</h2>
-      <p>Puedes borrar tu cuenta de forma definitiva en el juego desde <span class="ui">PERFIL → CUENTA → BORRAR MI CUENTA</span> (<span class="ui">AJUSTES → CUENTA Y PRIVACIDAD → CUENTA DEL JUEGO</span> lleva al mismo sitio). Se borran tu partida en la nube, tu perfil público de taller, tu foto de perfil, tu código de amigo, tus amistades (en ambos lados), las solicitudes, las noticias de carreras, los regalos, las invitaciones, el token de notificaciones y tus accesos con Google / Facebook. Si entraste con Facebook, también puedes quitarle el acceso a Auto Yard en Facebook (<a href="{{link:delete}}#facebook">¿cómo?</a>). Si no puedes abrir el juego, usa el formulario de la página <a href="{{link:delete}}">Eliminar cuenta y datos</a>.</p>
+      <p>Puedes borrar tu cuenta de forma definitiva en el juego desde <span class="ui">PERFIL → CUENTA → BORRAR MI CUENTA</span> (<span class="ui">AJUSTES → CUENTA Y PRIVACIDAD → CUENTA DEL JUEGO</span> lleva al mismo sitio). Se borran tu partida en la nube, tu perfil público de taller, tu foto de perfil, tu código de amigo, tus amistades (en ambos lados), las solicitudes, las noticias de carreras, los regalos, las invitaciones, el token de notificaciones y tus accesos con Google / Facebook. Si entraste con un código por correo, confirmas el borrado con un código nuevo que te llega al correo. Si entraste con Facebook, también puedes quitarle el acceso a Auto Yard en Facebook (<a href="{{link:delete}}#facebook">¿cómo?</a>). Si no puedes abrir el juego, usa el formulario de la página <a href="{{link:delete}}">Eliminar cuenta y datos</a>.</p>
       <p>Tras el borrado pueden quedar durante un tiempo: las denuncias hechas por ti o sobre ti (hasta 180 días), los registros de envío de notificaciones (hasta 1 día), tu apodo en regalos que tus amigos aún no han recogido, los registros de compras y anuncios que conserva Google y los archivos de tu teléfono (se eliminan al desinstalar la aplicación).</p>
 
       <h2 id="seguridad">12. Seguridad</h2>
