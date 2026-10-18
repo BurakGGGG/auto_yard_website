@@ -215,7 +215,9 @@ export async function handle(request, { env, send }) {
       }),
     });
     if (!res.ok) {
-      console.error("contact: Resend hata", res.status, await res.text().catch(() => ""));
+      // Yalnızca durum + hata türü: Resend'in iletisi gönderenin e-postasını (reply_to) içerebilir, Vercel günlüğüne girmesin
+      const kind = await res.json().then((b) => String((b && b.name) || "?").slice(0, 40), () => "?");
+      console.error("contact: Resend hata", res.status, kind);
       return reply(request, 502, { ok: false, message: t.failed }, lang);
     }
   } catch (err) {
