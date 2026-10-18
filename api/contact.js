@@ -126,10 +126,9 @@ export function buildEmail(d) {
         `Site dili: ${d.lang}`,
         "",
         "Yapılacaklar: 1) Bu adrese doğrulama e-postası gönder. 2) Yanıt gelince Firebase konsolunda e-postadan uid'i bul.",
-        "3) Yalnızca bulut kaydı: players/{uid} sil. Hesap ve tüm veriler: ayrıca garages/g_{uid}, avatars/a_{uid},",
-        "   codes/{kodu}, push/p_{uid}, users/{uid}/(friends|inbox|outbox|races|gifts)/* ve karşı taraftaki eşleri",
-        "   (users/{x}/friends/f_{uid}, users/{x}/inbox/r_{uid}, users/{x}/outbox/o_{uid}, users/{x}/races/e_{uid}),",
-        "   uid'li invites/* ve Firebase Auth kullanıcısı. 4) Tamamlandığını bildir (30 gün sınırı).",
+        "3) Yalnızca bulut kaydı: players/{uid} sil. Hesap ve tüm veriler: Firebase konsolu → Authentication'da kullanıcıyı",
+        "   sil; accountCleanup fonksiyonu Firestore'daki bütün verisini (arkadaşların listelerindeki hediye, ziyaret, haber",
+        "   dahil) kendiliğinden siler. Şikâyetler 180 gün kalır, yedeklerden 7 günde düşer. 4) Tamamlandığını bildir (30 gün sınırı).",
         `Talep zamanı: ${new Date().toISOString()}`,
       ].join("\n"),
     };

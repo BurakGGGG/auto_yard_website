@@ -132,12 +132,13 @@
         <li>Notification token: until you turn notifications off or delete your account. Notification sending log: 1 day. Report records: 180 days (for review and preventing abuse).</li>
         <li>Data on your phone (save, photos, cache): until you uninstall the app or clear its data.</li>
         <li>Support emails: up to 1 year after the request is closed. Deletion request records: 3 years as proof (email and request date only).</li>
+        <li>Database backups: taken automatically every day to protect against data loss and kept for 7 days; deleted data also drops out of the backups within 7 days at the latest. Backups are only used to restore data after a failure.</li>
         <li>Ad and purchase data: for Google's own retention periods. Site server logs: for Vercel's retention periods (usually a few days).</li>
       </ul>
 
       <h2 id="deletion">11. Deleting your account</h2>
       <p>You can permanently delete your account in the game via <span class="ui">PROFILE → ACCOUNT → DELETE MY ACCOUNT</span> (<span class="ui">SETTINGS → ACCOUNT AND PRIVACY → GAME ACCOUNT</span> leads to the same place). This deletes your cloud save, public garage profile, profile photo, friend code, friendships (on both sides), requests, race news, gifts, invites, notification token and your Google / Facebook sign-in links. If you signed in with an email code, you confirm the deletion with a new code sent to your email. If you signed in with Facebook, you can also remove Auto Yard's access in Facebook (<a href="{{link:delete}}#facebook">how?</a>). If you can't open the game, use the form on the <a href="{{link:delete}}">Account &amp; Data Deletion</a> page.</p>
-      <p>After deletion, the following may remain for a while: reports made by you or about you (up to 180 days), notification sending logs (up to 1 day), your nickname in gifts your friends haven't collected yet, purchase and ad records held by Google, and files on your phone (removed when you uninstall the app).</p>
+      <p>After deletion, the following may remain for a while: reports made by you or about you (up to 180 days), notification sending logs (up to 1 day), copies in database backups (up to 7 days), purchase and ad records held by Google, and files on your phone (removed when you uninstall the app).</p>
 
       <h2 id="security">12. Security</h2>
       <p>Cloud data is protected by Firebase security rules: each player can only read and write their own save, and public profiles are only open to signed-in players. The Site and the game's server connections use HTTPS only. No system is perfect; if a breach occurs, we will notify as required by the KVKK and the GDPR.</p>
