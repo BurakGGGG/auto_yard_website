@@ -1,4 +1,4 @@
-<!--meta {"updated": "2026-10-17", "title": "Gizlilik Politikası", "description": "Auto Yard oyununun ve web sitesinin hangi kişisel verileri neden işlediği, kimlerin görebildiği, ne kadar saklandığı ve haklarını nasıl kullanacağın."} -->
+<!--meta {"updated": "2026-10-18", "title": "Gizlilik Politikası", "description": "Auto Yard oyununun ve web sitesinin hangi kişisel verileri neden işlediği, kimlerin görebildiği, ne kadar saklandığı ve haklarını nasıl kullanacağın."} -->
 <section class="page-hero rays">
   <div class="wrap narrow">
     <p class="kicker">Yasal</p>
@@ -31,7 +31,7 @@
       </nav>
 
       <p>Bu politika, Android oyunu <strong>{{name}}</strong> (“Oyun”, paket adı <code>{{androidPackage}}</code>) ile bu web sitesinin (“Site”) kişisel verilerini nasıl işlediğini açıklar. 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) ve uygulanabildiği ölçüde AB Genel Veri Koruma Tüzüğü (GDPR) esas alınmıştır.</p>
-      <div class="callout"><p><strong>Kısaca:</strong> Misafir olarak oynarsan ilerlemen yalnızca telefonunda kalır. Google ya da Facebook ile giriş yaparsan kaydın buluta yedeklenir. Arkadaş özelliklerini açarsan takma adın, garajın ve profil fotoğrafın diğer oyunculara görünür. Reklamlar yalnızca sen istersen açılır. Verilerin satılmaz.</p></div>
+      <div class="callout"><p><strong>Kısaca:</strong> Misafir olarak oynarsan ilerlemen yalnızca telefonunda kalır. Google, Facebook ya da e-posta koduyla giriş yaparsan kaydın buluta yedeklenir. Arkadaş özelliklerini açarsan takma adın, garajın ve profil fotoğrafın diğer oyunculara görünür. Reklamlar yalnızca sen istersen açılır. Verilerin satılmaz.</p></div>
 
       <h2 id="sorumlu">1. Veri sorumlusu</h2>
       <p>Veri sorumlusu {{developerName}} ({{country}}). Gizlilikle ilgili tüm sorular için: <a href="mailto:{{contactEmail}}">{{contactEmail}}</a> veya <a href="{{link:contact}}">iletişim formu</a>.</p>
@@ -39,15 +39,16 @@
       <h2 id="oyun">2. Oyunda işlenen veriler</h2>
       <h3>Misafir olarak oynarken</h3>
       <p>Misafir oyun için hesap açılmaz ve Firebase oturumu başlatılmaz. Oyun kaydın (para, araçlar, garaj, görevler, ayarlar), satın alma defterin ve günlük reklam sayaçların yalnızca telefonunda saklanır. Telefonunun ekran kartı, bellek ve işlemci bilgisi yalnızca cihazında grafik ayarını seçmek için kullanılır, hiçbir yere gönderilmez. Misafirken de ödüllü reklam izleyebilir ve satın alma yapabilirsin; bunlar için <a href="#reklam">4.</a> ve <a href="#satin-alma">5.</a> bölümlere bak.</p>
-      <h3>Google ya da Facebook hesabınla giriş yaptığında</h3>
+      <h3>Giriş yaptığında (Google, Facebook ya da e-posta)</h3>
       <ul>
-        <li><strong>Hesap:</strong> Google Firebase Authentication, seçtiğin Google ya da Facebook hesabınla oturum açar ve sana bir kullanıcı kimliği (UID) verir. Aynı e-posta adresine sahip Google ve Facebook hesapların tek oyun hesabında birleştirilir; ikisini de bağlarsan iki yolla da aynı hesaba girersin. Başka giriş yöntemi kullanılmaz.</li>
+        <li><strong>Hesap:</strong> Google Firebase Authentication, seçtiğin Google ya da Facebook hesabınla oturum açar ve sana bir kullanıcı kimliği (UID) verir. E-posta adresine gönderilen tek kullanımlık kodla da girebilirsin (aşağıya bak). Aynı e-posta adresine sahip Google hesabın, Facebook hesabın ve e-posta girişin tek oyun hesabında birleştirilir; hangisiyle girersen gir aynı hesaba girersin. Başka giriş yöntemi kullanılmaz.</li>
         <li><strong>Profil bilgileri:</strong> Google ya da Facebook hesabındaki görünen adın, e-posta adresin ve profil fotoğrafının adresi (URL), bulut kaydında yalnızca senin okuyabildiğin bir alanda tutulur. Görünen adın yalnızca kendi ekranında gösterilir; diğer oyuncular seçtiğin takma adı görür.</li>
         <li><strong>Facebook ile giriş:</strong> Facebook ile girişi seçersen Facebook uygulaması ya da sayfası açılır ve oyuna yalnızca herkese açık profilini (ad, profil fotoğrafı) ve e-posta adresini vermeyi onaylarsın; Facebook şifren oyuna hiç ulaşmaz. Firebase Authentication, Facebook'un verdiği giriş anahtarını doğrulayarak oturumu açar ve oyun hesabına uygulamaya özel Facebook kullanıcı kimliğini bağlar; anahtar bulut kaydına yazılmaz. Arkadaş listene ve gönderilerine erişilmez, senin adına paylaşım yapılmaz. Facebook profil fotoğrafın oyunda kullanılmaz. Oyundaki Facebook bileşeni (Facebook SDK) yalnızca giriş için kullanılır; otomatik uygulama olayları ve reklam kimliği toplama kapalıdır. Facebook girişi işlerken verileri kendi <a href="https://www.facebook.com/privacy/policy" rel="noopener">gizlilik politikasına</a> göre işler.</li>
+        <li><strong>E-posta koduyla giriş:</strong> E-posta ile girişi seçersen yazdığın adrese 6 haneli, tek kullanımlık bir giriş kodu göndeririz (e-posta gönderim hizmeti: Resend); şifre kullanılmaz. Kod sunucumuzda (Google Cloud Functions) yalnızca özet (hash) olarak tutulur, 10 dakika geçerlidir ve kullanılınca geçersiz olur. Kod doğrulanınca Firebase Authentication bu e-posta adresiyle sana bir hesap açar; bu adresle açılmış bir Google ya da Facebook hesabın varsa o hesaba girersin. Kötüye kullanımı (ör. başkasının adresine çok sayıda kod gönderilmesini) sınırlamak için e-posta adresinin ve isteğin geldiği IP adresinin özeti ile gönderim zamanları en geç 1 saat tutulur, sonra otomatik silinir.</li>
         <li><strong>Bulut kaydı:</strong> oyun ilerlemenin tamamı (ekonomi, araçlar, garaj ve dekor, görevler, satın alma defteri, engellediğin oyuncuların listesi, arkadaşlarınla yarış sayıların) Google Cloud Firestore'da hesabına bağlı olarak saklanır ve yalnızca senin hesabın tarafından okunabilir.</li>
       </ul>
       <h3>Arkadaş özelliklerini kullandığında</h3>
-      <p>Arkadaş özellikleri giriş yapmanı (Google ya da Facebook) ve bir takma ad seçmeni gerektirir. Takma adını oluşturduğunda:</p>
+      <p>Arkadaş özellikleri giriş yapmanı (Google, Facebook ya da e-posta) ve bir takma ad seçmeni gerektirir. Takma adını oluşturduğunda:</p>
       <ul>
         <li><strong>Herkese açık garaj profilin</strong> oluşturulur: takma adın, arkadaş kodun, seviyen, garaj değerin, garajının düzeni (dekor, sergilediğin araçlar ve modifiyeleri), avatarın, çerçeven, seçtiğin bayrak, garaj adın, vitrin aracın, yarış istatistiklerin (galibiyet, yarış sayısı, koleksiyon, en iyi süre) ve varsa hurdalıktan istediğin parça. Para, gem ve kasa bilgilerin bu profile girmez.</li>
         <li><strong>Profil fotoğrafı:</strong> galeriden seçtiğin, kamerayla çektiğin ya da Google hesabının fotoğrafı, 192×192 piksele küçültülüp Firestore'a yüklenir. Google fotoğrafın yalnızca sen <span class="ui">PROFİLİ DÜZENLE → FOTOĞRAF</span> bölümünde <span class="ui">GOOGLE</span>'ı seçersen ya da <span class="ui">GOOGLE: AÇIK</span> yaparsan avatarın olur; varsayılan kapalıdır. Fotoğrafını kaldırdığında ya da hazır avatara geçtiğinde yüklenen resim sunucudan silinir.</li>
@@ -95,7 +96,8 @@
           <caption class="visually-hidden">İşleme amaçları ve hukuki sebepler</caption>
           <thead><tr><th scope="col">Amaç</th><th scope="col">Veriler</th><th scope="col">Hukuki sebep</th></tr></thead>
           <tbody>
-            <tr><td>Google / Facebook ile giriş ve bulut yedeği</td><td>UID, Google / Facebook profil bilgileri, oyun kaydı</td><td>Sözleşmenin ifası (KVKK m.5/2-c); özelliği sen başlatırsın</td></tr>
+            <tr><td>Google / Facebook / e-posta ile giriş ve bulut yedeği</td><td>UID, Google / Facebook profil bilgileri ya da e-posta adresi, oyun kaydı</td><td>Sözleşmenin ifası (KVKK m.5/2-c); özelliği sen başlatırsın</td></tr>
+            <tr><td>E-posta giriş kodunun gönderilmesi ve kötüye kullanımın önlenmesi</td><td>E-posta adresi, kod özeti, e-posta ve IP adresi özetleri, gönderim zamanları</td><td>Sözleşmenin ifası; kötüye kullanımın önlenmesinde meşru menfaat (m.5/2-f)</td></tr>
             <tr><td>Arkadaş özellikleri ve herkese açık profil</td><td>Takma ad, kod, garaj profili, profil fotoğrafı, arkadaşlık verileri</td><td>Sözleşmenin ifası; fotoğraf için senin seçimin (istediğin an değiştirebilirsin)</td></tr>
             <tr><td>Yarış bildirimleri</td><td>Bildirim anahtarı, dil, gönderim kaydı</td><td>Açık rıza (m.5/1); bildirimleri kapatarak geri alırsın</td></tr>
             <tr><td>Ödüllü reklamlar</td><td>Reklam kimliği, IP, cihaz bilgisi, etkileşimler</td><td>Açık rıza; AEA/BK/İsviçre'de onay penceresiyle, diğer ülkelerde reklamı izlemeyi seçerek</td></tr>
@@ -116,7 +118,7 @@
         <li><strong>Google (AdMob)</strong>: ödüllü reklamların gösterimi ve ölçümü</li>
         <li><strong>Google (Google Play)</strong>: uygulama içi satın almalar</li>
         <li><strong>Vercel Inc.</strong>: site barındırma ve anonim istatistik</li>
-        <li><strong>Resend</strong>: form mesajlarının e-postayla iletilmesi</li>
+        <li><strong>Resend</strong>: form mesajlarının ve oyundaki giriş kodlarının e-postayla iletilmesi</li>
       </ul>
       <p>Oyunun bulut verileri Google'ın Avrupa'daki veri merkezlerinde tutulur; hizmet sağlayıcılar verileri ABD dahil başka ülkelerde de işleyebilir. Aktarım, sağlayıcıların standart sözleşme hükümlerine ve KVKK'nın 9. maddesindeki güvencelere dayanılarak yapılır. Kanunen zorunlu haller dışında verilerin başka kimseyle paylaşılmaz.</p>
 
@@ -125,6 +127,7 @@
         <li>Bulut kaydı, Google / Facebook profil bilgileri, herkese açık garaj profili, arkadaş kodu ve arkadaş listesi: hesabını silene kadar. Profil fotoğrafı: kullandığın sürece; kaldırınca ya da hesabını silince silinir.</li>
         <li>Arkadaşlık istekleri: kabul edilene, reddedilene, geri alınana ya da hesap silinene kadar.</li>
         <li>Davet linkleri: 1 saat geçerlidir; süresi dolan davet en geç bir saat içinde otomatik silinir.</li>
+        <li>E-posta giriş kodu: 10 dakika geçerli ve tek kullanımlıktır; kod özeti ve gönderim sınırı kayıtları (e-posta ve IP adresi özetleri) en geç 1 saat içinde otomatik silinir.</li>
         <li>Hediye parçalar: alıcı toplayana kadar. Yarış haberleri: kapatılana ya da aynı arkadaşın sonraki yarışı gelene kadar.</li>
         <li>Bildirim anahtarı: bildirimleri kapatana ya da hesabını silene kadar. Bildirim gönderim kaydı: 1 gün. Şikâyet kayıtları: 180 gün (inceleme ve kötüye kullanımın önlenmesi için).</li>
         <li>Telefondaki veriler (oyun kaydı, fotoğraflar, önbellek): uygulamayı kaldırana veya verilerini temizleyene kadar.</li>
@@ -133,7 +136,7 @@
       </ul>
 
       <h2 id="silme">11. Hesabını silmek</h2>
-      <p>Hesabını oyunda <span class="ui">PROFİL → HESAP → HESABIMI SİL</span> ile kalıcı olarak silebilirsin (<span class="ui">AYARLAR → HESAP VE GİZLİLİK → OYUN HESABI</span> da aynı yere çıkar). Bu işlem bulut kaydını, herkese açık garaj profilini, profil fotoğrafını, arkadaş kodunu, arkadaşlıkları (iki taraftan), istekleri, yarış haberlerini, hediyeleri, davetleri, bildirim anahtarını ve Google / Facebook giriş bağlantılarını siler. Facebook ile girdiysen Auto Yard'ın Facebook erişimini de kaldırabilirsin (<a href="{{link:delete}}#facebook">nasıl?</a>). Oyuna erişemiyorsan <a href="{{link:delete}}">Hesap ve Veri Silme</a> sayfasındaki formu kullan.</p>
+      <p>Hesabını oyunda <span class="ui">PROFİL → HESAP → HESABIMI SİL</span> ile kalıcı olarak silebilirsin (<span class="ui">AYARLAR → HESAP VE GİZLİLİK → OYUN HESABI</span> da aynı yere çıkar). Bu işlem bulut kaydını, herkese açık garaj profilini, profil fotoğrafını, arkadaş kodunu, arkadaşlıkları (iki taraftan), istekleri, yarış haberlerini, hediyeleri, davetleri, bildirim anahtarını ve Google / Facebook giriş bağlantılarını siler. E-posta koduyla girdiysen silmeyi e-postana gelen yeni bir kodla onaylarsın. Facebook ile girdiysen Auto Yard'ın Facebook erişimini de kaldırabilirsin (<a href="{{link:delete}}#facebook">nasıl?</a>). Oyuna erişemiyorsan <a href="{{link:delete}}">Hesap ve Veri Silme</a> sayfasındaki formu kullan.</p>
       <p>Silme işleminden sonra şunlar bir süre kalabilir: hakkında yapılmış ya da senin yaptığın şikâyet kayıtları (en fazla 180 gün), bildirim gönderim kayıtları (en fazla 1 gün), arkadaşlarının henüz toplamadığı hediyelerdeki takma adın, Google'ın tuttuğu satın alma ve reklam kayıtları ve telefonundaki dosyalar (uygulamayı kaldırınca silinir).</p>
 
       <h2 id="guvenlik">12. Güvenlik</h2>
