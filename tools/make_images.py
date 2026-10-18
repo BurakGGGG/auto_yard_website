@@ -35,7 +35,7 @@ ASSETS = os.path.join(ROOT, "src", "assets")
 BRAND = os.path.join(HOME, "Projects/car-town-remake/assets/branding")
 SHOTS = os.path.join(HOME, "Projects/ct_shots/ekran_tarama")
 FRIENDS = os.path.join(HOME, "Projects/ct_shots/arkadas")
-PORTRAITS = os.path.join(HOME, "Projects/social_media/foto/arac_portreleri")
+PORTRAITS = os.environ.get("PORTRAITS_DIR", os.path.join(HOME, "Projects/social_media/foto/arac_portreleri"))
 LANGS = ["tr", "en", "es", "de", "fr"]
 
 # Özellik kareleri: ad → (klasör, dosya)
