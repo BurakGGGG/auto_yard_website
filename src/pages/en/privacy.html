@@ -1,4 +1,4 @@
-<!--meta {"updated": "2026-10-18", "title": "Privacy Policy", "description": "Which personal data the Auto Yard game and website process and why, who can see it, how long it is kept and how to use your rights."} -->
+<!--meta {"updated": "2026-10-17", "title": "Privacy Policy", "description": "Which personal data the Auto Yard game and website process and why, who can see it, how long it is kept and how to use your rights."} -->
 <section class="page-hero rays">
   <div class="wrap narrow">
     <p class="kicker">Legal</p>
@@ -31,7 +31,7 @@
       </nav>
 
       <p>This policy explains how the Android game <strong>{{name}}</strong> (the “Game”, package name <code>{{androidPackage}}</code>) and this website (the “Site”) process personal data. It is based on the Turkish Personal Data Protection Law No. 6698 (KVKK) and, where applicable, the EU General Data Protection Regulation (GDPR).</p>
-      <div class="callout"><p><strong>In short:</strong> if you play as a guest, your progress stays on your phone. If you sign in with Google, Facebook or an email code, your save is backed up to the cloud. If you turn on the friend features, your nickname, garage and profile photo are visible to other players. Ads only open when you choose to watch one. Your data is never sold.</p></div>
+      <div class="callout"><p><strong>In short:</strong> if you play as a guest, your progress stays on your phone. If you sign in with Google or Facebook, your save is backed up to the cloud. If you turn on the friend features, your nickname, garage and profile photo are visible to other players. Ads only open when you choose to watch one. Your data is never sold.</p></div>
 
       <h2 id="controller">1. Data controller</h2>
       <p>The data controller is {{developerName}} ({{country}}). For any privacy question: <a href="mailto:{{contactEmail}}">{{contactEmail}}</a> or the <a href="{{link:contact}}">contact form</a>.</p>
@@ -39,16 +39,15 @@
       <h2 id="game">2. Data processed in the game</h2>
       <h3>When you play as a guest</h3>
       <p>No account is created and no Firebase session is started for guest play. Your save (money, cars, garage, tasks, settings), your purchase ledger and your daily ad counters are stored only on your phone. Your phone's graphics chip, memory and processor details are used only on the device to choose the graphics quality and are never sent anywhere. Guests can still watch rewarded ads and make purchases; see sections <a href="#ads">4</a> and <a href="#purchases">5</a>.</p>
-      <h3>When you sign in (Google, Facebook or email)</h3>
+      <h3>When you sign in with Google or Facebook</h3>
       <ul>
-        <li><strong>Account:</strong> Google Firebase Authentication signs you in with the Google or Facebook account you choose and gives you a user ID (UID). You can also sign in with a one-time code sent to your email address (see below). Your Google account, Facebook account and email sign-in with the same email address are combined into one game account, so any of them signs you in to the same account. No other sign-in method is used.</li>
+        <li><strong>Account:</strong> Google Firebase Authentication signs you in with the Google or Facebook account you choose and gives you a user ID (UID). Google and Facebook accounts with the same email address are combined into one game account; if you link both, either one signs you in to the same account. No other sign-in method is used.</li>
         <li><strong>Profile details:</strong> your Google or Facebook display name, email address and profile photo address (URL) are kept in a part of your cloud save that only you can read. Your display name is only shown on your own screen; other players see the nickname you choose.</li>
         <li><strong>Facebook sign-in:</strong> if you choose Facebook, the Facebook app or website opens and you approve sharing only your public profile (name, profile photo) and email address with the game; your Facebook password never reaches the game. Firebase Authentication signs you in by verifying the login token Facebook issues and links an app-specific Facebook user ID to your game account; the token is not written to your cloud save. Your friends list and posts are not accessed, and nothing is posted on your behalf. Your Facebook profile photo is not used in the game. The Facebook component in the game (Facebook SDK) is used only for sign-in; automatic app events and advertising ID collection are turned off. Facebook processes the sign-in data under its own <a href="https://www.facebook.com/privacy/policy" rel="noopener">privacy policy</a>.</li>
-        <li><strong>Email code sign-in:</strong> if you choose email, we send a 6-digit, single-use sign-in code to the address you enter (email delivery service: Resend); no password is used. Our server (Google Cloud Functions) keeps the code only as a hash; it is valid for 10 minutes and stops working once used. When the code is verified, Firebase Authentication creates an account for you with that email address; if you already have a Google or Facebook account with that address, you sign in to that account. To limit abuse (for example, many codes sent to someone else's address), a hash of your email address and of the requesting IP address, together with sending times, is kept for at most 1 hour and then deleted automatically.</li>
         <li><strong>Cloud save:</strong> your whole game progress (economy, cars, garage and decor, tasks, purchase ledger, the list of players you blocked, race counts with your friends) is stored in Google Cloud Firestore, linked to your account and readable only by your account.</li>
       </ul>
       <h3>When you use the friend features</h3>
-      <p>The friend features require signing in (with Google, Facebook or email) and a nickname. When you create your nickname:</p>
+      <p>The friend features require signing in (with Google or Facebook) and a nickname. When you create your nickname:</p>
       <ul>
         <li><strong>Your public garage profile</strong> is created: your nickname, friend code, level, garage value, garage layout (decor, displayed cars and their tuning), avatar, frame, the flag you choose, garage name, showcase car, race stats (wins, races, collection, best time) and the junkyard part you asked for, if any. Your money, gems and crates are not part of it.</li>
         <li><strong>Profile photo:</strong> a photo you choose from your gallery, take with the camera or your Google account photo is resized to 192×192 pixels and uploaded to Firestore. Your Google photo only becomes your avatar if you choose <span class="ui">GOOGLE</span> or turn on <span class="ui">GOOGLE: ON</span> under <span class="ui">EDIT PROFILE → PHOTO</span>; it is off by default. When you remove your photo or switch to a preset avatar, the uploaded image is deleted from the server.</li>
@@ -96,8 +95,7 @@
           <caption class="visually-hidden">Processing purposes and legal bases</caption>
           <thead><tr><th scope="col">Purpose</th><th scope="col">Data</th><th scope="col">Legal basis</th></tr></thead>
           <tbody>
-            <tr><td>Google / Facebook / email sign-in and cloud backup</td><td>UID, Google / Facebook profile details or email address, game save</td><td>Performance of a contract (KVKK art. 5/2-c, GDPR art. 6(1)(b)); you start this feature</td></tr>
-            <tr><td>Sending the email sign-in code and preventing abuse</td><td>Email address, code hash, email and IP address hashes, sending times</td><td>Performance of a contract; legitimate interest in preventing abuse (KVKK art. 5/2-f, GDPR art. 6(1)(f))</td></tr>
+            <tr><td>Google / Facebook sign-in and cloud backup</td><td>UID, Google / Facebook profile details, game save</td><td>Performance of a contract (KVKK art. 5/2-c, GDPR art. 6(1)(b)); you start this feature</td></tr>
             <tr><td>Friend features and public profile</td><td>Nickname, code, garage profile, profile photo, friendship data</td><td>Performance of a contract; for the photo, your choice (you can change it at any time)</td></tr>
             <tr><td>Race notifications</td><td>Notification token, language, sending log</td><td>Consent (KVKK art. 5/1, GDPR art. 6(1)(a)); withdraw by turning notifications off</td></tr>
             <tr><td>Rewarded ads</td><td>Advertising ID, IP, device details, interactions</td><td>Consent; via the consent form in the EEA/UK/Switzerland, elsewhere by choosing to watch an ad</td></tr>
@@ -118,7 +116,7 @@
         <li><strong>Google (AdMob)</strong>: serving and measuring rewarded ads</li>
         <li><strong>Google (Google Play)</strong>: in-app purchases</li>
         <li><strong>Vercel Inc.</strong>: website hosting and anonymous statistics</li>
-        <li><strong>Resend</strong>: forwarding form messages and sending in-game sign-in codes by email</li>
+        <li><strong>Resend</strong>: forwarding form messages by email</li>
       </ul>
       <p>The game's cloud data is stored in Google's European data centres; providers may also process data in other countries, including the US. Transfers rely on the providers' standard contractual clauses and the safeguards in Article 9 of the KVKK. Apart from cases required by law, your data is not shared with anyone else.</p>
 
@@ -127,7 +125,6 @@
         <li>Cloud save, Google / Facebook profile details, public garage profile, friend code and friends list: until you delete your account. Profile photo: as long as you use it; deleted when you remove it or delete your account.</li>
         <li>Friend requests: until accepted, declined, withdrawn or the account is deleted.</li>
         <li>Invite links: valid for 1 hour; an expired invite is deleted automatically within an hour.</li>
-        <li>Email sign-in code: valid for 10 minutes and single-use; the code hash and the sending-limit records (email and IP address hashes) are deleted automatically within 1 hour.</li>
         <li>Gifted parts: until the recipient collects them. Race news: until dismissed or replaced by the same friend's next race.</li>
         <li>Notification token: until you turn notifications off or delete your account. Notification sending log: 1 day. Report records: 180 days (for review and preventing abuse).</li>
         <li>Data on your phone (save, photos, cache): until you uninstall the app or clear its data.</li>
@@ -136,7 +133,7 @@
       </ul>
 
       <h2 id="deletion">11. Deleting your account</h2>
-      <p>You can permanently delete your account in the game via <span class="ui">PROFILE → ACCOUNT → DELETE MY ACCOUNT</span> (<span class="ui">SETTINGS → ACCOUNT AND PRIVACY → GAME ACCOUNT</span> leads to the same place). This deletes your cloud save, public garage profile, profile photo, friend code, friendships (on both sides), requests, race news, gifts, invites, notification token and your Google / Facebook sign-in links. If you signed in with an email code, you confirm the deletion with a new code sent to your email. If you signed in with Facebook, you can also remove Auto Yard's access in Facebook (<a href="{{link:delete}}#facebook">how?</a>). If you can't open the game, use the form on the <a href="{{link:delete}}">Account &amp; Data Deletion</a> page.</p>
+      <p>You can permanently delete your account in the game via <span class="ui">PROFILE → ACCOUNT → DELETE MY ACCOUNT</span> (<span class="ui">SETTINGS → ACCOUNT AND PRIVACY → GAME ACCOUNT</span> leads to the same place). This deletes your cloud save, public garage profile, profile photo, friend code, friendships (on both sides), requests, race news, gifts, invites, notification token and your Google / Facebook sign-in links. If you signed in with Facebook, you can also remove Auto Yard's access in Facebook (<a href="{{link:delete}}#facebook">how?</a>). If you can't open the game, use the form on the <a href="{{link:delete}}">Account &amp; Data Deletion</a> page.</p>
       <p>After deletion, the following may remain for a while: reports made by you or about you (up to 180 days), notification sending logs (up to 1 day), your nickname in gifts your friends haven't collected yet, purchase and ad records held by Google, and files on your phone (removed when you uninstall the app).</p>
 
       <h2 id="security">12. Security</h2>
