@@ -6,7 +6,8 @@ Kaynaklar (bu depo dışında):
   ~/Projects/ct_shots/ekran_tarama/site_<dil>/      oyun kareleri (qa/ekran_tarama.gd, dev.json kaydı, 1920 genişlik)
   ~/Projects/ct_shots/ekran_tarama/site2_<dil>/     dekorlu garajlı kareler (featured.json kaydı)
   ~/Projects/ct_shots/arkadas/site_<dil>/           ARKADAŞLAR ekranı (qa/arkadaslar_qa.gd, örnek veri)
-  ~/Projects/social_media/foto/arac_portreleri/     araç portreleri (döner tabla, krem zemin)
+  ~/Projects/social_media/foto/arac_portreleri/     araç portreleri (döner tabla, krem zemin; ESKİ, logolu)
+  ~/Projects/ct_shots/debadge/portreler/            logosuz portreler → PORTRAITS_DIR (oyunda: qa/sosyal_medya_arac.gd foto <klasör> <id>...)
   src/assets/video/tanitim-720.mp4                  hero videosu (kapak ilk karesinden)
 
 Kullanım: python3 -m venv /tmp/v && /tmp/v/bin/pip install pillow && /tmp/v/bin/python tools/make_images.py
@@ -49,7 +50,8 @@ SHOT_SOURCES = {
     "koleksiyon": ("site_{l}", "37_koleksiyon.png"),
 }
 CARS = ["tofas_sahin", "anadol_a1", "ferrari_488_pista", "lambo_huracan", "aston_martin_db5", "ford_mustang_1967",
-        "porsche_gt3", "lancia_delta_integrale", "vw_t1_bus", "tesla_model_y", "chevrolet_bel_air_1956", "lamborghini_miura"]
+        "porsche_gt3", "lancia_delta_integrale", "vw_t1_bus", "tesla_model_y", "chevrolet_bel_air_1956", "lamborghini_miura",
+        "bugatti_chiron", "ferrari_laferrari"]
 TAGLINES = {
     "tr": "Garajını kur, arabaları tamir et, pistte kazan!",
     "en": "Build your garage, fix cars, win on the strip!",
