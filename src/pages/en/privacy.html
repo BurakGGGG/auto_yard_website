@@ -1,4 +1,4 @@
-<!--meta {"updated": "2026-10-22", "title": "Privacy Policy", "description": "Which personal data the Auto Yard game and website process and why, who can see it, how long it is kept and how to use your rights."} -->
+<!--meta {"updated": "2026-10-23", "title": "Privacy Policy", "description": "Which personal data the Auto Yard game and website process and why, who can see it, how long it is kept and how to use your rights."} -->
 <section class="page-hero rays">
   <div class="wrap narrow">
     <p class="kicker">Legal</p>
@@ -55,6 +55,13 @@
         <li><strong>Friendship data:</strong> your friends list, friend requests (nickname, code and time), the junkyard parts you send to friends as gifts, race news (nickname, the cars raced and the result) and invite links (your ID, nickname and code; a link is valid for 1 hour and an expired invite is deleted within an hour).</li>
         <li><strong>Reports and blocking:</strong> when you report a player, the reason, the reported player's ID and nickname and, for photo reports, a copy of the photo are stored; only the developer reviews reports, and they are deleted automatically after 180 days. The list of players you block is kept in your own save, and the blocked player is not notified.</li>
       </ul>
+      <h3>Friend invite reward</h3>
+      <p>The invite link you share also carries your friend code; your friend can also type the code in the game. A newly invited player's game takes the code from the link, from Google Play's install referrer (if the game was installed from Play through the invite link: a text Play attaches to the install that contains only the invite code; the game reads it from Google Play on its first launches and keeps nothing but the code) or from a typed code. When the player signs in, the following is sent to our server (Cloud Firestore, Google Cloud Functions): the invite code, where it came from (link, Google Play or typed), the time and a one-way hash (SHA-256) of the phone's Android ID (ANDROID_ID; specific to this app, it changes when the phone is factory reset). The raw ID never leaves the phone.</p>
+      <ul>
+        <li><strong>Checks:</strong> the server checks that the account is less than 7 days old (from its creation date in Firebase Authentication), that nobody has joined through an invite on this phone before, that it isn't the inviter's phone and that the inviter isn't banned. To prevent self-invites, every signed-in player's account also stores the ID hash of their current phone.</li>
+        <li><strong>When an invite is accepted:</strong> the two players automatically become friends, the invited player gets a welcome gift by mail, and the invited player's user ID, time and source are added to the inviter's invite list; a record that someone joined through an invite on this phone (only the ID hash and date, no account ID) is kept. When the invited player reaches level 3, the game tells the server, the inviter's counter goes up and their next reward arrives by mail.</li>
+        <li><strong>Visibility:</strong> under <span class="ui">FRIENDS → INVITE</span> the inviter sees the friends who joined through their invite (nickname and avatar) and whether they reached level 3. Other players can't see invite records.</li>
+      </ul>
       <h3>Race notifications (optional)</h3>
       <p>Only you can turn notifications on (you're asked after your first race, or in <span class="ui">SETTINGS → SOUND AND NOTIFICATIONS</span>). When you do, your phone's notification token (Firebase Cloud Messaging) and your language are stored. A notification is sent when a friend beats your car and contains their nickname, at most once every 6 hours per friend. To limit how often notifications are sent, the server records the two player IDs and the time of sending; this record is deleted automatically after 1 day. Turning notifications off deletes the token.</p>
       <h3>Race log and rival selection</h3>
@@ -103,6 +110,7 @@
             <tr><td>Google / Facebook / email sign-in and cloud backup</td><td>UID, Google / Facebook profile details or email address, game save</td><td>Performance of a contract (KVKK art. 5/2-c, GDPR art. 6(1)(b)); you start this feature</td></tr>
             <tr><td>Sending the email sign-in code and preventing abuse</td><td>Email address, code hash, email and IP address hashes, sending times</td><td>Performance of a contract; legitimate interest in preventing abuse (KVKK art. 5/2-f, GDPR art. 6(1)(f))</td></tr>
             <tr><td>Friend features and public profile</td><td>Nickname, code, garage profile, profile photo, friendship data</td><td>Performance of a contract; for the photo, your choice (you can change it at any time)</td></tr>
+            <tr><td>Friend invite reward and abuse prevention</td><td>Invite code and source, time, Android ID hash, account creation date, list of players you invited and whether they reached level 3</td><td>Performance of a contract; legitimate interest in preventing fraud</td></tr>
             <tr><td>Race notifications</td><td>Notification token, language, sending log</td><td>Consent (KVKK art. 5/1, GDPR art. 6(1)(a)); withdraw by turning notifications off</td></tr>
             <tr><td>Rewarded ads</td><td>Advertising ID, IP, device details, interactions</td><td>Consent; via the consent form in the EEA/UK/Switzerland, elsewhere by choosing to watch an ad</td></tr>
             <tr><td>Delivering purchases and preventing fake purchases</td><td>Product, order number, time, purchase token and its hash, verification result, UID</td><td>Performance of a contract; legal obligation; legitimate interest in preventing fraud</td></tr>
@@ -124,7 +132,7 @@
         <li><strong>Google (Firebase Analytics, Firebase Crashlytics)</strong>: usage statistics and error reports</li>
         <li><strong>Meta Platforms Ireland Ltd. / Meta Platforms, Inc. (Facebook Login)</strong>: sign-in, if you choose Facebook</li>
         <li><strong>Appodeal, Inc. and the ad networks it mediates</strong> (AppLovin, Unity Ads, Mintegral, Liftoff/Vungle, Meta, Moloco, IronSource, Pangle, InMobi, Digital Turbine, BidMachine): serving and measuring rewarded ads</li>
-        <li><strong>Google (Google Play)</strong>: in-app purchases and their verification</li>
+        <li><strong>Google (Google Play)</strong>: in-app purchases and their verification; install referrer for players who install from Play through an invite link</li>
         <li><strong>Vercel Inc.</strong>: website hosting and anonymous statistics</li>
         <li><strong>Resend</strong>: forwarding form messages and sending in-game sign-in codes by email</li>
       </ul>
@@ -135,6 +143,7 @@
         <li>Cloud save, Google / Facebook profile details, public garage profile, friend code and friends list: until you delete your account. Profile photo: as long as you use it; deleted when you remove it or delete your account.</li>
         <li>Friend requests: until accepted, declined, withdrawn or the account is deleted.</li>
         <li>Invite links: valid for 1 hour; an expired invite is deleted automatically within an hour.</li>
+        <li>Friend invite records (your invite request and its result, the list of players you invited, your counters, the phone ID hash linked to your account): until you delete your account. If an invited player deletes their account, they're removed from the inviter's list (the counter and rewards already given stay). The record that someone joined through an invite on a phone (only the ID hash and date; not linked to any account) is kept indefinitely so the same phone can't join through invites again and again.</li>
         <li>Email sign-in code: valid for 10 minutes and single-use; the code hash and the sending-limit records (email and IP address hashes) are deleted automatically within 1 hour.</li>
         <li>Gifted parts: until the recipient collects them. Race news: until dismissed or replaced by the same friend's next race.</li>
         <li>Notification token: until you turn notifications off or delete your account. Notification sending log: 1 day. Report records: 180 days (for review and preventing abuse).</li>
@@ -147,7 +156,7 @@
       </ul>
 
       <h2 id="deletion">11. Deleting your account</h2>
-      <p>You can permanently delete your account in the game via <span class="ui">PROFILE → ACCOUNT → DELETE MY ACCOUNT</span> (<span class="ui">SETTINGS → ACCOUNT AND PRIVACY → GAME ACCOUNT</span> leads to the same place). This deletes your cloud save, public garage profile, profile photo, friend code, friendships (on both sides), requests, race news, gifts, invites, race log, notification token and your Google / Facebook sign-in links. If you signed in with an email code, you confirm the deletion with a new code sent to your email. If you signed in with Facebook, you can also remove Auto Yard's access in Facebook (<a href="{{link:delete}}#facebook">how?</a>). If you can't open the game, use the form on the <a href="{{link:delete}}">Account &amp; Data Deletion</a> page.</p>
+      <p>You can permanently delete your account in the game via <span class="ui">PROFILE → ACCOUNT → DELETE MY ACCOUNT</span> (<span class="ui">SETTINGS → ACCOUNT AND PRIVACY → GAME ACCOUNT</span> leads to the same place). This deletes your cloud save, public garage profile, profile photo, friend code, friendships (on both sides), requests, race news, gifts, invites, invite records, race log, notification token and your Google / Facebook sign-in links. If you signed in with an email code, you confirm the deletion with a new code sent to your email. If you signed in with Facebook, you can also remove Auto Yard's access in Facebook (<a href="{{link:delete}}#facebook">how?</a>). If you can't open the game, use the form on the <a href="{{link:delete}}">Account &amp; Data Deletion</a> page.</p>
       <p>After deletion, the following may remain for a while: reports made by you or about you (up to 180 days), notification sending logs (up to 1 day), copies in database backups (up to 7 days), purchase records held by Google, ad records held by Appodeal and the ad networks, and files on your phone (removed when you uninstall the app). Usage statistics are not linked to your account, so they are not deleted with it; they are deleted automatically within 2 months. Error reports remain for up to 90 days. Your purchase verification records are deleted with your account.</p>
 
       <h2 id="security">12. Security</h2>

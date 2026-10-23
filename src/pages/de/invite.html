@@ -1,19 +1,20 @@
-<!--meta {"title": "Freundeseinladung", "description": "Ein Freund lädt dich ein, in Auto Yard Freunde zu werden.", "noindex": true} -->
+<!--meta {"title": "Freundeseinladung", "description": "Ein Freund lädt dich zu Auto Yard ein.", "noindex": true} -->
 <section class="page-hero rays center">
   <div class="wrap narrow">
     <img class="hero-logo" src="{{asset:/assets/img/brand/logo-960.webp}}" width="960" height="198" alt="" aria-hidden="true">
     <h1>Ein Freund ruft dich!</h1>
-    <p class="lead">Ein Freund hat dich eingeladen, in Auto Yard Freunde zu werden. Öffne die Einladung im Spiel, dann siehst du sein Profil und fügst ihn mit einem Fingertipp hinzu.</p>
+    <p class="lead">Ein Freund hat dich zu Auto Yard eingeladen. Kommst du über die Einladung, bekommst du ein Willkommensgeschenk und dein Freund eine Belohnung.</p>
+    <p class="invite-code" id="davet-kod" hidden>Einladungscode: <strong data-code></strong></p>
     <div class="cta-group">
-      <a class="btn btn-primary btn-large" id="davet-ac" href="{{link:home}}" data-package="{{androidPackage}}" data-cta="davet">Im Spiel öffnen</a>
-      <p class="cta-note" id="davet-not" data-invalid="Dieser Einladungslink scheint ungültig zu sein. Bitte deinen Freund um einen neuen." data-desktop="Öffne diesen Link auf einem Android-Handy, auf dem Auto Yard installiert ist. Einladungslinks sind 1 Stunde gültig." data-missing="Auto Yard scheint auf diesem Handy nicht installiert zu sein. Lade zuerst das Spiel herunter und tippe dann erneut auf den Link.">Einladungslinks sind 1 Stunde gültig.</p>
+      <a class="btn btn-primary btn-large" id="davet-ac" href="{{link:home}}" data-package="{{androidPackage}}" data-play="{{playUrl}}" data-live="{{playStoreLive}}" data-cta="davet">Im Spiel öffnen</a>
+      <p class="cta-note" id="davet-not" data-invalid="Dieser Einladungslink scheint ungültig zu sein. Bitte deinen Freund um einen neuen." data-desktop="Öffne diesen Link auf einem Android-Handy, auf dem Auto Yard installiert ist. Du kannst den Einladungscode auch im Spiel eingeben." data-missing="Auto Yard scheint auf diesem Handy nicht installiert zu sein. Lade zuerst das Spiel herunter und tippe dann erneut auf den Link oder gib den Einladungscode im Spiel ein.">Ist das Spiel installiert, öffnet es sich direkt.</p>
     </div>
   </div>
 </section>
 <section class="page-body center">
   <div class="wrap narrow">
     <h2>Du hast das Spiel noch nicht?</h2>
-    <p>Lade zuerst Auto Yard herunter und tippe dann erneut auf den Einladungslink.</p>
+    <p>Lade zuerst Auto Yard herunter. Öffnet der Link das Spiel nicht, melde dich an und gib den Einladungscode unter <span class="ui">FREUNDE → EINLADEN</span> ein (in den ersten 7 Tagen deines Kontos).</p>
     {{> cta}}
   </div>
 </section>

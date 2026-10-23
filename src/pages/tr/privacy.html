@@ -1,4 +1,4 @@
-<!--meta {"updated": "2026-10-22", "title": "Gizlilik Politikası", "description": "Auto Yard oyununun ve web sitesinin hangi kişisel verileri neden işlediği, kimlerin görebildiği, ne kadar saklandığı ve haklarını nasıl kullanacağın."} -->
+<!--meta {"updated": "2026-10-23", "title": "Gizlilik Politikası", "description": "Auto Yard oyununun ve web sitesinin hangi kişisel verileri neden işlediği, kimlerin görebildiği, ne kadar saklandığı ve haklarını nasıl kullanacağın."} -->
 <section class="page-hero rays">
   <div class="wrap narrow">
     <p class="kicker">Yasal</p>
@@ -55,6 +55,13 @@
         <li><strong>Arkadaşlık verileri:</strong> arkadaş listen, arkadaşlık istekleri (takma ad, kod ve zaman), arkadaşlarına gönderdiğin hurdalık parçası hediyeleri, yarış haberleri (takma ad, yarışılan araçlar ve sonuç) ve davet linkleri (senin kimliğin, takma adın ve kodun; link 1 saat geçerlidir, süresi dolan davet en geç bir saat içinde silinir).</li>
         <li><strong>Şikâyet ve engelleme:</strong> bir oyuncuyu şikâyet ettiğinde şikâyet nedeni, şikâyet edilen oyuncunun kimliği, takma adı ve fotoğraf şikâyetinde fotoğrafın bir kopyası kaydedilir; şikâyetleri yalnızca geliştirici inceler ve 180 gün sonra otomatik silinir. Engellediğin oyuncuların listesi kendi kaydında tutulur, engellenen kişiye bir şey bildirilmez.</li>
       </ul>
+      <h3>Arkadaş daveti ödülü</h3>
+      <p>Paylaştığın davet linki arkadaş kodunu da taşır; arkadaşın kodu oyunda elle de yazabilir. Davet edilen yeni oyuncunun oyunu kodu linkten, Google Play'in yükleme kaynağı bilgisinden (oyun Play'den davet linkiyle yüklendiyse Play'in kuruluma eklediği, yalnızca davet kodunu içeren metin; oyun bunu ilk açılışlarında Google Play'den okur ve kodun dışında bir şey saklamaz) ya da elle yazılan koddan alır. Oyuncu hesabıyla giriş yapınca sunucumuza (Cloud Firestore, Google Cloud Functions) şunlar gönderilir: davet kodu, kodun nereden geldiği (link, Google Play ya da elle), zaman ve telefonun Android kimliğinin (ANDROID_ID; bu uygulamaya özgüdür, telefon fabrika ayarlarına dönünce değişir) tek yönlü özeti (SHA-256). Ham kimlik telefondan çıkmaz.</p>
+      <ul>
+        <li><strong>Doğrulama:</strong> sunucu, hesabın 7 günden yeni olduğunu (Firebase Authentication'daki açılış tarihinden), bu telefondan daha önce davetle gelinmediğini, telefonun davet edenin telefonu olmadığını ve davet edenin yasaklı olmadığını denetler. Kendi kendini davet etmeyi önlemek için giriş yapan her oyuncunun hesabına o anki telefonunun kimlik özeti de kaydedilir.</li>
+        <li><strong>Davet kabul edilince:</strong> iki oyuncu otomatik olarak arkadaş olur, davet edilene hoş geldin hediyesi postayla gelir, davet edenin davet listesine davet edilenin kullanıcı kimliği, zamanı ve geliş yolu eklenir; telefondan davetle gelindiğini gösteren bir kayıt (yalnızca kimlik özeti ve tarih, hesap kimliği olmadan) tutulur. Davet edilen 3. seviyeye ulaşınca oyun bunu sunucuya bildirir, davet edenin sayacı artar ve sıradaki ödülü postayla gelir.</li>
+        <li><strong>Görünürlük:</strong> davet eden, <span class="ui">ARKADAŞLAR → DAVET ET</span> sekmesinde davetle gelen arkadaşlarını (takma ad ve avatar) ve 3. seviyeye ulaşıp ulaşmadıklarını görür. Davet kayıtlarını başka oyuncular göremez.</li>
+      </ul>
       <h3>Yarış bildirimleri (isteğe bağlı)</h3>
       <p>Bildirimleri yalnızca sen açarsın (ilk yarıştan sonra sorulur ya da <span class="ui">AYARLAR → SES VE BİLDİRİMLER</span>). Açtığında telefonunun bildirim anahtarı (Firebase Cloud Messaging) ve dilin saklanır. Bildirim, bir arkadaşın aracını yendiğinde gönderilir ve onun takma adını içerir; aynı arkadaştan en fazla 6 saatte bir gelir. Bildirim sıklığını sınırlamak için sunucu iki oyuncu kimliğini ve gönderim zamanını kaydeder; bu kayıt 1 gün sonra otomatik silinir. Bildirimleri kapattığında anahtar silinir.</p>
       <h3>Yarış günlüğü ve rakip seçimi</h3>
@@ -103,6 +110,7 @@
             <tr><td>Google / Facebook / e-posta ile giriş ve bulut yedeği</td><td>UID, Google / Facebook profil bilgileri ya da e-posta adresi, oyun kaydı</td><td>Sözleşmenin ifası (KVKK m.5/2-c); özelliği sen başlatırsın</td></tr>
             <tr><td>E-posta giriş kodunun gönderilmesi ve kötüye kullanımın önlenmesi</td><td>E-posta adresi, kod özeti, e-posta ve IP adresi özetleri, gönderim zamanları</td><td>Sözleşmenin ifası; kötüye kullanımın önlenmesinde meşru menfaat (m.5/2-f)</td></tr>
             <tr><td>Arkadaş özellikleri ve herkese açık profil</td><td>Takma ad, kod, garaj profili, profil fotoğrafı, arkadaşlık verileri</td><td>Sözleşmenin ifası; fotoğraf için senin seçimin (istediğin an değiştirebilirsin)</td></tr>
+            <tr><td>Arkadaş daveti ödülü ve kötüye kullanımın önlenmesi</td><td>Davet kodu ve geliş yolu, zaman, Android kimliğinin özeti, hesabın açılış tarihi, davet ettiklerinin listesi ve 3. seviyeye ulaşıp ulaşmadıkları</td><td>Sözleşmenin ifası; dolandırıcılığın önlenmesinde meşru menfaat (m.5/2-f)</td></tr>
             <tr><td>Yarış bildirimleri</td><td>Bildirim anahtarı, dil, gönderim kaydı</td><td>Açık rıza (m.5/1); bildirimleri kapatarak geri alırsın</td></tr>
             <tr><td>Ödüllü reklamlar</td><td>Reklam kimliği, IP, cihaz bilgisi, etkileşimler</td><td>Açık rıza; AEA/BK/İsviçre'de onay penceresiyle, diğer ülkelerde reklamı izlemeyi seçerek</td></tr>
             <tr><td>Satın almaların teslimi ve sahte satın almaların önlenmesi</td><td>Ürün, sipariş numarası, zaman, satın alma anahtarı ve özeti, doğrulama sonucu, UID</td><td>Sözleşmenin ifası; hukuki yükümlülük (m.5/2-ç); dolandırıcılığın önlenmesinde meşru menfaat (m.5/2-f)</td></tr>
@@ -124,7 +132,7 @@
         <li><strong>Google (Firebase Analytics, Firebase Crashlytics)</strong>: kullanım istatistikleri ve hata raporları</li>
         <li><strong>Meta Platforms Ireland Ltd. / Meta Platforms, Inc. (Facebook Girişi)</strong>: Facebook ile girişi seçersen kimlik doğrulama</li>
         <li><strong>Appodeal, Inc. ve aracılık ettiği reklam ağları</strong> (AppLovin, Unity Ads, Mintegral, Liftoff/Vungle, Meta, Moloco, IronSource, Pangle, InMobi, Digital Turbine, BidMachine): ödüllü reklamların gösterimi ve ölçümü</li>
-        <li><strong>Google (Google Play)</strong>: uygulama içi satın almalar ve doğrulanmaları</li>
+        <li><strong>Google (Google Play)</strong>: uygulama içi satın almalar ve doğrulanmaları; davet linkiyle Play'den yüklenenlerde yükleme kaynağı bilgisi</li>
         <li><strong>Vercel Inc.</strong>: site barındırma ve anonim istatistik</li>
         <li><strong>Resend</strong>: form mesajlarının ve oyundaki giriş kodlarının e-postayla iletilmesi</li>
       </ul>
@@ -135,6 +143,7 @@
         <li>Bulut kaydı, Google / Facebook profil bilgileri, herkese açık garaj profili, arkadaş kodu ve arkadaş listesi: hesabını silene kadar. Profil fotoğrafı: kullandığın sürece; kaldırınca ya da hesabını silince silinir.</li>
         <li>Arkadaşlık istekleri: kabul edilene, reddedilene, geri alınana ya da hesap silinene kadar.</li>
         <li>Davet linkleri: 1 saat geçerlidir; süresi dolan davet en geç bir saat içinde otomatik silinir.</li>
+        <li>Arkadaş daveti kayıtları (davet talebin ve sonucu, davet ettiklerinin listesi, sayaçların, hesabına bağlı telefon kimliği özeti): hesabını silene kadar. Davet edilen hesabını silerse davet edenin listesinden çıkar (sayaç ve verilmiş ödüller kalır). Bir telefondan davetle gelindiğini gösteren kayıt (yalnızca kimlik özeti ve tarih; hiçbir hesaba bağlı değildir) aynı telefondan tekrar tekrar davetle gelinmesini önlemek için süresiz tutulur.</li>
         <li>E-posta giriş kodu: 10 dakika geçerli ve tek kullanımlıktır; kod özeti ve gönderim sınırı kayıtları (e-posta ve IP adresi özetleri) en geç 1 saat içinde otomatik silinir.</li>
         <li>Hediye parçalar: alıcı toplayana kadar. Yarış haberleri: kapatılana ya da aynı arkadaşın sonraki yarışı gelene kadar.</li>
         <li>Bildirim anahtarı: bildirimleri kapatana ya da hesabını silene kadar. Bildirim gönderim kaydı: 1 gün. Şikâyet kayıtları: 180 gün (inceleme ve kötüye kullanımın önlenmesi için).</li>
@@ -147,7 +156,7 @@
       </ul>
 
       <h2 id="silme">11. Hesabını silmek</h2>
-      <p>Hesabını oyunda <span class="ui">PROFİL → HESAP → HESABIMI SİL</span> ile kalıcı olarak silebilirsin (<span class="ui">AYARLAR → HESAP VE GİZLİLİK → OYUN HESABI</span> da aynı yere çıkar). Bu işlem bulut kaydını, herkese açık garaj profilini, profil fotoğrafını, arkadaş kodunu, arkadaşlıkları (iki taraftan), istekleri, yarış haberlerini, hediyeleri, davetleri, yarış günlüğünü, bildirim anahtarını ve Google / Facebook giriş bağlantılarını siler. E-posta koduyla girdiysen silmeyi e-postana gelen yeni bir kodla onaylarsın. Facebook ile girdiysen Auto Yard'ın Facebook erişimini de kaldırabilirsin (<a href="{{link:delete}}#facebook">nasıl?</a>). Oyuna erişemiyorsan <a href="{{link:delete}}">Hesap ve Veri Silme</a> sayfasındaki formu kullan.</p>
+      <p>Hesabını oyunda <span class="ui">PROFİL → HESAP → HESABIMI SİL</span> ile kalıcı olarak silebilirsin (<span class="ui">AYARLAR → HESAP VE GİZLİLİK → OYUN HESABI</span> da aynı yere çıkar). Bu işlem bulut kaydını, herkese açık garaj profilini, profil fotoğrafını, arkadaş kodunu, arkadaşlıkları (iki taraftan), istekleri, yarış haberlerini, hediyeleri, davetleri, davet kayıtlarını, yarış günlüğünü, bildirim anahtarını ve Google / Facebook giriş bağlantılarını siler. E-posta koduyla girdiysen silmeyi e-postana gelen yeni bir kodla onaylarsın. Facebook ile girdiysen Auto Yard'ın Facebook erişimini de kaldırabilirsin (<a href="{{link:delete}}#facebook">nasıl?</a>). Oyuna erişemiyorsan <a href="{{link:delete}}">Hesap ve Veri Silme</a> sayfasındaki formu kullan.</p>
       <p>Silme işleminden sonra şunlar bir süre kalabilir: hakkında yapılmış ya da senin yaptığın şikâyet kayıtları (en fazla 180 gün), bildirim gönderim kayıtları (en fazla 1 gün), veritabanı yedeklerindeki kopyalar (en fazla 7 gün), Google'ın tuttuğu satın alma kayıtları, Appodeal'ın ve reklam ağlarının tuttuğu reklam kayıtları ve telefonundaki dosyalar (uygulamayı kaldırınca silinir). Kullanım istatistikleri hesabına bağlı olmadığından hesapla birlikte silinmez, 2 ay içinde kendiliğinden silinir; hata raporları en fazla 90 gün kalır. Satın alma doğrulama kayıtların hesabınla birlikte silinir.</p>
 
       <h2 id="guvenlik">12. Güvenlik</h2>

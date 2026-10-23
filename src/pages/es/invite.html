@@ -1,19 +1,20 @@
-<!--meta {"title": "Invitación de amistad", "description": "Un amigo te invita a ser su amigo en Auto Yard.", "noindex": true} -->
+<!--meta {"title": "Invitación de amigo", "description": "Un amigo te invita a Auto Yard.", "noindex": true} -->
 <section class="page-hero rays center">
   <div class="wrap narrow">
     <img class="hero-logo" src="{{asset:/assets/img/brand/logo-960.webp}}" width="960" height="198" alt="" aria-hidden="true">
     <h1>¡Un amigo te llama!</h1>
-    <p class="lead">Un amigo te ha invitado a ser su amigo en Auto Yard. Ábrelo en el juego para ver su perfil y agregarlo con un toque.</p>
+    <p class="lead">Un amigo te ha invitado a Auto Yard. Si entras con la invitación, recibes un regalo de bienvenida y tu amigo también recibe una recompensa.</p>
+    <p class="invite-code" id="davet-kod" hidden>Código de invitación: <strong data-code></strong></p>
     <div class="cta-group">
-      <a class="btn btn-primary btn-large" id="davet-ac" href="{{link:home}}" data-package="{{androidPackage}}" data-cta="davet">Abrir en el juego</a>
-      <p class="cta-note" id="davet-not" data-invalid="Este enlace de invitación no parece válido. Pide uno nuevo a tu amigo." data-desktop="Abre este enlace en un teléfono Android que tenga Auto Yard instalado. Los enlaces de invitación valen 1 hora." data-missing="Parece que Auto Yard no está instalado en este teléfono. Descarga primero el juego y vuelve a tocar el enlace.">Los enlaces de invitación valen 1 hora.</p>
+      <a class="btn btn-primary btn-large" id="davet-ac" href="{{link:home}}" data-package="{{androidPackage}}" data-play="{{playUrl}}" data-live="{{playStoreLive}}" data-cta="davet">Abrir en el juego</a>
+      <p class="cta-note" id="davet-not" data-invalid="Este enlace de invitación no parece válido. Pide uno nuevo a tu amigo." data-desktop="Abre este enlace en un teléfono Android que tenga Auto Yard instalado. También puedes escribir el código de invitación en el juego." data-missing="Parece que Auto Yard no está instalado en este teléfono. Descarga primero el juego y vuelve a tocar el enlace, o escribe el código de invitación en el juego.">Si el juego está instalado, se abre directamente.</p>
     </div>
   </div>
 </section>
 <section class="page-body center">
   <div class="wrap narrow">
     <h2>¿Aún no tienes el juego?</h2>
-    <p>Descarga primero Auto Yard y vuelve a tocar el enlace de invitación.</p>
+    <p>Descarga primero Auto Yard. Si el enlace no abre el juego, inicia sesión y escribe el código de invitación en <span class="ui">AMIGOS → INVITAR</span> (durante los primeros 7 días de tu cuenta).</p>
     {{> cta}}
   </div>
 </section>
