@@ -1,6 +1,11 @@
 <div class="cta-group">
-  <a class="btn btn-primary btn-large" href="{{playUrl}}" rel="noopener" data-cta="main">
-    {{> play-icon}}<span>{{t.cta_live}}</span>
-  </a>
+  <div class="store-badges">
+    <a class="store-badge" href="{{playUrl}}" rel="noopener" data-cta="main">
+      {{> play-logo}}<span class="store-badge-text"><small>{{t.badge_play_top}}</small><b>Google Play</b></span>
+    </a>
+    <span class="store-badge is-soon" aria-disabled="true">
+      {{> apple-logo}}<span class="store-badge-text"><small>{{t.badge_ios_top}}</small><b>App Store</b></span>
+    </span>
+  </div>
   <p class="cta-note">{{t.cta_live_note}}</p>
 </div>

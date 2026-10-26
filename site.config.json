@@ -2,7 +2,7 @@
   "name": "Auto Yard",
   "siteUrl": "https://autoyard.online",
   "androidPackage": "com.autoyard.app",
-  "playStoreLive": false,
+  "playStoreLive": true,
   "developerName": "Burak Gürgil",
   "contactEmail": "gurgilburak@gmail.com",
   "country": "Türkiye",
