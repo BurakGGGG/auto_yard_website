@@ -38,7 +38,7 @@ function resolveSiteUrl() {
 rmSync(out, { recursive: true, force: true });
 mkdirSync(out, { recursive: true });
 cpSync(join(src, "assets"), join(out, "assets"), { recursive: true });
-if (existsSync(join(src, "static"))) for (const f of readdirSync(join(src, "static"))) cpSync(join(src, "static", f), join(out, f));
+if (existsSync(join(src, "static"))) for (const f of readdirSync(join(src, "static"))) cpSync(join(src, "static", f), join(out, f), { recursive: true });
 
 const hashCache = new Map();
 function assetUrl(path) {

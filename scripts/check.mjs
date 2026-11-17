@@ -18,9 +18,10 @@ const err = (page, msg) => errors.push(`${page}: ${msg}`);
 const warn = (page, msg) => warnings.push(`${page}: ${msg}`);
 
 // Sayfalar alt klasörlerde de olabilir (en/privacy.html); anahtar public/'e göre yol, "/" ayraçlı.
+// googleXXXX.html = Search Console doğrulama dosyası (sayfa değil, denetlenmez).
 function walk(dir) {
   return readdirSync(dir, { withFileTypes: true }).flatMap((d) =>
-    d.isDirectory() ? (d.name === "assets" ? [] : walk(join(dir, d.name))) : d.name.endsWith(".html") ? [relative(out, join(dir, d.name)).split(sep).join("/")] : [],
+    d.isDirectory() ? (d.name === "assets" ? [] : walk(join(dir, d.name))) : d.name.endsWith(".html") && !/^google[0-9a-f]+\.html$/.test(d.name) ? [relative(out, join(dir, d.name)).split(sep).join("/")] : [],
   );
 }
 const pages = walk(out);
